@@ -71,11 +71,11 @@ public class CabeceraTransaccion {
         this.montoTransaccion = montoTransaccion;
     }
 
-    public String getFechaActualizacion() {
+    public Date getFechaActualizacion() {
         return fechaActualizacion;
     }
 
-    public void setFechaActualizacion(String fechaActualizacion) {
+    public void setFechaActualizacion(Date fechaActualizacion) {
         this.fechaActualizacion = fechaActualizacion;
     }
 
@@ -85,8 +85,6 @@ public class CabeceraTransaccion {
 
     public void setStatusActualizacion(boolean statusActualizacion) {
         this.statusActualizacion = statusActualizacion;
-    }
-    
-    
+    }    
     
 }
