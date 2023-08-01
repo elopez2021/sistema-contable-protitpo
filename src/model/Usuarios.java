@@ -5,10 +5,6 @@
  */
 package model;
 
-/**
- *
- * @author Zoila López
- */
 public class Usuarios {
     private int loginUsuario;
     private String passUsuario;
