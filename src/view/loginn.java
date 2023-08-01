@@ -4,6 +4,9 @@
  */
 package view;
 
+import controller.UsuarioController;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Admin
@@ -30,10 +33,10 @@ public class loginn extends javax.swing.JFrame {
         salir = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jPassword = new javax.swing.JPasswordField();
-        jusuario = new javax.swing.JTextField();
+        txtpassword = new javax.swing.JPasswordField();
+        txtusuario = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        inicia_sesion = new javax.swing.JButton();
+        btniniciarsesion = new javax.swing.JButton();
         jlabelfondo = new javax.swing.JLabel();
         sjsesion = new javax.swing.JButton();
 
@@ -61,27 +64,32 @@ public class loginn extends javax.swing.JFrame {
         jLabel2.setText("Usuario :");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 380, 200, 40));
 
-        jPassword.setBackground(new java.awt.Color(204, 255, 255));
-        jPassword.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jPassword.addActionListener(new java.awt.event.ActionListener() {
+        txtpassword.setBackground(new java.awt.Color(204, 255, 255));
+        txtpassword.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txtpassword.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jPasswordActionPerformed(evt);
+                txtpasswordActionPerformed(evt);
             }
         });
-        getContentPane().add(jPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 430, 230, 40));
+        getContentPane().add(txtpassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 430, 230, 40));
 
-        jusuario.setBackground(new java.awt.Color(204, 255, 255));
-        jusuario.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        getContentPane().add(jusuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 370, 230, 40));
+        txtusuario.setBackground(new java.awt.Color(204, 255, 255));
+        txtusuario.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        getContentPane().add(txtusuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 370, 230, 40));
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/user_1.png"))); // NOI18N
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 110, -1, -1));
 
-        inicia_sesion.setBackground(new java.awt.Color(0, 51, 255));
-        inicia_sesion.setFont(new java.awt.Font("Calisto MT", 1, 24)); // NOI18N
-        inicia_sesion.setForeground(new java.awt.Color(255, 255, 255));
-        inicia_sesion.setText("Iniciar sesion");
-        getContentPane().add(inicia_sesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 490, 200, 50));
+        btniniciarsesion.setBackground(new java.awt.Color(0, 51, 255));
+        btniniciarsesion.setFont(new java.awt.Font("Calisto MT", 1, 24)); // NOI18N
+        btniniciarsesion.setForeground(new java.awt.Color(255, 255, 255));
+        btniniciarsesion.setText("Iniciar sesion");
+        btniniciarsesion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btniniciarsesionActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btniniciarsesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 490, 200, 50));
 
         jlabelfondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/lol.png"))); // NOI18N
         getContentPane().add(jlabelfondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -90, 480, 670));
@@ -104,13 +112,45 @@ public class loginn extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_salirActionPerformed
 
-    private void jPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordActionPerformed
+    private void txtpasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtpasswordActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jPasswordActionPerformed
+    }//GEN-LAST:event_txtpasswordActionPerformed
 
     private void sjsesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sjsesionActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_sjsesionActionPerformed
+
+    private void btniniciarsesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btniniciarsesionActionPerformed
+        // TODO add your handling code here:
+        String usuario = txtusuario.getText();
+        String password = txtpassword.getText();
+        
+        if(usuario.isEmpty() && password.isEmpty()){
+            JOptionPane.showMessageDialog(null, "Debe ingresar el usuario y la contraseña", "Error", JOptionPane.INFORMATION_MESSAGE);
+            return;
+        }
+       
+        if(usuario.isEmpty()){
+            JOptionPane.showMessageDialog(null, "Debe ingresar el usuario", "Error", JOptionPane.INFORMATION_MESSAGE);
+            return;
+        }
+        
+        if(password.isEmpty()){
+            JOptionPane.showMessageDialog(null, "Debe ingresar la contraseña", "Error", JOptionPane.INFORMATION_MESSAGE);
+            return;
+        }
+        
+        if(UsuarioController.existeUsuario(usuario,password)){
+            String acceso = UsuarioController.obtenerTipoAcceso(usuario,password);
+            JOptionPane.showMessageDialog(null, "¡Bienvenido, " + usuario + " " + acceso + "! Has iniciado sesión correctamente.", "Inicio de sesión exitoso", JOptionPane.INFORMATION_MESSAGE);
+        }else {
+            // Mostrar mensaje de error si las credenciales son incorrectas
+            JOptionPane.showMessageDialog(null, "Error: Credenciales incorrectas. Por favor, inténtalo de nuevo.", "Error de inicio de sesión", JOptionPane.INFORMATION_MESSAGE);
+        }
+        
+        
+                
+    }//GEN-LAST:event_btniniciarsesionActionPerformed
 
     /**
      * @param args the command line arguments
@@ -148,14 +188,14 @@ public class loginn extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton inicia_sesion;
+    private javax.swing.JButton btniniciarsesion;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JPasswordField jPassword;
     private javax.swing.JLabel jlabelfondo;
-    private javax.swing.JTextField jusuario;
     private javax.swing.JButton salir;
     private javax.swing.JButton sjsesion;
+    private javax.swing.JPasswordField txtpassword;
+    private javax.swing.JTextField txtusuario;
     // End of variables declaration//GEN-END:variables
 }
