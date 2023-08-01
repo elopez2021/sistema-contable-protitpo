@@ -9,9 +9,13 @@ package controller;
  *
  * @author Zoila López
  */
-public interface Controller {
+public interface Controller {    
+    void init();
      // Método para guardar un nuevo registro en el modelo
     void save(Object data);
+    
+    //Metodo para obtener todos los registros
+    void list();
 
     // Método para actualizar un registro existente en el modelo
     void update(Object data);
