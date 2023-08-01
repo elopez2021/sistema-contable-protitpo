@@ -32,14 +32,16 @@ public class loginn extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jPassword = new javax.swing.JPasswordField();
         jusuario = new javax.swing.JTextField();
-        sjsesion = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
+        inicia_sesion = new javax.swing.JButton();
         jlabelfondo = new javax.swing.JLabel();
+        sjsesion = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        salir.setBackground(new java.awt.Color(204, 255, 255));
+        salir.setBackground(new java.awt.Color(255, 51, 102));
         salir.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         salir.setText("Salir");
         salir.addActionListener(new java.awt.event.ActionListener() {
@@ -47,17 +49,17 @@ public class loginn extends javax.swing.JFrame {
                 salirActionPerformed(evt);
             }
         });
-        getContentPane().add(salir, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 20, 90, 40));
+        getContentPane().add(salir, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 20, 90, 40));
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Calisto MT", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Contraseña :");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 410, 230, 60));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 420, 230, 60));
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Calisto MT", 1, 24)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Usuario :");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 360, 200, 40));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 380, 200, 40));
 
         jPassword.setBackground(new java.awt.Color(204, 255, 255));
         jPassword.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -66,11 +68,23 @@ public class loginn extends javax.swing.JFrame {
                 jPasswordActionPerformed(evt);
             }
         });
-        getContentPane().add(jPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 430, 230, 40));
+        getContentPane().add(jPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 430, 230, 40));
 
         jusuario.setBackground(new java.awt.Color(204, 255, 255));
         jusuario.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        getContentPane().add(jusuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 360, 230, 40));
+        getContentPane().add(jusuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 370, 230, 40));
+
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/user_1.png"))); // NOI18N
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 110, -1, -1));
+
+        inicia_sesion.setBackground(new java.awt.Color(0, 51, 255));
+        inicia_sesion.setFont(new java.awt.Font("Calisto MT", 1, 24)); // NOI18N
+        inicia_sesion.setForeground(new java.awt.Color(255, 255, 255));
+        inicia_sesion.setText("Iniciar sesion");
+        getContentPane().add(inicia_sesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 490, 200, 50));
+
+        jlabelfondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/lol.png"))); // NOI18N
+        getContentPane().add(jlabelfondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -90, 480, 670));
 
         sjsesion.setBackground(new java.awt.Color(255, 204, 204));
         sjsesion.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -82,9 +96,6 @@ public class loginn extends javax.swing.JFrame {
             }
         });
         getContentPane().add(sjsesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 490, 150, 50));
-
-        jlabelfondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/violet.jpg"))); // NOI18N
-        getContentPane().add(jlabelfondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -100, 480, 670));
 
         pack();
     }// </editor-fold>                        
@@ -137,8 +148,10 @@ public class loginn extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify                     
+    private javax.swing.JButton inicia_sesion;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPasswordField jPassword;
     private javax.swing.JLabel jlabelfondo;
     private javax.swing.JTextField jusuario;
@@ -146,4 +159,3 @@ public class loginn extends javax.swing.JFrame {
     private javax.swing.JButton sjsesion;
     // End of variables declaration                   
 }
-
