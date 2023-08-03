@@ -11,6 +11,8 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import model.Usuarios;
 
 /**
@@ -20,7 +22,6 @@ import model.Usuarios;
 public class UsuarioController implements Controller {
 
     private static final String RUTA_ARCHIVO = "src/database/usuarios.txt";
-    private static final String RUTA_ARCHIVO_ACCESO = "src/database/acceso.txt";
 
     // Constructor
     public UsuarioController() {
@@ -105,8 +106,21 @@ public class UsuarioController implements Controller {
     }
 
     @Override
-    public void list() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public List<String[]> list() {
+       List<String[]> listaUsuarios = new ArrayList<>();
+
+        try (BufferedReader reader = new BufferedReader(new FileReader(RUTA_ARCHIVO))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                String[] campos = line.split(";");
+                listaUsuarios.add(campos);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return listaUsuarios;
+        
     }
 
     @Override
