@@ -124,32 +124,41 @@ public class loginn extends javax.swing.JFrame {
         // TODO add your handling code here:
         String usuario = txtusuario.getText();
         String password = txtpassword.getText();
-        
-        if(usuario.isEmpty() && password.isEmpty()){
+
+        if (usuario.isEmpty() && password.isEmpty()) {
             JOptionPane.showMessageDialog(null, "Debe ingresar el usuario y la contraseña", "Error", JOptionPane.INFORMATION_MESSAGE);
             return;
         }
-       
-        if(usuario.isEmpty()){
+
+        if (usuario.isEmpty()) {
             JOptionPane.showMessageDialog(null, "Debe ingresar el usuario", "Error", JOptionPane.INFORMATION_MESSAGE);
             return;
         }
-        
-        if(password.isEmpty()){
+
+        if (password.isEmpty()) {
             JOptionPane.showMessageDialog(null, "Debe ingresar la contraseña", "Error", JOptionPane.INFORMATION_MESSAGE);
             return;
         }
-        
-        if(UsuarioController.existeUsuario(usuario,password)){
-            String acceso = UsuarioController.obtenerTipoAcceso(usuario,password);
+
+        if (UsuarioController.existeUsuario(usuario, password)) {
+            String acceso = UsuarioController.obtenerTipoAcceso(usuario, password);
             JOptionPane.showMessageDialog(null, "¡Bienvenido, " + usuario + " " + acceso + "! Has iniciado sesión correctamente.", "Inicio de sesión exitoso", JOptionPane.INFORMATION_MESSAGE);
-        }else {
+            if (acceso.equals("admin")) {
+                menuAdmin menu = new menuAdmin();
+                this.dispose();
+                menu.setVisible(true);
+            }else{
+                menuUsuario menu = new menuUsuario();
+                this.dispose();
+                menu.setVisible(true);
+            }
+
+        } else {
             // Mostrar mensaje de error si las credenciales son incorrectas
-            JOptionPane.showMessageDialog(null, "Error: Credenciales incorrectas. Por favor, inténtalo de nuevo.", "Error de inicio de sesión", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Usuario o contraseña incorrecta. Por favor, inténtalo de nuevo.", "Error de inicio de sesión", JOptionPane.INFORMATION_MESSAGE);
         }
-        
-        
-                
+
+
     }//GEN-LAST:event_btniniciarsesionActionPerformed
 
     /**

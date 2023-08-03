@@ -8,12 +8,12 @@ package view;
  *
  * @author Admin
  */
-public class menu extends javax.swing.JFrame {
+public class menuAdmin extends javax.swing.JFrame {
 
     /**
      * Creates new form menu
      */
-    public menu() {
+    public menuAdmin() {
         initComponents();
         this.setLocationRelativeTo(null);
     }
@@ -27,7 +27,7 @@ public class menu extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton1 = new javax.swing.JButton();
+        btnLogOut = new javax.swing.JButton();
         Matenimientos = new javax.swing.JButton();
         Movimientos = new javax.swing.JButton();
         Procesos = new javax.swing.JButton();
@@ -39,19 +39,24 @@ public class menu extends javax.swing.JFrame {
         setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jButton1.setBackground(new java.awt.Color(255, 51, 0));
-        jButton1.setFont(new java.awt.Font("Leelawadee UI Semilight", 1, 18)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("Cerrar sesion");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnLogOut.setBackground(new java.awt.Color(255, 51, 0));
+        btnLogOut.setFont(new java.awt.Font("Leelawadee UI Semilight", 1, 18)); // NOI18N
+        btnLogOut.setForeground(new java.awt.Color(255, 255, 255));
+        btnLogOut.setText("Cerrar sesion");
+        btnLogOut.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnLogOutActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 510, -1, -1));
+        getContentPane().add(btnLogOut, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 510, -1, -1));
 
         Matenimientos.setFont(new java.awt.Font("Microsoft JhengHei Light", 1, 18)); // NOI18N
         Matenimientos.setText("Mantenimietos");
+        Matenimientos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MatenimientosActionPerformed(evt);
+            }
+        });
         getContentPane().add(Matenimientos, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 260, 190, 50));
 
         Movimientos.setFont(new java.awt.Font("Microsoft YaHei UI Light", 1, 18)); // NOI18N
@@ -82,10 +87,22 @@ public class menu extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnLogOutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogOutActionPerformed
         // TODO add your handling code here:
-        System.exit(0);
-    }//GEN-LAST:event_jButton1ActionPerformed
+        this.setVisible(false);
+        this.dispose();
+        loginn login = new loginn();
+        login.setVisible(true);        
+    }//GEN-LAST:event_btnLogOutActionPerformed
+
+    private void MatenimientosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MatenimientosActionPerformed
+        // TODO add your handling code here:
+        this.setVisible(false);
+        this.dispose();
+        mantenimientos view = new mantenimientos();
+        view.setVisible(true);   
+        
+    }//GEN-LAST:event_MatenimientosActionPerformed
 
     /**
      * @param args the command line arguments
@@ -104,20 +121,21 @@ public class menu extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(menu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(menuAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(menu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(menuAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(menu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(menuAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(menu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(menuAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new menu().setVisible(true);
+                new menuAdmin().setVisible(true);
             }
         });
     }
@@ -127,7 +145,7 @@ public class menu extends javax.swing.JFrame {
     private javax.swing.JButton Matenimientos;
     private javax.swing.JButton Movimientos;
     private javax.swing.JButton Procesos;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btnLogOut;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     // End of variables declaration//GEN-END:variables

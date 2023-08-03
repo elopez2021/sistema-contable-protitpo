@@ -47,7 +47,7 @@ public class UsuarioController implements Controller {
             String line;
             while ((line = reader.readLine()) != null) {
                 String[] campos = line.split(";");
-                String login = campos[3];
+                String login = campos[0];
                 String pass = campos[1];
                 if (login.equals(login_usuario) && pass.equals(password)) {
                     return true; // Credenciales válidas
@@ -66,7 +66,7 @@ public class UsuarioController implements Controller {
             String line;
             while ((line = reader.readLine()) != null) {
                 String[] campos = line.split(";");
-                String login = campos[3];
+                String login = campos[0];
                 String pass = campos[1];
                 String tipoAcceso = campos[2];
                 if (login.equals(login_usuario) && pass.equals(password)) {
