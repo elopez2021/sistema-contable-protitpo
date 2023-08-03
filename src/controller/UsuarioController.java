@@ -13,6 +13,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JOptionPane;
 import model.Usuarios;
 
 /**
@@ -37,7 +38,7 @@ public class UsuarioController implements Controller {
                 usuariosFile.createNewFile();
             } catch (IOException e) {
                 e.printStackTrace();
-                System.err.println("Error al crear el archivo usuarios.txt");
+                JOptionPane.showMessageDialog(null, "Error al crear el archivo usuarios.txt", "Error", JOptionPane.ERROR_MESSAGE);
             }
         }
     }
@@ -56,7 +57,7 @@ public class UsuarioController implements Controller {
             }
         } catch (IOException e) {
             e.printStackTrace();
-            System.err.println("Error al leer el archivo usuarios.txt");
+            JOptionPane.showMessageDialog(null, "Error al leer el archivo usuarios.txt", "Error", JOptionPane.ERROR_MESSAGE);
         }
         return false; // Credenciales incorrectas o usuario no encontrado
     }
@@ -76,7 +77,7 @@ public class UsuarioController implements Controller {
             }
         } catch (IOException e) {
             e.printStackTrace();
-            System.err.println("Error al leer el archivo usuarios.txt");
+            JOptionPane.showMessageDialog(null, "Error al leer el archivo usuarios.txt", "Error", JOptionPane.ERROR_MESSAGE);            
         }
         return null;
 
@@ -98,7 +99,7 @@ public class UsuarioController implements Controller {
                 writer.flush(); // Escribir los cambios en el archivo
             } catch (IOException e) {
                 e.printStackTrace();
-                System.err.println("Error al guardar el usuario en el archivo usuarios.txt");
+                JOptionPane.showMessageDialog(null, "Error al guardar el usuario en el archivo usuarios.txt", "Error", JOptionPane.ERROR_MESSAGE);
             }
         } else {
             System.err.println("El objeto data no es una instancia de Usuarios");
@@ -117,6 +118,7 @@ public class UsuarioController implements Controller {
             }
         } catch (IOException e) {
             e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Error al leer el archivo usuarios.txt", "Error", JOptionPane.ERROR_MESSAGE);
         }
 
         return listaUsuarios;
