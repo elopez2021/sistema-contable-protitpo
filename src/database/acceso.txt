@@ -1,2 +1,2 @@
 1;admin
-2;empleado
+2;normal

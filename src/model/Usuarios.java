@@ -6,14 +6,14 @@
 package model;
 
 public class Usuarios {
-    private int loginUsuario;
+    private String loginUsuario;
     private String passUsuario;
     private int nivelAcceso;
     private String nombreUsuario;
     private String apellidosUsuarios;
     private String emailUsuario;
 
-    public Usuarios(int loginUsuario, String passUsuario, int nivelAcceso, String nombreUsuario, String apellidosUsuarios, String emailUsuario) {
+    public Usuarios(String loginUsuario, String passUsuario, int nivelAcceso, String nombreUsuario, String apellidosUsuarios, String emailUsuario) {
         this.loginUsuario = loginUsuario;
         this.passUsuario = passUsuario;
         this.nivelAcceso = nivelAcceso;
@@ -22,11 +22,15 @@ public class Usuarios {
         this.emailUsuario = emailUsuario;
     }
 
-    public int getLoginUsuario() {
+    public Usuarios() {
+        
+    }
+
+    public String getLoginUsuario() {
         return loginUsuario;
     }
 
-    public void setLoginUsuario(int loginUsuario) {
+    public void setLoginUsuario(String loginUsuario) {
         this.loginUsuario = loginUsuario;
     }
 

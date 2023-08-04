@@ -84,7 +84,7 @@ public class UsuarioController implements Controller {
     }
 
     @Override
-    public void save(Object data) {
+    public boolean save(Object data) {
         // Implementar la lógica para guardar un nuevo registro en el modelo
         if (data instanceof Usuarios) {
             Usuarios usuario = (Usuarios) data;
@@ -97,13 +97,15 @@ public class UsuarioController implements Controller {
                         + usuario.getEmailUsuario());
                 writer.newLine();
                 writer.flush(); // Escribir los cambios en el archivo
+                return true;
             } catch (IOException e) {
                 e.printStackTrace();
-                JOptionPane.showMessageDialog(null, "Error al guardar el usuario en el archivo usuarios.txt", "Error", JOptionPane.ERROR_MESSAGE);
+                return false;
             }
         } else {
             System.err.println("El objeto data no es una instancia de Usuarios");
         }
+        return false;
     }
 
     @Override

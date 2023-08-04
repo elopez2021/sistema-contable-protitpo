@@ -16,7 +16,7 @@ public interface Controller {
     void init();
     // Método para guardar un nuevo registro en el modelo
 
-    void save(Object data);
+    boolean save(Object data);
 
     //Metodo para obtener todos los registros
     List<String[]> list();
