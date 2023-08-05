@@ -41,6 +41,12 @@ public class mantenimientos extends javax.swing.JPanel {
         dt.setRowCount(0);
 
         for (String[] usuarios : listaUsuarios) {
+            String tipoAcceso = usuarios[2].equals("1") ? "Administrador" : "Normal";
+            usuarios[2] = tipoAcceso;
+            // Reemplazar el valor 'null' del email con una cadena vacía
+            if ("null".equals(usuarios[5])) {
+                usuarios[5] = "";
+            }
             dt.addRow(usuarios);
         }
     }
@@ -372,13 +378,11 @@ public class mantenimientos extends javax.swing.JPanel {
         }
         usuario.setNombreUsuario(txtNombre.getText().trim());
         usuario.setApellidosUsuarios(txtApellidos.getText());
-        if(txtEmail.getText().trim().isEmpty()){
+        if (txtEmail.getText().trim().isEmpty()) {
             usuario.setEmailUsuario("null");
-        }else{
+        } else {
             usuario.setEmailUsuario(txtEmail.getText().trim());
         }
-       
-        
 
         if (modificar) {
             usuarioCtrl.update(usuario);
@@ -390,7 +394,7 @@ public class mantenimientos extends javax.swing.JPanel {
 
         //guardar el usuario
         if (usuarioCtrl.save(usuario)) {
-            JOptionPane.showMessageDialog(null, "Los datos fueron guardados correctamente.", "Éxito", JOptionPane.INFORMATION_MESSAGE);            
+            JOptionPane.showMessageDialog(null, "Los datos fueron guardados correctamente.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
             tb_load();
         } else {
             JOptionPane.showMessageDialog(null, "Error al guardar el usuario", "Error", JOptionPane.ERROR_MESSAGE);
@@ -414,17 +418,16 @@ public class mantenimientos extends javax.swing.JPanel {
         String login = txtLogin.getText().trim();
         String password = txtContraseña.getText();
         if (UsuarioController.existeUsuario(login, password)) {
-            
+
             Usuarios usuario = usuarioCtrl.buscarUsuario(login);
             if (usuario != null) {
                 txtNombre.setText(usuario.getNombreUsuario());
                 txtApellidos.setText(usuario.getApellidosUsuarios());
-                if(usuario.getEmailUsuario().equals("null")){
+                if (usuario.getEmailUsuario().equals("null")) {
                     txtEmail.setText("");
-                }else{
+                } else {
                     txtEmail.setText(usuario.getEmailUsuario());
                 }
-                
 
                 // Obtener el tipo de acceso del usuario
                 String nivelAcceso;
@@ -434,7 +437,7 @@ public class mantenimientos extends javax.swing.JPanel {
                     nivelAcceso = "Normal";
                 }
                 cmbAcceso.setSelectedItem(nivelAcceso);
-                
+
                 btnEliminar.setEnabled(true);
 
             }
@@ -454,14 +457,14 @@ public class mantenimientos extends javax.swing.JPanel {
         // TODO add your handling code here:
         Usuarios usuario = new Usuarios();
         usuario.setLoginUsuario(txtLogin.getText());
-        if(usuarioCtrl.delete(usuario)){
+        if (usuarioCtrl.delete(usuario)) {
             JOptionPane.showMessageDialog(null, "Usuario eliminado correctamente", "Eliminación exitosa", JOptionPane.INFORMATION_MESSAGE);
             limpiarCampos();
             tb_load();
-        }else{
+        } else {
             JOptionPane.showMessageDialog(null, "Error al eliminar el usuario", "Error", JOptionPane.ERROR_MESSAGE);
         }
-        
+
     }//GEN-LAST:event_btnEliminarActionPerformed
 
     public static boolean isEmpty(JTextField textField, JLabel errorLabel, String mensajeError) {
