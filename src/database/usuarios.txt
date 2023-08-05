@@ -1,4 +1,1 @@
-elopez;12345;1;Edgar;Lopez;edgar@gmail.comana;12345;2;Ana;Perez;
-ana;12345;2;Ana;Perez;
-luis;12345;1;Luis;Peña;luis@gmail.com
-maria;12345;1;yuca;naja;yuca@gmail.com
+elopez;12345;1;Edgar;Lopez;edgar@gmail.com

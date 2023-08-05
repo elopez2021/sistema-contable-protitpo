@@ -62,6 +62,47 @@ public class UsuarioController implements Controller {
         return false; // Credenciales incorrectas o usuario no encontrado
     }
 
+    public static boolean existeLogin(String login_usuario) {
+        try (BufferedReader reader = new BufferedReader(new FileReader(RUTA_ARCHIVO))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                String[] campos = line.split(";");
+                String login = campos[0];
+                if (login.equals(login_usuario)) {
+                    return true; // Credenciales válidas
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Error al leer el archivo usuarios.txt", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+        return false; // Credenciales incorrectas o usuario no encontrado
+    }
+
+    public Usuarios buscarUsuario(String login) {
+        try (BufferedReader reader = new BufferedReader(new FileReader(RUTA_ARCHIVO))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                String[] campos = line.split(";");
+                String loginUsuario = campos[0];
+                if (loginUsuario.equals(login)) {
+                    Usuarios usuario = new Usuarios();
+                    usuario.setLoginUsuario(campos[0]);
+                    usuario.setPassUsuario(campos[1]);
+                    usuario.setNivelAcceso(Integer.parseInt(campos[2]));
+                    usuario.setNombreUsuario(campos[3]);
+                    usuario.setApellidosUsuarios(campos[4]);
+                    usuario.setEmailUsuario(campos[5]);
+                    return usuario;
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Error al leer el archivo usuarios.txt", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+        return null; // Usuario no encontrado
+    }
+
     // Método para obtener el tipo de acceso desde el archivo acceso.txt
     public static String obtenerTipoAcceso(String login_usuario, String password) {
         try (BufferedReader reader = new BufferedReader(new FileReader(RUTA_ARCHIVO))) {
@@ -77,7 +118,7 @@ public class UsuarioController implements Controller {
             }
         } catch (IOException e) {
             e.printStackTrace();
-            JOptionPane.showMessageDialog(null, "Error al leer el archivo usuarios.txt", "Error", JOptionPane.ERROR_MESSAGE);            
+            JOptionPane.showMessageDialog(null, "Error al leer el archivo usuarios.txt", "Error", JOptionPane.ERROR_MESSAGE);
         }
         return null;
 
@@ -110,7 +151,7 @@ public class UsuarioController implements Controller {
 
     @Override
     public List<String[]> list() {
-       List<String[]> listaUsuarios = new ArrayList<>();
+        List<String[]> listaUsuarios = new ArrayList<>();
 
         try (BufferedReader reader = new BufferedReader(new FileReader(RUTA_ARCHIVO))) {
             String line;
@@ -124,17 +165,73 @@ public class UsuarioController implements Controller {
         }
 
         return listaUsuarios;
-        
+
     }
 
     @Override
-    public void update(Object data) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public boolean update(Object data) {
+
+        if (data instanceof Usuarios) {
+            Usuarios usuario = (Usuarios) data;
+            List<String[]> usuariosList = new ArrayList<>();
+
+            try (BufferedReader reader = new BufferedReader(new FileReader(RUTA_ARCHIVO))) {
+                String line;
+                while ((line = reader.readLine()) != null) {
+                    String[] campos = line.split(";");
+                    String loginUsuario = campos[0];
+                    if (loginUsuario.equals(usuario.getLoginUsuario())) {
+                        campos[1] = usuario.getPassUsuario();
+                        campos[2] = String.valueOf(usuario.getNivelAcceso());
+                        campos[3] = usuario.getNombreUsuario();
+                        campos[4] = usuario.getApellidosUsuarios();
+                        campos[5] = usuario.getEmailUsuario();
+                    }
+                    usuariosList.add(campos);
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+                JOptionPane.showMessageDialog(null, "Error al leer el archivo usuarios.txt", "Error", JOptionPane.ERROR_MESSAGE);
+                return false;
+            }
+
+            try (BufferedWriter writer = new BufferedWriter(new FileWriter(RUTA_ARCHIVO))) {
+                for (String[] campos : usuariosList) {
+                    writer.write(String.join(";", campos));
+                    writer.newLine();
+                }
+                return true;
+            } catch (IOException e) {
+                e.printStackTrace();
+                JOptionPane.showMessageDialog(null, "Error al escribir en el archivo usuarios.txt", "Error", JOptionPane.ERROR_MESSAGE);
+                return false;
+            }
+        }else {
+            System.err.println("El objeto data no es una instancia de Usuarios");
+        }
+        return false;
     }
 
     @Override
-    public void delete(Object data) {
+    public boolean delete(Object data) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public boolean verificarEmail(String email) {
+        try (BufferedReader reader = new BufferedReader(new FileReader(RUTA_ARCHIVO))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                String[] campos = line.split(";");
+                String emailusuario = campos[5];
+                if (emailusuario.equals(email)) {
+                    return true; // email existe
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Error al leer el archivo usuarios.txt", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+        return false; // Email no encontrado
     }
 
 }

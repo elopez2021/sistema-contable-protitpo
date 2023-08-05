@@ -134,7 +134,7 @@ public class HomeAdmin extends javax.swing.JFrame {
     private void btn_mantenimientoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_mantenimientoActionPerformed
         // TODO add your handling code here:
         
-        usuarioview user = new usuarioview();
+        mantenimientos user = new mantenimientos();
         jpload.jPanelLoader(panel_load,user);
     }//GEN-LAST:event_btn_mantenimientoActionPerformed
 

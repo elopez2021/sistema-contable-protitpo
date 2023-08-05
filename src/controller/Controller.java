@@ -22,8 +22,8 @@ public interface Controller {
     List<String[]> list();
 
     // Método para actualizar un registro existente en el modelo
-    void update(Object data);
+    boolean update(Object data);
 
     // Método para eliminar un registro del modelo
-    void delete(Object data);
+    boolean delete(Object data);
 }
