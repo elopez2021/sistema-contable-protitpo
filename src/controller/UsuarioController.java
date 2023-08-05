@@ -206,7 +206,7 @@ public class UsuarioController implements Controller {
                 JOptionPane.showMessageDialog(null, "Error al escribir en el archivo usuarios.txt", "Error", JOptionPane.ERROR_MESSAGE);
                 return false;
             }
-        }else {
+        } else {
             System.err.println("El objeto data no es una instancia de Usuarios");
         }
         return false;
@@ -214,7 +214,39 @@ public class UsuarioController implements Controller {
 
     @Override
     public boolean delete(Object data) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        if (data instanceof Usuarios) {
+            Usuarios usuario = (Usuarios) data;
+            List<String[]> usuariosList = new ArrayList<>();
+
+            try (BufferedReader reader = new BufferedReader(new FileReader(RUTA_ARCHIVO))) {
+                String line;
+                while ((line = reader.readLine()) != null) {
+                    String[] campos = line.split(";");
+                    String login = campos[0];
+                    if (!login.equals(usuario.getLoginUsuario())) {
+                        usuariosList.add(campos);
+                    }
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+                JOptionPane.showMessageDialog(null, "Error al leer el archivo usuarios.txt", "Error", JOptionPane.ERROR_MESSAGE);
+                return false;
+            }
+
+            try (BufferedWriter writer = new BufferedWriter(new FileWriter(RUTA_ARCHIVO))) {
+                for (String[] campos : usuariosList) {
+                    writer.write(String.join(";", campos));
+                    writer.newLine();
+                }
+                return true;
+            } catch (IOException e) {
+                e.printStackTrace();
+                JOptionPane.showMessageDialog(null, "Error al escribir en el archivo usuarios.txt", "Error", JOptionPane.ERROR_MESSAGE);
+                return false;
+            }
+        }
+        
+        return false;
     }
 
     public boolean verificarEmail(String email) {

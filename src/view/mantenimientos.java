@@ -26,6 +26,7 @@ public class mantenimientos extends javax.swing.JPanel {
         initComponents();
         tb_load();
     }
+    UsuarioController usuarioCtrl = new UsuarioController();
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -77,7 +78,7 @@ public class mantenimientos extends javax.swing.JPanel {
         errApellidos = new javax.swing.JLabel();
         errEmail = new javax.swing.JLabel();
         btnGuardar = new javax.swing.JButton();
-        btn_modificar = new javax.swing.JButton();
+        btnEliminar = new javax.swing.JButton();
         txtContraseña = new javax.swing.JPasswordField();
         txtEmail = new javax.swing.JTextField();
         jScrollPane3 = new javax.swing.JScrollPane();
@@ -150,8 +151,14 @@ public class mantenimientos extends javax.swing.JPanel {
             }
         });
 
-        btn_modificar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        btn_modificar.setText("Eliminar");
+        btnEliminar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnEliminar.setText("Eliminar");
+        btnEliminar.setEnabled(false);
+        btnEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarActionPerformed(evt);
+            }
+        });
 
         txtContraseña.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
@@ -196,7 +203,7 @@ public class mantenimientos extends javax.swing.JPanel {
                             .addGap(67, 67, 67)
                             .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
-                            .addComponent(btn_modificar, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
                             .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -255,7 +262,7 @@ public class mantenimientos extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btn_modificar, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 24, Short.MAX_VALUE))
         );
 
@@ -338,8 +345,6 @@ public class mantenimientos extends javax.swing.JPanel {
         JTextField[] campos = {txtLogin, txtContraseña, txtNombre, txtApellidos};
         JLabel[] errorLabels = {errLogin, errContraseña, errNombre, errApellidos};
 
-        UsuarioController usuarioCtrl = new UsuarioController();
-
         boolean camposValidos = true;
         boolean modificar = UsuarioController.existeLogin(txtLogin.getText());
 
@@ -367,7 +372,13 @@ public class mantenimientos extends javax.swing.JPanel {
         }
         usuario.setNombreUsuario(txtNombre.getText().trim());
         usuario.setApellidosUsuarios(txtApellidos.getText());
-        usuario.setEmailUsuario(txtEmail.getText().trim());
+        if(txtEmail.getText().trim().isEmpty()){
+            usuario.setEmailUsuario("null");
+        }else{
+            usuario.setEmailUsuario(txtEmail.getText().trim());
+        }
+       
+        
 
         if (modificar) {
             usuarioCtrl.update(usuario);
@@ -403,13 +414,17 @@ public class mantenimientos extends javax.swing.JPanel {
         String login = txtLogin.getText().trim();
         String password = txtContraseña.getText();
         if (UsuarioController.existeUsuario(login, password)) {
-            UsuarioController usuarioCtrl = new UsuarioController();
-
+            
             Usuarios usuario = usuarioCtrl.buscarUsuario(login);
             if (usuario != null) {
                 txtNombre.setText(usuario.getNombreUsuario());
                 txtApellidos.setText(usuario.getApellidosUsuarios());
-                txtEmail.setText(usuario.getEmailUsuario());
+                if(usuario.getEmailUsuario().equals("null")){
+                    txtEmail.setText("");
+                }else{
+                    txtEmail.setText(usuario.getEmailUsuario());
+                }
+                
 
                 // Obtener el tipo de acceso del usuario
                 String nivelAcceso;
@@ -419,6 +434,8 @@ public class mantenimientos extends javax.swing.JPanel {
                     nivelAcceso = "Normal";
                 }
                 cmbAcceso.setSelectedItem(nivelAcceso);
+                
+                btnEliminar.setEnabled(true);
 
             }
 
@@ -433,6 +450,20 @@ public class mantenimientos extends javax.swing.JPanel {
 
     }//GEN-LAST:event_txtContraseñaKeyReleased
 
+    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
+        // TODO add your handling code here:
+        Usuarios usuario = new Usuarios();
+        usuario.setLoginUsuario(txtLogin.getText());
+        if(usuarioCtrl.delete(usuario)){
+            JOptionPane.showMessageDialog(null, "Usuario eliminado correctamente", "Eliminación exitosa", JOptionPane.INFORMATION_MESSAGE);
+            limpiarCampos();
+            tb_load();
+        }else{
+            JOptionPane.showMessageDialog(null, "Error al eliminar el usuario", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+        
+    }//GEN-LAST:event_btnEliminarActionPerformed
+
     public static boolean isEmpty(JTextField textField, JLabel errorLabel, String mensajeError) {
         String texto = textField.getText().trim();
         if (texto.isEmpty()) {
@@ -446,8 +477,8 @@ public class mantenimientos extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnEliminar;
     private javax.swing.JButton btnGuardar;
-    private javax.swing.JButton btn_modificar;
     private javax.swing.JComboBox<String> cmbAcceso;
     private javax.swing.JLabel errApellidos;
     private javax.swing.JLabel errContraseña;
