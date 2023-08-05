@@ -2,13 +2,13 @@
 package view;
 
 
-public class HomeAdmin extends javax.swing.JFrame {
+public class HomeNormal extends javax.swing.JFrame {
 
     JpanelLoader jpload = new JpanelLoader();
     
-    public HomeAdmin() {
+    public HomeNormal() {
         initComponents();
-        this.setExtendedState(HomeAdmin.MAXIMIZED_BOTH);           
+        this.setExtendedState(HomeNormal.MAXIMIZED_BOTH);           
     }
     
    
@@ -18,9 +18,7 @@ public class HomeAdmin extends javax.swing.JFrame {
 
         home_bnt_grp = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
-        btn_mantenimiento = new javax.swing.JToggleButton();
         btn_movimientos = new javax.swing.JToggleButton();
-        btn_procesos = new javax.swing.JToggleButton();
         consultas_btn = new javax.swing.JToggleButton();
         btnCerrar = new javax.swing.JToggleButton();
         panel_load = new javax.swing.JPanel();
@@ -30,22 +28,9 @@ public class HomeAdmin extends javax.swing.JFrame {
 
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        home_bnt_grp.add(btn_mantenimiento);
-        btn_mantenimiento.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        btn_mantenimiento.setText("Mantenimientos");
-        btn_mantenimiento.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_mantenimientoActionPerformed(evt);
-            }
-        });
-
         home_bnt_grp.add(btn_movimientos);
         btn_movimientos.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btn_movimientos.setText("Movimientos");
-
-        home_bnt_grp.add(btn_procesos);
-        btn_procesos.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        btn_procesos.setText("Procesos");
 
         home_bnt_grp.add(consultas_btn);
         consultas_btn.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -64,30 +49,24 @@ public class HomeAdmin extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btn_mantenimiento, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btn_movimientos, javax.swing.GroupLayout.DEFAULT_SIZE, 172, Short.MAX_VALUE)
-                    .addComponent(btn_procesos, javax.swing.GroupLayout.DEFAULT_SIZE, 172, Short.MAX_VALUE)
-                    .addComponent(consultas_btn, javax.swing.GroupLayout.DEFAULT_SIZE, 172, Short.MAX_VALUE)
-                    .addComponent(btnCerrar, javax.swing.GroupLayout.DEFAULT_SIZE, 172, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btn_movimientos, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 172, Short.MAX_VALUE)
+                    .addComponent(consultas_btn, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 172, Short.MAX_VALUE)
+                    .addComponent(btnCerrar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 172, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(25, 25, 25)
-                .addComponent(btn_mantenimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(25, 25, 25)
+                .addGap(117, 117, 117)
                 .addComponent(btn_movimientos, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(25, 25, 25)
-                .addComponent(btn_procesos, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(25, 25, 25)
+                .addGap(18, 18, 18)
                 .addComponent(consultas_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(25, 25, 25)
+                .addGap(18, 18, 18)
                 .addComponent(btnCerrar, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(111, Short.MAX_VALUE))
+                .addContainerGap(210, Short.MAX_VALUE))
         );
 
         panel_load.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -144,13 +123,6 @@ public class HomeAdmin extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btn_mantenimientoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_mantenimientoActionPerformed
-        // TODO add your handling code here:
-        
-        mantenimientos user = new mantenimientos();
-        jpload.jPanelLoader(panel_load,user);
-    }//GEN-LAST:event_btn_mantenimientoActionPerformed
-
     private void btnCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarActionPerformed
         // TODO add your handling code here:
         System.exit(0);
@@ -173,14 +145,18 @@ public class HomeAdmin extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(HomeAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(HomeNormal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(HomeAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(HomeNormal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(HomeAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(HomeNormal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(HomeAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(HomeNormal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -189,16 +165,14 @@ public class HomeAdmin extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new HomeAdmin().setVisible(true);
+                new HomeNormal().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JToggleButton btnCerrar;
-    private javax.swing.JToggleButton btn_mantenimiento;
     private javax.swing.JToggleButton btn_movimientos;
-    private javax.swing.JToggleButton btn_procesos;
     private javax.swing.JToggleButton consultas_btn;
     private javax.swing.ButtonGroup home_bnt_grp;
     private javax.swing.JPanel jPanel1;

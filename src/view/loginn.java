@@ -147,11 +147,10 @@ public class loginn extends javax.swing.JFrame {
                 HomeAdmin menu = new HomeAdmin();
                 this.dispose();
                 menu.setVisible(true);
-            }else{/*
-                menuUsuario menu = new menuUsuario();
+            }else{
+                HomeNormal menu = new HomeNormal();
                 this.dispose();
                 menu.setVisible(true);
-                */
             }
 
         } else {
