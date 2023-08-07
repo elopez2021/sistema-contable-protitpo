@@ -348,6 +348,12 @@ public class mantenimientos extends javax.swing.JPanel {
         jLabel7.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel7.setText("Código:");
 
+        txtCodigo.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtCodigoFocusLost(evt);
+            }
+        });
+
         jLabel8.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel8.setText("Descripción:");
 
@@ -608,6 +614,7 @@ public class mantenimientos extends javax.swing.JPanel {
         if (usuarioCtrl.delete(usuario)) {
             JOptionPane.showMessageDialog(null, "Usuario eliminado correctamente", "Eliminación exitosa", JOptionPane.INFORMATION_MESSAGE);
             limpiarCampos(campos);
+            btnEliminarUsuario.setEnabled(false);
             tb_load();
         } else {
             JOptionPane.showMessageDialog(null, "Error al eliminar el usuario", "Error", JOptionPane.ERROR_MESSAGE);
@@ -627,7 +634,7 @@ public class mantenimientos extends javax.swing.JPanel {
                 camposValidos = false;
             }
         }
-
+        
         if (!txtCodigo.getText().isEmpty()) {
             int codigo = 0;
             try {
@@ -656,7 +663,34 @@ public class mantenimientos extends javax.swing.JPanel {
 
     private void btnEliminarDocumentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarDocumentoActionPerformed
         // TODO add your handling code here:
+        int respuesta = JOptionPane.showConfirmDialog(this, "¿Estás seguro de que quieres eliminar este tipo de documento?", "Confirmar Eliminación", JOptionPane.YES_NO_OPTION);
+        if (respuesta != JOptionPane.YES_OPTION) {
+            return;
+        }
+        JTextField[] campos = {txtCodigo, txtDescripcion};
+        Documentos documento = new Documentos();
+        documento.setCodigo(Integer.parseInt(txtCodigo.getText()));
+        if (documentoCtrl.delete(documento)) {
+            JOptionPane.showMessageDialog(null, "Documento eliminado correctamente", "Eliminación exitosa", JOptionPane.INFORMATION_MESSAGE);
+            limpiarCampos(campos);
+            tb_load_documento();
+            btnEliminarDocumento.setEnabled(false);
+        } else {
+            JOptionPane.showMessageDialog(null, "Error al eliminar el tipo de documento", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+
     }//GEN-LAST:event_btnEliminarDocumentoActionPerformed
+
+    private void txtCodigoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtCodigoFocusLost
+        // TODO add your handling code here:
+        
+        String codigo = txtCodigo.getText();
+        if(documentoCtrl.existeCodigo(codigo)){
+            Documentos documento = documentoCtrl.buscarDocumento(codigo);            
+            txtDescripcion.setText(documento.getDescripcion());
+            btnEliminarDocumento.setEnabled(true);
+        }
+    }//GEN-LAST:event_txtCodigoFocusLost
 
     public static boolean isEmpty(JTextField textField, JLabel errorLabel, String mensajeError) {
         String texto = textField.getText().trim();

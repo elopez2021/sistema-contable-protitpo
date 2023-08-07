@@ -19,6 +19,10 @@ public class Documentos {
         this.descripcion = descripcion;
     }
 
+    public Documentos() {
+        
+    }
+
     public int getCodigo() {
         return codigo;
     }

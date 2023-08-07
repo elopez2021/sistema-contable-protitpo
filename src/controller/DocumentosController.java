@@ -86,7 +86,75 @@ public class DocumentosController implements Controller {
 
     @Override
     public boolean delete(Object data) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
+        if (data instanceof Documentos) {
+            Documentos documento = (Documentos) data;
+            List<String[]> documentosList = new ArrayList<>();
+
+            try (BufferedReader reader = new BufferedReader(new FileReader(RUTA_ARCHIVO))) {
+                String line;
+                while ((line = reader.readLine()) != null) {
+                    String[] campos = line.split(";");
+                    String codigo = campos[0];
+                    if (!codigo.equals(String.valueOf(documento.getCodigo()))) {
+                        documentosList.add(campos);
+                    }
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+                JOptionPane.showMessageDialog(null, "Error al leer el archivo documentos.txt", "Error", JOptionPane.ERROR_MESSAGE);
+                return false;
+            }
+
+            try (BufferedWriter writer = new BufferedWriter(new FileWriter(RUTA_ARCHIVO))) {
+                for (String[] campos : documentosList) {
+                    writer.write(String.join(";", campos));
+                    writer.newLine();
+                }
+                return true;
+            } catch (IOException e) {
+                e.printStackTrace();
+                JOptionPane.showMessageDialog(null, "Error al escribir en el archivo documentos.txt", "Error", JOptionPane.ERROR_MESSAGE);
+                return false;
+            }
+        }
+
+        return false;
+    }
+
+    public boolean existeCodigo(String codigo) {
+        try (BufferedReader reader = new BufferedReader(new FileReader(RUTA_ARCHIVO))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                String[] campos = line.split(";");
+                String codigo1 = campos[0];
+                if (codigo1.equals(codigo)) {
+                    return true;
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Error al leer el archivo codigo.txt", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+        return false;
+    }
+
+    public Documentos buscarDocumento(String codigo) {
+        try (BufferedReader reader = new BufferedReader(new FileReader(RUTA_ARCHIVO))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                String[] campos = line.split(";");
+                String codigo1 = campos[0];
+                if (codigo1.equals(codigo)) {
+                    Documentos documento = new Documentos(Integer.parseInt(campos[0]), campos[1]);
+                    return documento;
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Error al leer el archivo documentos.txt", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+        return null; // Usuario no encontrado
     }
 
 }
