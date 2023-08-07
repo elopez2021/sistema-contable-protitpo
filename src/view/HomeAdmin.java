@@ -153,7 +153,9 @@ public class HomeAdmin extends javax.swing.JFrame {
 
     private void btnCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarActionPerformed
         // TODO add your handling code here:
-        System.exit(0);
+        loginn login = new loginn();
+        this.dispose();
+        login.setVisible(true);
     }//GEN-LAST:event_btnCerrarActionPerformed
 
     /**

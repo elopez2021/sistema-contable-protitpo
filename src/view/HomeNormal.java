@@ -1,17 +1,14 @@
-
 package view;
-
 
 public class HomeNormal extends javax.swing.JFrame {
 
     JpanelLoader jpload = new JpanelLoader();
-    
+
     public HomeNormal() {
         initComponents();
-        this.setExtendedState(HomeNormal.MAXIMIZED_BOTH);           
+        this.setExtendedState(HomeNormal.MAXIMIZED_BOTH);
     }
-    
-   
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -125,7 +122,9 @@ public class HomeNormal extends javax.swing.JFrame {
 
     private void btnCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarActionPerformed
         // TODO add your handling code here:
-        System.exit(0);
+        loginn login = new loginn();
+        this.dispose();
+        login.setVisible(true);
     }//GEN-LAST:event_btnCerrarActionPerformed
 
     /**
