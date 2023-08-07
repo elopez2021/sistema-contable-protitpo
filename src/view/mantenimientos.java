@@ -534,11 +534,17 @@ public class mantenimientos extends javax.swing.JPanel {
         }
 
         if (modificar) {
-            usuarioCtrl.update(usuario);
-            //Limpiar todos los campos
-            limpiarCampos(campos);
-            tb_load();
-            return;
+            if (usuarioCtrl.update(usuario)) {
+                JOptionPane.showMessageDialog(null, "Los datos fueron modificados correctamente.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+                //Limpiar todos los campos
+                limpiarCampos(campos);
+                txtEmail.setText("");
+                tb_load();
+                btnEliminarUsuario.setEnabled(false);
+            }else{
+                JOptionPane.showMessageDialog(null, "Error al modificar el usuario", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+           return;
         }
 
         //guardar el usuario
@@ -634,7 +640,7 @@ public class mantenimientos extends javax.swing.JPanel {
                 camposValidos = false;
             }
         }
-        
+
         if (!txtCodigo.getText().isEmpty()) {
             int codigo = 0;
             try {
@@ -650,12 +656,26 @@ public class mantenimientos extends javax.swing.JPanel {
         }
 
         Documentos documento = new Documentos(Integer.parseInt(txtCodigo.getText()), txtDescripcion.getText());
-        if (documentoCtrl.save(documento)) {
-            JOptionPane.showMessageDialog(null, "Los datos fueron guardados correctamente.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
-            limpiarCampos(campos);
-            tb_load_documento();
-        } else {
-            JOptionPane.showMessageDialog(null, "Error al guardar el documento", "Error", JOptionPane.ERROR_MESSAGE);
+        boolean modificar = documentoCtrl.existeCodigo(txtCodigo.getText());
+
+        if (modificar) {
+            if (documentoCtrl.update(documento)) {
+                JOptionPane.showMessageDialog(null, "Tipo de documento modificado correctamente", "Modificación exitosa", JOptionPane.INFORMATION_MESSAGE);
+                //Limpiar todos los campos
+                limpiarCampos(campos);
+                tb_load_documento();
+            } else {
+                JOptionPane.showMessageDialog(null, "Error al modificar el tipo de documento", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+
+        } else { //guardar            
+            if (documentoCtrl.save(documento)) {
+                JOptionPane.showMessageDialog(null, "Los datos fueron guardados correctamente.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+                limpiarCampos(campos);
+                tb_load_documento();
+            } else {
+                JOptionPane.showMessageDialog(null, "Error al guardar el documento", "Error", JOptionPane.ERROR_MESSAGE);
+            }
         }
 
 
@@ -683,10 +703,10 @@ public class mantenimientos extends javax.swing.JPanel {
 
     private void txtCodigoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtCodigoFocusLost
         // TODO add your handling code here:
-        
+
         String codigo = txtCodigo.getText();
-        if(documentoCtrl.existeCodigo(codigo)){
-            Documentos documento = documentoCtrl.buscarDocumento(codigo);            
+        if (documentoCtrl.existeCodigo(codigo)) {
+            Documentos documento = documentoCtrl.buscarDocumento(codigo);
             txtDescripcion.setText(documento.getDescripcion());
             btnEliminarDocumento.setEnabled(true);
         }

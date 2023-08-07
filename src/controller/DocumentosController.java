@@ -81,12 +81,46 @@ public class DocumentosController implements Controller {
 
     @Override
     public boolean update(Object data) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        if (data instanceof Documentos) {
+            Documentos documento = (Documentos) data;
+            List<String[]> documentosList = new ArrayList<>();
+
+            try (BufferedReader reader = new BufferedReader(new FileReader(RUTA_ARCHIVO))) {
+                String line;
+                while ((line = reader.readLine()) != null) {
+                    String[] campos = line.split(";");
+                    String codigoDocumento = campos[0];
+                    if (codigoDocumento.equals(String.valueOf(documento.getCodigo()))) {
+                        campos[1] = documento.getDescripcion();
+                    }
+                    documentosList.add(campos);
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+                JOptionPane.showMessageDialog(null, "Error al leer el archivo documentos.txt", "Error", JOptionPane.ERROR_MESSAGE);
+                return false;
+            }
+
+            try (BufferedWriter writer = new BufferedWriter(new FileWriter(RUTA_ARCHIVO))) {
+                for (String[] campos : documentosList) {
+                    writer.write(String.join(";", campos));
+                    writer.newLine();
+                }
+                return true;
+            } catch (IOException e) {
+                e.printStackTrace();
+                JOptionPane.showMessageDialog(null, "Error al escribir en el archivo documentos.txt", "Error", JOptionPane.ERROR_MESSAGE);
+                return false;
+            }
+        } else {
+            System.err.println("El objeto data no es una instancia de Documentos");
+        }
+        return false;
     }
 
     @Override
     public boolean delete(Object data) {
-        
+
         if (data instanceof Documentos) {
             Documentos documento = (Documentos) data;
             List<String[]> documentosList = new ArrayList<>();
