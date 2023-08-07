@@ -5,12 +5,14 @@
  */
 package view;
 
+import controller.DocumentosController;
 import controller.UsuarioController;
 import java.util.List;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
+import model.Documentos;
 import model.Usuarios;
 
 /**
@@ -25,8 +27,11 @@ public class mantenimientos extends javax.swing.JPanel {
     public mantenimientos() {
         initComponents();
         tb_load();
+        tb_load_documento();
     }
+
     UsuarioController usuarioCtrl = new UsuarioController();
+    DocumentosController documentoCtrl = new DocumentosController();
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -51,8 +56,19 @@ public class mantenimientos extends javax.swing.JPanel {
         }
     }
 
-    public void limpiarCampos() {
-        JTextField[] campos = {txtLogin, txtContraseña, txtNombre, txtApellidos, txtEmail};
+    public void tb_load_documento() {
+        DocumentosController usuario = new DocumentosController();
+        List<String[]> listaDocumentos = usuario.list();
+
+        DefaultTableModel dt = (DefaultTableModel) documento_table.getModel();
+        dt.setRowCount(0);
+
+        for (String[] documentos : listaDocumentos) {
+            dt.addRow(documentos);
+        }
+    }
+
+    public void limpiarCampos(JTextField[] campos) {
 
         for (JTextField campo : campos) {
             campo.setText("");
@@ -83,8 +99,8 @@ public class mantenimientos extends javax.swing.JPanel {
         errNombre = new javax.swing.JLabel();
         errApellidos = new javax.swing.JLabel();
         errEmail = new javax.swing.JLabel();
-        btnGuardar = new javax.swing.JButton();
-        btnEliminar = new javax.swing.JButton();
+        btnGuardarUsuario = new javax.swing.JButton();
+        btnEliminarUsuario = new javax.swing.JButton();
         txtContraseña = new javax.swing.JPasswordField();
         txtEmail = new javax.swing.JTextField();
         jScrollPane3 = new javax.swing.JScrollPane();
@@ -96,10 +112,12 @@ public class mantenimientos extends javax.swing.JPanel {
         txtCodigo = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         txtDescripcion = new javax.swing.JTextField();
-        btnGuardar1 = new javax.swing.JButton();
-        btnEliminar1 = new javax.swing.JButton();
+        btnGuardarDocumento = new javax.swing.JButton();
+        btnEliminarDocumento = new javax.swing.JButton();
+        errCodigo = new javax.swing.JLabel();
+        errDescripcion = new javax.swing.JLabel();
         jScrollPane4 = new javax.swing.JScrollPane();
-        table_documento = new javax.swing.JTable();
+        documento_table = new javax.swing.JTable();
         jPanel2 = new javax.swing.JPanel();
 
         jPanel1.setPreferredSize(new java.awt.Dimension(1000, 4));
@@ -158,20 +176,20 @@ public class mantenimientos extends javax.swing.JPanel {
         errEmail.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         errEmail.setForeground(java.awt.Color.red);
 
-        btnGuardar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        btnGuardar.setText("Guardar");
-        btnGuardar.addActionListener(new java.awt.event.ActionListener() {
+        btnGuardarUsuario.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnGuardarUsuario.setText("Guardar");
+        btnGuardarUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnGuardarActionPerformed(evt);
+                btnGuardarUsuarioActionPerformed(evt);
             }
         });
 
-        btnEliminar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        btnEliminar.setText("Eliminar");
-        btnEliminar.setEnabled(false);
-        btnEliminar.addActionListener(new java.awt.event.ActionListener() {
+        btnEliminarUsuario.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnEliminarUsuario.setText("Eliminar");
+        btnEliminarUsuario.setEnabled(false);
+        btnEliminarUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEliminarActionPerformed(evt);
+                btnEliminarUsuarioActionPerformed(evt);
             }
         });
 
@@ -216,9 +234,9 @@ public class mantenimientos extends javax.swing.JPanel {
                     .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
                             .addGap(67, 67, 67)
-                            .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnGuardarUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
-                            .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(btnEliminarUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
                             .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -276,8 +294,8 @@ public class mantenimientos extends javax.swing.JPanel {
                 .addComponent(errEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnGuardarUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnEliminarUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 24, Short.MAX_VALUE))
         );
 
@@ -333,22 +351,28 @@ public class mantenimientos extends javax.swing.JPanel {
         jLabel8.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel8.setText("Descripción:");
 
-        btnGuardar1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        btnGuardar1.setText("Guardar");
-        btnGuardar1.addActionListener(new java.awt.event.ActionListener() {
+        btnGuardarDocumento.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnGuardarDocumento.setText("Guardar");
+        btnGuardarDocumento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnGuardar1ActionPerformed(evt);
+                btnGuardarDocumentoActionPerformed(evt);
             }
         });
 
-        btnEliminar1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        btnEliminar1.setText("Eliminar");
-        btnEliminar1.setEnabled(false);
-        btnEliminar1.addActionListener(new java.awt.event.ActionListener() {
+        btnEliminarDocumento.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnEliminarDocumento.setText("Eliminar");
+        btnEliminarDocumento.setEnabled(false);
+        btnEliminarDocumento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEliminar1ActionPerformed(evt);
+                btnEliminarDocumentoActionPerformed(evt);
             }
         });
+
+        errCodigo.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        errCodigo.setForeground(java.awt.Color.red);
+
+        errDescripcion.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        errDescripcion.setForeground(java.awt.Color.red);
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -356,21 +380,24 @@ public class mantenimientos extends javax.swing.JPanel {
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(btnGuardarDocumento, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 86, Short.MAX_VALUE)
+                        .addComponent(btnEliminarDocumento, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
                         .addComponent(jLabel7)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(errCodigo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(txtCodigo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 289, Short.MAX_VALUE)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                        .addComponent(jLabel8)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 289, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(jPanel5Layout.createSequentialGroup()
-                            .addGap(10, 10, 10)
-                            .addComponent(btnGuardar1, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnEliminar1, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(jPanel5Layout.createSequentialGroup()
-                            .addComponent(jLabel8)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(txtDescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, 289, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(errDescripcion, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(txtDescripcion, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 289, Short.MAX_VALUE))))
                 .addContainerGap(74, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
@@ -380,18 +407,22 @@ public class mantenimientos extends javax.swing.JPanel {
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
                     .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(31, 31, 31)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(errCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 13, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
                     .addComponent(txtDescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(83, 83, 83)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(errDescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, 13, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(64, 64, 64)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnGuardar1, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnEliminar1, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnGuardarDocumento, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnEliminarDocumento, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(265, Short.MAX_VALUE))
         );
 
-        table_documento.setModel(new javax.swing.table.DefaultTableModel(
+        documento_table.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -407,8 +438,8 @@ public class mantenimientos extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
-        table_documento.setToolTipText("");
-        jScrollPane4.setViewportView(table_documento);
+        documento_table.setToolTipText("");
+        jScrollPane4.setViewportView(documento_table);
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -419,7 +450,7 @@ public class mantenimientos extends javax.swing.JPanel {
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 564, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(23, Short.MAX_VALUE))
+                .addContainerGap(21, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -458,7 +489,7 @@ public class mantenimientos extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
+    private void btnGuardarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarUsuarioActionPerformed
         // TODO add your handling code here:
         JTextField[] campos = {txtLogin, txtContraseña, txtNombre, txtApellidos};
         JLabel[] errorLabels = {errLogin, errContraseña, errNombre, errApellidos};
@@ -499,7 +530,7 @@ public class mantenimientos extends javax.swing.JPanel {
         if (modificar) {
             usuarioCtrl.update(usuario);
             //Limpiar todos los campos
-            limpiarCampos();
+            limpiarCampos(campos);
             tb_load();
             return;
         }
@@ -513,9 +544,9 @@ public class mantenimientos extends javax.swing.JPanel {
         }
 
         //Limpiar todos los campos
-        limpiarCampos();
+        limpiarCampos(campos);
 
-    }//GEN-LAST:event_btnGuardarActionPerformed
+    }//GEN-LAST:event_btnGuardarUsuarioActionPerformed
 
     private void txtLoginKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtLoginKeyReleased
         // TODO add your handling code here:
@@ -550,7 +581,7 @@ public class mantenimientos extends javax.swing.JPanel {
                 }
                 cmbAcceso.setSelectedItem(nivelAcceso);
 
-                btnEliminar.setEnabled(true);
+                btnEliminarUsuario.setEnabled(true);
 
             }
 
@@ -565,31 +596,67 @@ public class mantenimientos extends javax.swing.JPanel {
 
     }//GEN-LAST:event_txtContraseñaKeyReleased
 
-    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
+    private void btnEliminarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarUsuarioActionPerformed
         // TODO add your handling code here:
         int respuesta = JOptionPane.showConfirmDialog(this, "¿Estás seguro de que quieres eliminar este usuario?", "Confirmar Eliminación", JOptionPane.YES_NO_OPTION);
-        if(respuesta != JOptionPane.YES_OPTION){
+        if (respuesta != JOptionPane.YES_OPTION) {
             return;
         }
+        JTextField[] campos = {txtLogin, txtContraseña, txtNombre, txtApellidos};
         Usuarios usuario = new Usuarios();
         usuario.setLoginUsuario(txtLogin.getText());
         if (usuarioCtrl.delete(usuario)) {
             JOptionPane.showMessageDialog(null, "Usuario eliminado correctamente", "Eliminación exitosa", JOptionPane.INFORMATION_MESSAGE);
-            limpiarCampos();
+            limpiarCampos(campos);
             tb_load();
         } else {
             JOptionPane.showMessageDialog(null, "Error al eliminar el usuario", "Error", JOptionPane.ERROR_MESSAGE);
         }
 
-    }//GEN-LAST:event_btnEliminarActionPerformed
 
-    private void btnGuardar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardar1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnGuardar1ActionPerformed
+    }//GEN-LAST:event_btnEliminarUsuarioActionPerformed
 
-    private void btnEliminar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminar1ActionPerformed
+    private void btnGuardarDocumentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarDocumentoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnEliminar1ActionPerformed
+        JTextField[] campos = {txtCodigo, txtDescripcion};
+        JLabel[] errorLabels = {errCodigo, errDescripcion};
+        boolean camposValidos = true;
+
+        for (int i = 0; i < campos.length; i++) {
+            if (!isEmpty(campos[i], errorLabels[i], "Este campo es requerido")) {
+                camposValidos = false;
+            }
+        }
+
+        if (!txtCodigo.getText().isEmpty()) {
+            int codigo = 0;
+            try {
+                codigo = Integer.parseInt(txtCodigo.getText());
+            } catch (NumberFormatException e) {
+                errCodigo.setText("El código debe ser un valor numérico válido");
+                camposValidos = false;
+            }
+        }
+
+        if (!camposValidos) {
+            return;
+        }
+
+        Documentos documento = new Documentos(Integer.parseInt(txtCodigo.getText()), txtDescripcion.getText());
+        if (documentoCtrl.save(documento)) {
+            JOptionPane.showMessageDialog(null, "Los datos fueron guardados correctamente.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+            limpiarCampos(campos);
+            tb_load_documento();
+        } else {
+            JOptionPane.showMessageDialog(null, "Error al guardar el documento", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+
+
+    }//GEN-LAST:event_btnGuardarDocumentoActionPerformed
+
+    private void btnEliminarDocumentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarDocumentoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnEliminarDocumentoActionPerformed
 
     public static boolean isEmpty(JTextField textField, JLabel errorLabel, String mensajeError) {
         String texto = textField.getText().trim();
@@ -604,13 +671,16 @@ public class mantenimientos extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnEliminar;
-    private javax.swing.JButton btnEliminar1;
-    private javax.swing.JButton btnGuardar;
-    private javax.swing.JButton btnGuardar1;
+    private javax.swing.JButton btnEliminarDocumento;
+    private javax.swing.JButton btnEliminarUsuario;
+    private javax.swing.JButton btnGuardarDocumento;
+    private javax.swing.JButton btnGuardarUsuario;
     private javax.swing.JComboBox<String> cmbAcceso;
+    private javax.swing.JTable documento_table;
     private javax.swing.JLabel errApellidos;
+    private javax.swing.JLabel errCodigo;
     private javax.swing.JLabel errContraseña;
+    private javax.swing.JLabel errDescripcion;
     private javax.swing.JLabel errEmail;
     private javax.swing.JLabel errLogin;
     private javax.swing.JLabel errNombre;
@@ -632,7 +702,6 @@ public class mantenimientos extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTable table_documento;
     private javax.swing.JTextField txtApellidos;
     private javax.swing.JTextField txtCodigo;
     private javax.swing.JPasswordField txtContraseña;
