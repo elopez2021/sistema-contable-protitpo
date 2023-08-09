@@ -144,11 +144,11 @@ public class loginn extends javax.swing.JFrame {
             String acceso = UsuarioController.obtenerTipoAcceso(usuario, password);
             JOptionPane.showMessageDialog(null, "¡Bienvenido, " + usuario + " " + acceso + "! Has iniciado sesión correctamente.", "Inicio de sesión exitoso", JOptionPane.INFORMATION_MESSAGE);
             if (acceso.equals("admin")) {
-                HomeAdmin menu = new HomeAdmin();
+                HomeAdmin menu = new HomeAdmin(usuario);
                 this.dispose();
                 menu.setVisible(true);
             }else{
-                HomeNormal menu = new HomeNormal();
+                HomeNormal menu = new HomeNormal(usuario);
                 this.dispose();
                 menu.setVisible(true);
             }

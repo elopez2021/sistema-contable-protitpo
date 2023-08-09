@@ -5,10 +5,18 @@ package view;
 public class HomeAdmin extends javax.swing.JFrame {
 
     JpanelLoader jpload = new JpanelLoader();
-    
-    public HomeAdmin() {
+
+    public String user;
+    public HomeAdmin(String user) {
         initComponents();
-        this.setExtendedState(HomeAdmin.MAXIMIZED_BOTH);           
+        this.setExtendedState(HomeAdmin.MAXIMIZED_BOTH);    
+        this.user = user;
+        welcome_label.setText("Bienvenido, "+user);
+    }
+    
+    public HomeAdmin(){
+        initComponents();
+        this.setExtendedState(HomeAdmin.MAXIMIZED_BOTH);    
     }
     
    
@@ -25,6 +33,8 @@ public class HomeAdmin extends javax.swing.JFrame {
         btnCerrar = new javax.swing.JToggleButton();
         panel_load = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
+        welcome_label = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -105,15 +115,30 @@ public class HomeAdmin extends javax.swing.JFrame {
 
         jPanel3.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
+        welcome_label.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("SISTEMA CONTABLE");
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(welcome_label, javax.swing.GroupLayout.PREFERRED_SIZE, 278, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(29, 29, 29))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 60, Short.MAX_VALUE)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(welcome_label, javax.swing.GroupLayout.DEFAULT_SIZE, 41, Short.MAX_VALUE)
+                .addContainerGap())
+            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -203,8 +228,10 @@ public class HomeAdmin extends javax.swing.JFrame {
     private javax.swing.JToggleButton btn_procesos;
     private javax.swing.JToggleButton consultas_btn;
     private javax.swing.ButtonGroup home_bnt_grp;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel panel_load;
+    private javax.swing.JLabel welcome_label;
     // End of variables declaration//GEN-END:variables
 }
