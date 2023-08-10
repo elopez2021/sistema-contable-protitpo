@@ -1,0 +1,2 @@
+1;debito
+2;credito

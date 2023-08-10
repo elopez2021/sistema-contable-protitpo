@@ -30,7 +30,6 @@ public class DocumentosController implements Controller {
 
     @Override
     public void init() {
-        // Verificar si el archivo "usuarios.txt" existe, y si no existe, crearlo
         File usuariosFile = new File(RUTA_ARCHIVO);
         if (!usuariosFile.exists()) {
             try {
@@ -56,7 +55,7 @@ public class DocumentosController implements Controller {
                 return false;
             }
         } else {
-            System.err.println("El objeto data no es una instancia de Usuarios");
+            System.err.println("El objeto data no es una instancia de Documentos");
         }
         return false;
     }
@@ -118,7 +117,7 @@ public class DocumentosController implements Controller {
         return false;
     }
 
-    @Override
+
     public boolean delete(Object data) {
 
         if (data instanceof Documentos) {

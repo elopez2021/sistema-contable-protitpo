@@ -5,25 +5,26 @@
  */
 package model;
 
-import java.util.Date;
+import java.time.LocalDate;
+import java.time.LocalTime;
 
 public class CatalogoCuenta {
     private int nro_cta;
     private String descripcion_cta;
-    private int tipo_cta;
+    private boolean tipo_cta;
     private int nivel_cta;
     private int cta_padre;
     private int grupo_cta;
-    private Date fecha_creacion_cta;
-    private Date hora_creacion_cta;
-    private Double debito_acum_cta;
-    private Double credito_acum_cta;
-    private Double balance_cta;
+    private LocalDate fecha_creacion_cta;
+    private LocalTime hora_creacion_cta;
+    private double debito_acum_cta;
+    private double credito_acum_cta;
+    private double balance_cta;
 
     // Constructor
-    public CatalogoCuenta(int nro_cta, String descripcion_cta, int tipo_cta, int nivel_cta, int cta_padre, int grupo_cta,
-                          Date fecha_creacion_cta, Date hora_creacion_cta, Double debito_acum_cta, Double credito_acum_cta,
-                          Double balance_cta) {
+    public CatalogoCuenta(int nro_cta, String descripcion_cta, boolean tipo_cta, int nivel_cta, int cta_padre, int grupo_cta,
+                          LocalDate fecha_creacion_cta, LocalTime hora_creacion_cta, double debito_acum_cta, double credito_acum_cta,
+                          double balance_cta) {
         this.nro_cta = nro_cta;
         this.descripcion_cta = descripcion_cta;
         this.tipo_cta = tipo_cta;
@@ -53,11 +54,11 @@ public class CatalogoCuenta {
         this.descripcion_cta = descripcion_cta;
     }
 
-    public int getTipo_cta() {
+    public boolean isTipo_cta() {
         return tipo_cta;
     }
 
-    public void setTipo_cta(int tipo_cta) {
+    public void setTipo_cta(boolean tipo_cta) {
         this.tipo_cta = tipo_cta;
     }
 
@@ -85,45 +86,46 @@ public class CatalogoCuenta {
         this.grupo_cta = grupo_cta;
     }
 
-    public Date getFecha_creacion_cta() {
+    public LocalDate getFecha_creacion_cta() {
         return fecha_creacion_cta;
     }
 
-    public void setFecha_creacion_cta(Date fecha_creacion_cta) {
+    public void setFecha_creacion_cta(LocalDate fecha_creacion_cta) {
         this.fecha_creacion_cta = fecha_creacion_cta;
     }
 
-    public Date getHora_creacion_cta() {
+    public LocalTime getHora_creacion_cta() {
         return hora_creacion_cta;
     }
 
-    public void setHora_creacion_cta(Date hora_creacion_cta) {
+    public void setHora_creacion_cta(LocalTime hora_creacion_cta) {
         this.hora_creacion_cta = hora_creacion_cta;
     }
 
-    public Double getDebito_acum_cta() {
+    public double getDebito_acum_cta() {
         return debito_acum_cta;
     }
 
-    public void setDebito_acum_cta(Double debito_acum_cta) {
+    public void setDebito_acum_cta(double debito_acum_cta) {
         this.debito_acum_cta = debito_acum_cta;
     }
 
-    public Double getCredito_acum_cta() {
+    public double getCredito_acum_cta() {
         return credito_acum_cta;
     }
 
-    public void setCredito_acum_cta(Double credito_acum_cta) {
+    public void setCredito_acum_cta(double credito_acum_cta) {
         this.credito_acum_cta = credito_acum_cta;
     }
 
-    public Double getBalance_cta() {
+    public double getBalance_cta() {
         return balance_cta;
     }
 
-    public void setBalance_cta(Double balance_cta) {
+    public void setBalance_cta(double balance_cta) {
         this.balance_cta = balance_cta;
     }
-
+    
+    
     
 }

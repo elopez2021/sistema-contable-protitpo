@@ -23,7 +23,5 @@ public interface Controller {
 
     // Método para actualizar un registro existente en el modelo
     boolean update(Object data);
-
-    // Método para eliminar un registro del modelo
-    boolean delete(Object data);
+    
 }

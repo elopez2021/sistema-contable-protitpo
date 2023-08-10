@@ -212,7 +212,7 @@ public class UsuarioController implements Controller {
         return false;
     }
 
-    @Override
+
     public boolean delete(Object data) {
         if (data instanceof Usuarios) {
             Usuarios usuario = (Usuarios) data;
