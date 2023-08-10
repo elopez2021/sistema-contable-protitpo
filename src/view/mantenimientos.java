@@ -1019,6 +1019,9 @@ public class mantenimientos extends javax.swing.JPanel {
         } else {
             if (catalogoCtrl.save(cuenta)) {
                 JOptionPane.showMessageDialog(null, "Los datos fueron guardados correctamente.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+                tb_load_catalogo();
+                errGrupoCuenta.setText("");
+                limpiarCampos(campos);
             } else {
                 JOptionPane.showMessageDialog(null, "Error al guardar la cuenta", "Error", JOptionPane.ERROR_MESSAGE);
             }
