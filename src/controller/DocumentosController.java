@@ -180,7 +180,7 @@ public class DocumentosController implements Controller {
                 String[] campos = line.split(";");
                 String codigo1 = campos[0];
                 if (codigo1.equals(codigo)) {
-                    Documentos documento = new Documentos(Integer.parseInt(campos[0]), campos[1]);
+                    Documentos documento = new Documentos(campos[0], campos[1]);
                     return documento;
                 }
             }

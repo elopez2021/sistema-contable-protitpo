@@ -11,10 +11,10 @@ package model;
  */
 public class Documentos {
     
-    private int codigo;
+    private String codigo;
     private String descripcion;
 
-    public Documentos(int codigo, String descripcion) {
+    public Documentos(String codigo, String descripcion) {
         this.codigo = codigo;
         this.descripcion = descripcion;
     }
@@ -23,11 +23,11 @@ public class Documentos {
         
     }
 
-    public int getCodigo() {
+    public String getCodigo() {
         return codigo;
     }
 
-    public void setCodigo(int codigo) {
+    public void setCodigo(String codigo) {
         this.codigo = codigo;
     }
 
