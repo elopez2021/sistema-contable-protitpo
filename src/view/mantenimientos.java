@@ -126,16 +126,16 @@ public class mantenimientos extends javax.swing.JPanel {
         errNroCuenta = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         txtDescripcionCuenta = new javax.swing.JTextField();
-        errNroCuenta1 = new javax.swing.JLabel();
-        errNroCuenta2 = new javax.swing.JLabel();
+        errDescripcionCuenta = new javax.swing.JLabel();
+        errTipoCuenta = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         txtNivelCuenta = new javax.swing.JTextField();
-        errNroCuenta3 = new javax.swing.JLabel();
+        errNivelCuenta = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         txtCuentaPadre = new javax.swing.JTextField();
-        errNroCuenta4 = new javax.swing.JLabel();
-        errNroCuenta5 = new javax.swing.JLabel();
+        errCuentaPadre = new javax.swing.JLabel();
+        errGrupoCuenta = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         errNroCuenta6 = new javax.swing.JLabel();
         rdbGeneral = new javax.swing.JRadioButton();
@@ -145,7 +145,7 @@ public class mantenimientos extends javax.swing.JPanel {
         btnLimpiarCatalogo = new javax.swing.JButton();
         jScrollPane6 = new javax.swing.JScrollPane();
         jScrollPane5 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        catalogo_table = new javax.swing.JTable();
 
         jPanel1.setPreferredSize(new java.awt.Dimension(1000, 4));
 
@@ -520,11 +520,11 @@ public class mantenimientos extends javax.swing.JPanel {
             }
         });
 
-        errNroCuenta1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        errNroCuenta1.setForeground(java.awt.Color.red);
+        errDescripcionCuenta.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        errDescripcionCuenta.setForeground(java.awt.Color.red);
 
-        errNroCuenta2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        errNroCuenta2.setForeground(java.awt.Color.red);
+        errTipoCuenta.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        errTipoCuenta.setForeground(java.awt.Color.red);
 
         jLabel11.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
@@ -540,25 +540,24 @@ public class mantenimientos extends javax.swing.JPanel {
             }
         });
 
-        errNroCuenta3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        errNroCuenta3.setForeground(java.awt.Color.red);
+        errNivelCuenta.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        errNivelCuenta.setForeground(java.awt.Color.red);
 
         jLabel13.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel13.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel13.setText("Cuenta Padre: ");
 
-        txtCuentaPadre.setEditable(false);
         txtCuentaPadre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtCuentaPadreActionPerformed(evt);
             }
         });
 
-        errNroCuenta4.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        errNroCuenta4.setForeground(java.awt.Color.red);
+        errCuentaPadre.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        errCuentaPadre.setForeground(java.awt.Color.red);
 
-        errNroCuenta5.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        errNroCuenta5.setForeground(java.awt.Color.red);
+        errGrupoCuenta.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        errGrupoCuenta.setForeground(java.awt.Color.red);
 
         jLabel14.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
@@ -611,13 +610,13 @@ public class mantenimientos extends javax.swing.JPanel {
                             .addComponent(errNroCuenta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(txtNroCuenta)
                             .addComponent(txtDescripcionCuenta)
-                            .addComponent(errNroCuenta1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(errNroCuenta2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(errDescripcionCuenta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(errTipoCuenta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(txtNivelCuenta)
-                            .addComponent(errNroCuenta3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(errNivelCuenta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(txtCuentaPadre)
-                            .addComponent(errNroCuenta4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(errNroCuenta5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(errCuentaPadre, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(errGrupoCuenta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(jPanel6Layout.createSequentialGroup()
                                 .addComponent(rdbGeneral)
                                 .addGap(18, 18, 18)
@@ -646,32 +645,32 @@ public class mantenimientos extends javax.swing.JPanel {
                     .addComponent(jLabel10)
                     .addComponent(txtDescripcionCuenta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(errNroCuenta1, javax.swing.GroupLayout.PREFERRED_SIZE, 13, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(errDescripcionCuenta, javax.swing.GroupLayout.PREFERRED_SIZE, 13, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(22, 22, 22)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel11)
                     .addComponent(rdbGeneral)
                     .addComponent(rdbDetalle))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(errNroCuenta2, javax.swing.GroupLayout.PREFERRED_SIZE, 13, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(errTipoCuenta, javax.swing.GroupLayout.PREFERRED_SIZE, 13, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(23, 23, 23)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel12)
                     .addComponent(txtNivelCuenta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(errNroCuenta3, javax.swing.GroupLayout.PREFERRED_SIZE, 13, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(errNivelCuenta, javax.swing.GroupLayout.PREFERRED_SIZE, 13, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(23, 23, 23)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel13)
                     .addComponent(txtCuentaPadre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(errNroCuenta4, javax.swing.GroupLayout.PREFERRED_SIZE, 13, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(errCuentaPadre, javax.swing.GroupLayout.PREFERRED_SIZE, 13, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(23, 23, 23)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel14)
                     .addComponent(cmbGrupoCuenta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(errNroCuenta5, javax.swing.GroupLayout.PREFERRED_SIZE, 13, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(errGrupoCuenta, javax.swing.GroupLayout.PREFERRED_SIZE, 13, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel6Layout.createSequentialGroup()
                         .addGap(46, 46, 46)
@@ -686,12 +685,9 @@ public class mantenimientos extends javax.swing.JPanel {
 
         jScrollPane5.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        catalogo_table.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null}
+
             },
             new String [] {
                 "Nro", "Descripcion", "Tipo", "Nivel", "Cuenta Padre", "Grupo", "Fecha Creacion", "Hora Creacion", "Debito Acumulado", "Credito Acumulado", "Balance"
@@ -705,7 +701,7 @@ public class mantenimientos extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane5.setViewportView(jTable1);
+        jScrollPane5.setViewportView(catalogo_table);
 
         jScrollPane6.setViewportView(jScrollPane5);
 
@@ -740,7 +736,7 @@ public class mantenimientos extends javax.swing.JPanel {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 598, Short.MAX_VALUE)
+            .addComponent(jTabbedPane1)
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -789,10 +785,10 @@ public class mantenimientos extends javax.swing.JPanel {
                 limpiarCampos(campos);
                 txtEmail.setText("");
                 tb_load();
-            }else{
+            } else {
                 JOptionPane.showMessageDialog(null, "Error al modificar el usuario", "Error", JOptionPane.ERROR_MESSAGE);
             }
-           return;
+            return;
         }
 
         //guardar el usuario
@@ -865,7 +861,7 @@ public class mantenimientos extends javax.swing.JPanel {
                 camposValidos = false;
             }
         }
-        
+
         if (!camposValidos) {
             return;
         }
@@ -924,26 +920,54 @@ public class mantenimientos extends javax.swing.JPanel {
 
     private void btnGuardarCatalogoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarCatalogoActionPerformed
         // TODO add your handling code here:
+        JTextField[] campos = {txtNroCuenta, txtDescripcionCuenta, txtCuentaPadre, txtNivelCuenta};
+        JLabel[] errorLabels = {errNroCuenta, errDescripcionCuenta, errCuentaPadre, errNivelCuenta};
+        boolean camposValidos = true;
+
+        if (cmbGrupoCuenta.getSelectedItem() == "---Seleccione una opción---") {
+            errGrupoCuenta.setText("Seleccione una opción");
+            camposValidos = false;
+        }
+
+        if (!rdbGeneral.isSelected() && !rdbDetalle.isSelected()) {
+            errTipoCuenta.setText("Debe seleccionar un tipo de cuenta");
+            camposValidos = false;
+        } else {
+            errTipoCuenta.setText("");
+        }
+
+        for (int i = 0; i < campos.length; i++) {
+            if (!isEmpty(campos[i], errorLabels[i], "Este campo es requerido")) {
+                camposValidos = false;
+            }
+        }
+
+        if (!camposValidos) {
+            return;
+        }
+
     }//GEN-LAST:event_btnGuardarCatalogoActionPerformed
 
     private void btnLimpiarCatalogoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarCatalogoActionPerformed
         // TODO add your handling code here:
+        JTextField[] campos = {txtNroCuenta, txtDescripcionCuenta, txtCuentaPadre, txtNivelCuenta};
+        cmbGrupoCuenta.setSelectedItem("---Seleccione una opción---");
+        btnCuentaGroup.clearSelection();
+        limpiarCampos(campos);
     }//GEN-LAST:event_btnLimpiarCatalogoActionPerformed
 
     private void btnLimpiarDocumentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarDocumentoActionPerformed
         // TODO add your handling code here:
-
         JTextField[] campos = {txtCodigo, txtDescripcion};
         limpiarCampos(campos);
-        
     }//GEN-LAST:event_btnLimpiarDocumentoActionPerformed
 
     private void btnLimpiarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarUsuarioActionPerformed
         // TODO add your handling code here:
-        
+
         JTextField[] campos = {txtLogin, txtContraseña, txtNombre, txtApellidos, txtEmail};
         limpiarCampos(campos);
-                
+
     }//GEN-LAST:event_btnLimpiarUsuarioActionPerformed
 
     public static boolean isEmpty(JTextField textField, JLabel errorLabel, String mensajeError) {
@@ -966,23 +990,24 @@ public class mantenimientos extends javax.swing.JPanel {
     private javax.swing.JButton btnLimpiarCatalogo;
     private javax.swing.JButton btnLimpiarDocumento;
     private javax.swing.JButton btnLimpiarUsuario;
+    private javax.swing.JTable catalogo_table;
     private javax.swing.JComboBox<String> cmbAcceso;
     private javax.swing.JComboBox<String> cmbGrupoCuenta;
     private javax.swing.JTable documento_table;
     private javax.swing.JLabel errApellidos;
     private javax.swing.JLabel errCodigo;
     private javax.swing.JLabel errContraseña;
+    private javax.swing.JLabel errCuentaPadre;
     private javax.swing.JLabel errDescripcion;
+    private javax.swing.JLabel errDescripcionCuenta;
     private javax.swing.JLabel errEmail;
+    private javax.swing.JLabel errGrupoCuenta;
     private javax.swing.JLabel errLogin;
+    private javax.swing.JLabel errNivelCuenta;
     private javax.swing.JLabel errNombre;
     private javax.swing.JLabel errNroCuenta;
-    private javax.swing.JLabel errNroCuenta1;
-    private javax.swing.JLabel errNroCuenta2;
-    private javax.swing.JLabel errNroCuenta3;
-    private javax.swing.JLabel errNroCuenta4;
-    private javax.swing.JLabel errNroCuenta5;
     private javax.swing.JLabel errNroCuenta6;
+    private javax.swing.JLabel errTipoCuenta;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -1010,7 +1035,6 @@ public class mantenimientos extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JRadioButton rdbDetalle;
     private javax.swing.JRadioButton rdbGeneral;
     private javax.swing.JTextField txtApellidos;
