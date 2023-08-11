@@ -52,6 +52,7 @@ public class mantenimientos extends javax.swing.JPanel {
         dt.setRowCount(0);
 
         for (String[] usuarios : listaUsuarios) {
+            usuarios[1] = "*****";
             String tipoAcceso = usuarios[2].equals("1") ? "Administrador" : "Normal";
             usuarios[2] = tipoAcceso;
             // Reemplazar el valor 'null' del email con una cadena vacía
@@ -896,6 +897,16 @@ public class mantenimientos extends javax.swing.JPanel {
 
         for (int i = 0; i < campos.length; i++) {
             if (!isEmpty(campos[i], errorLabels[i], "Este campo es requerido")) {
+                camposValidos = false;
+            }
+        }
+        
+        if (!txtCodigo.getText().isEmpty()) {
+            int codigo = 0;
+            try {
+                codigo = Integer.parseInt(txtCodigo.getText());
+            } catch (NumberFormatException e) {
+                errCodigo.setText("El código debe ser un valor numérico válido");
                 camposValidos = false;
             }
         }
