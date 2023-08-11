@@ -47,6 +47,7 @@ public class loginn extends javax.swing.JFrame {
         salir.setBackground(new java.awt.Color(255, 51, 102));
         salir.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         salir.setText("Salir");
+        salir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         salir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 salirActionPerformed(evt);
