@@ -996,7 +996,7 @@ public class mantenimientos extends javax.swing.JPanel {
             try {
                 codigo = Integer.parseInt(txtNroCuenta.getText());
             } catch (NumberFormatException e) {
-                errNroCuenta.setText("El código debe ser un valor numérico válido");
+                errNroCuenta.setText("Debe ser un valor numérico válido");
                 camposValidos = false;
             }
         }
@@ -1006,7 +1006,7 @@ public class mantenimientos extends javax.swing.JPanel {
             try {
                 nivel = Integer.parseInt(txtNivelCuenta.getText());
             } catch (NumberFormatException e) {
-                errNivelCuenta.setText("El nivel de la cuenta debe ser un valor numérico válido");
+                errNivelCuenta.setText("Debe ser un valor numérico válido");
                 camposValidos = false;
             }
         }
