@@ -795,6 +795,7 @@ public class mantenimientos extends javax.swing.JPanel {
 
         if (!modificar && !txtEmail.getText().isEmpty() && usuarioCtrl.verificarEmail(txtEmail.getText())) {
             errEmail.setText("El email ya existe");
+            camposValidos = false;
         }
 
         if (!camposValidos) {
