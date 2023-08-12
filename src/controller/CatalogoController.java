@@ -50,17 +50,17 @@ public class CatalogoController implements Controller {
         if (data instanceof CatalogoCuenta) {
             CatalogoCuenta cuenta = (CatalogoCuenta) data;
             try (BufferedWriter writer = new BufferedWriter(new FileWriter(RUTA_ARCHIVO, true))) {
-                writer.write(cuenta.getNro_cta() + ";" +
-                             cuenta.getDescripcion_cta() + ";" +
-                             cuenta.isTipo_cta() + ";" +
-                             cuenta.getNivel_cta() + ";" +
-                             cuenta.getCta_padre() + ";" +
-                             cuenta.getGrupo_cta() + ";" +
-                             cuenta.getFecha_creacion_cta() + ";" +
-                             cuenta.getHora_creacion_cta() + ";" +
-                             cuenta.getDebito_acum_cta() + ";" +
-                             cuenta.getCredito_acum_cta() + ";" +
-                             cuenta.getBalance_cta());
+                writer.write(cuenta.getNro_cta() + ";"
+                        + cuenta.getDescripcion_cta() + ";"
+                        + cuenta.isTipo_cta() + ";"
+                        + cuenta.getNivel_cta() + ";"
+                        + cuenta.getCta_padre() + ";"
+                        + cuenta.getGrupo_cta() + ";"
+                        + cuenta.getFecha_creacion_cta() + ";"
+                        + cuenta.getHora_creacion_cta() + ";"
+                        + cuenta.getDebito_acum_cta() + ";"
+                        + cuenta.getCredito_acum_cta() + ";"
+                        + cuenta.getBalance_cta());
                 writer.newLine();
                 writer.flush();
                 return true;
@@ -90,15 +90,15 @@ public class CatalogoController implements Controller {
         }
         return false;
     }
-    
-     public CatalogoCuenta buscarCuenta(String codigo) {
+
+    public CatalogoCuenta buscarCuenta(String codigo) {
         try (BufferedReader reader = new BufferedReader(new FileReader(RUTA_ARCHIVO))) {
             String line;
             while ((line = reader.readLine()) != null) {
                 String[] campos = line.split(";");
                 String codigo1 = campos[0];
                 if (codigo1.equals(codigo)) {
-                     CatalogoCuenta cuenta = new CatalogoCuenta(Integer.parseInt(campos[0]), campos[1], Boolean.parseBoolean(campos[2]),
+                    CatalogoCuenta cuenta = new CatalogoCuenta(Integer.parseInt(campos[0]), campos[1], Boolean.parseBoolean(campos[2]),
                             Integer.parseInt(campos[3]), Integer.parseInt(campos[4]), Integer.parseInt(campos[5]),
                             LocalDate.parse(campos[6]), LocalTime.parse(campos[7]), Double.parseDouble(campos[8]), Double.parseDouble(campos[9]),
                             Double.parseDouble(campos[10]));
@@ -109,7 +109,7 @@ public class CatalogoController implements Controller {
             e.printStackTrace();
             JOptionPane.showMessageDialog(null, "Error al leer el archivo catalogo.txt", "Error", JOptionPane.ERROR_MESSAGE);
         }
-        return null; 
+        return null;
     }
 
     @Override
@@ -132,7 +132,48 @@ public class CatalogoController implements Controller {
 
     @Override
     public boolean update(Object data) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        if (data instanceof CatalogoCuenta) {
+            CatalogoCuenta cuenta = (CatalogoCuenta) data;
+            List<String[]> cuentasList = new ArrayList<>();
+
+            try (BufferedReader reader = new BufferedReader(new FileReader(RUTA_ARCHIVO))) {
+                String line;
+                while ((line = reader.readLine()) != null) {
+                    String[] campos = line.split(";");
+                    int nroCta = Integer.parseInt(campos[0]);
+                    if (nroCta == cuenta.getNro_cta()) {
+                        campos[1] = cuenta.getDescripcion_cta();
+                        campos[2] = String.valueOf(cuenta.isTipo_cta());
+                        campos[3] = String.valueOf(cuenta.getNivel_cta());
+                        campos[4] = String.valueOf(cuenta.getCta_padre());
+                        campos[5] = String.valueOf(cuenta.getGrupo_cta());
+                        campos[8] = String.valueOf(cuenta.getDebito_acum_cta());
+                        campos[9] = String.valueOf(cuenta.getCredito_acum_cta());
+                        campos[10] = String.valueOf(cuenta.getBalance_cta());
+                    }
+                    cuentasList.add(campos);
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+                JOptionPane.showMessageDialog(null, "Error al leer el archivo catalogo_cuentas.txt", "Error", JOptionPane.ERROR_MESSAGE);
+                return false;
+            }
+
+            try (BufferedWriter writer = new BufferedWriter(new FileWriter(RUTA_ARCHIVO))) {
+                for (String[] campos : cuentasList) {
+                    writer.write(String.join(";", campos));
+                    writer.newLine();
+                }
+                return true;
+            } catch (IOException e) {
+                e.printStackTrace();
+                JOptionPane.showMessageDialog(null, "Error al escribir en el archivo catalogo_cuentas.txt", "Error", JOptionPane.ERROR_MESSAGE);
+                return false;
+            }
+        } else {
+            System.err.println("El objeto data no es una instancia de CatalogoCuenta");
+        }
+        return false;
     }
 
 }

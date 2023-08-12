@@ -81,14 +81,14 @@ public class mantenimientos extends javax.swing.JPanel {
         dt.setRowCount(0);
 
         for (String[] catalogo : listaCatalogo) {
-            if(catalogo[2].equals("true")){
+            if (catalogo[2].equals("true")) {
                 catalogo[2] = "General";
-            }else{
+            } else {
                 catalogo[2] = "Detalle";
             }
-            if(catalogo[5].equals("1")){
+            if (catalogo[5].equals("1")) {
                 catalogo[5] = "Débito";
-            }else{
+            } else {
                 catalogo[5] = "Crédito";
             }
             dt.addRow(catalogo);
@@ -900,7 +900,7 @@ public class mantenimientos extends javax.swing.JPanel {
                 camposValidos = false;
             }
         }
-        
+
         if (!txtCodigo.getText().isEmpty()) {
             int codigo = 0;
             try {
@@ -1026,6 +1026,17 @@ public class mantenimientos extends javax.swing.JPanel {
         boolean modificar = catalogoCtrl.existeCuenta(txtNroCuenta.getText());
 
         if (modificar) {
+            if (catalogoCtrl.update(cuenta)) {
+                JOptionPane.showMessageDialog(null, "Los datos fueron modificados correctamente.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+                //Limpiar todos los campos
+                cmbGrupoCuenta.setSelectedItem("---Seleccione una opción---");
+                btnCuentaGroup.clearSelection();
+                limpiarCampos(campos);
+                lblMensaje.setText("");
+                tb_load_catalogo();
+            } else {
+                JOptionPane.showMessageDialog(null, "Error al modificar la cuenta", "Error", JOptionPane.ERROR_MESSAGE);
+            }
 
         } else {
             if (catalogoCtrl.save(cuenta)) {
@@ -1073,6 +1084,8 @@ public class mantenimientos extends javax.swing.JPanel {
             if (cuenta != null) {
                 if (cuenta.getBalance_cta() > 0) {
                     JOptionPane.showMessageDialog(null, "No se puede modificar esta cuenta porque ya cuenta con balance", "Error", JOptionPane.ERROR_MESSAGE);
+                    txtNroCuenta.setText("");
+                    return;
                 }
                 lblMensaje.setText("Modificando");
                 txtNroCuenta.setText(String.valueOf(cuenta.getNro_cta()));
