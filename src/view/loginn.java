@@ -5,6 +5,7 @@
 package view;
 
 import controller.UsuarioController;
+import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
 
 /**
@@ -72,10 +73,20 @@ public class loginn extends javax.swing.JFrame {
                 txtpasswordActionPerformed(evt);
             }
         });
+        txtpassword.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtpasswordKeyPressed(evt);
+            }
+        });
         getContentPane().add(txtpassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 430, 230, 40));
 
         txtusuario.setBackground(new java.awt.Color(204, 255, 255));
         txtusuario.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txtusuario.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtusuarioKeyPressed(evt);
+            }
+        });
         getContentPane().add(txtusuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 370, 230, 40));
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/user_1.png"))); // NOI18N
@@ -85,6 +96,7 @@ public class loginn extends javax.swing.JFrame {
         btniniciarsesion.setFont(new java.awt.Font("Calisto MT", 1, 24)); // NOI18N
         btniniciarsesion.setForeground(new java.awt.Color(255, 255, 255));
         btniniciarsesion.setText("Iniciar sesion");
+        btniniciarsesion.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btniniciarsesion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btniniciarsesionActionPerformed(evt);
@@ -161,6 +173,18 @@ public class loginn extends javax.swing.JFrame {
 
 
     }//GEN-LAST:event_btniniciarsesionActionPerformed
+
+    private void txtusuarioKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtusuarioKeyPressed
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+            txtpassword.requestFocus();
+        }
+    }//GEN-LAST:event_txtusuarioKeyPressed
+
+    private void txtpasswordKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtpasswordKeyPressed
+         if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+               btniniciarsesion.doClick();
+        }
+    }//GEN-LAST:event_txtpasswordKeyPressed
 
     /**
      * @param args the command line arguments
