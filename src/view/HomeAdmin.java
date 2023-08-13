@@ -32,15 +32,17 @@ public class HomeAdmin extends javax.swing.JFrame {
         consultas_btn = new javax.swing.JToggleButton();
         btnCerrar = new javax.swing.JToggleButton();
         panel_load = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         welcome_label = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(255, 255, 255));
 
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
+        btn_mantenimiento.setBackground(new java.awt.Color(153, 153, 255));
         home_bnt_grp.add(btn_mantenimiento);
         btn_mantenimiento.setFont(new java.awt.Font("Sylfaen", 1, 18)); // NOI18N
         btn_mantenimiento.setText("Mantenimientos");
@@ -50,6 +52,7 @@ public class HomeAdmin extends javax.swing.JFrame {
             }
         });
 
+        btn_movimientos.setBackground(new java.awt.Color(153, 153, 255));
         home_bnt_grp.add(btn_movimientos);
         btn_movimientos.setFont(new java.awt.Font("Sylfaen", 1, 18)); // NOI18N
         btn_movimientos.setText("Movimientos");
@@ -59,14 +62,17 @@ public class HomeAdmin extends javax.swing.JFrame {
             }
         });
 
+        btn_procesos.setBackground(new java.awt.Color(153, 153, 255));
         home_bnt_grp.add(btn_procesos);
         btn_procesos.setFont(new java.awt.Font("Sylfaen", 1, 18)); // NOI18N
         btn_procesos.setText("Procesos");
 
+        consultas_btn.setBackground(new java.awt.Color(153, 153, 255));
         home_bnt_grp.add(consultas_btn);
         consultas_btn.setFont(new java.awt.Font("Sylfaen", 1, 18)); // NOI18N
         consultas_btn.setText("Consultas");
 
+        btnCerrar.setBackground(new java.awt.Color(153, 153, 255));
         home_bnt_grp.add(btnCerrar);
         btnCerrar.setFont(new java.awt.Font("Sylfaen", 1, 18)); // NOI18N
         btnCerrar.setText("Cerrar Sesión");
@@ -83,61 +89,51 @@ public class HomeAdmin extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btn_mantenimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btn_movimientos, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btn_procesos, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(consultas_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnCerrar, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btn_mantenimiento, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btn_movimientos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btn_procesos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(consultas_btn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnCerrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
-
-        jPanel1Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnCerrar, btn_mantenimiento, btn_movimientos, btn_procesos, consultas_btn});
-
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(48, 48, 48)
+                .addGap(43, 43, 43)
                 .addComponent(btn_mantenimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(47, 47, 47)
+                .addGap(43, 43, 43)
                 .addComponent(btn_movimientos, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(47, 47, 47)
+                .addGap(43, 43, 43)
                 .addComponent(btn_procesos, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(47, 47, 47)
+                .addGap(43, 43, 43)
                 .addComponent(consultas_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(47, 47, 47)
+                .addGap(43, 43, 43)
                 .addComponent(btnCerrar, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(48, Short.MAX_VALUE))
+                .addContainerGap(44, Short.MAX_VALUE))
         );
 
-        jPanel1Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btnCerrar, btn_mantenimiento, btn_movimientos, btn_procesos, consultas_btn});
-
+        panel_load.setBackground(new java.awt.Color(255, 255, 255));
         panel_load.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/lol.png"))); // NOI18N
 
         javax.swing.GroupLayout panel_loadLayout = new javax.swing.GroupLayout(panel_load);
         panel_load.setLayout(panel_loadLayout);
         panel_loadLayout.setHorizontalGroup(
             panel_loadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panel_loadLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 1058, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGap(0, 1073, Short.MAX_VALUE)
         );
         panel_loadLayout.setVerticalGroup(
             panel_loadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panel_loadLayout.createSequentialGroup()
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 607, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addGap(0, 0, Short.MAX_VALUE)
         );
 
+        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
         jPanel3.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         welcome_label.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
 
         jLabel1.setFont(new java.awt.Font("Sylfaen", 1, 24)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("SISTEMA CONTABLE");
+        jLabel1.setText("                                                  SISTEMA CONTABLE");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -165,12 +161,12 @@ public class HomeAdmin extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(panel_load, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(panel_load, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -194,7 +190,6 @@ public class HomeAdmin extends javax.swing.JFrame {
         jpload.jPanelLoader(panel_load,user);
     }//GEN-LAST:event_btn_mantenimientoActionPerformed
 
-    
     private void btnCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarActionPerformed
         // TODO add your handling code here:
         loginn login = new loginn();
@@ -203,7 +198,8 @@ public class HomeAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCerrarActionPerformed
 
     private void btn_movimientosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_movimientosActionPerformed
-        // TODO add your handling code here:
+        Transacciones user = new Transacciones();
+        jpload.jPanelLoader(panel_load,user);
     }//GEN-LAST:event_btn_movimientosActionPerformed
 
     /**
@@ -235,6 +231,10 @@ public class HomeAdmin extends javax.swing.JFrame {
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -252,7 +252,6 @@ public class HomeAdmin extends javax.swing.JFrame {
     private javax.swing.JToggleButton consultas_btn;
     private javax.swing.ButtonGroup home_bnt_grp;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel panel_load;
