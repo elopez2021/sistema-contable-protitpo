@@ -32,6 +32,7 @@ public class HomeAdmin extends javax.swing.JFrame {
         consultas_btn = new javax.swing.JToggleButton();
         btnCerrar = new javax.swing.JToggleButton();
         panel_load = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         welcome_label = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
@@ -52,6 +53,11 @@ public class HomeAdmin extends javax.swing.JFrame {
         home_bnt_grp.add(btn_movimientos);
         btn_movimientos.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btn_movimientos.setText("Movimientos");
+        btn_movimientos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_movimientosActionPerformed(evt);
+            }
+        });
 
         home_bnt_grp.add(btn_procesos);
         btn_procesos.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -97,20 +103,26 @@ public class HomeAdmin extends javax.swing.JFrame {
                 .addComponent(consultas_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(25, 25, 25)
                 .addComponent(btnCerrar, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(111, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         panel_load.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/lol.png"))); // NOI18N
 
         javax.swing.GroupLayout panel_loadLayout = new javax.swing.GroupLayout(panel_load);
         panel_load.setLayout(panel_loadLayout);
         panel_loadLayout.setHorizontalGroup(
             panel_loadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1056, Short.MAX_VALUE)
+            .addGroup(panel_loadLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
         );
         panel_loadLayout.setVerticalGroup(
             panel_loadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(panel_loadLayout.createSequentialGroup()
+                .addComponent(jLabel2)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         jPanel3.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -127,7 +139,7 @@ public class HomeAdmin extends javax.swing.JFrame {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 931, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(welcome_label, javax.swing.GroupLayout.PREFERRED_SIZE, 278, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(29, 29, 29))
@@ -176,12 +188,17 @@ public class HomeAdmin extends javax.swing.JFrame {
         jpload.jPanelLoader(panel_load,user);
     }//GEN-LAST:event_btn_mantenimientoActionPerformed
 
+    
     private void btnCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarActionPerformed
         // TODO add your handling code here:
         loginn login = new loginn();
         this.dispose();
         login.setVisible(true);
     }//GEN-LAST:event_btnCerrarActionPerformed
+
+    private void btn_movimientosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_movimientosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_movimientosActionPerformed
 
     /**
      * @param args the command line arguments
@@ -229,6 +246,7 @@ public class HomeAdmin extends javax.swing.JFrame {
     private javax.swing.JToggleButton consultas_btn;
     private javax.swing.ButtonGroup home_bnt_grp;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel panel_load;
