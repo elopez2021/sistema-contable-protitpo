@@ -114,10 +114,10 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="115" max="-2" attributes="0"/>
                   <Component id="button_guardas" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace max="32767" attributes="0"/>
+                  <EmptySpace min="-2" pref="148" max="-2" attributes="0"/>
                   <Component id="Button_salir" min="-2" pref="100" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="189" max="-2" attributes="0"/>
-                  <Component id="Botton_limpiar" min="-2" pref="100" max="-2" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
+                  <Component id="Botton_limpiar" min="-2" pref="122" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="58" max="-2" attributes="0"/>
               </Group>
               <Component id="jSeparator4" alignment="1" max="32767" attributes="0"/>
@@ -134,8 +134,8 @@
                                   </Group>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="txtcuenta" pref="117" max="32767" attributes="0"/>
-                                      <Component id="txtdebito" max="32767" attributes="0"/>
+                                      <Component id="txt_cuenta" pref="117" max="32767" attributes="0"/>
+                                      <Component id="txt_debito" max="32767" attributes="0"/>
                                   </Group>
                                   <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
@@ -152,33 +152,33 @@
                                   </Group>
                                   <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="txtnumdoc1" max="32767" attributes="0"/>
-                                      <Component id="txttypedoc1" max="32767" attributes="0"/>
-                                      <Component id="txtdescripciondoc1" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="txtmonto1" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="txt_num_doc" max="32767" attributes="0"/>
+                                      <Component id="txt_tipo_doc" max="32767" attributes="0"/>
+                                      <Component id="txt_descripccion_doc" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="txt_monto_transaccion" alignment="0" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace min="-2" pref="141" max="-2" attributes="0"/>
                                   <Component id="jLabel10" min="-2" pref="69" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Component id="jDateChooser2" min="-2" pref="149" max="-2" attributes="0"/>
+                                  <EmptySpace min="0" pref="78" max="32767" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="txtdescripcioncuenta" pref="159" max="32767" attributes="0"/>
-                                      <Component id="txtcredito" max="32767" attributes="0"/>
+                                      <Component id="txt_descripcion_cuenta" pref="159" max="32767" attributes="0"/>
+                                      <Component id="txt_credito" max="32767" attributes="0"/>
                                   </Group>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <EmptySpace max="32767" attributes="0"/>
                                   <Component id="jLabel17" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="txtcomentario" min="-2" pref="128" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="txt_comentario" min="-2" pref="128" max="-2" attributes="0"/>
                               </Group>
                           </Group>
-                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="22" pref="22" max="-2" attributes="0"/>
@@ -189,16 +189,13 @@
               </Group>
               <Group type="102" alignment="1" attributes="0">
                   <EmptySpace max="32767" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="1" attributes="0">
-                          <Component id="jLabel11" min="-2" pref="271" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="281" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="1" attributes="0">
-                          <Component id="jButton1" min="-2" pref="142" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="360" max="-2" attributes="0"/>
-                      </Group>
-                  </Group>
+                  <Component id="jLabel11" min="-2" pref="271" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="281" max="-2" attributes="0"/>
+              </Group>
+              <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace min="-2" pref="293" max="-2" attributes="0"/>
+                  <Component id="jButton1" min="-2" pref="142" max="-2" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
               </Group>
               <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
@@ -221,7 +218,7 @@
                           <EmptySpace max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel9" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="txtnumdoc1" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="txt_num_doc" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabel10" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
@@ -234,33 +231,33 @@
                   <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel8" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="txttypedoc1" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txt_tipo_doc" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel6" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="txtdescripciondoc1" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txt_descripccion_doc" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel7" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="txtmonto1" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txt_monto_transaccion" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel20" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="txtcuenta" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txt_cuenta" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel19" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="txtdescripcioncuenta" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txt_descripcion_cuenta" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel18" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="txtdebito" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txt_debito" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel16" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="txtcredito" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txt_credito" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel17" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="txtcomentario" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txt_comentario" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="jButton1" min="-2" max="-2" attributes="0"/>
@@ -295,7 +292,10 @@
             <Property name="text" type="java.lang.String" value="Descrip. del documento"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="txtdescripciondoc1">
+        <Component class="javax.swing.JTextField" name="txt_descripccion_doc">
+          <Events>
+            <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txt_descripccion_docKeyPressed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel7">
           <Properties>
@@ -313,14 +313,14 @@
             <Property name="text" type="java.lang.String" value="Tipo de documento"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="txtmonto1">
+        <Component class="javax.swing.JTextField" name="txt_monto_transaccion">
           <Properties>
             <Property name="editable" type="boolean" value="false"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="txttypedoc1">
+        <Component class="javax.swing.JTextField" name="txt_tipo_doc">
           <Events>
-            <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txttypedoc1KeyPressed"/>
+            <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txt_tipo_docKeyPressed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel9">
@@ -331,10 +331,11 @@
             <Property name="text" type="java.lang.String" value="N&#xba; de documento"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="txtnumdoc1">
+        <Component class="javax.swing.JTextField" name="txt_num_doc">
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtnumdoc1ActionPerformed"/>
-            <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtnumdoc1KeyPressed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txt_num_docActionPerformed"/>
+            <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txt_num_docKeyPressed"/>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txt_num_docKeyTyped"/>
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel16">
@@ -345,9 +346,10 @@
             <Property name="text" type="java.lang.String" value="Credito"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="txtcredito">
+        <Component class="javax.swing.JTextField" name="txt_credito">
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtcreditoActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txt_creditoActionPerformed"/>
+            <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txt_creditoKeyPressed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel17">
@@ -366,11 +368,12 @@
             <Property name="text" type="java.lang.String" value="Debito"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="txtcomentario">
+        <Component class="javax.swing.JTextField" name="txt_comentario">
         </Component>
-        <Component class="javax.swing.JTextField" name="txtdebito">
+        <Component class="javax.swing.JTextField" name="txt_debito">
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtdebitoActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txt_debitoActionPerformed"/>
+            <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txt_debitoKeyPressed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JButton" name="jButton1">
@@ -380,6 +383,9 @@
             </Property>
             <Property name="text" type="java.lang.String" value="AGREGAR"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel19">
           <Properties>
@@ -389,7 +395,10 @@
             <Property name="text" type="java.lang.String" value="Cuenta"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="txtcuenta">
+        <Component class="javax.swing.JTextField" name="txt_cuenta">
+          <Events>
+            <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txt_cuentaKeyPressed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel20">
           <Properties>
@@ -399,7 +408,10 @@
             <Property name="text" type="java.lang.String" value="Descrip. de la cuenta"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="txtdescripcioncuenta">
+        <Component class="javax.swing.JTextField" name="txt_descripcion_cuenta">
+          <Events>
+            <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txt_descripcion_cuentaKeyPressed"/>
+          </Events>
         </Component>
         <Component class="com.toedter.calendar.JDateChooser" name="jDateChooser2">
         </Component>
@@ -422,17 +434,54 @@
 
           <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
           <SubComponents>
-            <Component class="javax.swing.JTable" name="jTable2">
+            <Component class="javax.swing.JTable" name="tabla_trans">
               <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Sylfaen" size="14" style="1"/>
+                </Property>
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                   <Table columnCount="6" rowCount="4">
-                    <Column editable="true" title="Secuencia" type="java.lang.Object"/>
-                    <Column editable="true" title="Cuenta" type="java.lang.Object"/>
-                    <Column editable="true" title="Descripcion" type="java.lang.Object"/>
-                    <Column editable="true" title="Debito" type="java.lang.Object"/>
-                    <Column editable="true" title="Credito" type="java.lang.Object"/>
-                    <Column editable="true" title="Comentario" type="java.lang.Object"/>
+                    <Column editable="true" title="Secuencia" type="java.lang.Integer"/>
+                    <Column editable="false" title="Cuenta" type="java.lang.Object"/>
+                    <Column editable="false" title="Descripcion" type="java.lang.String"/>
+                    <Column editable="false" title="Debito" type="java.lang.Double"/>
+                    <Column editable="false" title="Credito" type="java.lang.Double"/>
+                    <Column editable="false" title="Comentario" type="java.lang.String"/>
                   </Table>
+                </Property>
+                <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
+                  <TableColumnModel selectionModel="0">
+                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                      <Title/>
+                      <Editor/>
+                      <Renderer/>
+                    </Column>
+                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                      <Title/>
+                      <Editor/>
+                      <Renderer/>
+                    </Column>
+                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                      <Title/>
+                      <Editor/>
+                      <Renderer/>
+                    </Column>
+                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                      <Title/>
+                      <Editor/>
+                      <Renderer/>
+                    </Column>
+                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                      <Title/>
+                      <Editor/>
+                      <Renderer/>
+                    </Column>
+                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                      <Title/>
+                      <Editor/>
+                      <Renderer/>
+                    </Column>
+                  </TableColumnModel>
                 </Property>
                 <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
                   <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
@@ -469,6 +518,9 @@
             </Property>
             <Property name="text" type="java.lang.String" value="LIMPIAR"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Botton_limpiarActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel11">
           <Properties>
