@@ -919,10 +919,9 @@ public class mantenimientos extends javax.swing.JPanel {
                 }
                 cmbAcceso.setSelectedItem(nivelAcceso);
 
-            } else {
-                lblMensajeUsuario.setText("Creando...");
             }
-
+        } else {
+            lblMensajeUsuario.setText("Creando...");
         }
     }//GEN-LAST:event_txtContraseñaFocusLost
 
@@ -991,8 +990,11 @@ public class mantenimientos extends javax.swing.JPanel {
 
         String codigo = txtCodigo.getText();
         if (documentoCtrl.existeCodigo(codigo)) {
+            lblMensajeDocumento.setText("Modificando...");
             Documentos documento = documentoCtrl.buscarDocumento(codigo);
             txtDescripcion.setText(documento.getDescripcion());
+        }else{
+            lblMensajeDocumento.setText("Creando...");
         }
     }//GEN-LAST:event_txtCodigoFocusLost
 
