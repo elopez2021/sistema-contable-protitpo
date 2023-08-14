@@ -71,6 +71,11 @@ public class HomeAdmin extends javax.swing.JFrame {
         home_bnt_grp.add(consultas_btn);
         consultas_btn.setFont(new java.awt.Font("Sylfaen", 1, 18)); // NOI18N
         consultas_btn.setText("Consultas");
+        consultas_btn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                consultas_btnActionPerformed(evt);
+            }
+        });
 
         btnCerrar.setBackground(new java.awt.Color(255, 102, 102));
         home_bnt_grp.add(btnCerrar);
@@ -201,6 +206,11 @@ public class HomeAdmin extends javax.swing.JFrame {
         Transacciones user = new Transacciones();
         jpload.jPanelLoader(panel_load,user);
     }//GEN-LAST:event_btn_movimientosActionPerformed
+
+    private void consultas_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultas_btnActionPerformed
+        consultas user = new consultas();
+        jpload.jPanelLoader(panel_load,user);
+    }//GEN-LAST:event_consultas_btnActionPerformed
 
     /**
      * @param args the command line arguments
