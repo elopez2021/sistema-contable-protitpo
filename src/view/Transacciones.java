@@ -9,6 +9,7 @@ import java.awt.event.KeyEvent;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
+import javax.swing.table.DefaultTableModel;
 import model.Usuarios;
 import static view.mantenimientos.isEmpty;
 
@@ -73,7 +74,6 @@ public class Transacciones extends javax.swing.JPanel {
         tabla_trans = new javax.swing.JTable();
         jSeparator3 = new javax.swing.JSeparator();
         button_guardas = new javax.swing.JButton();
-        Button_salir = new javax.swing.JButton();
         Botton_limpiar = new javax.swing.JButton();
         jLabel11 = new javax.swing.JLabel();
         jSeparator4 = new javax.swing.JSeparator();
@@ -251,14 +251,6 @@ public class Transacciones extends javax.swing.JPanel {
         button_guardas.setFont(new java.awt.Font("Sylfaen", 1, 18)); // NOI18N
         button_guardas.setText("GUARDAR");
 
-        Button_salir.setFont(new java.awt.Font("Sylfaen", 1, 18)); // NOI18N
-        Button_salir.setText("SALIR");
-        Button_salir.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Button_salirActionPerformed(evt);
-            }
-        });
-
         Botton_limpiar.setFont(new java.awt.Font("Sylfaen", 1, 18)); // NOI18N
         Botton_limpiar.setText("LIMPIAR");
         Botton_limpiar.addActionListener(new java.awt.event.ActionListener() {
@@ -277,8 +269,6 @@ public class Transacciones extends javax.swing.JPanel {
             .addGroup(panel_transaccionesLayout.createSequentialGroup()
                 .addGap(115, 115, 115)
                 .addComponent(button_guardas)
-                .addGap(148, 148, 148)
-                .addComponent(Button_salir, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(Botton_limpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(58, 58, 58))
@@ -400,7 +390,6 @@ public class Transacciones extends javax.swing.JPanel {
                 .addGap(40, 40, 40)
                 .addGroup(panel_transaccionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(button_guardas)
-                    .addComponent(Button_salir)
                     .addComponent(Botton_limpiar))
                 .addGap(115, 115, 115))
             .addGroup(panel_transaccionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -451,10 +440,6 @@ public class Transacciones extends javax.swing.JPanel {
     private void txt_creditoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_creditoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_creditoActionPerformed
-
-    private void Button_salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Button_salirActionPerformed
-        System.exit(0);
-    }//GEN-LAST:event_Button_salirActionPerformed
 
     private void txt_num_docKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_num_docKeyPressed
         if(evt.getKeyCode() == KeyEvent.VK_ENTER){
@@ -515,14 +500,38 @@ public class Transacciones extends javax.swing.JPanel {
     }//GEN-LAST:event_Botton_limpiarActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        
+        //code to load data into table
+        //validation for not leave blank data
+        if (txt_cuenta.getText().equals("") || txt_descripcion_cuenta.getText().equals("") || txt_debito.getText().equals("") || txt_credito.getText().equals("") || txt_comentario.getText().equals("")) {
+            //if any of this field left blank than show message
+            JOptionPane.showMessageDialog(this, "Debe ingresar los datos solicitados");
+        }else{
+            //if all data field than...
+            //store enter data intro string arrar ---data---
+            
+            String data [] = {txt_cuenta.getText(), txt_descripcion_cuenta.getText(), txt_debito.getText(), txt_credito.getText(), txt_comentario.getText()};
+            DefaultTableModel tabla = (DefaultTableModel) tabla_trans.getModel();
+            
+            //add string array data
+            
+            tabla.addRow(data); //row added
+            
+            //seccessfully added messages
+            JOptionPane.showMessageDialog(this, "Los datos se agregaron exitosamnte");
+            
+            //clear textflied
+            txt_cuenta.setText("");
+            txt_descripcion_cuenta.setText("");
+            txt_debito.setText("");
+            txt_credito.setText("");
+            txt_comentario.setText("");
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Botton_limpiar;
-    private javax.swing.JButton Button_salir;
     private javax.swing.JButton button_guardas;
     private javax.swing.JButton jButton1;
     private com.toedter.calendar.JDateChooser jDateChooser1;
