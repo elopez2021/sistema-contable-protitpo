@@ -4,14 +4,9 @@
  */
 package view;
 
-import controller.UsuarioController;
 import java.awt.event.KeyEvent;
-import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
-import model.Usuarios;
-import static view.mantenimientos.isEmpty;
 
 /**
  *
@@ -24,6 +19,10 @@ public class Transacciones extends javax.swing.JPanel {
      */
     public Transacciones() {
         initComponents();
+    tabla_trans.setModel(new DefaultTableModel(
+        new Object[][]{},
+        new String[]{"Secuencia", "Cuenta", "Descripción de la cuenta", "Débito", "Crédito", "Comentario"}
+    ));
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -77,6 +76,7 @@ public class Transacciones extends javax.swing.JPanel {
         Botton_limpiar = new javax.swing.JButton();
         jLabel11 = new javax.swing.JLabel();
         jSeparator4 = new javax.swing.JSeparator();
+        jSeparator5 = new javax.swing.JSeparator();
 
         jLabel4.setText("Descrip. del documento");
 
@@ -169,6 +169,9 @@ public class Transacciones extends javax.swing.JPanel {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txt_creditoKeyPressed(evt);
             }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt_creditoKeyTyped(evt);
+            }
         });
 
         jLabel17.setFont(new java.awt.Font("Sylfaen", 1, 18)); // NOI18N
@@ -186,8 +189,12 @@ public class Transacciones extends javax.swing.JPanel {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txt_debitoKeyPressed(evt);
             }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt_debitoKeyTyped(evt);
+            }
         });
 
+        jButton1.setBackground(new java.awt.Color(255, 204, 204));
         jButton1.setFont(new java.awt.Font("Sylfaen", 1, 18)); // NOI18N
         jButton1.setText("AGREGAR");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -217,15 +224,23 @@ public class Transacciones extends javax.swing.JPanel {
         jLabel10.setFont(new java.awt.Font("Sylfaen", 1, 18)); // NOI18N
         jLabel10.setText("Fecha");
 
-        tabla_transacciones.setFont(new java.awt.Font("Sylfaen", 1, 14)); // NOI18N
+        tabla_transacciones.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        tabla_transacciones.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
+        tabla_transacciones.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        tabla_transacciones.setEnabled(false);
+        tabla_transacciones.setFocusable(false);
+        tabla_transacciones.setFont(new java.awt.Font("Sylfaen", 0, 18)); // NOI18N
+        tabla_transacciones.setWheelScrollingEnabled(false);
+        tabla_transacciones.addContainerListener(new java.awt.event.ContainerAdapter() {
+            public void componentAdded(java.awt.event.ContainerEvent evt) {
+                tabla_transaccionesComponentAdded(evt);
+            }
+        });
 
         tabla_trans.setFont(new java.awt.Font("Sylfaen", 1, 14)); // NOI18N
         tabla_trans.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+
             },
             new String [] {
                 "Secuencia", "Cuenta", "Descripcion", "Debito", "Credito", "Comentario"
@@ -235,7 +250,7 @@ public class Transacciones extends javax.swing.JPanel {
                 java.lang.Integer.class, java.lang.Object.class, java.lang.String.class, java.lang.Double.class, java.lang.Double.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                true, false, false, false, false, false
+                false, false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -248,9 +263,11 @@ public class Transacciones extends javax.swing.JPanel {
         });
         tabla_transacciones.setViewportView(tabla_trans);
 
+        button_guardas.setBackground(new java.awt.Color(255, 204, 204));
         button_guardas.setFont(new java.awt.Font("Sylfaen", 1, 18)); // NOI18N
         button_guardas.setText("GUARDAR");
 
+        Botton_limpiar.setBackground(new java.awt.Color(255, 204, 204));
         Botton_limpiar.setFont(new java.awt.Font("Sylfaen", 1, 18)); // NOI18N
         Botton_limpiar.setText("LIMPIAR");
         Botton_limpiar.addActionListener(new java.awt.event.ActionListener() {
@@ -266,31 +283,53 @@ public class Transacciones extends javax.swing.JPanel {
         panel_transacciones.setLayout(panel_transaccionesLayout);
         panel_transaccionesLayout.setHorizontalGroup(
             panel_transaccionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panel_transaccionesLayout.createSequentialGroup()
-                .addGap(115, 115, 115)
-                .addComponent(button_guardas)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(Botton_limpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(58, 58, 58))
             .addComponent(jSeparator4, javax.swing.GroupLayout.Alignment.TRAILING)
-            .addComponent(jSeparator3, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_transaccionesLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 591, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(281, 281, 281))
+            .addGroup(panel_transaccionesLayout.createSequentialGroup()
+                .addComponent(jSeparator5, javax.swing.GroupLayout.PREFERRED_SIZE, 1166, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_transaccionesLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(panel_transaccionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panel_transaccionesLayout.createSequentialGroup()
+                        .addGap(91, 91, 91)
+                        .addComponent(tabla_transacciones, javax.swing.GroupLayout.PREFERRED_SIZE, 994, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(191, 191, 191))
+                    .addComponent(jSeparator3))
+                .addContainerGap())
             .addGroup(panel_transaccionesLayout.createSequentialGroup()
                 .addGroup(panel_transaccionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panel_transaccionesLayout.createSequentialGroup()
-                        .addGap(31, 31, 31)
-                        .addGroup(panel_transaccionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGap(133, 133, 133)
+                        .addGroup(panel_transaccionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(panel_transaccionesLayout.createSequentialGroup()
                                 .addGroup(panel_transaccionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(jLabel18)
                                     .addComponent(jLabel19))
                                 .addGap(18, 18, 18)
                                 .addGroup(panel_transaccionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(txt_cuenta, javax.swing.GroupLayout.DEFAULT_SIZE, 117, Short.MAX_VALUE)
+                                    .addComponent(txt_cuenta, javax.swing.GroupLayout.DEFAULT_SIZE, 153, Short.MAX_VALUE)
                                     .addComponent(txt_debito))
-                                .addGap(42, 42, 42)
+                                .addGap(57, 57, 57)
                                 .addGroup(panel_transaccionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel20)
-                                    .addComponent(jLabel16)))
+                                    .addGroup(panel_transaccionesLayout.createSequentialGroup()
+                                        .addComponent(jLabel20)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(txt_descripcion_cuenta, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(panel_transaccionesLayout.createSequentialGroup()
+                                        .addGroup(panel_transaccionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGroup(panel_transaccionesLayout.createSequentialGroup()
+                                                .addComponent(jLabel16)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(txt_credito, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addGap(67, 67, 67)
+                                        .addComponent(jLabel17)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(txt_comentario, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE))))
                             .addGroup(panel_transaccionesLayout.createSequentialGroup()
                                 .addGroup(panel_transaccionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel6)
@@ -298,76 +337,57 @@ public class Transacciones extends javax.swing.JPanel {
                                     .addComponent(jLabel8)
                                     .addComponent(jLabel9))
                                 .addGap(42, 42, 42)
-                                .addGroup(panel_transaccionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txt_num_doc)
-                                    .addComponent(txt_tipo_doc)
-                                    .addComponent(txt_descripccion_doc)
-                                    .addComponent(txt_monto_transaccion))))
-                        .addGroup(panel_transaccionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(panel_transaccionesLayout.createSequentialGroup()
-                                .addGap(141, 141, 141)
-                                .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jDateChooser2, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 78, Short.MAX_VALUE))
-                            .addGroup(panel_transaccionesLayout.createSequentialGroup()
-                                .addGap(40, 40, 40)
                                 .addGroup(panel_transaccionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(txt_descripcion_cuenta, javax.swing.GroupLayout.DEFAULT_SIZE, 159, Short.MAX_VALUE)
-                                    .addComponent(txt_credito))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel17)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txt_comentario, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                    .addComponent(txt_monto_transaccion, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txt_num_doc, javax.swing.GroupLayout.DEFAULT_SIZE, 305, Short.MAX_VALUE)
+                                    .addComponent(txt_tipo_doc)
+                                    .addComponent(txt_descripccion_doc))
+                                .addGap(83, 83, 83)
+                                .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jDateChooser2, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(panel_transaccionesLayout.createSequentialGroup()
-                        .addGap(22, 22, 22)
-                        .addComponent(tabla_transacciones)))
-                .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_transaccionesLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(281, 281, 281))
-            .addGroup(panel_transaccionesLayout.createSequentialGroup()
-                .addGap(293, 293, 293)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(291, 291, 291)
+                        .addComponent(button_guardas)
+                        .addGap(306, 306, 306)
+                        .addComponent(Botton_limpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(panel_transaccionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(panel_transaccionesLayout.createSequentialGroup()
-                    .addGap(0, 374, Short.MAX_VALUE)
+                    .addGap(0, 644, Short.MAX_VALUE)
                     .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 375, Short.MAX_VALUE)))
+                    .addGap(0, 644, Short.MAX_VALUE)))
         );
         panel_transaccionesLayout.setVerticalGroup(
             panel_transaccionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panel_transaccionesLayout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addComponent(jLabel11)
+                .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(panel_transaccionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panel_transaccionesLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(panel_transaccionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(panel_transaccionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jLabel9)
+                                .addComponent(txt_num_doc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel10))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(panel_transaccionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel9)
-                            .addComponent(txt_num_doc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel10)))
-                    .addGroup(panel_transaccionesLayout.createSequentialGroup()
-                        .addGap(30, 30, 30)
-                        .addComponent(jDateChooser2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 5, Short.MAX_VALUE)))
+                            .addComponent(jLabel8)
+                            .addComponent(txt_tipo_doc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(16, 16, 16)
+                        .addGroup(panel_transaccionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel6)
+                            .addComponent(txt_descripccion_doc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(16, 16, 16)
+                        .addGroup(panel_transaccionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel7)
+                            .addComponent(txt_monto_transaccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jDateChooser2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(16, 16, 16)
-                .addGroup(panel_transaccionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel8)
-                    .addComponent(txt_tipo_doc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(16, 16, 16)
-                .addGroup(panel_transaccionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
-                    .addComponent(txt_descripccion_doc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(16, 16, 16)
-                .addGroup(panel_transaccionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel7)
-                    .addComponent(txt_monto_transaccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(22, 22, 22)
+                .addComponent(jSeparator5, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(7, 7, 7)
                 .addGroup(panel_transaccionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel20)
                     .addComponent(txt_cuenta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -383,34 +403,36 @@ public class Transacciones extends javax.swing.JPanel {
                     .addComponent(txt_comentario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jButton1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 4, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(tabla_transacciones, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(40, 40, 40)
+                .addComponent(tabla_transacciones, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(38, 38, 38)
                 .addGroup(panel_transaccionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(button_guardas)
                     .addComponent(Botton_limpiar))
-                .addGap(115, 115, 115))
+                .addContainerGap(126, Short.MAX_VALUE))
             .addGroup(panel_transaccionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(panel_transaccionesLayout.createSequentialGroup()
                     .addGap(0, 174, Short.MAX_VALUE)
                     .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 569, Short.MAX_VALUE)))
+                    .addGap(0, 586, Short.MAX_VALUE)))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panel_transacciones, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(panel_transacciones, javax.swing.GroupLayout.PREFERRED_SIZE, 1160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
                 .addComponent(panel_transacciones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -500,33 +522,55 @@ public class Transacciones extends javax.swing.JPanel {
     }//GEN-LAST:event_Botton_limpiarActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        //code to load data into table
-        //validation for not leave blank data
-        if (txt_cuenta.getText().equals("") || txt_descripcion_cuenta.getText().equals("") || txt_debito.getText().equals("") || txt_credito.getText().equals("") || txt_comentario.getText().equals("")) {
-            //if any of this field left blank than show message
-            JOptionPane.showMessageDialog(this, "Debe ingresar los datos solicitados");
-        }else{
-            //if all data field than...
-            //store enter data intro string arrar ---data---
-            
-            String data [] = {txt_cuenta.getText(), txt_descripcion_cuenta.getText(), txt_debito.getText(), txt_credito.getText(), txt_comentario.getText()};
-            DefaultTableModel tabla = (DefaultTableModel) tabla_trans.getModel();
-            
-            //add string array data
-            
-            tabla.addRow(data); //row added
-            
-            //seccessfully added messages
-            JOptionPane.showMessageDialog(this, "Los datos se agregaron exitosamnte");
-            
-            //clear textflied
-            txt_cuenta.setText("");
-            txt_descripcion_cuenta.setText("");
-            txt_debito.setText("");
-            txt_credito.setText("");
-            txt_comentario.setText("");
-        }
+
+    if (txt_cuenta.getText().isEmpty() || txt_descripcion_cuenta.getText().isEmpty() || 
+        txt_debito.getText().isEmpty() || txt_credito.getText().isEmpty()) {
+        JOptionPane.showMessageDialog(null, "Error debe ingresar los datos solicitados", "Error", JOptionPane.ERROR_MESSAGE);
+    } else {
+        String data[] = {
+            String.valueOf(tabla_trans.getRowCount() + 1), // Sequence
+            txt_cuenta.getText(),
+            txt_descripcion_cuenta.getText(),
+            txt_debito.getText(),
+            txt_credito.getText(),
+            txt_comentario.getText() // Optional comment
+        };
+
+        DefaultTableModel tabla = (DefaultTableModel) tabla_trans.getModel();
+        tabla.addRow(data);
+
+        JOptionPane.showMessageDialog(null, "Los datos fueron guardados en la tabla.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+
+        // Clear text fields
+        txt_cuenta.setText("");
+        txt_descripcion_cuenta.setText("");
+        txt_debito.setText("");
+        txt_credito.setText("");
+        txt_comentario.setText("");
+    }
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void tabla_transaccionesComponentAdded(java.awt.event.ContainerEvent evt) {//GEN-FIRST:event_tabla_transaccionesComponentAdded
+        
+    }//GEN-LAST:event_tabla_transaccionesComponentAdded
+
+    private void txt_debitoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_debitoKeyTyped
+        // TODO add your handling code here:
+        int key = evt.getKeyChar();
+        boolean numero = key >= 48 && key <= 57;
+        if (!numero) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_txt_debitoKeyTyped
+
+    private void txt_creditoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_creditoKeyTyped
+        // TODO add your handling code here:
+        int key = evt.getKeyChar();
+        boolean numero = key >= 48 && key <= 57;
+        if (!numero) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_txt_creditoKeyTyped
 
     
 
@@ -557,6 +601,7 @@ public class Transacciones extends javax.swing.JPanel {
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
+    private javax.swing.JSeparator jSeparator5;
     private javax.swing.JTable jTable1;
     private javax.swing.JPanel panel_transacciones;
     private javax.swing.JTable tabla_trans;

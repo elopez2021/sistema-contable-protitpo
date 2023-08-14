@@ -42,7 +42,7 @@ public class HomeAdmin extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        btn_mantenimiento.setBackground(new java.awt.Color(153, 153, 255));
+        btn_mantenimiento.setBackground(new java.awt.Color(255, 204, 204));
         home_bnt_grp.add(btn_mantenimiento);
         btn_mantenimiento.setFont(new java.awt.Font("Sylfaen", 1, 18)); // NOI18N
         btn_mantenimiento.setText("Mantenimientos");
@@ -52,7 +52,7 @@ public class HomeAdmin extends javax.swing.JFrame {
             }
         });
 
-        btn_movimientos.setBackground(new java.awt.Color(153, 153, 255));
+        btn_movimientos.setBackground(new java.awt.Color(255, 204, 204));
         home_bnt_grp.add(btn_movimientos);
         btn_movimientos.setFont(new java.awt.Font("Sylfaen", 1, 18)); // NOI18N
         btn_movimientos.setText("Movimientos");
@@ -62,17 +62,17 @@ public class HomeAdmin extends javax.swing.JFrame {
             }
         });
 
-        btn_procesos.setBackground(new java.awt.Color(153, 153, 255));
+        btn_procesos.setBackground(new java.awt.Color(255, 204, 204));
         home_bnt_grp.add(btn_procesos);
         btn_procesos.setFont(new java.awt.Font("Sylfaen", 1, 18)); // NOI18N
         btn_procesos.setText("Procesos");
 
-        consultas_btn.setBackground(new java.awt.Color(153, 153, 255));
+        consultas_btn.setBackground(new java.awt.Color(255, 204, 204));
         home_bnt_grp.add(consultas_btn);
         consultas_btn.setFont(new java.awt.Font("Sylfaen", 1, 18)); // NOI18N
         consultas_btn.setText("Consultas");
 
-        btnCerrar.setBackground(new java.awt.Color(153, 153, 255));
+        btnCerrar.setBackground(new java.awt.Color(255, 102, 102));
         home_bnt_grp.add(btnCerrar);
         btnCerrar.setFont(new java.awt.Font("Sylfaen", 1, 18)); // NOI18N
         btnCerrar.setText("Cerrar Sesión");
