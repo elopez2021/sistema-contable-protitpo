@@ -178,6 +178,7 @@ public class mantenimientos extends javax.swing.JPanel {
 
         jTabbedPane1.setBackground(new java.awt.Color(255, 255, 255));
         jTabbedPane1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jTabbedPane1.setFont(new java.awt.Font("Sylfaen", 0, 14)); // NOI18N
 
         jPanel1.setPreferredSize(new java.awt.Dimension(1000, 4));
 
@@ -232,6 +233,7 @@ public class mantenimientos extends javax.swing.JPanel {
             }
         });
 
+        cmbAcceso.setFont(new java.awt.Font("Sylfaen", 0, 14)); // NOI18N
         cmbAcceso.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Normal", "Administrador" }));
 
         errLogin.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
@@ -253,7 +255,8 @@ public class mantenimientos extends javax.swing.JPanel {
         errEmail.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         errEmail.setForeground(java.awt.Color.red);
 
-        btnGuardarUsuario.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnGuardarUsuario.setBackground(new java.awt.Color(255, 204, 204));
+        btnGuardarUsuario.setFont(new java.awt.Font("Sylfaen", 1, 18)); // NOI18N
         btnGuardarUsuario.setText("Guardar");
         btnGuardarUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -277,7 +280,8 @@ public class mantenimientos extends javax.swing.JPanel {
             }
         });
 
-        btnLimpiarUsuario.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnLimpiarUsuario.setBackground(new java.awt.Color(255, 153, 153));
+        btnLimpiarUsuario.setFont(new java.awt.Font("Sylfaen", 1, 18)); // NOI18N
         btnLimpiarUsuario.setText("Limpiar");
         btnLimpiarUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -378,6 +382,7 @@ public class mantenimientos extends javax.swing.JPanel {
 
         jScrollPane7.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
         jScrollPane7.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+        jScrollPane7.setFont(new java.awt.Font("Sylfaen", 0, 14)); // NOI18N
 
         usuarios_table.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -405,7 +410,7 @@ public class mantenimientos extends javax.swing.JPanel {
                 .addContainerGap()
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane7, javax.swing.GroupLayout.DEFAULT_SIZE, 586, Short.MAX_VALUE)
+                .addComponent(jScrollPane7, javax.swing.GroupLayout.DEFAULT_SIZE, 601, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -415,7 +420,7 @@ public class mantenimientos extends javax.swing.JPanel {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jScrollPane7))
-                .addContainerGap(45, Short.MAX_VALUE))
+                .addContainerGap(80, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Usuarios", jPanel1);
@@ -425,7 +430,7 @@ public class mantenimientos extends javax.swing.JPanel {
         jPanel5.setBackground(new java.awt.Color(255, 255, 255));
         jPanel5.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        jLabel7.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel7.setFont(new java.awt.Font("Sylfaen", 1, 18)); // NOI18N
         jLabel7.setText("Código:");
 
         txtCodigo.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -439,10 +444,11 @@ public class mantenimientos extends javax.swing.JPanel {
             }
         });
 
-        jLabel8.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel8.setFont(new java.awt.Font("Sylfaen", 1, 18)); // NOI18N
         jLabel8.setText("Descripción:");
 
-        btnGuardarDocumento.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnGuardarDocumento.setBackground(new java.awt.Color(255, 204, 204));
+        btnGuardarDocumento.setFont(new java.awt.Font("Sylfaen", 1, 18)); // NOI18N
         btnGuardarDocumento.setText("Guardar");
         btnGuardarDocumento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -456,7 +462,8 @@ public class mantenimientos extends javax.swing.JPanel {
         errDescripcion.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         errDescripcion.setForeground(java.awt.Color.red);
 
-        btnLimpiarDocumento.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnLimpiarDocumento.setBackground(new java.awt.Color(255, 153, 153));
+        btnLimpiarDocumento.setFont(new java.awt.Font("Sylfaen", 1, 18)); // NOI18N
         btnLimpiarDocumento.setText("Limpiar");
         btnLimpiarDocumento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -491,7 +498,7 @@ public class mantenimientos extends javax.swing.JPanel {
                 .addComponent(btnGuardarDocumento, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnLimpiarDocumento, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(85, Short.MAX_VALUE))
+                .addContainerGap(98, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(lblMensajeDocumento, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -549,7 +556,7 @@ public class mantenimientos extends javax.swing.JPanel {
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 564, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(29, Short.MAX_VALUE))
+                .addContainerGap(16, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -568,7 +575,7 @@ public class mantenimientos extends javax.swing.JPanel {
         jPanel6.setBackground(new java.awt.Color(255, 255, 255));
         jPanel6.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        jLabel9.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel9.setFont(new java.awt.Font("Sylfaen", 1, 18)); // NOI18N
         jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel9.setText("Numero de cuenta: ");
 
@@ -591,7 +598,7 @@ public class mantenimientos extends javax.swing.JPanel {
         errNroCuenta.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         errNroCuenta.setForeground(java.awt.Color.red);
 
-        jLabel10.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel10.setFont(new java.awt.Font("Sylfaen", 1, 18)); // NOI18N
         jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel10.setText("Descripción:");
 
@@ -607,11 +614,11 @@ public class mantenimientos extends javax.swing.JPanel {
         errTipoCuenta.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         errTipoCuenta.setForeground(java.awt.Color.red);
 
-        jLabel11.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel11.setFont(new java.awt.Font("Sylfaen", 1, 18)); // NOI18N
         jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel11.setText("Tipo de cuenta:");
 
-        jLabel12.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel12.setFont(new java.awt.Font("Sylfaen", 1, 18)); // NOI18N
         jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel12.setText("Nivel de Cuenta");
 
@@ -624,7 +631,7 @@ public class mantenimientos extends javax.swing.JPanel {
         errNivelCuenta.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         errNivelCuenta.setForeground(java.awt.Color.red);
 
-        jLabel13.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel13.setFont(new java.awt.Font("Sylfaen", 1, 18)); // NOI18N
         jLabel13.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel13.setText("Cuenta Padre: ");
 
@@ -640,7 +647,7 @@ public class mantenimientos extends javax.swing.JPanel {
         errGrupoCuenta.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         errGrupoCuenta.setForeground(java.awt.Color.red);
 
-        jLabel14.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel14.setFont(new java.awt.Font("Sylfaen", 1, 18)); // NOI18N
         jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel14.setText("Grupo de Cuenta:");
 
@@ -648,14 +655,18 @@ public class mantenimientos extends javax.swing.JPanel {
         errNroCuenta6.setForeground(java.awt.Color.red);
 
         btnCuentaGroup.add(rdbGeneral);
+        rdbGeneral.setFont(new java.awt.Font("Sylfaen", 0, 14)); // NOI18N
         rdbGeneral.setText("General");
 
         btnCuentaGroup.add(rdbDetalle);
+        rdbDetalle.setFont(new java.awt.Font("Sylfaen", 0, 14)); // NOI18N
         rdbDetalle.setText("Detalle");
 
+        cmbGrupoCuenta.setFont(new java.awt.Font("Sylfaen", 0, 14)); // NOI18N
         cmbGrupoCuenta.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "---Seleccione una opción---", "Débito", "Crédito" }));
 
-        btnGuardarCatalogo.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnGuardarCatalogo.setBackground(new java.awt.Color(255, 204, 204));
+        btnGuardarCatalogo.setFont(new java.awt.Font("Sylfaen", 1, 18)); // NOI18N
         btnGuardarCatalogo.setText("Guardar");
         btnGuardarCatalogo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -663,7 +674,8 @@ public class mantenimientos extends javax.swing.JPanel {
             }
         });
 
-        btnLimpiarCatalogo.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnLimpiarCatalogo.setBackground(new java.awt.Color(255, 153, 153));
+        btnLimpiarCatalogo.setFont(new java.awt.Font("Sylfaen", 1, 18)); // NOI18N
         btnLimpiarCatalogo.setText("Limpiar");
         btnLimpiarCatalogo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -701,7 +713,7 @@ public class mantenimientos extends javax.swing.JPanel {
                             .addComponent(errCuentaPadre, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(errGrupoCuenta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(jPanel6Layout.createSequentialGroup()
-                                .addComponent(rdbGeneral)
+                                .addComponent(rdbGeneral, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(rdbDetalle))
                             .addComponent(cmbGrupoCuenta, 0, 288, Short.MAX_VALUE)))
@@ -711,7 +723,7 @@ public class mantenimientos extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnLimpiarCatalogo, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(errNroCuenta6, javax.swing.GroupLayout.DEFAULT_SIZE, 81, Short.MAX_VALUE)))
+                        .addComponent(errNroCuenta6, javax.swing.GroupLayout.DEFAULT_SIZE, 91, Short.MAX_VALUE)))
                 .addContainerGap(17, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
@@ -800,7 +812,7 @@ public class mantenimientos extends javax.swing.JPanel {
                 .addContainerGap()
                 .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 579, Short.MAX_VALUE)
+                .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 571, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -810,7 +822,7 @@ public class mantenimientos extends javax.swing.JPanel {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(jScrollPane6)
                     .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(84, Short.MAX_VALUE))
+                .addContainerGap(80, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Catalogo de Cuentas", jPanel2);

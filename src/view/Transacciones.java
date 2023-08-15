@@ -5,6 +5,9 @@
 package view;
 
 import java.awt.event.KeyEvent;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -266,6 +269,11 @@ public class Transacciones extends javax.swing.JPanel {
         button_guardas.setBackground(new java.awt.Color(255, 204, 204));
         button_guardas.setFont(new java.awt.Font("Sylfaen", 1, 18)); // NOI18N
         button_guardas.setText("GUARDAR");
+        button_guardas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                button_guardasActionPerformed(evt);
+            }
+        });
 
         Botton_limpiar.setBackground(new java.awt.Color(255, 204, 204));
         Botton_limpiar.setFont(new java.awt.Font("Sylfaen", 1, 18)); // NOI18N
@@ -284,10 +292,6 @@ public class Transacciones extends javax.swing.JPanel {
         panel_transaccionesLayout.setHorizontalGroup(
             panel_transaccionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jSeparator4, javax.swing.GroupLayout.Alignment.TRAILING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_transaccionesLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 591, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(281, 281, 281))
             .addGroup(panel_transaccionesLayout.createSequentialGroup()
                 .addComponent(jSeparator5, javax.swing.GroupLayout.PREFERRED_SIZE, 1166, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
@@ -342,7 +346,7 @@ public class Transacciones extends javax.swing.JPanel {
                                     .addComponent(txt_num_doc, javax.swing.GroupLayout.DEFAULT_SIZE, 305, Short.MAX_VALUE)
                                     .addComponent(txt_tipo_doc)
                                     .addComponent(txt_descripccion_doc))
-                                .addGap(83, 83, 83)
+                                .addGap(65, 65, 65)
                                 .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jDateChooser2, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE))))
@@ -352,6 +356,10 @@ public class Transacciones extends javax.swing.JPanel {
                         .addGap(306, 306, 306)
                         .addComponent(Botton_limpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_transaccionesLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(652, 652, 652))
             .addGroup(panel_transaccionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(panel_transaccionesLayout.createSequentialGroup()
                     .addGap(0, 644, Short.MAX_VALUE)
@@ -361,6 +369,7 @@ public class Transacciones extends javax.swing.JPanel {
         panel_transaccionesLayout.setVerticalGroup(
             panel_transaccionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panel_transaccionesLayout.createSequentialGroup()
+                .addContainerGap()
                 .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -451,16 +460,27 @@ public class Transacciones extends javax.swing.JPanel {
     }//GEN-LAST:event_txt_tipo_docKeyPressed
 
     private void txt_num_docActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_num_docActionPerformed
-        
-    
+
     }//GEN-LAST:event_txt_num_docActionPerformed
 
     private void txt_debitoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_debitoActionPerformed
-        // TODO add your handling code here:
+        // Obtén el texto ingresado en el campo de crédito
+    String textoCredito = txt_credito.getText().trim().toLowerCase();
+    
+    // Verifica si el texto es "crédito", si no, borra el contenido
+    if (!textoCredito.equals("crédito")) {
+        txt_credito.setText("");
+    }
     }//GEN-LAST:event_txt_debitoActionPerformed
 
     private void txt_creditoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_creditoActionPerformed
-        // TODO add your handling code here:
+       // Obtén el texto ingresado en el campo de débito
+    String textoDebito = txt_debito.getText().trim().toLowerCase();
+    
+    // Verifica si el texto es "débito", si no, borra el contenido
+    if (!textoDebito.equals("débito")) {
+        txt_debito.setText("");
+    }
     }//GEN-LAST:event_txt_creditoActionPerformed
 
     private void txt_num_docKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_num_docKeyPressed
@@ -571,6 +591,53 @@ public class Transacciones extends javax.swing.JPanel {
             evt.consume();
         }
     }//GEN-LAST:event_txt_creditoKeyTyped
+
+    private void button_guardasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_guardasActionPerformed
+        try {
+        String nombreArchivo = "datos.txt"; // Cambia el nombre del archivo si es necesario
+        FileWriter fileWriter = new FileWriter(nombreArchivo);
+        BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
+
+        // Obtén los valores de los campos de texto
+        String numDoc = txt_num_doc.getText();
+        String tipoDoc = txt_tipo_doc.getText();
+        String descripccionDoc = txt_descripccion_doc.getText();
+        String cuenta = txt_cuenta.getText();
+        String debito = txt_debito.getText();
+        String descripcionCuenta = txt_descripcion_cuenta.getText();
+        String credito = txt_credito.getText();
+        String comentario = txt_comentario.getText();
+        // ... Obtén los valores de otros campos si es necesario
+
+        // Escribe los valores en el archivo
+        bufferedWriter.write("Número de Documento: " + numDoc);
+        bufferedWriter.newLine();
+        bufferedWriter.write("Tipo de Documento: " + tipoDoc);
+        bufferedWriter.newLine();
+        bufferedWriter.write("Descripción del Documento: " + descripccionDoc);
+        bufferedWriter.newLine();
+        bufferedWriter.write("Cuenta: " + cuenta);
+        bufferedWriter.newLine();
+        bufferedWriter.write("Débito: " + debito);
+        bufferedWriter.newLine();
+        bufferedWriter.write("Descripción de la Cuenta: " + descripcionCuenta);
+        bufferedWriter.newLine();
+        bufferedWriter.write("Crédito: " + credito);
+        bufferedWriter.newLine();
+        bufferedWriter.write("Comentario: " + comentario);
+        // ... Escribe otros campos si es necesario
+
+        // Cierra el BufferedWriter
+        bufferedWriter.close();
+
+        // Notifica al usuario que los datos se han guardado
+        JOptionPane.showMessageDialog(this, "Los datos se han guardado en el archivo.");
+
+    } catch (IOException e) {
+        e.printStackTrace();
+        JOptionPane.showMessageDialog(this, "Error al guardar los datos en el archivo.");
+    }
+    }//GEN-LAST:event_button_guardasActionPerformed
 
     
 

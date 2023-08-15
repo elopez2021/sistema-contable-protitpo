@@ -153,6 +153,9 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Procesos"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_procesosActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JToggleButton" name="consultas_btn">
           <Properties>

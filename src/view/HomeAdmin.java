@@ -11,7 +11,7 @@ public class HomeAdmin extends javax.swing.JFrame {
         initComponents();
         this.setExtendedState(HomeAdmin.MAXIMIZED_BOTH);    
         this.user = user;
-        welcome_label.setText("Bienvenido, "+user);
+        welcome_label.setText("Bienvenido, "+user + ":)");
     }
     
     public HomeAdmin(){
@@ -66,6 +66,11 @@ public class HomeAdmin extends javax.swing.JFrame {
         home_bnt_grp.add(btn_procesos);
         btn_procesos.setFont(new java.awt.Font("Sylfaen", 1, 18)); // NOI18N
         btn_procesos.setText("Procesos");
+        btn_procesos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_procesosActionPerformed(evt);
+            }
+        });
 
         consultas_btn.setBackground(new java.awt.Color(255, 204, 204));
         home_bnt_grp.add(consultas_btn);
@@ -211,6 +216,11 @@ public class HomeAdmin extends javax.swing.JFrame {
         consultas user = new consultas();
         jpload.jPanelLoader(panel_load,user);
     }//GEN-LAST:event_consultas_btnActionPerformed
+
+    private void btn_procesosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_procesosActionPerformed
+        Procesos user = new Procesos();
+        jpload.jPanelLoader(panel_load,user);
+    }//GEN-LAST:event_btn_procesosActionPerformed
 
     /**
      * @param args the command line arguments
