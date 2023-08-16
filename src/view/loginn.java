@@ -48,7 +48,7 @@ public class loginn extends javax.swing.JFrame {
         salir.setBackground(new java.awt.Color(255, 51, 102));
         salir.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         salir.setText("Salir");
-        salir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        salir.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         salir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 salirActionPerformed(evt);
@@ -95,8 +95,8 @@ public class loginn extends javax.swing.JFrame {
         btniniciarsesion.setBackground(new java.awt.Color(0, 51, 255));
         btniniciarsesion.setFont(new java.awt.Font("Calisto MT", 1, 24)); // NOI18N
         btniniciarsesion.setForeground(new java.awt.Color(255, 255, 255));
-        btniniciarsesion.setText("Iniciar sesion");
-        btniniciarsesion.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btniniciarsesion.setText("Iniciar sesión");
+        btniniciarsesion.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btniniciarsesion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btniniciarsesionActionPerformed(evt);
@@ -156,15 +156,10 @@ public class loginn extends javax.swing.JFrame {
         if (UsuarioController.existeUsuario(usuario, password)) {
             String acceso = UsuarioController.obtenerTipoAcceso(usuario, password);
             JOptionPane.showMessageDialog(null, "¡Bienvenido, " + usuario + " " + acceso + "! Has iniciado sesión correctamente.", "Inicio de sesión exitoso", JOptionPane.INFORMATION_MESSAGE);
-            if (acceso.equals("admin")) {
-                HomeAdmin menu = new HomeAdmin(usuario);
-                this.dispose();
-                menu.setVisible(true);
-            }else{
-                HomeNormal menu = new HomeNormal(usuario);
-                this.dispose();
-                menu.setVisible(true);
-            }
+
+            HomeAdmin menu = new HomeAdmin(usuario, acceso);
+            this.dispose();
+            menu.setVisible(true);
 
         } else {
             // Mostrar mensaje de error si las credenciales son incorrectas
@@ -175,14 +170,14 @@ public class loginn extends javax.swing.JFrame {
     }//GEN-LAST:event_btniniciarsesionActionPerformed
 
     private void txtusuarioKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtusuarioKeyPressed
-        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             txtpassword.requestFocus();
         }
     }//GEN-LAST:event_txtusuarioKeyPressed
 
     private void txtpasswordKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtpasswordKeyPressed
-         if(evt.getKeyCode() == KeyEvent.VK_ENTER){
-               btniniciarsesion.doClick();
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            btniniciarsesion.doClick();
         }
     }//GEN-LAST:event_txtpasswordKeyPressed
 

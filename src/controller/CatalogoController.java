@@ -16,6 +16,7 @@ import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Objects;
 import javax.swing.JOptionPane;
 import model.CatalogoCuenta;
 
@@ -110,6 +111,61 @@ public class CatalogoController implements Controller {
             JOptionPane.showMessageDialog(null, "Error al leer el archivo catalogo.txt", "Error", JOptionPane.ERROR_MESSAGE);
         }
         return null;
+    }
+
+    public List<CatalogoCuenta> obtenerCatalogoCuentas(CatalogoCuenta filtro) {
+        List<CatalogoCuenta> cuentasFiltradas = new ArrayList<>();
+
+        try (BufferedReader reader = new BufferedReader(new FileReader(RUTA_ARCHIVO))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                String[] campos = line.split(";");
+                // Crea una nueva instancia de CatalogoCuenta y asigna los valores
+                CatalogoCuenta cuenta = new CatalogoCuenta();
+                cuenta.setNro_cta(Integer.parseInt(campos[0]));
+                cuenta.setDescripcion_cta(campos[1]);
+                cuenta.setTipo_cta(Boolean.parseBoolean(campos[2]));
+                cuenta.setNivel_cta(Integer.parseInt(campos[3]));
+                cuenta.setCta_padre(Integer.parseInt(campos[4]));
+                cuenta.setGrupo_cta(Integer.parseInt(campos[5]));
+                cuenta.setFecha_creacion_cta(LocalDate.parse(campos[6]));
+                cuenta.setHora_creacion_cta(LocalTime.parse(campos[7]));
+                cuenta.setDebito_acum_cta(Double.parseDouble(campos[8]));
+                cuenta.setCredito_acum_cta(Double.parseDouble(campos[9]));
+                cuenta.setBalance_cta(Double.parseDouble(campos[10]));
+
+                // Aplica los filtros
+                boolean cumpleFiltros = true;
+
+                if (filtro.getNro_cta() != -1 && filtro.getNro_cta() != cuenta.getNro_cta()) {
+                    cumpleFiltros = false;
+                }
+                if (filtro.getDescripcion_cta() != null && !filtro.getDescripcion_cta().equals(cuenta.getDescripcion_cta())) {
+                    cumpleFiltros = false;
+                }
+                if (filtro.isTipo_cta() != null && !filtro.isTipo_cta().equals(cuenta.isTipo_cta())) {
+                    cumpleFiltros = false;
+                }
+
+                if (filtro.getNivel_cta() != -1 && filtro.getNivel_cta() != cuenta.getNivel_cta()) {
+                    cumpleFiltros = false;
+                }
+                if (filtro.getCta_padre() != -1 && filtro.getCta_padre() != cuenta.getCta_padre()) {
+                    cumpleFiltros = false;
+                }
+                if (filtro.getGrupo_cta() != -1 && filtro.getGrupo_cta() != cuenta.getGrupo_cta()) {
+                    cumpleFiltros = false;
+                }
+
+                if (cumpleFiltros) {
+                    cuentasFiltradas.add(cuenta);
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return cuentasFiltradas;
     }
 
     @Override

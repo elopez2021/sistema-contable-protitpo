@@ -7,11 +7,19 @@ public class HomeAdmin extends javax.swing.JFrame {
     JpanelLoader jpload = new JpanelLoader();
 
     public String user;
-    public HomeAdmin(String user) {
+    public String acceso;
+    
+    public HomeAdmin(String user, String acceso) {
         initComponents();
         this.setExtendedState(HomeAdmin.MAXIMIZED_BOTH);    
         this.user = user;
-        welcome_label.setText("Bienvenido, "+user + ":)");
+        this.acceso = acceso;
+        welcome_label.setText("Bienvenido, "+user + " :)");
+        
+        if(!acceso.equals("admin")){
+            btn_mantenimiento.setEnabled(false);
+            btn_procesos.setEnabled(false);
+        }
     }
     
     public HomeAdmin(){

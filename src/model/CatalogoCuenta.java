@@ -9,17 +9,22 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 
 public class CatalogoCuenta {
-    private int nro_cta;
+    private int nro_cta = -1;
     private String descripcion_cta;
-    private boolean tipo_cta;
-    private int nivel_cta;
-    private int cta_padre;
-    private int grupo_cta;
+    private Boolean tipo_cta;
+    private int nivel_cta = -1;
+    private int cta_padre = -1;
+    private int grupo_cta = -1;
     private LocalDate fecha_creacion_cta;
     private LocalTime hora_creacion_cta;
-    private double debito_acum_cta;
-    private double credito_acum_cta;
-    private double balance_cta;
+    private double debito_acum_cta = -1.00;
+    private double credito_acum_cta = -1.00;
+    private double balance_cta = -1.00;
+
+    @Override
+    public String toString() {
+        return "CatalogoCuenta{" + "nro_cta=" + nro_cta + ", descripcion_cta=" + descripcion_cta + ", tipo_cta=" + tipo_cta + ", nivel_cta=" + nivel_cta + ", cta_padre=" + cta_padre + ", grupo_cta=" + grupo_cta + ", fecha_creacion_cta=" + fecha_creacion_cta + ", hora_creacion_cta=" + hora_creacion_cta + ", debito_acum_cta=" + debito_acum_cta + ", credito_acum_cta=" + credito_acum_cta + ", balance_cta=" + balance_cta + '}';
+    }
 
     // Constructor
     public CatalogoCuenta(int nro_cta, String descripcion_cta, boolean tipo_cta, int nivel_cta, int cta_padre, int grupo_cta,
@@ -38,6 +43,10 @@ public class CatalogoCuenta {
         this.balance_cta = balance_cta;
     }
 
+    public CatalogoCuenta() {
+        
+    }
+
     public int getNro_cta() {
         return nro_cta;
     }
@@ -54,7 +63,7 @@ public class CatalogoCuenta {
         this.descripcion_cta = descripcion_cta;
     }
 
-    public boolean isTipo_cta() {
+    public Boolean isTipo_cta() {
         return tipo_cta;
     }
 

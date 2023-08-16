@@ -8,6 +8,7 @@ package view;
 import controller.CatalogoController;
 import java.util.List;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 import model.CatalogoCuenta;
@@ -25,8 +26,9 @@ public class consultas extends javax.swing.JPanel {
         initComponents();
         tb_load_catalogo();
     }
-    
+
     CatalogoController catalogoCtrl = new CatalogoController();
+
     public void tb_load_catalogo() {
         List<String[]> listaCatalogo = catalogoCtrl.list();
 
@@ -47,7 +49,7 @@ public class consultas extends javax.swing.JPanel {
             dt.addRow(catalogo);
         }
     }
-    
+
     public void limpiarCampos(JTextField[] campos) {
 
         for (JTextField campo : campos) {
@@ -55,6 +57,7 @@ public class consultas extends javax.swing.JPanel {
         }
 
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -67,10 +70,6 @@ public class consultas extends javax.swing.JPanel {
         btnTipoCuentaGroup = new javax.swing.ButtonGroup();
         jLabel6 = new javax.swing.JLabel();
         jTabbedPane1 = new javax.swing.JTabbedPane();
-        jPanel1 = new javax.swing.JPanel();
-        jPanel3 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
         jPanel2 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
@@ -97,54 +96,6 @@ public class consultas extends javax.swing.JPanel {
         jTabbedPane1.setBackground(new java.awt.Color(255, 255, 255));
         jTabbedPane1.setFont(new java.awt.Font("Sylfaen", 0, 14)); // NOI18N
 
-        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel3.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-
-        jLabel1.setFont(new java.awt.Font("Sylfaen", 1, 18)); // NOI18N
-        jLabel1.setText("Nombre: ");
-
-        jTextField1.setText("jTextField1");
-
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(799, Short.MAX_VALUE))
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(504, Short.MAX_VALUE))
-        );
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-
-        jTabbedPane1.addTab("Usuarios", jPanel1);
-
         jPanel4.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         jPanel5.setBackground(new java.awt.Color(255, 255, 255));
@@ -158,7 +109,7 @@ public class consultas extends javax.swing.JPanel {
 
         jLabel2.setFont(new java.awt.Font("Sylfaen", 1, 18)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel2.setText("Número de cuenta: ");
+        jLabel2.setText("Número de cuenta:");
 
         jLabel3.setFont(new java.awt.Font("Sylfaen", 1, 18)); // NOI18N
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
@@ -192,10 +143,15 @@ public class consultas extends javax.swing.JPanel {
 
         cmbGrupoCuenta.setFont(new java.awt.Font("Sylfaen", 0, 14)); // NOI18N
         cmbGrupoCuenta.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "---Seleccione una opción---", "Débito", "Crédito" }));
+        cmbGrupoCuenta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbGrupoCuentaActionPerformed(evt);
+            }
+        });
 
         btnBuscarCatalogo.setBackground(new java.awt.Color(255, 204, 204));
         btnBuscarCatalogo.setFont(new java.awt.Font("Sylfaen", 1, 18)); // NOI18N
-        btnBuscarCatalogo.setText("Guardar");
+        btnBuscarCatalogo.setText("Buscar");
         btnBuscarCatalogo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBuscarCatalogoActionPerformed(evt);
@@ -372,7 +328,82 @@ public class consultas extends javax.swing.JPanel {
 
     private void btnBuscarCatalogoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarCatalogoActionPerformed
         // TODO add your handling code here:
-        
+        //if every field is empty, then do not apply search
+        if (txtNroCuenta.getText().isEmpty() && txtDescripcionCuenta.getText().isEmpty() && txtNivelCuenta.getText().isEmpty() && cmbGrupoCuenta.getSelectedItem().equals("---Seleccione una opción---") && txtCuentaPadre.getText().isEmpty() && !(rdbGeneral.isSelected() || rdbDetalle.isSelected())) {
+            JOptionPane.showMessageDialog(null, "Todos los campos están vacíos", "Información", JOptionPane.INFORMATION_MESSAGE);
+            return;
+        }
+
+        // Crear un objeto CatalogoCuenta con los campos a filtrar
+        CatalogoCuenta filtro = new CatalogoCuenta();
+        if (!txtNroCuenta.getText().isEmpty()) {
+            filtro.setNro_cta(Integer.parseInt(txtNroCuenta.getText()));
+        }
+        if (!txtDescripcionCuenta.getText().isEmpty()) {
+            filtro.setDescripcion_cta(txtDescripcionCuenta.getText());
+        }
+        if (rdbGeneral.isSelected() || rdbDetalle.isSelected()) {
+            boolean tipo_cta = false;
+            if (rdbGeneral.isSelected()) {
+                tipo_cta = true;
+            }
+            filtro.setTipo_cta(tipo_cta);
+        }
+
+        if (!txtNivelCuenta.getText().isEmpty()) {
+            filtro.setNivel_cta(Integer.parseInt(txtNivelCuenta.getText()));
+        }
+
+        if (!txtCuentaPadre.getText().isEmpty()) {
+            filtro.setCta_padre(Integer.parseInt(txtCuentaPadre.getText()));
+        }
+
+        if (!cmbGrupoCuenta.getSelectedItem().equals("---Seleccione una opción---")) {
+            int grupo_cta = cmbGrupoCuenta.getSelectedItem().equals("Débito") ? 1 : 2;
+            filtro.setGrupo_cta(grupo_cta);
+        }
+
+        JOptionPane.showMessageDialog(null, filtro.toString(), "Cuentas Filtradas", JOptionPane.INFORMATION_MESSAGE);
+
+        List<CatalogoCuenta> catalogoCuentasFiltrado = catalogoCtrl.obtenerCatalogoCuentas(filtro);
+        /*
+        StringBuilder message = new StringBuilder();
+        message.append("Cuentas filtradas:\n\n");
+
+        for (CatalogoCuenta cuenta : catalogoCuentasFiltrado) {
+            message.append("Nro Cta: ").append(cuenta.getNro_cta()).append("\n");
+            message.append("Descripción Cta: ").append(cuenta.getDescripcion_cta()).append("\n");
+            message.append("Tipo Cta: ").append(cuenta.isTipo_cta()).append("\n");
+            message.append("Nivel Cta: ").append(cuenta.getNivel_cta()).append("\n");
+            message.append("Cta Padre: ").append(cuenta.getCta_padre()).append("\n");
+            message.append("Grupo Cta: ").append(cuenta.getGrupo_cta()).append("\n\n");
+        }
+
+        JOptionPane.showMessageDialog(null, message.toString(), "Cuentas Filtradas", JOptionPane.INFORMATION_MESSAGE);
+         */
+        DefaultTableModel dt = (DefaultTableModel) catalogo_table.getModel();
+        dt.setRowCount(0);
+
+        for (CatalogoCuenta catalogo : catalogoCuentasFiltrado) {
+            String tipoCta = catalogo.isTipo_cta() ? "General" : "Detalle";
+            String grupoCta = (catalogo.getGrupo_cta() == 1) ? "Débito" : "Crédito";
+
+            Object[] rowData = {
+                catalogo.getNro_cta(),
+                catalogo.getDescripcion_cta(),
+                tipoCta,
+                catalogo.getNivel_cta(),
+                catalogo.getCta_padre(),
+                grupoCta,
+                catalogo.getFecha_creacion_cta(),
+                catalogo.getHora_creacion_cta(),
+                catalogo.getDebito_acum_cta(),
+                catalogo.getCredito_acum_cta(),
+                catalogo.getBalance_cta()
+            };
+
+            dt.addRow(rowData);
+        }
     }//GEN-LAST:event_btnBuscarCatalogoActionPerformed
 
     private void btnLimpiarCatalogoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarCatalogoActionPerformed
@@ -381,6 +412,7 @@ public class consultas extends javax.swing.JPanel {
         cmbGrupoCuenta.setSelectedItem("---Seleccione una opción---");
         btnTipoCuentaGroup.clearSelection();
         limpiarCampos(campos);
+        tb_load_catalogo();
     }//GEN-LAST:event_btnLimpiarCatalogoActionPerformed
 
     private void txtNroCuentaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNroCuentaKeyPressed
@@ -403,6 +435,10 @@ public class consultas extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_txtCuentaPadreKeyPressed
 
+    private void cmbGrupoCuentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbGrupoCuentaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmbGrupoCuentaActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBuscarCatalogo;
@@ -410,7 +446,6 @@ public class consultas extends javax.swing.JPanel {
     private javax.swing.ButtonGroup btnTipoCuentaGroup;
     private javax.swing.JTable catalogo_table;
     private javax.swing.JComboBox<String> cmbGrupoCuenta;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -418,14 +453,11 @@ public class consultas extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JRadioButton rdbDetalle;
     private javax.swing.JRadioButton rdbGeneral;
     private javax.swing.JTextField txtCuentaPadre;

@@ -498,7 +498,7 @@ public class mantenimientos extends javax.swing.JPanel {
                 .addComponent(btnGuardarDocumento, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnLimpiarDocumento, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(98, Short.MAX_VALUE))
+                .addContainerGap(105, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(lblMensajeDocumento, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -664,6 +664,11 @@ public class mantenimientos extends javax.swing.JPanel {
 
         cmbGrupoCuenta.setFont(new java.awt.Font("Sylfaen", 0, 14)); // NOI18N
         cmbGrupoCuenta.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "---Seleccione una opción---", "Débito", "Crédito" }));
+        cmbGrupoCuenta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbGrupoCuentaActionPerformed(evt);
+            }
+        });
 
         btnGuardarCatalogo.setBackground(new java.awt.Color(255, 204, 204));
         btnGuardarCatalogo.setFont(new java.awt.Font("Sylfaen", 1, 18)); // NOI18N
@@ -1213,6 +1218,10 @@ public class mantenimientos extends javax.swing.JPanel {
     private void txtLoginFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtLoginFocusLost
         // TODO add your handling code here:
     }//GEN-LAST:event_txtLoginFocusLost
+
+    private void cmbGrupoCuentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbGrupoCuentaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmbGrupoCuentaActionPerformed
 
     public static boolean isEmpty(JTextField textField, JLabel errorLabel, String mensajeError) {
         String texto = textField.getText().trim();
