@@ -851,7 +851,7 @@ public class mantenimientos extends javax.swing.JPanel {
 
         boolean camposValidos = true;
         boolean modificar = UsuarioController.existeLogin(txtLogin.getText());
-
+        
         for (int i = 0; i < campos.length; i++) {
             if (!isEmpty(campos[i], errorLabels[i], "Este campo es requerido")) {
                 camposValidos = false;
@@ -889,6 +889,7 @@ public class mantenimientos extends javax.swing.JPanel {
                 //Limpiar todos los campos
                 limpiarCampos(campos);
                 txtEmail.setText("");
+                txtLogin.setEditable(true);
                 tb_load();
             } else {
                 JOptionPane.showMessageDialog(null, "Error al modificar el usuario", "Error", JOptionPane.ERROR_MESSAGE);
@@ -903,6 +904,8 @@ public class mantenimientos extends javax.swing.JPanel {
             tb_load();
             //Limpiar todos los campos
             limpiarCampos(campos);
+            txtEmail.setText("");
+            txtLogin.setEditable(true);
         } else {
             JOptionPane.showMessageDialog(null, "Error al guardar el usuario", "Error", JOptionPane.ERROR_MESSAGE);
         }
@@ -915,6 +918,8 @@ public class mantenimientos extends javax.swing.JPanel {
         String login = txtLogin.getText().trim();
         String password = txtContraseña.getText();
         if (UsuarioController.existeUsuario(login, password)) {
+
+            txtLogin.setEditable(false);
 
             Usuarios usuario = usuarioCtrl.buscarUsuario(login);
             if (usuario != null) {
@@ -1137,6 +1142,7 @@ public class mantenimientos extends javax.swing.JPanel {
         JTextField[] campos = {txtLogin, txtContraseña, txtNombre, txtApellidos, txtEmail};
         limpiarCampos(campos);
         lblMensajeUsuario.setText("");
+        txtLogin.setEditable(true);
 
     }//GEN-LAST:event_btnLimpiarUsuarioActionPerformed
 

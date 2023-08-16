@@ -363,24 +363,10 @@ public class consultas extends javax.swing.JPanel {
             filtro.setGrupo_cta(grupo_cta);
         }
 
-        JOptionPane.showMessageDialog(null, filtro.toString(), "Cuentas Filtradas", JOptionPane.INFORMATION_MESSAGE);
+        
 
         List<CatalogoCuenta> catalogoCuentasFiltrado = catalogoCtrl.obtenerCatalogoCuentas(filtro);
-        /*
-        StringBuilder message = new StringBuilder();
-        message.append("Cuentas filtradas:\n\n");
-
-        for (CatalogoCuenta cuenta : catalogoCuentasFiltrado) {
-            message.append("Nro Cta: ").append(cuenta.getNro_cta()).append("\n");
-            message.append("Descripción Cta: ").append(cuenta.getDescripcion_cta()).append("\n");
-            message.append("Tipo Cta: ").append(cuenta.isTipo_cta()).append("\n");
-            message.append("Nivel Cta: ").append(cuenta.getNivel_cta()).append("\n");
-            message.append("Cta Padre: ").append(cuenta.getCta_padre()).append("\n");
-            message.append("Grupo Cta: ").append(cuenta.getGrupo_cta()).append("\n\n");
-        }
-
-        JOptionPane.showMessageDialog(null, message.toString(), "Cuentas Filtradas", JOptionPane.INFORMATION_MESSAGE);
-         */
+        
         DefaultTableModel dt = (DefaultTableModel) catalogo_table.getModel();
         dt.setRowCount(0);
 
