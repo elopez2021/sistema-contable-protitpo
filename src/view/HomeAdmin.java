@@ -50,7 +50,7 @@ public class HomeAdmin extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        btn_mantenimiento.setBackground(new java.awt.Color(255, 204, 204));
+        btn_mantenimiento.setBackground(new java.awt.Color(0, 204, 255));
         home_bnt_grp.add(btn_mantenimiento);
         btn_mantenimiento.setFont(new java.awt.Font("Sylfaen", 1, 18)); // NOI18N
         btn_mantenimiento.setText("Mantenimientos");
@@ -60,7 +60,7 @@ public class HomeAdmin extends javax.swing.JFrame {
             }
         });
 
-        btn_movimientos.setBackground(new java.awt.Color(255, 204, 204));
+        btn_movimientos.setBackground(new java.awt.Color(0, 204, 255));
         home_bnt_grp.add(btn_movimientos);
         btn_movimientos.setFont(new java.awt.Font("Sylfaen", 1, 18)); // NOI18N
         btn_movimientos.setText("Movimientos");
@@ -70,7 +70,7 @@ public class HomeAdmin extends javax.swing.JFrame {
             }
         });
 
-        btn_procesos.setBackground(new java.awt.Color(255, 204, 204));
+        btn_procesos.setBackground(new java.awt.Color(0, 204, 255));
         home_bnt_grp.add(btn_procesos);
         btn_procesos.setFont(new java.awt.Font("Sylfaen", 1, 18)); // NOI18N
         btn_procesos.setText("Procesos");
@@ -80,7 +80,7 @@ public class HomeAdmin extends javax.swing.JFrame {
             }
         });
 
-        consultas_btn.setBackground(new java.awt.Color(255, 204, 204));
+        consultas_btn.setBackground(new java.awt.Color(0, 204, 255));
         home_bnt_grp.add(consultas_btn);
         consultas_btn.setFont(new java.awt.Font("Sylfaen", 1, 18)); // NOI18N
         consultas_btn.setText("Consultas");
@@ -90,7 +90,7 @@ public class HomeAdmin extends javax.swing.JFrame {
             }
         });
 
-        btnCerrar.setBackground(new java.awt.Color(255, 102, 102));
+        btnCerrar.setBackground(new java.awt.Color(255, 204, 204));
         home_bnt_grp.add(btnCerrar);
         btnCerrar.setFont(new java.awt.Font("Sylfaen", 1, 18)); // NOI18N
         btnCerrar.setText("Cerrar Sesión");
@@ -116,18 +116,18 @@ public class HomeAdmin extends javax.swing.JFrame {
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(43, 43, 43)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(20, Short.MAX_VALUE)
                 .addComponent(btn_mantenimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(43, 43, 43)
+                .addGap(54, 54, 54)
                 .addComponent(btn_movimientos, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(43, 43, 43)
+                .addGap(53, 53, 53)
                 .addComponent(btn_procesos, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(43, 43, 43)
+                .addGap(55, 55, 55)
                 .addComponent(consultas_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(43, 43, 43)
                 .addComponent(btnCerrar, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(44, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         panel_load.setBackground(new java.awt.Color(255, 255, 255));
@@ -137,7 +137,7 @@ public class HomeAdmin extends javax.swing.JFrame {
         panel_load.setLayout(panel_loadLayout);
         panel_loadLayout.setHorizontalGroup(
             panel_loadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1073, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
         panel_loadLayout.setVerticalGroup(
             panel_loadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -147,7 +147,7 @@ public class HomeAdmin extends javax.swing.JFrame {
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
         jPanel3.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        welcome_label.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        welcome_label.setFont(new java.awt.Font("Sylfaen", 2, 18)); // NOI18N
 
         jLabel1.setFont(new java.awt.Font("Sylfaen", 1, 24)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -159,7 +159,7 @@ public class HomeAdmin extends javax.swing.JFrame {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 922, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(welcome_label, javax.swing.GroupLayout.PREFERRED_SIZE, 278, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(29, 29, 29))
@@ -184,8 +184,7 @@ public class HomeAdmin extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(panel_load, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addContainerGap())
+                        .addComponent(panel_load, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -193,8 +192,8 @@ public class HomeAdmin extends javax.swing.JFrame {
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(panel_load, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(panel_load, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 

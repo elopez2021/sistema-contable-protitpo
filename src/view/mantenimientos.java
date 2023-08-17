@@ -180,6 +180,7 @@ public class mantenimientos extends javax.swing.JPanel {
         jTabbedPane1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jTabbedPane1.setFont(new java.awt.Font("Sylfaen", 0, 14)); // NOI18N
 
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setPreferredSize(new java.awt.Dimension(1000, 4));
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
@@ -255,7 +256,7 @@ public class mantenimientos extends javax.swing.JPanel {
         errEmail.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         errEmail.setForeground(java.awt.Color.red);
 
-        btnGuardarUsuario.setBackground(new java.awt.Color(255, 204, 204));
+        btnGuardarUsuario.setBackground(new java.awt.Color(204, 204, 255));
         btnGuardarUsuario.setFont(new java.awt.Font("Sylfaen", 1, 18)); // NOI18N
         btnGuardarUsuario.setText("Guardar");
         btnGuardarUsuario.addActionListener(new java.awt.event.ActionListener() {
@@ -280,7 +281,7 @@ public class mantenimientos extends javax.swing.JPanel {
             }
         });
 
-        btnLimpiarUsuario.setBackground(new java.awt.Color(255, 153, 153));
+        btnLimpiarUsuario.setBackground(new java.awt.Color(0, 204, 204));
         btnLimpiarUsuario.setFont(new java.awt.Font("Sylfaen", 1, 18)); // NOI18N
         btnLimpiarUsuario.setText("Limpiar");
         btnLimpiarUsuario.addActionListener(new java.awt.event.ActionListener() {
@@ -410,17 +411,17 @@ public class mantenimientos extends javax.swing.JPanel {
                 .addContainerGap()
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane7, javax.swing.GroupLayout.DEFAULT_SIZE, 601, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 540, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(22, 22, 22)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jScrollPane7))
-                .addContainerGap(80, Short.MAX_VALUE))
+                    .addComponent(jScrollPane7)
+                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Usuarios", jPanel1);
@@ -447,7 +448,7 @@ public class mantenimientos extends javax.swing.JPanel {
         jLabel8.setFont(new java.awt.Font("Sylfaen", 1, 18)); // NOI18N
         jLabel8.setText("Descripción:");
 
-        btnGuardarDocumento.setBackground(new java.awt.Color(255, 204, 204));
+        btnGuardarDocumento.setBackground(new java.awt.Color(204, 204, 255));
         btnGuardarDocumento.setFont(new java.awt.Font("Sylfaen", 1, 18)); // NOI18N
         btnGuardarDocumento.setText("Guardar");
         btnGuardarDocumento.addActionListener(new java.awt.event.ActionListener() {
@@ -462,7 +463,7 @@ public class mantenimientos extends javax.swing.JPanel {
         errDescripcion.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         errDescripcion.setForeground(java.awt.Color.red);
 
-        btnLimpiarDocumento.setBackground(new java.awt.Color(255, 153, 153));
+        btnLimpiarDocumento.setBackground(new java.awt.Color(0, 204, 204));
         btnLimpiarDocumento.setFont(new java.awt.Font("Sylfaen", 1, 18)); // NOI18N
         btnLimpiarDocumento.setText("Limpiar");
         btnLimpiarDocumento.addActionListener(new java.awt.event.ActionListener() {
@@ -556,7 +557,7 @@ public class mantenimientos extends javax.swing.JPanel {
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 564, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(16, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -670,7 +671,7 @@ public class mantenimientos extends javax.swing.JPanel {
             }
         });
 
-        btnGuardarCatalogo.setBackground(new java.awt.Color(255, 204, 204));
+        btnGuardarCatalogo.setBackground(new java.awt.Color(204, 204, 255));
         btnGuardarCatalogo.setFont(new java.awt.Font("Sylfaen", 1, 18)); // NOI18N
         btnGuardarCatalogo.setText("Guardar");
         btnGuardarCatalogo.addActionListener(new java.awt.event.ActionListener() {
@@ -679,7 +680,7 @@ public class mantenimientos extends javax.swing.JPanel {
             }
         });
 
-        btnLimpiarCatalogo.setBackground(new java.awt.Color(255, 153, 153));
+        btnLimpiarCatalogo.setBackground(new java.awt.Color(0, 204, 204));
         btnLimpiarCatalogo.setFont(new java.awt.Font("Sylfaen", 1, 18)); // NOI18N
         btnLimpiarCatalogo.setText("Limpiar");
         btnLimpiarCatalogo.addActionListener(new java.awt.event.ActionListener() {
@@ -817,7 +818,7 @@ public class mantenimientos extends javax.swing.JPanel {
                 .addContainerGap()
                 .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 571, Short.MAX_VALUE)
+                .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 502, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -827,7 +828,7 @@ public class mantenimientos extends javax.swing.JPanel {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(jScrollPane6)
                     .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(80, Short.MAX_VALUE))
+                .addContainerGap(29, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Catalogo de Cuentas", jPanel2);
@@ -836,11 +837,13 @@ public class mantenimientos extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1)
+            .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1008, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 586, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 

@@ -1,0 +1,8 @@
+Número de Documento: 
+Tipo de Documento: 
+Descripción del Documento: 
+Cuenta: 
+Débito: 
+Descripción de la Cuenta: 
+Crédito: 
+Comentario: 
