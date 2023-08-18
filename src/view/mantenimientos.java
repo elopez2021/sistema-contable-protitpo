@@ -4,6 +4,7 @@ package view;
 import controller.CatalogoController;
 import controller.DocumentosController;
 import controller.UsuarioController;
+import java.awt.event.KeyEvent;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.Date;
@@ -193,6 +194,9 @@ public class mantenimientos extends javax.swing.JPanel {
             }
         });
         txtLogin.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtLoginKeyPressed(evt);
+            }
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtLoginKeyReleased(evt);
             }
@@ -215,12 +219,18 @@ public class mantenimientos extends javax.swing.JPanel {
         jLabel5.setText("Email:");
 
         txtNombre.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtNombreKeyPressed(evt);
+            }
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtNombreKeyTyped(evt);
             }
         });
 
         txtApellidos.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtApellidosKeyPressed(evt);
+            }
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtApellidosKeyTyped(evt);
             }
@@ -228,6 +238,11 @@ public class mantenimientos extends javax.swing.JPanel {
 
         cmbAcceso.setFont(new java.awt.Font("Sylfaen", 0, 14)); // NOI18N
         cmbAcceso.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Normal", "Administrador" }));
+        cmbAcceso.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                cmbAccesoKeyPressed(evt);
+            }
+        });
 
         errLogin.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         errLogin.setForeground(java.awt.Color.red);
@@ -268,8 +283,17 @@ public class mantenimientos extends javax.swing.JPanel {
             }
         });
         txtContraseña.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtContraseñaKeyPressed(evt);
+            }
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtContraseñaKeyReleased(evt);
+            }
+        });
+
+        txtEmail.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtEmailActionPerformed(evt);
             }
         });
 
@@ -600,6 +624,11 @@ public class mantenimientos extends javax.swing.JPanel {
                 txtDescripcionCuentaActionPerformed(evt);
             }
         });
+        txtDescripcionCuenta.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtDescripcionCuentaKeyPressed(evt);
+            }
+        });
 
         errDescripcionCuenta.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         errDescripcionCuenta.setForeground(java.awt.Color.red);
@@ -620,6 +649,11 @@ public class mantenimientos extends javax.swing.JPanel {
                 txtNivelCuentaActionPerformed(evt);
             }
         });
+        txtNivelCuenta.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtNivelCuentaKeyPressed(evt);
+            }
+        });
 
         errNivelCuenta.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         errNivelCuenta.setForeground(java.awt.Color.red);
@@ -631,6 +665,11 @@ public class mantenimientos extends javax.swing.JPanel {
         txtCuentaPadre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtCuentaPadreActionPerformed(evt);
+            }
+        });
+        txtCuentaPadre.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtCuentaPadreKeyPressed(evt);
             }
         });
 
@@ -1196,6 +1235,10 @@ public class mantenimientos extends javax.swing.JPanel {
         } else {
             txtCodigo.setEditable(true);
         }
+         if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+            txtDescripcion.requestFocus();
+        }
+        
     }//GEN-LAST:event_txtCodigoKeyPressed
 
     private void txtNroCuentaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNroCuentaKeyPressed
@@ -1205,6 +1248,9 @@ public class mantenimientos extends javax.swing.JPanel {
             txtNroCuenta.setEditable(false);
         } else {
             txtNroCuenta.setEditable(true);
+        }
+         if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+            txtDescripcionCuenta.requestFocus();
         }
     }//GEN-LAST:event_txtNroCuentaKeyPressed
 
@@ -1223,6 +1269,67 @@ public class mantenimientos extends javax.swing.JPanel {
     private void cmbGrupoCuentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbGrupoCuentaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cmbGrupoCuentaActionPerformed
+
+    private void txtContraseñaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtContraseñaKeyPressed
+        // TODO add your handling code here:
+         if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+            cmbAcceso.requestFocus();
+        }
+
+    }//GEN-LAST:event_txtContraseñaKeyPressed
+
+    private void cmbAccesoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cmbAccesoKeyPressed
+        // TODO add your handling code here:
+         if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+            txtNombre.requestFocus();
+        }
+
+    }//GEN-LAST:event_cmbAccesoKeyPressed
+
+    private void txtLoginKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtLoginKeyPressed
+         if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+            txtContraseña.requestFocus();
+        }
+    }//GEN-LAST:event_txtLoginKeyPressed
+
+    private void txtNombreKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombreKeyPressed
+        // TODO add your handling code here:
+         if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+            txtApellidos.requestFocus();
+        }
+    }//GEN-LAST:event_txtNombreKeyPressed
+
+    private void txtApellidosKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtApellidosKeyPressed
+        // TODO add your handling code here:
+         if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+            txtEmail.requestFocus();
+        }
+    }//GEN-LAST:event_txtApellidosKeyPressed
+
+    private void txtEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEmailActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtEmailActionPerformed
+
+    private void txtDescripcionCuentaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDescripcionCuentaKeyPressed
+        // TODO add your handling code here:
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+            rdbGeneral.requestFocus();
+        }
+    }//GEN-LAST:event_txtDescripcionCuentaKeyPressed
+
+    private void txtNivelCuentaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNivelCuentaKeyPressed
+        // TODO add your handling code here:
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+            txtCuentaPadre.requestFocus();
+        }
+    }//GEN-LAST:event_txtNivelCuentaKeyPressed
+
+    private void txtCuentaPadreKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCuentaPadreKeyPressed
+        // TODO add your handling code here:
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+            cmbGrupoCuenta.requestFocus();
+        }
+    }//GEN-LAST:event_txtCuentaPadreKeyPressed
 
     public static boolean isEmpty(JTextField textField, JLabel errorLabel, String mensajeError) {
         String texto = textField.getText().trim();
