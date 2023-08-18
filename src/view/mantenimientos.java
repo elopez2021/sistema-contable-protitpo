@@ -218,6 +218,11 @@ public class mantenimientos extends javax.swing.JPanel {
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel5.setText("Email:");
 
+        txtNombre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNombreActionPerformed(evt);
+            }
+        });
         txtNombre.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtNombreKeyPressed(evt);
@@ -525,8 +530,8 @@ public class mantenimientos extends javax.swing.JPanel {
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addGap(10, 10, 10)
-                .addComponent(lblMensajeDocumento, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(lblMensajeDocumento, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(111, 111, 111)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
                     .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -542,7 +547,7 @@ public class mantenimientos extends javax.swing.JPanel {
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnGuardarDocumento, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnLimpiarDocumento, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(134, Short.MAX_VALUE))
         );
 
         documento_table.setModel(new javax.swing.table.DefaultTableModel(
@@ -628,6 +633,9 @@ public class mantenimientos extends javax.swing.JPanel {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtDescripcionCuentaKeyPressed(evt);
             }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtDescripcionCuentaKeyTyped(evt);
+            }
         });
 
         errDescripcionCuenta.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
@@ -689,6 +697,11 @@ public class mantenimientos extends javax.swing.JPanel {
         btnCuentaGroup.add(rdbGeneral);
         rdbGeneral.setFont(new java.awt.Font("Sylfaen", 0, 14)); // NOI18N
         rdbGeneral.setText("General");
+        rdbGeneral.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rdbGeneralActionPerformed(evt);
+            }
+        });
 
         btnCuentaGroup.add(rdbDetalle);
         rdbDetalle.setFont(new java.awt.Font("Sylfaen", 0, 14)); // NOI18N
@@ -923,6 +936,7 @@ public class mantenimientos extends javax.swing.JPanel {
                 //Limpiar todos los campos
                 limpiarCampos(campos);
                 txtEmail.setText("");
+                lblMensajeUsuario.setText("");
                 txtLogin.setEditable(true);
                 tb_load();
             } else {
@@ -940,6 +954,7 @@ public class mantenimientos extends javax.swing.JPanel {
             limpiarCampos(campos);
             txtEmail.setText("");
             txtLogin.setEditable(true);
+            lblMensajeUsuario.setText("");
         } else {
             JOptionPane.showMessageDialog(null, "Error al guardar el usuario", "Error", JOptionPane.ERROR_MESSAGE);
         }
@@ -1024,6 +1039,7 @@ public class mantenimientos extends javax.swing.JPanel {
                 //Limpiar todos los campos
                 limpiarCampos(campos);
                 tb_load_documento();
+                lblMensajeDocumento.setText("");
             } else {
                 JOptionPane.showMessageDialog(null, "Error al modificar el tipo de documento", "Error", JOptionPane.ERROR_MESSAGE);
             }
@@ -1033,6 +1049,7 @@ public class mantenimientos extends javax.swing.JPanel {
                 JOptionPane.showMessageDialog(null, "Los datos fueron guardados correctamente.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
                 limpiarCampos(campos);
                 tb_load_documento();
+                lblMensajeDocumento.setText("");
             } else {
                 JOptionPane.showMessageDialog(null, "Error al guardar el documento", "Error", JOptionPane.ERROR_MESSAGE);
             }
@@ -1089,6 +1106,9 @@ public class mantenimientos extends javax.swing.JPanel {
         }
 
         for (int i = 0; i < campos.length; i++) {
+            if(campos[i] == txtCuentaPadre){
+                continue;
+            }
             if (!isEmpty(campos[i], errorLabels[i], "Este campo es requerido")) {
                 camposValidos = false;
             }
@@ -1145,6 +1165,7 @@ public class mantenimientos extends javax.swing.JPanel {
             if (catalogoCtrl.save(cuenta)) {
                 JOptionPane.showMessageDialog(null, "Los datos fueron guardados correctamente.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
                 tb_load_catalogo();
+                lblMensajeCatalogo.setText("");
                 errGrupoCuenta.setText("");
                 limpiarCampos(campos);
             } else {
@@ -1216,14 +1237,27 @@ public class mantenimientos extends javax.swing.JPanel {
     }//GEN-LAST:event_txtNroCuentaFocusLost
 
     private void txtNombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombreKeyTyped
-        if (!(Character.isLetter(evt.getKeyChar()))) {
-            evt.consume();
+        char c = evt.getKeyChar();
+        if (Character.isLetter(c) || Character.isWhitespace(c) || Character.isAlphabetic(c)) {
+            txtNombre.setEditable(true);
+        } else {
+            txtNombre.setEditable(false);
         }
+         if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+            txtApellidos.requestFocus();
+        }
+        
     }//GEN-LAST:event_txtNombreKeyTyped
 
     private void txtApellidosKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtApellidosKeyTyped
-        if (!(Character.isLetter(evt.getKeyChar()))) {
-            evt.consume();
+        char c = evt.getKeyChar();
+        if (Character.isLetter(c) || Character.isWhitespace(c) || Character.isAlphabetic(c)) {
+            txtApellidos.setEditable(true);
+        } else {
+            txtApellidos.setEditable(false);
+        }
+         if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+            txtEmail.requestFocus();
         }
     }//GEN-LAST:event_txtApellidosKeyTyped
 
@@ -1330,6 +1364,27 @@ public class mantenimientos extends javax.swing.JPanel {
             cmbGrupoCuenta.requestFocus();
         }
     }//GEN-LAST:event_txtCuentaPadreKeyPressed
+
+    private void txtNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNombreActionPerformed
+
+    private void txtDescripcionCuentaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDescripcionCuentaKeyTyped
+        // TODO add your handling code here:
+        char c = evt.getKeyChar();
+        if (Character.isLetter(c) || Character.isWhitespace(c) || Character.isAlphabetic(c)) {
+            txtDescripcion.setEditable(true);
+        } else {
+            txtDescripcion.setEditable(false);
+        }
+         if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+            txtNivelCuenta.requestFocus();
+        }
+    }//GEN-LAST:event_txtDescripcionCuentaKeyTyped
+
+    private void rdbGeneralActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdbGeneralActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_rdbGeneralActionPerformed
 
     public static boolean isEmpty(JTextField textField, JLabel errorLabel, String mensajeError) {
         String texto = textField.getText().trim();

@@ -90,6 +90,11 @@ public class consultas extends javax.swing.JPanel {
         txtNivelCuenta = new javax.swing.JTextField();
         jScrollPane5 = new javax.swing.JScrollPane();
         catalogo_table = new javax.swing.JTable();
+        jPanel1 = new javax.swing.JPanel();
+        jPanel3 = new javax.swing.JPanel();
+        jPanel6 = new javax.swing.JPanel();
+        jPanel7 = new javax.swing.JPanel();
+        jPanel8 = new javax.swing.JPanel();
 
         jLabel6.setText("jLabel6");
 
@@ -325,6 +330,71 @@ public class consultas extends javax.swing.JPanel {
 
         jTabbedPane1.addTab("Catalogo de Cuentas", jPanel2);
 
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1160, Short.MAX_VALUE)
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 583, Short.MAX_VALUE)
+        );
+
+        jTabbedPane1.addTab("Transacciones", jPanel1);
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1160, Short.MAX_VALUE)
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 583, Short.MAX_VALUE)
+        );
+
+        jTabbedPane1.addTab("Balanza General", jPanel3);
+
+        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
+        jPanel6.setLayout(jPanel6Layout);
+        jPanel6Layout.setHorizontalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1160, Short.MAX_VALUE)
+        );
+        jPanel6Layout.setVerticalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 583, Short.MAX_VALUE)
+        );
+
+        jTabbedPane1.addTab("Balanza de comprobacion", jPanel6);
+
+        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
+        jPanel7.setLayout(jPanel7Layout);
+        jPanel7Layout.setHorizontalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1160, Short.MAX_VALUE)
+        );
+        jPanel7Layout.setVerticalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 583, Short.MAX_VALUE)
+        );
+
+        jTabbedPane1.addTab("Resumen de gastos generales", jPanel7);
+
+        javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
+        jPanel8.setLayout(jPanel8Layout);
+        jPanel8Layout.setHorizontalGroup(
+            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1160, Short.MAX_VALUE)
+        );
+        jPanel8Layout.setVerticalGroup(
+            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 583, Short.MAX_VALUE)
+        );
+
+        jTabbedPane1.addTab("Estado de Ganancias y perdidas", jPanel8);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -336,6 +406,19 @@ public class consultas extends javax.swing.JPanel {
             .addComponent(jTabbedPane1)
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void txtNivelCuentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNivelCuentaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNivelCuentaActionPerformed
+
+    private void btnLimpiarCatalogoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarCatalogoActionPerformed
+        // TODO add your handling code here:
+        JTextField[] campos = {txtNroCuenta, txtDescripcionCuenta, txtCuentaPadre, txtNivelCuenta};
+        cmbGrupoCuenta.setSelectedItem("---Seleccione una opción---");
+        btnTipoCuentaGroup.clearSelection();
+        limpiarCampos(campos);
+        tb_load_catalogo();
+    }//GEN-LAST:event_btnLimpiarCatalogoActionPerformed
 
     private void btnBuscarCatalogoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarCatalogoActionPerformed
         // TODO add your handling code here:
@@ -374,10 +457,8 @@ public class consultas extends javax.swing.JPanel {
             filtro.setGrupo_cta(grupo_cta);
         }
 
-        
-
         List<CatalogoCuenta> catalogoCuentasFiltrado = catalogoCtrl.obtenerCatalogoCuentas(filtro);
-        
+
         DefaultTableModel dt = (DefaultTableModel) catalogo_table.getModel();
         dt.setRowCount(0);
 
@@ -403,24 +484,9 @@ public class consultas extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_btnBuscarCatalogoActionPerformed
 
-    private void btnLimpiarCatalogoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarCatalogoActionPerformed
+    private void cmbGrupoCuentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbGrupoCuentaActionPerformed
         // TODO add your handling code here:
-        JTextField[] campos = {txtNroCuenta, txtDescripcionCuenta, txtCuentaPadre, txtNivelCuenta};
-        cmbGrupoCuenta.setSelectedItem("---Seleccione una opción---");
-        btnTipoCuentaGroup.clearSelection();
-        limpiarCampos(campos);
-        tb_load_catalogo();
-    }//GEN-LAST:event_btnLimpiarCatalogoActionPerformed
-
-    private void txtNroCuentaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNroCuentaKeyPressed
-        // TODO add your handling code here:
-        char c = evt.getKeyChar();
-        if (Character.isLetter(c) || Character.isWhitespace(c)) {
-            txtNroCuenta.setEditable(false);
-        } else {
-            txtNroCuenta.setEditable(true);
-        }
-    }//GEN-LAST:event_txtNroCuentaKeyPressed
+    }//GEN-LAST:event_cmbGrupoCuentaActionPerformed
 
     private void txtCuentaPadreKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCuentaPadreKeyPressed
         // TODO add your handling code here:
@@ -432,13 +498,15 @@ public class consultas extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_txtCuentaPadreKeyPressed
 
-    private void cmbGrupoCuentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbGrupoCuentaActionPerformed
+    private void txtNroCuentaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNroCuentaKeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_cmbGrupoCuentaActionPerformed
-
-    private void txtNivelCuentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNivelCuentaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtNivelCuentaActionPerformed
+        char c = evt.getKeyChar();
+        if (Character.isLetter(c) || Character.isWhitespace(c)) {
+            txtNroCuenta.setEditable(false);
+        } else {
+            txtNroCuenta.setEditable(true);
+        }
+    }//GEN-LAST:event_txtNroCuentaKeyPressed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -454,9 +522,14 @@ public class consultas extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
+    private javax.swing.JPanel jPanel7;
+    private javax.swing.JPanel jPanel8;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JRadioButton rdbDetalle;

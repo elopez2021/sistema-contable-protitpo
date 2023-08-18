@@ -22,11 +22,12 @@ public class Transacciones extends javax.swing.JPanel {
      */
     public Transacciones() {
         initComponents();
-    tabla_trans.setModel(new DefaultTableModel(
-        new Object[][]{},
-        new String[]{"Secuencia", "Cuenta", "Descripción de la cuenta", "Débito", "Crédito", "Comentario"}
-    ));
+        tabla_trans.setModel(new DefaultTableModel(
+                new Object[][]{},
+                new String[]{"Secuencia", "Cuenta", "Descripción de la cuenta", "Débito", "Crédito", "Comentario"}
+        ));
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -545,21 +546,21 @@ public class Transacciones extends javax.swing.JPanel {
     }//GEN-LAST:event_tabla_transaccionesComponentAdded
 
     private void txt_descripcion_cuentaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_descripcion_cuentaKeyPressed
-        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             txt_credito.requestFocus();
         }
     }//GEN-LAST:event_txt_descripcion_cuentaKeyPressed
 
     private void txt_cuentaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_cuentaKeyPressed
-        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             txt_debito.requestFocus();
         }
     }//GEN-LAST:event_txt_cuentaKeyPressed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 
-        if (txt_cuenta.getText().isEmpty() || txt_descripcion_cuenta.getText().isEmpty() ||
-            txt_debito.getText().isEmpty() || txt_credito.getText().isEmpty()) {
+        if (txt_cuenta.getText().isEmpty() || txt_descripcion_cuenta.getText().isEmpty()
+                || txt_debito.getText().isEmpty() || txt_credito.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Error debe ingresar los datos solicitados", "Error", JOptionPane.ERROR_MESSAGE);
         } else {
             String data[] = {
@@ -595,7 +596,7 @@ public class Transacciones extends javax.swing.JPanel {
     }//GEN-LAST:event_txt_debitoKeyTyped
 
     private void txt_debitoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_debitoKeyPressed
-        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             txt_descripcion_cuenta.requestFocus();
         }
     }//GEN-LAST:event_txt_debitoKeyPressed
@@ -620,7 +621,7 @@ public class Transacciones extends javax.swing.JPanel {
     }//GEN-LAST:event_txt_creditoKeyTyped
 
     private void txt_creditoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_creditoKeyPressed
-        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             txt_comentario.requestFocus();
         }
     }//GEN-LAST:event_txt_creditoKeyPressed
@@ -653,23 +654,23 @@ public class Transacciones extends javax.swing.JPanel {
     }//GEN-LAST:event_txt_num_docActionPerformed
 
     private void txt_descripccion_docKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_descripccion_docKeyPressed
-        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             txt_cuenta.requestFocus();
         }
     }//GEN-LAST:event_txt_descripccion_docKeyPressed
 
     private void combo_tipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_combo_tipoActionPerformed
         // TODO add your handling code here:
+
     }//GEN-LAST:event_combo_tipoActionPerformed
 
     private void combo_tipoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_combo_tipoKeyPressed
         // TODO add your handling code here:
-        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             txt_descripccion_doc.requestFocus();
         }
     }//GEN-LAST:event_combo_tipoKeyPressed
 
-    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Botton_limpiar;
