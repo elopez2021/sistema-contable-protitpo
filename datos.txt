@@ -1,5 +1,5 @@
 Número de Documento: 
-Tipo de Documento: 
+Tipo de Documento: null
 Descripción del Documento: 
 Cuenta: 
 Débito: 
