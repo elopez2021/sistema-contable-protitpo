@@ -117,7 +117,6 @@ public class DocumentosController implements Controller {
         return false;
     }
 
-
     public boolean delete(Object data) {
 
         if (data instanceof Documentos) {
@@ -188,6 +187,23 @@ public class DocumentosController implements Controller {
             JOptionPane.showMessageDialog(null, "Error al leer el archivo documentos.txt", "Error", JOptionPane.ERROR_MESSAGE);
         }
         return null; // Usuario no encontrado
+    }
+
+    public List<String> obtenerDescripcionesTiposDocumentos() {
+        List<String> descripciones = new ArrayList<>();
+
+        try (BufferedReader reader = new BufferedReader(new FileReader(RUTA_ARCHIVO))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                String[] campos = line.split(";");
+                descripciones.add(campos[1]);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Error al leer el archivo documentos.txt", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+
+        return descripciones;
     }
 
 }

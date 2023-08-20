@@ -231,5 +231,60 @@ public class CatalogoController implements Controller {
         }
         return false;
     }
+    
+    public String[] obtenerNumerosCuentasDetalles() {
+        List<Integer> numerosCuentasGenerales = new ArrayList<>();
+
+        try (BufferedReader reader = new BufferedReader(new FileReader(RUTA_ARCHIVO))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                String[] campos = line.split(";");
+                CatalogoCuenta cuenta = new CatalogoCuenta();
+                cuenta.setNro_cta(Integer.parseInt(campos[0]));
+                cuenta.setDescripcion_cta(campos[1]);
+                cuenta.setTipo_cta(Boolean.parseBoolean(campos[2]));
+                cuenta.setNivel_cta(Integer.parseInt(campos[3]));
+                cuenta.setCta_padre(Integer.parseInt(campos[4]));
+                cuenta.setGrupo_cta(Integer.parseInt(campos[5]));
+                cuenta.setFecha_creacion_cta(LocalDate.parse(campos[6]));
+                cuenta.setHora_creacion_cta(LocalTime.parse(campos[7]));
+                cuenta.setDebito_acum_cta(Double.parseDouble(campos[8]));
+                cuenta.setCredito_acum_cta(Double.parseDouble(campos[9]));
+                cuenta.setBalance_cta(Double.parseDouble(campos[10]));
+
+                if (!cuenta.isTipo_cta()) { // Si es cuenta a detalle
+                    numerosCuentasGenerales.add(cuenta.getNro_cta());
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Error al leer el archivo cuentas.txt", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+
+        String[] resultados = new String[numerosCuentasGenerales.size()];
+        
+        for (int i = 0; i < numerosCuentasGenerales.size(); i++) {
+            resultados[i] = String.valueOf(numerosCuentasGenerales.get(i));
+        }
+
+        return resultados;
+    }
+    
+    public String encontrarDescripcionCuentaDetalle(int numeroCuenta) {
+        try (BufferedReader reader = new BufferedReader(new FileReader(RUTA_ARCHIVO))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                String[] campos = line.split(";");
+                String descripcionCuenta = campos[1];
+                if(String.valueOf(numeroCuenta).equals(campos[0]) && campos[2].equals("false")){
+                    return descripcionCuenta;
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+            // Manejo de errores aquí
+        }
+        return null;
+    }
 
 }
