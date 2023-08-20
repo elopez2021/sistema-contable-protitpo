@@ -31,23 +31,23 @@ public class Transacciones extends javax.swing.JPanel {
 
     public Transacciones() {
         initComponents();
-        
+
         tabla_trans.setModel(new DefaultTableModel(
                 new Object[][]{},
                 new String[]{"Secuencia", "Cuenta", "Descripción de la cuenta", "Débito", "Crédito", "Comentario"}
         ));
-        
+
         tabla_trans.setComponentPopupMenu(ppMenuTabla);
 
         for (String descripcion : descripcionesTiposDocumentos) {
             cmbDocumento.addItem(descripcion);
         }
-        
+
     }
 
     public void inicializarMenu() {
         JMenuItem edit = new JMenuItem("Editar");
-        JMenuItem delete = new JMenuItem("Eliminar"); 
+        JMenuItem delete = new JMenuItem("Eliminar");
     }
 
     /**
@@ -147,6 +147,11 @@ public class Transacciones extends javax.swing.JPanel {
         jScrollPane2.setViewportView(jTable1);
 
         editarItem.setText("Editar");
+        editarItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                editarItemActionPerformed(evt);
+            }
+        });
         ppMenuTabla.add(editarItem);
 
         deleteItem.setText("Eliminar");
@@ -585,7 +590,7 @@ public class Transacciones extends javax.swing.JPanel {
                 txt_descripcion_cuenta.getText(),
                 txt_debito.getText(),
                 txt_credito.getText(),
-                txt_comentario.getText() 
+                txt_comentario.getText()
             };
 
             DefaultTableModel tabla = (DefaultTableModel) tabla_trans.getModel();
@@ -714,6 +719,28 @@ public class Transacciones extends javax.swing.JPanel {
         }
 
     }//GEN-LAST:event_txt_cuentaFocusLost
+
+    private void editarItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editarItemActionPerformed
+        // TODO add your handling code here:
+
+        int r = tabla_trans.getSelectedRow();
+
+        String secuencia = tabla_trans.getValueAt(r, 0).toString();
+        String cuenta = tabla_trans.getValueAt(r, 1).toString();
+        String descripcion = tabla_trans.getValueAt(r, 2).toString();
+        String debito = tabla_trans.getValueAt(r, 3).toString();
+        String credito = tabla_trans.getValueAt(r, 4).toString();
+        String comentario = tabla_trans.getValueAt(r, 5).toString();
+
+        txt_cuenta.setText(cuenta);
+        txt_descripcion_cuenta.setText(descripcion);
+        txt_debito.setText(debito);
+        txt_credito.setText(credito);
+        txt_comentario.setText(comentario);
+
+        DefaultTableModel model = (DefaultTableModel) tabla_trans.getModel();
+        model.removeRow(r);  // Elimina la fila del modelo
+    }//GEN-LAST:event_editarItemActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Botton_limpiar;
