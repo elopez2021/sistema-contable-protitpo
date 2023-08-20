@@ -611,15 +611,17 @@ public class Transacciones extends javax.swing.JPanel {
 
         CabeceraTransaccion cabecera = new CabeceraTransaccion(txt_num_doc.getText(), LocalDate.now(), tipoDocumento, txt_descripccion_doc.getText(), user, Double.parseDouble(txt_monto_transaccion.getText()), false);
         //guardar la cabecera transaccion
-        
+        DefaultTableModel model = (DefaultTableModel) tabla_trans.getModel();
+        int rowCount = model.getRowCount();
         if(cabeceraCtrl.save(cabecera)){
             JOptionPane.showMessageDialog(null, "Los datos fueron guardados correctamente.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+            txt_monto_transaccion.setText("");
+            model.setRowCount(0);
         }else {
             JOptionPane.showMessageDialog(null, "Error al guardar", "Error", JOptionPane.ERROR_MESSAGE);
         }
         // Obtenemos los datos de la tabla Transacciones
-        DefaultTableModel model = (DefaultTableModel) tabla_trans.getModel();
-        int rowCount = model.getRowCount();
+        
 
         for (int i = 0; i < rowCount; i++) {
             Integer secuenciaDoc = Integer.parseInt(model.getValueAt(i, 0).toString());
