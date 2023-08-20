@@ -155,6 +155,11 @@ public class Transacciones extends javax.swing.JPanel {
         ppMenuTabla.add(editarItem);
 
         deleteItem.setText("Eliminar");
+        deleteItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deleteItemActionPerformed(evt);
+            }
+        });
         ppMenuTabla.add(deleteItem);
 
         panel_transacciones.setBackground(new java.awt.Color(255, 255, 255));
@@ -724,6 +729,9 @@ public class Transacciones extends javax.swing.JPanel {
         // TODO add your handling code here:
 
         int r = tabla_trans.getSelectedRow();
+        if(r == -1){
+            return;
+        }
 
         String secuencia = tabla_trans.getValueAt(r, 0).toString();
         String cuenta = tabla_trans.getValueAt(r, 1).toString();
@@ -741,6 +749,16 @@ public class Transacciones extends javax.swing.JPanel {
         DefaultTableModel model = (DefaultTableModel) tabla_trans.getModel();
         model.removeRow(r);  // Elimina la fila del modelo
     }//GEN-LAST:event_editarItemActionPerformed
+
+    private void deleteItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteItemActionPerformed
+        // TODO add your handling code here:
+        int r = tabla_trans.getSelectedRow();
+        if(r == -1){
+            return;
+        }
+        DefaultTableModel model = (DefaultTableModel) tabla_trans.getModel();
+        model.removeRow(r);  // Elimina la fila del modelo
+    }//GEN-LAST:event_deleteItemActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Botton_limpiar;
