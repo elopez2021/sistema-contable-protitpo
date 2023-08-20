@@ -1,6 +1,4 @@
-
 package view;
-
 
 public class HomeAdmin extends javax.swing.JFrame {
 
@@ -8,26 +6,25 @@ public class HomeAdmin extends javax.swing.JFrame {
 
     public String user;
     public String acceso;
-    
+
     public HomeAdmin(String user, String acceso) {
         initComponents();
-        this.setExtendedState(HomeAdmin.MAXIMIZED_BOTH);    
+        this.setExtendedState(HomeAdmin.MAXIMIZED_BOTH);
         this.user = user;
         this.acceso = acceso;
-        welcome_label.setText("Bienvenido, "+user + " :)");
-        
-        if(!acceso.equals("admin")){
+        welcome_label.setText("Bienvenido, " + user + " :)");
+
+        if (!acceso.equals("admin")) {
             btn_mantenimiento.setEnabled(false);
             btn_procesos.setEnabled(false);
         }
     }
-    
-    public HomeAdmin(){
+
+    public HomeAdmin() {
         initComponents();
-        this.setExtendedState(HomeAdmin.MAXIMIZED_BOTH);    
+        this.setExtendedState(HomeAdmin.MAXIMIZED_BOTH);
     }
-    
-   
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -202,9 +199,9 @@ public class HomeAdmin extends javax.swing.JFrame {
 
     private void btn_mantenimientoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_mantenimientoActionPerformed
         // TODO add your handling code here:
-        
+
         mantenimientos user = new mantenimientos();
-        jpload.jPanelLoader(panel_load,user);
+        jpload.jPanelLoader(panel_load, user);
     }//GEN-LAST:event_btn_mantenimientoActionPerformed
 
     private void btnCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarActionPerformed
@@ -216,17 +213,17 @@ public class HomeAdmin extends javax.swing.JFrame {
 
     private void btn_movimientosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_movimientosActionPerformed
         Transacciones user = new Transacciones();
-        jpload.jPanelLoader(panel_load,user);
+        jpload.jPanelLoader(panel_load, user);
     }//GEN-LAST:event_btn_movimientosActionPerformed
 
     private void consultas_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultas_btnActionPerformed
         consultas user = new consultas();
-        jpload.jPanelLoader(panel_load,user);
+        jpload.jPanelLoader(panel_load, user);
     }//GEN-LAST:event_consultas_btnActionPerformed
 
     private void btn_procesosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_procesosActionPerformed
         Procesos user = new Procesos();
-        jpload.jPanelLoader(panel_load,user);
+        jpload.jPanelLoader(panel_load, user);
     }//GEN-LAST:event_btn_procesosActionPerformed
 
     /**
