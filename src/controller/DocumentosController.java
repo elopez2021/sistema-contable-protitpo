@@ -206,4 +206,20 @@ public class DocumentosController implements Controller {
         return descripciones;
     }
 
+    public int buscarIdDocumento(String descripcion) {
+        try (BufferedReader reader = new BufferedReader(new FileReader(RUTA_ARCHIVO))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                String[] campos = line.split(";");
+                if (campos[1].equals(descripcion)) {
+                    return Integer.parseInt(campos[0]);
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Error al leer el archivo documentos.txt", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+        return -1; // Documento no encontrado
+    }
+
 }

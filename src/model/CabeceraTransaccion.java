@@ -1,14 +1,11 @@
 package model;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 public class CabeceraTransaccion {
-
-    public static boolean contains(String numeroIngresado) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
     private String nroDocu;
-    private String fechaDocu;
+    private LocalDate fechaDocu;
     private int tipoDocu;
     private String descripcionDocu;
     private String hechoPor;
@@ -16,7 +13,18 @@ public class CabeceraTransaccion {
     private Date fechaActualizacion;
     private boolean statusActualizacion;
 
-    public CabeceraTransaccion(String nroDocu, String fechaDocu, int tipoDocu, String descripcionDocu, String hechoPor, double montoTransaccion, Date fechaActualizacion, boolean statusActualizacion) {
+    public CabeceraTransaccion(String nroDocu, LocalDate fechaDocu, int tipoDocu, String descripcionDocu, String hechoPor, double montoTransaccion, boolean statusActualizacion) {
+        this.nroDocu = nroDocu;
+        this.fechaDocu = fechaDocu;
+        this.tipoDocu = tipoDocu;
+        this.descripcionDocu = descripcionDocu;
+        this.hechoPor = hechoPor;
+        this.montoTransaccion = montoTransaccion;
+        this.fechaActualizacion = fechaActualizacion;
+        this.statusActualizacion = statusActualizacion;
+    }
+    
+    public CabeceraTransaccion(String nroDocu, LocalDate fechaDocu, int tipoDocu, String descripcionDocu, String hechoPor, double montoTransaccion, Date fechaActualizacion, boolean statusActualizacion) {
         this.nroDocu = nroDocu;
         this.fechaDocu = fechaDocu;
         this.tipoDocu = tipoDocu;
@@ -35,11 +43,11 @@ public class CabeceraTransaccion {
         this.nroDocu = nroDocu;
     }
 
-    public String getFechaDocu() {
+    public LocalDate getFechaDocu() {
         return fechaDocu;
     }
 
-    public void setFechaDocu(String fechaDocu) {
+    public void setFechaDocu(LocalDate fechaDocu) {
         this.fechaDocu = fechaDocu;
     }
 
@@ -89,6 +97,8 @@ public class CabeceraTransaccion {
 
     public void setStatusActualizacion(boolean statusActualizacion) {
         this.statusActualizacion = statusActualizacion;
-    }    
+    }
+
+    
     
 }

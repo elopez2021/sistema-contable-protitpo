@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
 import model.Documentos;
-import model.Transaccion;
+import model.TransaccionContable;
 
 /**
  *
@@ -45,8 +45,8 @@ public class TransaccionController implements Controller {
 
     @Override
     public boolean save(Object data) {
-        if (data instanceof Transaccion) {
-            Transaccion transaccion = (Transaccion) data;
+        if (data instanceof TransaccionContable) {
+            TransaccionContable transaccion = (TransaccionContable) data;
             try (BufferedWriter writer = new BufferedWriter(new FileWriter(RUTA_ARCHIVO, true))) {
                 writer.write(transaccion.getNro_doc() + ";" + 
                         transaccion.getSecuencia_doc() + ";" + 
@@ -63,7 +63,7 @@ public class TransaccionController implements Controller {
                 return false;
             }
         } else {
-            System.err.println("El objeto data no es una instancia de Documentos");
+            System.err.println("El objeto data no es una instancia de TransaccionContable");
         }
         return false;
     }

@@ -212,8 +212,8 @@ public class HomeAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCerrarActionPerformed
 
     private void btn_movimientosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_movimientosActionPerformed
-        Transacciones user = new Transacciones();
-        jpload.jPanelLoader(panel_load, user);
+        Transacciones usuario = new Transacciones(user);
+        jpload.jPanelLoader(panel_load, usuario);
     }//GEN-LAST:event_btn_movimientosActionPerformed
 
     private void consultas_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultas_btnActionPerformed

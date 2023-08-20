@@ -5,7 +5,7 @@
  */
 package model;
 
-public class Transaccion {
+public class TransaccionContable {
     private String nro_doc;
     private Integer secuencia_doc;
     private int cuenta_contable;
@@ -14,7 +14,7 @@ public class Transaccion {
     private String comentario;
 
     // Constructor
-    public Transaccion(String nro_doc, Integer secuencia_doc, int cuenta_contable, Double valor_debito,
+    TransaccionContable(String nro_doc, Integer secuencia_doc, int cuenta_contable, Double valor_debito,
                        Double valor_credito, String comentario) {
         this.nro_doc = nro_doc;
         this.secuencia_doc = secuencia_doc;
@@ -22,6 +22,10 @@ public class Transaccion {
         this.valor_debito = valor_debito;
         this.valor_credito = valor_credito;
         this.comentario = comentario;
+    }
+
+    public TransaccionContable() {
+        
     }
 
     public String getNro_doc() {

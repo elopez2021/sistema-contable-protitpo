@@ -1,7 +1,9 @@
 package view;
 
+import controller.Cabecera;
 import controller.CatalogoController;
 import controller.DocumentosController;
+import controller.TransaccionController;
 import java.awt.event.ItemEvent;
 import java.awt.event.KeyEvent;
 import java.io.BufferedWriter;
@@ -9,6 +11,8 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JLabel;
 import javax.swing.JMenuItem;
@@ -16,7 +20,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 import model.CabeceraTransaccion;
-import model.Transaccion;
+import model.TransaccionContable;
 import static view.mantenimientos.isEmpty;
 
 /**
@@ -28,17 +32,22 @@ public class Transacciones extends javax.swing.JPanel {
     /**
      * Creates new form Transacciones
      */
+    String user;
+    //inicilizando controladores
     CatalogoController catalogoCtrl = new CatalogoController();
     DocumentosController documentoCtrl = new DocumentosController();
+    TransaccionController transaccionCtrl = new TransaccionController();
+    Cabecera cabeceraCtrl = new Cabecera();
+    
     String[] numerosCuentasDetalles = catalogoCtrl.obtenerNumerosCuentasDetalles();
     List<String> descripcionesTiposDocumentos = documentoCtrl.obtenerDescripcionesTiposDocumentos();
 
     BigDecimal montoCredito = new BigDecimal("0.00");
     BigDecimal montoDebito = new BigDecimal("0.00");
 
-    public Transacciones() {
+    public Transacciones(String user) {
         initComponents();
-
+        this.user = user;
         tabla_trans.setModel(new DefaultTableModel(
                 new Object[][]{},
                 new String[]{"Secuencia", "Cuenta", "Descripción de la cuenta", "Débito", "Crédito", "Comentario"}
@@ -359,13 +368,13 @@ public class Transacciones extends javax.swing.JPanel {
         errCuenta.setFont(new java.awt.Font("Sylfaen", 1, 14)); // NOI18N
         errCuenta.setForeground(java.awt.Color.red);
 
-        errNroDocumento.setFont(new java.awt.Font("Sylfaen", 1, 12)); // NOI18N
+        errNroDocumento.setFont(new java.awt.Font("Sylfaen", 1, 14)); // NOI18N
         errNroDocumento.setForeground(java.awt.Color.red);
 
-        errTipoDocumento.setFont(new java.awt.Font("Sylfaen", 1, 12)); // NOI18N
+        errTipoDocumento.setFont(new java.awt.Font("Sylfaen", 1, 14)); // NOI18N
         errTipoDocumento.setForeground(java.awt.Color.red);
 
-        errDescripcionDocumento.setFont(new java.awt.Font("Sylfaen", 1, 12)); // NOI18N
+        errDescripcionDocumento.setFont(new java.awt.Font("Sylfaen", 1, 14)); // NOI18N
         errDescripcionDocumento.setForeground(java.awt.Color.red);
 
         javax.swing.GroupLayout panel_transaccionesLayout = new javax.swing.GroupLayout(panel_transacciones);
@@ -575,9 +584,9 @@ public class Transacciones extends javax.swing.JPanel {
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
         boolean camposValidos = true;
         BigDecimal saldo = montoCredito.subtract(montoDebito);
-        
+
         if (saldo.compareTo(BigDecimal.ZERO) != 0) {
-            JOptionPane.showMessageDialog(null, saldo, "Los montos de débito y crédito no están balanceados en la transacción", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Los montos de débito y crédito no están balanceados en la transacción", "Error", JOptionPane.ERROR_MESSAGE);
             camposValidos = false;
         }
 
@@ -597,6 +606,37 @@ public class Transacciones extends javax.swing.JPanel {
 
         if (!camposValidos) {
             return;
+        }
+        int tipoDocumento = documentoCtrl.buscarIdDocumento(cmbDocumento.getSelectedItem().toString());
+
+        CabeceraTransaccion cabecera = new CabeceraTransaccion(txt_num_doc.getText(), LocalDate.now(), tipoDocumento, txt_descripccion_doc.getText(), user, Double.parseDouble(txt_monto_transaccion.getText()), false);
+        //guardar la cabecera transaccion
+        
+        if(cabeceraCtrl.save(cabecera)){
+            JOptionPane.showMessageDialog(null, "Los datos fueron guardados correctamente.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+        }else {
+            JOptionPane.showMessageDialog(null, "Error al guardar", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+        // Obtenemos los datos de la tabla Transacciones
+        DefaultTableModel model = (DefaultTableModel) tabla_trans.getModel();
+        int rowCount = model.getRowCount();
+
+        for (int i = 0; i < rowCount; i++) {
+            Integer secuenciaDoc = Integer.parseInt(model.getValueAt(i, 0).toString());
+            int cuentaContable = Integer.parseInt(model.getValueAt(i, 1).toString());
+            double valorDebito = Double.parseDouble(model.getValueAt(i, 3).toString().isEmpty() ? "0.00" : model.getValueAt(i, 3).toString());
+            double valorCredito = Double.parseDouble(model.getValueAt(i, 4).toString().isEmpty() ? "0.00" : model.getValueAt(i, 4).toString());
+            String comentario = model.getValueAt(i, 5).toString();
+
+            TransaccionContable transaccion = new TransaccionContable();
+            transaccion.setNro_doc(txt_num_doc.getText());
+            transaccion.setSecuencia_doc(secuenciaDoc);
+            transaccion.setCuenta_contable(cuentaContable);
+            transaccion.setValor_debito(valorDebito);
+            transaccion.setValor_credito(valorCredito);
+            transaccion.setComentario(comentario);
+
+            transaccionCtrl.save(transaccion);
         }
 
     }//GEN-LAST:event_btnGuardarActionPerformed
@@ -650,7 +690,7 @@ public class Transacciones extends javax.swing.JPanel {
             montoCredito = montoCredito.add(monto_credito);
             montoDebito = montoDebito.add(monto_debito);
 
-            BigDecimal montoTransaccion = montoCredito.subtract(montoDebito);
+            BigDecimal montoTransaccion = montoCredito.add(montoDebito);
             txt_monto_transaccion.setText(String.valueOf(montoTransaccion));
 
             // Limpiar los campos de texto
@@ -723,13 +763,7 @@ public class Transacciones extends javax.swing.JPanel {
     }//GEN-LAST:event_txt_num_docKeyPressed
 
     private void txt_num_docActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_num_docActionPerformed
-        String numeroIngresado = txt_num_doc.getText();
 
-        if (CabeceraTransaccion.contains(numeroIngresado)) {
-            JOptionPane.showMessageDialog(this, "El número existe en cabecera_transaccion.");
-        } else {
-            JOptionPane.showMessageDialog(this, "El número no existe en cabecera_transaccion.");
-        }
     }//GEN-LAST:event_txt_num_docActionPerformed
 
     private void txt_descripccion_docKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_descripccion_docKeyPressed
