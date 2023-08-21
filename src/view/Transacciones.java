@@ -59,6 +59,8 @@ public class Transacciones extends javax.swing.JPanel {
         for (String descripcion : descripcionesTiposDocumentos) {
             cmbDocumento.addItem(descripcion);
         }
+        
+        txtFecha.setText(String.valueOf(LocalDate.now()));
 
     }
 
@@ -128,6 +130,8 @@ public class Transacciones extends javax.swing.JPanel {
         errNroDocumento = new javax.swing.JLabel();
         errTipoDocumento = new javax.swing.JLabel();
         errDescripcionDocumento = new javax.swing.JLabel();
+        lblFecha = new javax.swing.JLabel();
+        txtFecha = new javax.swing.JTextField();
 
         jLabel4.setText("Descrip. del documento");
 
@@ -379,6 +383,12 @@ public class Transacciones extends javax.swing.JPanel {
         errDescripcionDocumento.setFont(new java.awt.Font("Sylfaen", 1, 14)); // NOI18N
         errDescripcionDocumento.setForeground(java.awt.Color.red);
 
+        lblFecha.setFont(new java.awt.Font("Sylfaen", 0, 18)); // NOI18N
+        lblFecha.setText("Fecha:");
+
+        txtFecha.setEditable(false);
+        txtFecha.setFont(new java.awt.Font("Sylfaen", 0, 14)); // NOI18N
+
         javax.swing.GroupLayout panel_transaccionesLayout = new javax.swing.GroupLayout(panel_transacciones);
         panel_transacciones.setLayout(panel_transaccionesLayout);
         panel_transaccionesLayout.setHorizontalGroup(
@@ -411,7 +421,11 @@ public class Transacciones extends javax.swing.JPanel {
                         .addComponent(Botton_limpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(panel_transaccionesLayout.createSequentialGroup()
                         .addGap(374, 374, 374)
-                        .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(107, 107, 107)
+                        .addComponent(lblFecha)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(panel_transaccionesLayout.createSequentialGroup()
                         .addGap(94, 94, 94)
                         .addGroup(panel_transaccionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -466,7 +480,13 @@ public class Transacciones extends javax.swing.JPanel {
             panel_transaccionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panel_transaccionesLayout.createSequentialGroup()
                 .addGap(11, 11, 11)
-                .addComponent(jLabel11)
+                .addGroup(panel_transaccionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel11)
+                    .addGroup(panel_transaccionesLayout.createSequentialGroup()
+                        .addGroup(panel_transaccionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(8, 8, 8)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -896,12 +916,14 @@ public class Transacciones extends javax.swing.JPanel {
     private javax.swing.JSeparator jSeparator5;
     private javax.swing.JSeparator jSeparator6;
     private javax.swing.JTable jTable1;
+    private javax.swing.JLabel lblFecha;
     private javax.swing.JLabel lblMensajeCredito;
     private javax.swing.JLabel lblMensajeDebito;
     private javax.swing.JPanel panel_transacciones;
     private javax.swing.JPopupMenu ppMenuTabla;
     private javax.swing.JTable tabla_trans;
     private javax.swing.JScrollPane tabla_transacciones;
+    private javax.swing.JTextField txtFecha;
     private javax.swing.JTextField txt_comentario;
     private javax.swing.JTextField txt_credito;
     private javax.swing.JTextField txt_cuenta;
