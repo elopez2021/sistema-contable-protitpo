@@ -44,6 +44,7 @@ public class Cabecera implements Controller {
             try (BufferedWriter writer = new BufferedWriter(new FileWriter(RUTA_ARCHIVO, true))) {
                 writer.write(cabecera.getNroDocu() + ";" + 
                         cabecera.getFechaDocu() + ";" + 
+                        cabecera.getHoraDocu() + ";" + 
                         cabecera.getTipoDocu() + ";" +                        
                         cabecera.getDescripcionDocu() + ";" +
                         cabecera.getHechoPor() + ";" + 
