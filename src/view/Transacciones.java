@@ -571,7 +571,7 @@ public class Transacciones extends javax.swing.JPanel {
     private void Botton_limpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Botton_limpiarActionPerformed
         txt_num_doc.setText(null);
         txt_descripccion_doc.setText(null);
-        //cmbCuenta.setText(null);
+        cmbDocumento.setSelectedItem("-Seleccione una opción-");
         txt_debito.setText(null);
         txt_descripcion_cuenta.setText(null);
         txt_credito.setText(null);
