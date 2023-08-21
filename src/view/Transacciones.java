@@ -613,12 +613,11 @@ public class Transacciones extends javax.swing.JPanel {
         //guardar la cabecera transaccion
         DefaultTableModel model = (DefaultTableModel) tabla_trans.getModel();
         int rowCount = model.getRowCount();
+        boolean savedCorrectly = false;
         if(cabeceraCtrl.save(cabecera)){
             JOptionPane.showMessageDialog(null, "Los datos fueron guardados correctamente.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
             txt_monto_transaccion.setText("");
-            model.setRowCount(0);
-        }else {
-            JOptionPane.showMessageDialog(null, "Error al guardar", "Error", JOptionPane.ERROR_MESSAGE);
+            savedCorrectly = true;
         }
         // Obtenemos los datos de la tabla Transacciones
         
@@ -638,7 +637,13 @@ public class Transacciones extends javax.swing.JPanel {
             transaccion.setValor_credito(valorCredito);
             transaccion.setComentario(comentario);
 
-            transaccionCtrl.save(transaccion);
+            savedCorrectly = transaccionCtrl.save(transaccion);
+        }
+        
+        if(savedCorrectly){
+             model.setRowCount(0);
+        }else{
+            JOptionPane.showMessageDialog(null, "Error al guardar", "Error", JOptionPane.ERROR_MESSAGE);
         }
 
     }//GEN-LAST:event_btnGuardarActionPerformed
