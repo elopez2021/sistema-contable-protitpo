@@ -908,12 +908,14 @@ public class Transacciones extends javax.swing.JPanel {
             Logger.getLogger(Transacciones.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-        
+        if(cabecera.isStatusActualizacion()){
+            JOptionPane.showMessageDialog(null, "No se puede modificar esta transacción" , "Éxito", JOptionPane.ERROR_MESSAGE);
+            txt_num_doc.setText("");
+        }
 
         if (cabecera != null) {
             lblMensajeCrear.setText("Modificando...");
             Documentos tipoDocumento = documentoCtrl.buscarDocumento(String.valueOf(cabecera.getTipoDocu()));
-            JOptionPane.showMessageDialog(null,tipoDocumento.getDescripcion() , "Éxito", JOptionPane.INFORMATION_MESSAGE);
             cmbDocumento.setSelectedItem(tipoDocumento.getDescripcion());
             txt_monto_transaccion.setText(String.valueOf(cabecera.getMontoTransaccion()));
             txt_descripccion_doc.setText(cabecera.getDescripcionDocu());
