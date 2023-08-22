@@ -792,8 +792,10 @@ public class Transacciones extends javax.swing.JPanel {
             } catch (ParseException ex) {
                 Logger.getLogger(Transacciones.class.getName()).log(Level.SEVERE, null, ex);
             }
+            
             cabecera.setFechaDocu(cabeceraModificar.getFechaDocu());
             cabecera.setHoraDocu(cabeceraModificar.getHoraDocu());
+
             if (cabeceraCtrl.update(cabecera)) {
                 JOptionPane.showMessageDialog(null, "Los datos fueron guardados correctamente.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
                 txt_monto_transaccion.setText("");
@@ -855,8 +857,8 @@ public class Transacciones extends javax.swing.JPanel {
             montoCredito = montoCredito.add(monto_credito);
             montoDebito = montoDebito.add(monto_debito);
 
-            BigDecimal montoTransaccion = montoCredito.add(montoDebito);
-            txt_monto_transaccion.setText(String.valueOf(montoTransaccion));
+            BigDecimal montoTransaccion = new BigDecimal(txt_monto_transaccion.getText());
+            txt_monto_transaccion.setText(String.valueOf(montoTransaccion.add(montoCredito).add(montoDebito)));
 
             // Limpiar los campos de texto
             txt_cuenta.setText("");
