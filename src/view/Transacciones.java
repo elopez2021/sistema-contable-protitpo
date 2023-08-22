@@ -4,6 +4,7 @@ import controller.Cabecera;
 import controller.CatalogoController;
 import controller.DocumentosController;
 import controller.TransaccionController;
+import controller.UsuarioController;
 import java.awt.event.ItemEvent;
 import java.awt.event.KeyEvent;
 import java.io.BufferedWriter;
@@ -24,8 +25,10 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 import model.CabeceraTransaccion;
+import model.CatalogoCuenta;
 import model.Documentos;
 import model.TransaccionContable;
+import model.Usuarios;
 import static view.mantenimientos.isEmpty;
 
 /**
@@ -42,6 +45,7 @@ public class Transacciones extends javax.swing.JPanel {
     CatalogoController catalogoCtrl = new CatalogoController();
     DocumentosController documentoCtrl = new DocumentosController();
     TransaccionController transaccionCtrl = new TransaccionController();
+    UsuarioController usuarioCtrl = new UsuarioController();
     Cabecera cabeceraCtrl = new Cabecera();
 
     String[] numerosCuentasDetalles = catalogoCtrl.obtenerNumerosCuentasDetalles();
@@ -49,6 +53,8 @@ public class Transacciones extends javax.swing.JPanel {
 
     BigDecimal montoCredito = new BigDecimal("0.00");
     BigDecimal montoDebito = new BigDecimal("0.00");
+
+    boolean modificar = false;
 
     public Transacciones(String user) {
         initComponents();
@@ -705,6 +711,7 @@ public class Transacciones extends javax.swing.JPanel {
         txt_credito.setText(null);
         txt_comentario.setText(null);
         lblMensajeCrear.setText("");
+        txt_monto_transaccion.setText("");
     }//GEN-LAST:event_Botton_limpiarActionPerformed
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
@@ -735,18 +742,14 @@ public class Transacciones extends javax.swing.JPanel {
         }
         int tipoDocumento = documentoCtrl.buscarIdDocumento(cmbDocumento.getSelectedItem().toString());
 
-        CabeceraTransaccion cabecera = new CabeceraTransaccion(txt_num_doc.getText(), LocalDate.now(), LocalTime.now(), tipoDocumento, txt_descripccion_doc.getText(), user, Double.parseDouble(txt_monto_transaccion.getText()), false);
-        //guardar la cabecera transaccion
+        Usuarios usuario = usuarioCtrl.buscarUsuario(user);
+
+        //preparar para guardar o modificar la cabecera transaccion        
         DefaultTableModel model = (DefaultTableModel) tabla_trans.getModel();
         int rowCount = model.getRowCount();
         boolean savedCorrectly = false;
-        if (cabeceraCtrl.save(cabecera)) {
-            JOptionPane.showMessageDialog(null, "Los datos fueron guardados correctamente.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
-            txt_monto_transaccion.setText("");
-            savedCorrectly = true;
-        }
-        // Obtenemos los datos de la tabla Transacciones
 
+        // Obtenemos los datos de la tabla Transacciones
         for (int i = 0; i < rowCount; i++) {
             Integer secuenciaDoc = Integer.parseInt(model.getValueAt(i, 0).toString());
             int cuentaContable = Integer.parseInt(model.getValueAt(i, 1).toString());
@@ -760,14 +763,48 @@ public class Transacciones extends javax.swing.JPanel {
             transaccion.setCuenta_contable(cuentaContable);
             transaccion.setValor_debito(valorDebito);
             transaccion.setValor_credito(valorCredito);
-            transaccion.setComentario(comentario);
+            transaccion.setComentario(comentario.isEmpty() ? "null" : comentario);
 
-            savedCorrectly = transaccionCtrl.save(transaccion);
+            if (transaccionCtrl.existeTransaccion(txt_num_doc.getText(), secuenciaDoc)) {
+                savedCorrectly = transaccionCtrl.update(transaccion);
+            } else {
+                savedCorrectly = transaccionCtrl.save(transaccion);
+            }
+
+        }
+
+        //guardar o modificar
+        CabeceraTransaccion cabecera = new CabeceraTransaccion(txt_num_doc.getText(), tipoDocumento, txt_descripccion_doc.getText(), usuario.getNombreUsuario(), Double.parseDouble(txt_monto_transaccion.getText()), false);
+        if (!modificar) {
+            cabecera.setFechaDocu(LocalDate.now());
+            cabecera.setHoraDocu(LocalTime.now());
+            if (cabeceraCtrl.save(cabecera)) {
+                JOptionPane.showMessageDialog(null, "Los datos fueron guardados correctamente.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+                txt_monto_transaccion.setText("");
+                savedCorrectly = true;
+            } else {
+                savedCorrectly = false;
+            }
+        } else {
+            CabeceraTransaccion cabeceraModificar = new CabeceraTransaccion();
+            try {
+                cabeceraModificar = cabeceraCtrl.obtenerCabeceraPorNumero(txt_num_doc.getText());
+            } catch (ParseException ex) {
+                Logger.getLogger(Transacciones.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            cabecera.setFechaDocu(cabeceraModificar.getFechaDocu());
+            cabecera.setHoraDocu(cabeceraModificar.getHoraDocu());
+            if (cabeceraCtrl.update(cabecera)) {
+                JOptionPane.showMessageDialog(null, "Los datos fueron guardados correctamente.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+                txt_monto_transaccion.setText("");
+                savedCorrectly = true;
+            } else {
+                savedCorrectly = false;
+            }
         }
 
         if (savedCorrectly) {
             model.setRowCount(0);
-            lblMensajeCrear.setText("");
         } else {
             JOptionPane.showMessageDialog(null, "Error al guardar", "Error", JOptionPane.ERROR_MESSAGE);
         }
@@ -907,22 +944,42 @@ public class Transacciones extends javax.swing.JPanel {
         } catch (ParseException ex) {
             Logger.getLogger(Transacciones.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-        if(cabecera.isStatusActualizacion()){
-            JOptionPane.showMessageDialog(null, "No se puede modificar esta transacción" , "Éxito", JOptionPane.ERROR_MESSAGE);
+
+        if (cabecera != null && cabecera.isStatusActualizacion()) {
+            JOptionPane.showMessageDialog(null, "No se puede modificar esta transacción", "Éxito", JOptionPane.ERROR_MESSAGE);
             txt_num_doc.setText("");
         }
 
         if (cabecera != null) {
             lblMensajeCrear.setText("Modificando...");
+            modificar = true;
             Documentos tipoDocumento = documentoCtrl.buscarDocumento(String.valueOf(cabecera.getTipoDocu()));
             cmbDocumento.setSelectedItem(tipoDocumento.getDescripcion());
             txt_monto_transaccion.setText(String.valueOf(cabecera.getMontoTransaccion()));
             txt_descripccion_doc.setText(cabecera.getDescripcionDocu());
-            
-            
-            
-        }else{
+
+            DefaultTableModel model = (DefaultTableModel) tabla_trans.getModel();
+            List<TransaccionContable> transacciones = transaccionCtrl.obtenerTransaccionesPorNumeroDocumento(txt_num_doc.getText());
+
+            for (TransaccionContable transaccion : transacciones) {
+                CatalogoCuenta cuenta = catalogoCtrl.buscarCuenta(String.valueOf(transaccion.getCuenta_contable()));
+                String comentario = transaccion.getComentario();
+                if (comentario.equals("null")) {
+                    comentario = "";
+                }
+                Object[] rowData = {
+                    transaccion.getSecuencia_doc(),
+                    transaccion.getCuenta_contable(),
+                    cuenta.getDescripcion_cta(),
+                    (transaccion.getValor_debito() == 0.00 ? "" : transaccion.getValor_debito()),
+                    transaccion.getValor_credito() == 0.00 ? "" : transaccion.getValor_credito(),
+                    comentario
+                };
+                model.addRow(rowData);
+            }
+
+        } else {
+            modificar = false;
             lblMensajeCrear.setText("Creando...");
         }
     }//GEN-LAST:event_txt_num_docFocusLost

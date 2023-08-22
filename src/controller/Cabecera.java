@@ -15,6 +15,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import javax.swing.JOptionPane;
@@ -81,7 +82,7 @@ public class Cabecera implements Controller {
                 if (campos[0].equalsIgnoreCase(numeroDocumento)) {
                     CabeceraTransaccion cabecera = new CabeceraTransaccion();
                     cabecera.setNroDocu(campos[0]);
-                    cabecera.setFechaDocu(LocalDate.parse(campos[1])); 
+                    cabecera.setFechaDocu(LocalDate.parse(campos[1]));
                     cabecera.setHoraDocu(LocalTime.parse(campos[2]));
                     cabecera.setTipoDocu(Integer.parseInt(campos[3]));
                     cabecera.setDescripcionDocu(campos[4]);
@@ -90,18 +91,10 @@ public class Cabecera implements Controller {
 
                     // Parsea la fecha de actualización si está
                     if (campos.length > 5 && !campos[7].equals("null")) {
-                        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd"); // Ajusta el formato según tu archivo
-                        try {
-                            Date fechaActualizacion = dateFormat.parse(campos[7]);
-                            cabecera.setFechaActualizacion(fechaActualizacion);
-                        } catch (ParseException e) {
-                            e.printStackTrace();
-                            System.err.println("No se pudo ajusta el formato de la fechaDocumento");
-                            // Manejo de errores si la fecha no se puede analizar correctamente
-                        }
-                        cabecera.setStatusActualizacion(Boolean.parseBoolean(campos[7]));
+                        cabecera.setFechaActualizacion(LocalDate.parse(campos[7]));
                     }
-                    
+                    cabecera.setStatusActualizacion(Boolean.parseBoolean(campos[8]));
+
                     return cabecera;
                 }
             }
@@ -119,7 +112,52 @@ public class Cabecera implements Controller {
 
     @Override
     public boolean update(Object data) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        if (data instanceof CabeceraTransaccion) {
+            CabeceraTransaccion cabecera = (CabeceraTransaccion) data;
+            List<String[]> cabeceraList = new ArrayList<>();
+
+            try (BufferedReader reader = new BufferedReader(new FileReader(RUTA_ARCHIVO))) {
+                String line;
+                while ((line = reader.readLine()) != null) {
+                    String[] campos = line.split(";");
+                    String nroDoc = campos[0];
+                    if (nroDoc.equals(cabecera.getNroDocu())) {
+                        String fechaActualizacionStr = (cabecera.getFechaActualizacion() != null)
+                                ? cabecera.getFechaActualizacion().toString()
+                                : "null";
+                        campos[1] = cabecera.getFechaDocu().toString();
+                        campos[2] = cabecera.getHoraDocu().toString();
+                        campos[3] = String.valueOf(cabecera.getTipoDocu());
+                        campos[4] = cabecera.getDescripcionDocu();
+                        campos[5] = cabecera.getHechoPor();
+                        campos[6] = String.valueOf(cabecera.getMontoTransaccion());
+                        campos[7] = fechaActualizacionStr;
+                        campos[8] = String.valueOf(cabecera.isStatusActualizacion());
+                    }
+                    cabeceraList.add(campos);
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+                JOptionPane.showMessageDialog(null, "Error al leer el archivo cabecera_transacciones.txt", "Error", JOptionPane.ERROR_MESSAGE);
+                return false;
+            }
+
+            try (BufferedWriter writer = new BufferedWriter(new FileWriter(RUTA_ARCHIVO))) {
+                for (String[] campos : cabeceraList) {
+                    writer.write(String.join(";", campos));
+                    writer.newLine();
+                }
+                writer.flush(); // Make sure to flush the writer
+                return true;
+            } catch (IOException e) {
+                e.printStackTrace();
+                JOptionPane.showMessageDialog(null, "Error al escribir en el archivo cabeceratransacciones.txt", "Error", JOptionPane.ERROR_MESSAGE);
+                return false;
+            }
+        } else {
+            System.err.println("El objeto data no es una instancia de CabeceraTransaccion");
+        }
+        return false;
     }
 
 }

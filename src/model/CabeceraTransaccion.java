@@ -12,7 +12,7 @@ public class CabeceraTransaccion {
     private String descripcionDocu;
     private String hechoPor;
     private double montoTransaccion;
-    private Date fechaActualizacion;
+    private LocalDate fechaActualizacion;
     private boolean statusActualizacion;
 
     public CabeceraTransaccion(String nroDocu, LocalDate fechaDocu, LocalTime horaDocu, int tipoDocu, String descripcionDocu, String hechoPor, double montoTransaccion, boolean statusActualizacion) {
@@ -27,7 +27,7 @@ public class CabeceraTransaccion {
         this.statusActualizacion = statusActualizacion;
     }
     
-    public CabeceraTransaccion(String nroDocu, LocalDate fechaDocu, LocalTime horaDocu, int tipoDocu, String descripcionDocu, String hechoPor, double montoTransaccion, Date fechaActualizacion, boolean statusActualizacion) {
+    public CabeceraTransaccion(String nroDocu, LocalDate fechaDocu, LocalTime horaDocu, int tipoDocu, String descripcionDocu, String hechoPor, double montoTransaccion, LocalDate fechaActualizacion, boolean statusActualizacion) {
         this.nroDocu = nroDocu;
         this.fechaDocu = fechaDocu;
         this.horaDocu = horaDocu;
@@ -39,6 +39,17 @@ public class CabeceraTransaccion {
         this.statusActualizacion = statusActualizacion;
     }
 
+    public CabeceraTransaccion(String nroDocu, int tipoDocu, String descripcionDocu, String hechoPor, double montoTransaccion, boolean statusActualizacion) {
+        this.nroDocu = nroDocu;
+        this.tipoDocu = tipoDocu;
+        this.descripcionDocu = descripcionDocu;
+        this.hechoPor = hechoPor;
+        this.montoTransaccion = montoTransaccion;
+        this.statusActualizacion = statusActualizacion;
+    }
+    
+    
+    
     public CabeceraTransaccion() {
         
     }
@@ -99,11 +110,11 @@ public class CabeceraTransaccion {
         this.montoTransaccion = montoTransaccion;
     }
 
-    public Date getFechaActualizacion() {
+    public LocalDate getFechaActualizacion() {
         return fechaActualizacion;
     }
 
-    public void setFechaActualizacion(Date fechaActualizacion) {
+    public void setFechaActualizacion(LocalDate fechaActualizacion) {
         this.fechaActualizacion = fechaActualizacion;
     }
 

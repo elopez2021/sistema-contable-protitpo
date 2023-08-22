@@ -46,13 +46,20 @@ public class TransaccionController implements Controller {
         if (data instanceof TransaccionContable) {
             TransaccionContable transaccion = (TransaccionContable) data;
             try (BufferedWriter writer = new BufferedWriter(new FileWriter(RUTA_ARCHIVO, true))) {
-                writer.write(transaccion.getNro_doc() + ";"
-                        + transaccion.getSecuencia_doc() + ";"
-                        + transaccion.getCuenta_contable() + ";"
-                        + transaccion.getValor_debito() + ";"
-                        + transaccion.getValor_credito() + ";"
-                        + transaccion.getComentario()
-                );
+                StringBuilder line = new StringBuilder();
+                line.append(transaccion.getNro_doc()).append(";")
+                        .append(transaccion.getSecuencia_doc()).append(";")
+                        .append(transaccion.getCuenta_contable()).append(";")
+                        .append(transaccion.getValor_debito()).append(";")
+                        .append(transaccion.getValor_credito()).append(";");
+
+                if (transaccion.getComentario() != null) {
+                    line.append(transaccion.getComentario());
+                } else {
+                    line.append("null");
+                }
+
+                writer.write(line.toString());
                 writer.newLine();
                 writer.flush();
                 return true;
@@ -99,16 +106,16 @@ public class TransaccionController implements Controller {
                     transaccion.setCuenta_contable(Integer.parseInt(campos[2]));
                     transaccion.setValor_debito(Double.parseDouble(campos[3]));
                     transaccion.setValor_credito(Double.parseDouble(campos[4]));
-                    if(campos.length > 4){
+                    if (campos.length > 5) {
                         transaccion.setComentario(campos[5]);
                     }
-                    
+
                     transacciones.add(transaccion);
                 }
             }
         } catch (IOException e) {
             e.printStackTrace();
-             JOptionPane.showMessageDialog(null, "Error al leer el archivo transacciones.txt", "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Error al leer el archivo transacciones.txt", "Error", JOptionPane.ERROR_MESSAGE);
         }
 
         return transacciones;
@@ -116,7 +123,63 @@ public class TransaccionController implements Controller {
 
     @Override
     public boolean update(Object data) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        if (data instanceof TransaccionContable) {
+            TransaccionContable transaccion = (TransaccionContable) data;
+            List<String[]> transaccionesList = new ArrayList<>();
+
+            try (BufferedReader reader = new BufferedReader(new FileReader(RUTA_ARCHIVO))) {
+                String line;
+                while ((line = reader.readLine()) != null) {
+                    String[] campos = line.split(";");
+                    String nroDoc = campos[0];
+                    int secuenciaDoc = Integer.parseInt(campos[1]);
+                    if (nroDoc.equals(transaccion.getNro_doc()) && secuenciaDoc == transaccion.getSecuencia_doc()) {
+                        campos[2] = String.valueOf(transaccion.getCuenta_contable());
+                        campos[3] = String.valueOf(transaccion.getValor_debito());
+                        campos[4] = String.valueOf(transaccion.getValor_credito());                        
+                        campos[5] = transaccion.getComentario();
+                    }
+                    transaccionesList.add(campos);
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+                JOptionPane.showMessageDialog(null, "Error al leer el archivo transacciones.txt", "Error", JOptionPane.ERROR_MESSAGE);
+                return false;
+            }
+
+            try (BufferedWriter writer = new BufferedWriter(new FileWriter(RUTA_ARCHIVO))) {
+                for (String[] campos : transaccionesList) {
+                    writer.write(String.join(";", campos));
+                    writer.newLine();
+                }
+                return true;
+            } catch (IOException e) {
+                e.printStackTrace();
+                JOptionPane.showMessageDialog(null, "Error al escribir en el archivo transacciones.txt", "Error", JOptionPane.ERROR_MESSAGE);
+                return false;
+            }
+        } else {
+            System.err.println("El objeto data no es una instancia de TransaccionContable");
+        }
+        return false;
+    }
+
+    public boolean existeTransaccion(String nroDoc, int secuencia) {
+        try (BufferedReader reader = new BufferedReader(new FileReader(RUTA_ARCHIVO))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                String[] campos = line.split(";");
+                String nroDocActual = campos[0];
+                int secuenciaActual = Integer.parseInt(campos[1]);
+                if (nroDocActual.equals(nroDoc) && secuenciaActual == secuencia) {
+                    return true;
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Error al leer el archivo transacciones.txt", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+        return false;
     }
 
 }
