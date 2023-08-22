@@ -136,7 +136,7 @@ public class TransaccionController implements Controller {
                     if (nroDoc.equals(transaccion.getNro_doc()) && secuenciaDoc == transaccion.getSecuencia_doc()) {
                         campos[2] = String.valueOf(transaccion.getCuenta_contable());
                         campos[3] = String.valueOf(transaccion.getValor_debito());
-                        campos[4] = String.valueOf(transaccion.getValor_credito());                        
+                        campos[4] = String.valueOf(transaccion.getValor_credito());
                         campos[5] = transaccion.getComentario();
                     }
                     transaccionesList.add(campos);
@@ -180,6 +180,42 @@ public class TransaccionController implements Controller {
             JOptionPane.showMessageDialog(null, "Error al leer el archivo transacciones.txt", "Error", JOptionPane.ERROR_MESSAGE);
         }
         return false;
+    }
+
+    public boolean eliminarTransaccion(String nroDocu, String secuencia) {
+        List<String> listaTransacciones = new ArrayList<>();
+
+        try (BufferedReader lector = new BufferedReader(new FileReader(RUTA_ARCHIVO))) {
+            String linea;
+            while ((linea = lector.readLine()) != null) {
+                String[] campos = linea.split(";");
+                String nroDocActual = campos[0];
+                String secuenciaActual = campos[1];
+
+                // Comprobar si esta es la transacción que se va a eliminar
+                if (nroDocActual.equals(nroDocu) && secuenciaActual.equals(secuencia)) {
+                    continue; // Saltar esta línea (es decir, eliminar esta transacción)
+                }
+
+                listaTransacciones.add(linea); // Conservar otras transacciones
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Error al leer el archivo de transacciones", "Error", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+
+        try (BufferedWriter escritor = new BufferedWriter(new FileWriter(RUTA_ARCHIVO))) {
+            for (String linea : listaTransacciones) {
+                escritor.write(linea);
+                escritor.newLine();
+            }
+            return true;
+        } catch (IOException e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Error al escribir en el archivo de transacciones", "Error", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
     }
 
 }

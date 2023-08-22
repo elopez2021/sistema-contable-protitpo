@@ -55,6 +55,7 @@ public class Transacciones extends javax.swing.JPanel {
     BigDecimal montoDebito = new BigDecimal("0.00");
 
     boolean modificar = false;
+    boolean guardadoPorTabla = false;
 
     public Transacciones(String user) {
         initComponents();
@@ -642,6 +643,7 @@ public class Transacciones extends javax.swing.JPanel {
         montoDebito = montoDebito.subtract(monto_debito);
 
         DefaultTableModel model = (DefaultTableModel) tabla_trans.getModel();
+        guardadoPorTabla = false;
         model.removeRow(r);  // Elimina la fila del modelo
     }//GEN-LAST:event_editarItemActionPerformed
 
@@ -662,6 +664,16 @@ public class Transacciones extends javax.swing.JPanel {
         montoDebito = montoDebito.subtract(monto_debito);
 
         DefaultTableModel model = (DefaultTableModel) tabla_trans.getModel();
+        String secuenciaAEliminar = tabla_trans.getValueAt(r, 0).toString();
+        boolean eliminado = transaccionCtrl.eliminarTransaccion(txt_num_doc.getText(), secuenciaAEliminar);
+        if (eliminado) {
+            guardadoPorTabla = true;
+            JOptionPane.showMessageDialog(null, "Transacción eliminada exitosamente", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+        } else {
+            JOptionPane.showMessageDialog(null, "Error al eliminar la transacción", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+        
+        btnGuardar.doClick();
         model.removeRow(r);  // Elimina la fila del modelo
     }//GEN-LAST:event_deleteItemActionPerformed
 
@@ -792,7 +804,7 @@ public class Transacciones extends javax.swing.JPanel {
             } catch (ParseException ex) {
                 Logger.getLogger(Transacciones.class.getName()).log(Level.SEVERE, null, ex);
             }
-            
+
             cabecera.setFechaDocu(cabeceraModificar.getFechaDocu());
             cabecera.setHoraDocu(cabeceraModificar.getHoraDocu());
 
@@ -806,7 +818,9 @@ public class Transacciones extends javax.swing.JPanel {
         }
 
         if (savedCorrectly) {
-            model.setRowCount(0);
+            if(!guardadoPorTabla){
+                model.setRowCount(0); //Limpiar los campos de la tabla
+            }            
         } else {
             JOptionPane.showMessageDialog(null, "Error al guardar", "Error", JOptionPane.ERROR_MESSAGE);
         }
@@ -866,6 +880,8 @@ public class Transacciones extends javax.swing.JPanel {
             txt_debito.setText("");
             txt_credito.setText("");
             txt_comentario.setText("");
+            
+            guardadoPorTabla = false;
 
         }
     }//GEN-LAST:event_btn_agregarActionPerformed
