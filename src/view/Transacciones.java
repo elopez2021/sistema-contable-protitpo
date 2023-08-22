@@ -55,7 +55,7 @@ public class Transacciones extends javax.swing.JPanel {
     BigDecimal montoDebito = new BigDecimal("0.00");
 
     boolean modificar = false;
-    boolean guardadoPorTabla = false;
+    List<TransaccionContable> transaccionesEliminadas = new ArrayList<>();
 
     public Transacciones(String user) {
         initComponents();
@@ -643,8 +643,10 @@ public class Transacciones extends javax.swing.JPanel {
         montoDebito = montoDebito.subtract(monto_debito);
 
         DefaultTableModel model = (DefaultTableModel) tabla_trans.getModel();
-        guardadoPorTabla = false;
         model.removeRow(r);  // Elimina la fila del modelo
+
+        txt_monto_transaccion.setText(String.valueOf(montoCredito.add(montoDebito).abs()));
+
     }//GEN-LAST:event_editarItemActionPerformed
 
     private void deleteItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteItemActionPerformed
@@ -662,19 +664,20 @@ public class Transacciones extends javax.swing.JPanel {
 
         montoCredito = montoCredito.subtract(monto_credito);
         montoDebito = montoDebito.subtract(monto_debito);
-
         DefaultTableModel model = (DefaultTableModel) tabla_trans.getModel();
+
         String secuenciaAEliminar = tabla_trans.getValueAt(r, 0).toString();
-        boolean eliminado = transaccionCtrl.eliminarTransaccion(txt_num_doc.getText(), secuenciaAEliminar);
-        if (eliminado) {
-            guardadoPorTabla = true;
-            JOptionPane.showMessageDialog(null, "Transacción eliminada exitosamente", "Éxito", JOptionPane.INFORMATION_MESSAGE);
-        } else {
-            JOptionPane.showMessageDialog(null, "Error al eliminar la transacción", "Error", JOptionPane.ERROR_MESSAGE);
-        }
-        
-        btnGuardar.doClick();
+
+        TransaccionContable transaccion = new TransaccionContable();
+        transaccion.setSecuencia_doc(Integer.parseInt(secuenciaAEliminar));
+        transaccion.setNro_doc(txt_num_doc.getText());
+        transaccionesEliminadas.add(transaccion); //añadir las transacciones a eliminar
+        modificar = true;
+
         model.removeRow(r);  // Elimina la fila del modelo
+
+        txt_monto_transaccion.setText(String.valueOf(montoCredito.add(montoDebito).abs()));
+
     }//GEN-LAST:event_deleteItemActionPerformed
 
     private void txt_cuentaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_cuentaKeyTyped
@@ -761,6 +764,14 @@ public class Transacciones extends javax.swing.JPanel {
         int rowCount = model.getRowCount();
         boolean savedCorrectly = false;
 
+        //eliminar las transacciones seleccionadas si hay
+        if (!transaccionesEliminadas.isEmpty()) {
+            for (TransaccionContable transaccion : transaccionesEliminadas) {
+                String secuencia = String.valueOf(transaccion.getSecuencia_doc());
+                String nroDoc = transaccion.getNro_doc();
+                savedCorrectly = transaccionCtrl.eliminarTransaccion(nroDoc, secuencia);
+            }
+        }
         // Obtenemos los datos de la tabla Transacciones
         for (int i = 0; i < rowCount; i++) {
             Integer secuenciaDoc = Integer.parseInt(model.getValueAt(i, 0).toString());
@@ -782,7 +793,6 @@ public class Transacciones extends javax.swing.JPanel {
             } else {
                 savedCorrectly = transaccionCtrl.save(transaccion);
             }
-
         }
 
         //guardar o modificar
@@ -818,9 +828,7 @@ public class Transacciones extends javax.swing.JPanel {
         }
 
         if (savedCorrectly) {
-            if(!guardadoPorTabla){
-                model.setRowCount(0); //Limpiar los campos de la tabla
-            }            
+            model.setRowCount(0); //Limpiar los registros de la tabla
         } else {
             JOptionPane.showMessageDialog(null, "Error al guardar", "Error", JOptionPane.ERROR_MESSAGE);
         }
@@ -871,8 +879,8 @@ public class Transacciones extends javax.swing.JPanel {
             montoCredito = montoCredito.add(monto_credito);
             montoDebito = montoDebito.add(monto_debito);
 
-            BigDecimal montoTransaccion = new BigDecimal(txt_monto_transaccion.getText());
-            txt_monto_transaccion.setText(String.valueOf(montoTransaccion.add(montoCredito).add(montoDebito)));
+            BigDecimal montoTransaccion = new BigDecimal(txt_monto_transaccion.getText().isEmpty() ? "0.00" : txt_monto_transaccion.getText());
+            txt_monto_transaccion.setText(String.valueOf(montoCredito.add(montoDebito).abs()));
 
             // Limpiar los campos de texto
             txt_cuenta.setText("");
@@ -880,8 +888,6 @@ public class Transacciones extends javax.swing.JPanel {
             txt_debito.setText("");
             txt_credito.setText("");
             txt_comentario.setText("");
-            
-            guardadoPorTabla = false;
 
         }
     }//GEN-LAST:event_btn_agregarActionPerformed
@@ -993,6 +999,12 @@ public class Transacciones extends javax.swing.JPanel {
                     transaccion.getValor_credito() == 0.00 ? "" : transaccion.getValor_credito(),
                     comentario
                 };
+                
+                BigDecimal credito = new BigDecimal(String.valueOf(transaccion.getValor_credito()));  
+                BigDecimal debito = new BigDecimal(String.valueOf(transaccion.getValor_debito()));        
+                //calculating montoDebito and montoCredito
+                montoCredito = montoCredito.add(credito);
+                montoDebito = montoDebito.add(credito);
                 model.addRow(rowData);
             }
 
