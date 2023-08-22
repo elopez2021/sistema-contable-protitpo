@@ -39,6 +39,10 @@ public class CabeceraTransaccion {
         this.statusActualizacion = statusActualizacion;
     }
 
+    public CabeceraTransaccion() {
+        
+    }
+
     public String getNroDocu() {
         return nroDocu;
     }

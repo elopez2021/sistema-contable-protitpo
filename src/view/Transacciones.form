@@ -157,7 +157,9 @@
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="59" max="-2" attributes="0"/>
                           <Component id="jLabel11" min="-2" pref="264" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="291" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="66" max="-2" attributes="0"/>
+                          <Component id="lblMensajeCrear" min="-2" pref="129" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="107" max="-2" attributes="0"/>
                           <Component id="lblFecha" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Component id="txtFecha" min="-2" pref="169" max="-2" attributes="0"/>
@@ -178,7 +180,8 @@
                                       <Component id="jLabel16" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <Group type="102" attributes="0">
-                                      <EmptySpace min="-2" pref="246" max="-2" attributes="0"/>
+                                      <Component id="txt_cuenta" linkSize="1" min="-2" pref="169" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="74" max="-2" attributes="0"/>
                                       <Component id="jLabel20" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
@@ -246,7 +249,6 @@
                                   <EmptySpace min="30" pref="30" max="-2" attributes="0"/>
                                   <Component id="cmbDocumento" min="-2" pref="169" max="-2" attributes="0"/>
                               </Group>
-                              <Component id="txt_cuenta" linkSize="1" alignment="1" min="-2" pref="169" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <Component id="jSeparator4" alignment="0" min="-2" pref="900" max="-2" attributes="0"/>
@@ -259,18 +261,14 @@
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" attributes="0">
-                          <EmptySpace min="9" pref="9" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="lblFecha" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
-                              <Component id="txtFecha" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jLabel11" alignment="3" min="-2" pref="38" max="-2" attributes="0"/>
+                          <Component id="lblFecha" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
+                          <Component id="txtFecha" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <Group type="102" attributes="0">
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jLabel11" min="-2" pref="38" max="-2" attributes="0"/>
-                      </Group>
+                      <Component id="lblMensajeCrear" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="jSeparator4" min="-2" pref="10" max="-2" attributes="0"/>
@@ -364,7 +362,7 @@
                       <Component id="btnGuardar" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="Botton_limpiar" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace max="32767" attributes="0"/>
+                  <EmptySpace pref="15" max="32767" attributes="0"/>
                   <Component id="jSeparator6" min="-2" pref="3" max="-2" attributes="0"/>
               </Group>
           </Group>
@@ -415,6 +413,7 @@
         </Component>
         <Component class="javax.swing.JTextField" name="txt_num_doc">
           <Events>
+            <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="txt_num_docFocusLost"/>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txt_num_docActionPerformed"/>
             <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txt_num_docKeyPressed"/>
             <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txt_num_docKeyTyped"/>
@@ -556,7 +555,7 @@
                   <ComponentRef name="ppMenuTabla"/>
                 </Property>
                 <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-                  <Color id="Default Cursor"/>
+                  <Color id="Cursor Por defecto"/>
                 </Property>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Sylfaen" size="18" style="0"/>
@@ -726,6 +725,13 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JSeparator" name="jSeparator3">
+        </Component>
+        <Component class="javax.swing.JLabel" name="lblMensajeCrear">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Sylfaen" size="18" style="1"/>
+            </Property>
+          </Properties>
         </Component>
       </SubComponents>
     </Container>

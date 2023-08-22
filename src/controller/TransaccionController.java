@@ -27,8 +27,6 @@ public class TransaccionController implements Controller {
     public TransaccionController() {
         init();
     }
-    
-    
 
     @Override
     public void init() {
@@ -48,13 +46,13 @@ public class TransaccionController implements Controller {
         if (data instanceof TransaccionContable) {
             TransaccionContable transaccion = (TransaccionContable) data;
             try (BufferedWriter writer = new BufferedWriter(new FileWriter(RUTA_ARCHIVO, true))) {
-                writer.write(transaccion.getNro_doc() + ";" + 
-                        transaccion.getSecuencia_doc() + ";" + 
-                        transaccion.getCuenta_contable() + ";"+                        
-                        transaccion.getValor_debito() + ";" +
-                        transaccion.getValor_credito() + ";" + 
-                        transaccion.getComentario() 
-                        );
+                writer.write(transaccion.getNro_doc() + ";"
+                        + transaccion.getSecuencia_doc() + ";"
+                        + transaccion.getCuenta_contable() + ";"
+                        + transaccion.getValor_debito() + ";"
+                        + transaccion.getValor_credito() + ";"
+                        + transaccion.getComentario()
+                );
                 writer.newLine();
                 writer.flush();
                 return true;
@@ -84,6 +82,36 @@ public class TransaccionController implements Controller {
         }
 
         return listaTransacciones;
+    }
+
+    public List<TransaccionContable> obtenerTransaccionesPorNumeroDocumento(String nroDoc) {
+        List<TransaccionContable> transacciones = new ArrayList<>();
+
+        try (BufferedReader reader = new BufferedReader(new FileReader(RUTA_ARCHIVO))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                String[] campos = line.split(";");
+                String nroDocActual = campos[0];
+                if (nroDocActual.equals(nroDoc)) {
+                    TransaccionContable transaccion = new TransaccionContable();
+                    transaccion.setNro_doc(campos[0]);
+                    transaccion.setSecuencia_doc(Integer.parseInt(campos[1]));
+                    transaccion.setCuenta_contable(Integer.parseInt(campos[2]));
+                    transaccion.setValor_debito(Double.parseDouble(campos[3]));
+                    transaccion.setValor_credito(Double.parseDouble(campos[4]));
+                    if(campos.length > 4){
+                        transaccion.setComentario(campos[5]);
+                    }
+                    
+                    transacciones.add(transaccion);
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+             JOptionPane.showMessageDialog(null, "Error al leer el archivo transacciones.txt", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+
+        return transacciones;
     }
 
     @Override
