@@ -137,15 +137,15 @@ public class Procesos extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        Date fechaInicial = fecha_inicial.getDate();
-        Date fechaFinal = fecha_final.getDate();
-    
+    Date fechaInicial = fecha_inicial.getDate();
+    Date fechaFinal = fecha_final.getDate();
+
     if (fechaInicial != null && fechaFinal != null) {
-        JOptionPane.showMessageDialog(this, "Consulta exitosa.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
-        if (fechaInicial.compareTo(fechaFinal) >= 0) {
-           
-            JOptionPane.showMessageDialog(this, "La fecha inicial debe ser menor que la fecha final.", "Error", JOptionPane.ERROR_MESSAGE);
-        } 
+        if (fechaFinal.compareTo(fechaInicial) >= 0) {
+            JOptionPane.showMessageDialog(this, "Consulta exitosa.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+        } else {
+            JOptionPane.showMessageDialog(this, "La fecha final debe ser mayor o igual que la fecha inicial.", "Error", JOptionPane.ERROR_MESSAGE);
+        }
     } else {
         JOptionPane.showMessageDialog(this, "Selecciona ambas fechas primero.", "Error", JOptionPane.ERROR_MESSAGE);
     }
