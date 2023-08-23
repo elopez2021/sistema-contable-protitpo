@@ -1127,10 +1127,18 @@ public class mantenimientos extends javax.swing.JPanel {
                 camposValidos = false;
             }
         }
-        if(!catalogoCtrl.existeCuenta(txtCuentaPadre.getText())){
-            errCuentaPadre.setText("Esta cuenta no existe");
-            camposValidos = false;
-        }        
+        String cuentaPadre = txtCuentaPadre.getText().trim();
+
+if (cuentaPadre.isEmpty()) {
+    errCuentaPadre.setText("El campo no puede estar vacío");
+    camposValidos = false;
+} else if (!catalogoCtrl.existeCuenta(cuentaPadre)) {
+    errCuentaPadre.setText("Esta cuenta no existe");
+    camposValidos = false;
+} else {
+    // La cuenta existe, puedes mostrar un mensaje de éxito si es necesario
+    errCuentaPadre.setText("");
+}
 
         if (!camposValidos) {
             return;

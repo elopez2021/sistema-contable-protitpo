@@ -164,6 +164,19 @@ public class consultas extends javax.swing.JPanel {
         jPanel5.setBackground(new java.awt.Color(255, 255, 255));
         jPanel5.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
+        txtNroCuenta.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtNroCuentaFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtNroCuentaFocusLost(evt);
+            }
+        });
+        txtNroCuenta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNroCuentaActionPerformed(evt);
+            }
+        });
         txtNroCuenta.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtNroCuentaKeyPressed(evt);
@@ -194,6 +207,11 @@ public class consultas extends javax.swing.JPanel {
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel5.setText("Cuenta Padre:");
 
+        txtCuentaPadre.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtCuentaPadreFocusLost(evt);
+            }
+        });
         txtCuentaPadre.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtCuentaPadreKeyPressed(evt);
@@ -1358,6 +1376,28 @@ public class consultas extends javax.swing.JPanel {
         fecha_consulta2.setDate(null);
     }//GEN-LAST:event_jButton4ActionPerformed
 
+    private void txtNroCuentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNroCuentaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNroCuentaActionPerformed
+
+    private void txtNroCuentaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtNroCuentaFocusLost
+        // TODO add your handling code here:
+        if (txtNroCuenta.getText().isEmpty()) {
+        txtNroCuenta.setText("Ingrese la cuenta");
+    }
+    }//GEN-LAST:event_txtNroCuentaFocusLost
+
+    private void txtNroCuentaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtNroCuentaFocusGained
+        // TODO add your handling code here:
+        if (txtNroCuenta.getText().equals("Ingrese numero de cuenta")) {
+        txtNroCuenta.setText("");
+    }
+    }//GEN-LAST:event_txtNroCuentaFocusGained
+
+    private void txtCuentaPadreFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtCuentaPadreFocusLost
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtCuentaPadreFocusLost
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBuscarCatalogo;
@@ -1427,13 +1467,6 @@ public class consultas extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane10;
     private javax.swing.JScrollPane jScrollPane12;
     private javax.swing.JScrollPane jScrollPane13;
-    private javax.swing.JScrollPane jScrollPane14;
-    private javax.swing.JScrollPane jScrollPane15;
-    private javax.swing.JScrollPane jScrollPane16;
-    private javax.swing.JScrollPane jScrollPane17;
-    private javax.swing.JScrollPane jScrollPane18;
-    private javax.swing.JScrollPane jScrollPane19;
-    private javax.swing.JScrollPane jScrollPane20;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JScrollPane jScrollPane7;
