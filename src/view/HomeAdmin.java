@@ -50,6 +50,7 @@ public class HomeAdmin extends javax.swing.JFrame {
         btn_mantenimiento.setBackground(new java.awt.Color(0, 204, 255));
         home_bnt_grp.add(btn_mantenimiento);
         btn_mantenimiento.setFont(new java.awt.Font("Sylfaen", 1, 18)); // NOI18N
+        btn_mantenimiento.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/mantenimiento.png"))); // NOI18N
         btn_mantenimiento.setText("Mantenimientos");
         btn_mantenimiento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -60,6 +61,7 @@ public class HomeAdmin extends javax.swing.JFrame {
         btn_movimientos.setBackground(new java.awt.Color(0, 204, 255));
         home_bnt_grp.add(btn_movimientos);
         btn_movimientos.setFont(new java.awt.Font("Sylfaen", 1, 18)); // NOI18N
+        btn_movimientos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/dinero.png"))); // NOI18N
         btn_movimientos.setText("Movimientos");
         btn_movimientos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -70,6 +72,7 @@ public class HomeAdmin extends javax.swing.JFrame {
         btn_procesos.setBackground(new java.awt.Color(0, 204, 255));
         home_bnt_grp.add(btn_procesos);
         btn_procesos.setFont(new java.awt.Font("Sylfaen", 1, 18)); // NOI18N
+        btn_procesos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/proceso.png"))); // NOI18N
         btn_procesos.setText("Procesos");
         btn_procesos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -80,6 +83,7 @@ public class HomeAdmin extends javax.swing.JFrame {
         consultas_btn.setBackground(new java.awt.Color(0, 204, 255));
         home_bnt_grp.add(consultas_btn);
         consultas_btn.setFont(new java.awt.Font("Sylfaen", 1, 18)); // NOI18N
+        consultas_btn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/consulta.png"))); // NOI18N
         consultas_btn.setText("Consultas");
         consultas_btn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -90,6 +94,7 @@ public class HomeAdmin extends javax.swing.JFrame {
         btnCerrar.setBackground(new java.awt.Color(255, 204, 204));
         home_bnt_grp.add(btnCerrar);
         btnCerrar.setFont(new java.awt.Font("Sylfaen", 1, 18)); // NOI18N
+        btnCerrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/salir.png"))); // NOI18N
         btnCerrar.setText("Cerrar Sesión");
         btnCerrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
