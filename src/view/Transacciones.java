@@ -893,12 +893,18 @@ public class Transacciones extends javax.swing.JPanel {
     }//GEN-LAST:event_btn_agregarActionPerformed
 
     private void txt_debitoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_debitoKeyTyped
-        // TODO add your handling code here:
-        int key = evt.getKeyChar();
-        boolean numero = key >= 48 && key <= 57;
-        if (!numero) {
-            evt.consume();
-        }
+    char keyChar = evt.getKeyChar();
+    String textodebito = txt_debito.getText().trim().toLowerCase();
+
+    // Permite números del 0 al 9 y el carácter '.'
+    if (!(Character.isDigit(keyChar) || keyChar == '.')) {
+        evt.consume();
+    }
+
+    // Asegura que solo se permita un punto decimal
+    if (keyChar == '.' && textodebito.contains(".")) {
+        evt.consume();
+    }
     }//GEN-LAST:event_txt_debitoKeyTyped
 
     private void txt_debitoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_debitoKeyPressed
@@ -918,12 +924,18 @@ public class Transacciones extends javax.swing.JPanel {
     }//GEN-LAST:event_txt_debitoActionPerformed
 
     private void txt_creditoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_creditoKeyTyped
-        // TODO add your handling code here:
-        int key = evt.getKeyChar();
-        boolean numero = key >= 48 && key <= 57;
-        if (!numero) {
-            evt.consume();
-        }
+    char keyChar = evt.getKeyChar();
+    String textocredito = txt_credito.getText().trim().toLowerCase();
+
+    // Permite números del 0 al 9 y el carácter '.'
+    if (!(Character.isDigit(keyChar) || keyChar == '.')) {
+        evt.consume();
+    }
+
+    // Asegura que solo se permita un punto decimal
+    if (keyChar == '.' && textocredito.contains(".")) {
+        evt.consume();
+    }
     }//GEN-LAST:event_txt_creditoKeyTyped
 
     private void txt_creditoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_creditoKeyPressed

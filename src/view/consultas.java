@@ -124,6 +124,7 @@ public class consultas extends javax.swing.JPanel {
         jLabel6.setText("jLabel6");
 
         setBackground(new java.awt.Color(255, 255, 255));
+        setEnabled(false);
         setPreferredSize(new java.awt.Dimension(4, 4));
 
         jTabbedPane1.setBackground(new java.awt.Color(255, 255, 255));
@@ -838,7 +839,7 @@ public class consultas extends javax.swing.JPanel {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1)
+            .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 602, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
