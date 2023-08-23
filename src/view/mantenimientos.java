@@ -1,4 +1,3 @@
-
 package view;
 
 import controller.CatalogoController;
@@ -48,6 +47,10 @@ public class mantenimientos extends javax.swing.JPanel {
             usuarios[1] = "*****";
             String tipoAcceso = usuarios[2].equals("1") ? "Administrador" : "Normal";
             usuarios[2] = tipoAcceso;
+
+            if (usuarios[4] == null) {
+                usuarios[4] = "";
+            }
             // Reemplazar el valor 'null' del email con una cadena vacía
             if ("null".equals(usuarios[5])) {
                 usuarios[5] = "";
@@ -896,7 +899,7 @@ public class mantenimientos extends javax.swing.JPanel {
 
         boolean camposValidos = true;
         boolean modificar = UsuarioController.existeLogin(txtLogin.getText());
-        
+
         for (int i = 0; i < campos.length; i++) {
             if (!isEmpty(campos[i], errorLabels[i], "Este campo es requerido")) {
                 camposValidos = false;
@@ -1060,7 +1063,7 @@ public class mantenimientos extends javax.swing.JPanel {
             lblMensajeDocumento.setText("Modificando...");
             Documentos documento = documentoCtrl.buscarDocumento(codigo);
             txtDescripcion.setText(documento.getDescripcion());
-        }else{
+        } else {
             lblMensajeDocumento.setText("Creando...");
         }
     }//GEN-LAST:event_txtCodigoFocusLost
@@ -1100,7 +1103,7 @@ public class mantenimientos extends javax.swing.JPanel {
         }
 
         for (int i = 0; i < campos.length; i++) {
-            if(campos[i] == txtCuentaPadre){
+            if (campos[i] == txtCuentaPadre) {
                 continue;
             }
             if (!isEmpty(campos[i], errorLabels[i], "Este campo es requerido")) {
@@ -1127,18 +1130,10 @@ public class mantenimientos extends javax.swing.JPanel {
                 camposValidos = false;
             }
         }
-        String cuentaPadre = txtCuentaPadre.getText().trim();
-
-if (cuentaPadre.isEmpty()) {
-    errCuentaPadre.setText("El campo no puede estar vacío");
-    camposValidos = false;
-} else if (!catalogoCtrl.existeCuenta(cuentaPadre)) {
-    errCuentaPadre.setText("Esta cuenta no existe");
-    camposValidos = false;
-} else {
-    // La cuenta existe, puedes mostrar un mensaje de éxito si es necesario
-    errCuentaPadre.setText("");
-}
+     if (!catalogoCtrl.existeCuenta(txtCuentaPadre.getText()) && !txtCuentaPadre.getText().isEmpty()) {
+            errCuentaPadre.setText("Esta cuenta no existe");
+            camposValidos = false;
+        }
 
         if (!camposValidos) {
             return;
@@ -1150,7 +1145,7 @@ if (cuentaPadre.isEmpty()) {
         int grupo_cta = cmbGrupoCuenta.getSelectedItem().equals("Débito") ? 1 : 2;
 
         CatalogoCuenta cuenta = new CatalogoCuenta(Integer.parseInt(txtNroCuenta.getText()), txtDescripcionCuenta.getText(), tipo_cta,
-                Integer.parseInt(txtNivelCuenta.getText()), Integer.parseInt(txtCuentaPadre.getText()), grupo_cta,
+                Integer.parseInt(txtNivelCuenta.getText()), !txtCuentaPadre.getText().isEmpty() ? Integer.parseInt(txtCuentaPadre.getText()) : null, grupo_cta,
                 LocalDate.now(), LocalTime.now(), 0.00, 0.00, 0.00);
         boolean modificar = catalogoCtrl.existeCuenta(txtNroCuenta.getText());
 
@@ -1251,10 +1246,10 @@ if (cuentaPadre.isEmpty()) {
         } else {
             txtNombre.setEditable(false);
         }
-         if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             txtApellidos.requestFocus();
         }
-        
+
     }//GEN-LAST:event_txtNombreKeyTyped
 
     private void txtApellidosKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtApellidosKeyTyped
@@ -1264,7 +1259,7 @@ if (cuentaPadre.isEmpty()) {
         } else {
             txtApellidos.setEditable(false);
         }
-         if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             txtEmail.requestFocus();
         }
     }//GEN-LAST:event_txtApellidosKeyTyped
@@ -1277,10 +1272,10 @@ if (cuentaPadre.isEmpty()) {
         } else {
             txtCodigo.setEditable(true);
         }
-         if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             txtDescripcion.requestFocus();
         }
-        
+
     }//GEN-LAST:event_txtCodigoKeyPressed
 
     private void txtNroCuentaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNroCuentaKeyPressed
@@ -1291,7 +1286,7 @@ if (cuentaPadre.isEmpty()) {
         } else {
             txtNroCuenta.setEditable(true);
         }
-         if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             txtDescripcionCuenta.requestFocus();
         }
     }//GEN-LAST:event_txtNroCuentaKeyPressed
@@ -1314,7 +1309,7 @@ if (cuentaPadre.isEmpty()) {
 
     private void txtContraseñaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtContraseñaKeyPressed
         // TODO add your handling code here:
-         if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             cmbAcceso.requestFocus();
         }
 
@@ -1322,28 +1317,28 @@ if (cuentaPadre.isEmpty()) {
 
     private void cmbAccesoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cmbAccesoKeyPressed
         // TODO add your handling code here:
-         if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             txtNombre.requestFocus();
         }
 
     }//GEN-LAST:event_cmbAccesoKeyPressed
 
     private void txtLoginKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtLoginKeyPressed
-         if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             txtContraseña.requestFocus();
         }
     }//GEN-LAST:event_txtLoginKeyPressed
 
     private void txtNombreKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombreKeyPressed
         // TODO add your handling code here:
-         if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             txtApellidos.requestFocus();
         }
     }//GEN-LAST:event_txtNombreKeyPressed
 
     private void txtApellidosKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtApellidosKeyPressed
         // TODO add your handling code here:
-         if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             txtEmail.requestFocus();
         }
     }//GEN-LAST:event_txtApellidosKeyPressed
@@ -1354,21 +1349,21 @@ if (cuentaPadre.isEmpty()) {
 
     private void txtDescripcionCuentaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDescripcionCuentaKeyPressed
         // TODO add your handling code here:
-        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             rdbGeneral.requestFocus();
         }
     }//GEN-LAST:event_txtDescripcionCuentaKeyPressed
 
     private void txtNivelCuentaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNivelCuentaKeyPressed
         // TODO add your handling code here:
-        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             txtCuentaPadre.requestFocus();
         }
     }//GEN-LAST:event_txtNivelCuentaKeyPressed
 
     private void txtCuentaPadreKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCuentaPadreKeyPressed
         // TODO add your handling code here:
-        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             cmbGrupoCuenta.requestFocus();
         }
     }//GEN-LAST:event_txtCuentaPadreKeyPressed
@@ -1385,7 +1380,7 @@ if (cuentaPadre.isEmpty()) {
         } else {
             txtDescripcion.setEditable(false);
         }
-         if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             txtNivelCuenta.requestFocus();
         }
     }//GEN-LAST:event_txtDescripcionCuentaKeyTyped

@@ -13,7 +13,7 @@ public class CatalogoCuenta {
     private String descripcion_cta;
     private Boolean tipo_cta;
     private int nivel_cta = -1;
-    private int cta_padre = -1;
+    private Integer cta_padre = -1;
     private int grupo_cta = -1;
     private LocalDate fecha_creacion_cta;
     private LocalTime hora_creacion_cta;
@@ -27,7 +27,7 @@ public class CatalogoCuenta {
     }
 
     // Constructor
-    public CatalogoCuenta(int nro_cta, String descripcion_cta, boolean tipo_cta, int nivel_cta, int cta_padre, int grupo_cta,
+    public CatalogoCuenta(int nro_cta, String descripcion_cta, boolean tipo_cta, int nivel_cta, Integer cta_padre, int grupo_cta,
                           LocalDate fecha_creacion_cta, LocalTime hora_creacion_cta, double debito_acum_cta, double credito_acum_cta,
                           double balance_cta) {
         this.nro_cta = nro_cta;
@@ -79,11 +79,11 @@ public class CatalogoCuenta {
         this.nivel_cta = nivel_cta;
     }
 
-    public int getCta_padre() {
+    public Integer getCta_padre() {
         return cta_padre;
     }
 
-    public void setCta_padre(int cta_padre) {
+    public void setCta_padre(Integer cta_padre) {
         this.cta_padre = cta_padre;
     }
 
