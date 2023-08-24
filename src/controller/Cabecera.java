@@ -159,5 +159,34 @@ public class Cabecera implements Controller {
         }
         return false;
     }
+    private List<CabeceraTransaccion> obtenerCabecerasPorRangoDeFechas(LocalDate fechaInicio, LocalDate fechaFin) {
+    List<CabeceraTransaccion> cabecerasFiltradas = new ArrayList<>();
+
+    try (BufferedReader reader = new BufferedReader(new FileReader(RUTA_ARCHIVO))) {
+        String line;
+        while ((line = reader.readLine()) != null) {
+            String[] campos = line.split(";");
+            LocalDate fechaTransaccion = LocalDate.parse(campos[1]); // Campo de fecha de creación en CabeceraTransaccion
+            
+            if ((fechaTransaccion.isEqual(fechaInicio) || fechaTransaccion.isAfter(fechaInicio)) && (fechaTransaccion.isBefore(fechaFin) || fechaTransaccion.isEqual(fechaFin))){
+                CabeceraTransaccion cabecera = new CabeceraTransaccion();
+                cabecera.setNroDocu(campos[0]);
+                cabecera.setFechaDocu(LocalDate.parse(campos[1])); // Ajustar el índice según tus datos
+                cabecera.setTipoDocu(Integer.parseInt(campos[2])); // Ajustar el índice según tus datos
+                cabecera.setDescripcionDocu(campos[3]); // Ajustar el índice según tus datos
+                cabecera.setHechoPor(campos[4]); // Ajustar el índice según tus datos
+                cabecera.setMontoTransaccion(Double.parseDouble(campos[5])); // Ajustar el índice según tus datos
+                cabecera.setFechaActualizacion(LocalDate.parse(campos[6])); // Ajustar el índice según tus datos
+                cabecera.setStatusActualizacion(Boolean.parseBoolean(campos[7])); // Ajustar el índice según tus datos
+                cabecerasFiltradas.add(cabecera);
+            }
+        }
+    } catch (IOException e) {
+        e.printStackTrace();
+        JOptionPane.showMessageDialog(null, "Error al leer el archivo cabecera_transacciones.txt", "Error", JOptionPane.ERROR_MESSAGE);
+    }
+
+    return cabecerasFiltradas;
+}
 
 }

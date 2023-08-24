@@ -7,6 +7,7 @@ package model;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.Date;
 
 public class CatalogoCuenta {
     private int nro_cta = -1;
@@ -133,6 +134,10 @@ public class CatalogoCuenta {
 
     public void setBalance_cta(double balance_cta) {
         this.balance_cta = balance_cta;
+    }
+
+    public void setFecha_creacion_cta(Date fechaSeleccionada) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
     
     

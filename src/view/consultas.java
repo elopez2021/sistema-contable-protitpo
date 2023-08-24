@@ -6,8 +6,8 @@
 package view;
 
 import controller.CatalogoController;
+import java.util.Date;
 import java.util.List;
-import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
@@ -18,6 +18,8 @@ import model.CatalogoCuenta;
  * @author Zoila López
  */
 public class consultas extends javax.swing.JPanel {
+
+    private Iterable<CatalogoCuenta> TrasaccionContableFiltrado;
 
     /**
      * Creates new form consultas
@@ -94,11 +96,11 @@ public class consultas extends javax.swing.JPanel {
         jPanel36 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         fecha_consulta = new com.toedter.calendar.JDateChooser();
-        jButton1 = new javax.swing.JButton();
+        btn_consulta_fecha = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jPanel37 = new javax.swing.JPanel();
         jScrollPane6 = new javax.swing.JScrollPane();
-        catalogo_table1 = new javax.swing.JTable();
+        table_fecha_consulta = new javax.swing.JTable();
         jPanel12 = new javax.swing.JPanel();
         jPanel38 = new javax.swing.JPanel();
         fecha_consulta1 = new com.toedter.calendar.JDateChooser();
@@ -114,14 +116,18 @@ public class consultas extends javax.swing.JPanel {
         jPanel40 = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
         txt_doc_consulta = new javax.swing.JTextField();
+        jButton3 = new javax.swing.JButton();
+        jButton5 = new javax.swing.JButton();
         jPanel41 = new javax.swing.JPanel();
-        jScrollPane13 = new javax.swing.JScrollPane();
+        table_trans_by_docs = new javax.swing.JScrollPane();
         catalogo_table3 = new javax.swing.JTable();
         jPanel1 = new javax.swing.JPanel();
         jPanel9 = new javax.swing.JPanel();
         jPanel10 = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        Limpiar_tipo = new javax.swing.JButton();
+        consultar_tipo_doc = new javax.swing.JButton();
+        txt_tipo_doc = new javax.swing.JTextField();
         jPanel11 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         catalogo_table7 = new javax.swing.JTable();
@@ -193,6 +199,12 @@ public class consultas extends javax.swing.JPanel {
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel3.setText("Descripción:");
 
+        txtDescripcionCuenta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtDescripcionCuentaActionPerformed(evt);
+            }
+        });
+
         jLabel4.setFont(new java.awt.Font("Sylfaen", 1, 18)); // NOI18N
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel4.setText("Tipo de cuenta:");
@@ -212,6 +224,11 @@ public class consultas extends javax.swing.JPanel {
         txtCuentaPadre.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 txtCuentaPadreFocusLost(evt);
+            }
+        });
+        txtCuentaPadre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtCuentaPadreActionPerformed(evt);
             }
         });
         txtCuentaPadre.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -419,12 +436,12 @@ public class consultas extends javax.swing.JPanel {
         jLabel1.setFont(new java.awt.Font("Sylfaen", 0, 18)); // NOI18N
         jLabel1.setText("Fecha de transaccion:");
 
-        jButton1.setBackground(new java.awt.Color(204, 153, 255));
-        jButton1.setFont(new java.awt.Font("Sylfaen", 0, 18)); // NOI18N
-        jButton1.setText("Consultar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btn_consulta_fecha.setBackground(new java.awt.Color(204, 153, 255));
+        btn_consulta_fecha.setFont(new java.awt.Font("Sylfaen", 0, 18)); // NOI18N
+        btn_consulta_fecha.setText("Consultar");
+        btn_consulta_fecha.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btn_consulta_fechaActionPerformed(evt);
             }
         });
 
@@ -452,7 +469,7 @@ public class consultas extends javax.swing.JPanel {
                         .addGap(79, 79, 79)
                         .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btn_consulta_fecha, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(58, Short.MAX_VALUE))
         );
         jPanel36Layout.setVerticalGroup(
@@ -464,7 +481,7 @@ public class consultas extends javax.swing.JPanel {
                     .addComponent(fecha_consulta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(56, 56, 56)
                 .addGroup(jPanel36Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_consulta_fecha, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(221, Short.MAX_VALUE))
         );
@@ -475,8 +492,8 @@ public class consultas extends javax.swing.JPanel {
         jScrollPane6.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
         jScrollPane6.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 
-        catalogo_table1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        catalogo_table1.setModel(new javax.swing.table.DefaultTableModel(
+        table_fecha_consulta.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        table_fecha_consulta.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -492,7 +509,7 @@ public class consultas extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane6.setViewportView(catalogo_table1);
+        jScrollPane6.setViewportView(table_fecha_consulta);
 
         javax.swing.GroupLayout jPanel37Layout = new javax.swing.GroupLayout(jPanel37);
         jPanel37.setLayout(jPanel37Layout);
@@ -659,7 +676,7 @@ public class consultas extends javax.swing.JPanel {
                 .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel39, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jPanel38, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(85, Short.MAX_VALUE))
+                .addContainerGap(61, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Transcciones por rango de fecha", jPanel12);
@@ -670,38 +687,70 @@ public class consultas extends javax.swing.JPanel {
         jLabel10.setFont(new java.awt.Font("Sylfaen", 0, 18)); // NOI18N
         jLabel10.setText("Documento");
 
+        txt_doc_consulta.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txt_doc_consultaFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txt_doc_consultaFocusLost(evt);
+            }
+        });
         txt_doc_consulta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_doc_consultaActionPerformed(evt);
             }
         });
 
+        jButton3.setBackground(new java.awt.Color(204, 153, 255));
+        jButton3.setFont(new java.awt.Font("Sylfaen", 1, 18)); // NOI18N
+        jButton3.setText("Limpiar");
+
+        jButton5.setBackground(new java.awt.Color(255, 204, 204));
+        jButton5.setFont(new java.awt.Font("Sylfaen", 1, 18)); // NOI18N
+        jButton5.setText("Consultar");
+
         javax.swing.GroupLayout jPanel40Layout = new javax.swing.GroupLayout(jPanel40);
         jPanel40.setLayout(jPanel40Layout);
         jPanel40Layout.setHorizontalGroup(
             jPanel40Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel40Layout.createSequentialGroup()
-                .addGap(59, 59, 59)
-                .addComponent(jLabel10)
-                .addGap(38, 38, 38)
-                .addComponent(txt_doc_consulta, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(181, Short.MAX_VALUE))
+                .addGroup(jPanel40Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel40Layout.createSequentialGroup()
+                        .addGap(44, 44, 44)
+                        .addComponent(jLabel10)
+                        .addGap(27, 27, 27)
+                        .addComponent(txt_doc_consulta, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel40Layout.createSequentialGroup()
+                        .addGap(30, 30, 30)
+                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(149, Short.MAX_VALUE))
         );
+
+        jPanel40Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jButton3, jButton5});
+
         jPanel40Layout.setVerticalGroup(
             jPanel40Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel40Layout.createSequentialGroup()
-                .addGap(92, 92, 92)
+                .addGap(163, 163, 163)
                 .addGroup(jPanel40Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel10)
                     .addComponent(txt_doc_consulta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(396, Short.MAX_VALUE))
+                .addGap(55, 55, 55)
+                .addGroup(jPanel40Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton3)
+                    .addComponent(jButton5))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
+
+        jPanel40Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jButton3, jButton5});
 
         jPanel41.setBackground(new java.awt.Color(255, 255, 255));
         jPanel41.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
-        jScrollPane13.setBackground(new java.awt.Color(255, 255, 255));
-        jScrollPane13.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        table_trans_by_docs.setBackground(new java.awt.Color(255, 255, 255));
+        table_trans_by_docs.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         catalogo_table3.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         catalogo_table3.setModel(new javax.swing.table.DefaultTableModel(
@@ -720,7 +769,7 @@ public class consultas extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane13.setViewportView(catalogo_table3);
+        table_trans_by_docs.setViewportView(catalogo_table3);
 
         javax.swing.GroupLayout jPanel41Layout = new javax.swing.GroupLayout(jPanel41);
         jPanel41.setLayout(jPanel41Layout);
@@ -728,15 +777,14 @@ public class consultas extends javax.swing.JPanel {
             jPanel41Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel41Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane13, javax.swing.GroupLayout.DEFAULT_SIZE, 546, Short.MAX_VALUE)
+                .addComponent(table_trans_by_docs, javax.swing.GroupLayout.DEFAULT_SIZE, 518, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel41Layout.setVerticalGroup(
             jPanel41Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel41Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane13, javax.swing.GroupLayout.PREFERRED_SIZE, 490, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(9, Short.MAX_VALUE))
+                .addComponent(table_trans_by_docs, javax.swing.GroupLayout.DEFAULT_SIZE, 509, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel14Layout = new javax.swing.GroupLayout(jPanel14);
@@ -754,10 +802,10 @@ public class consultas extends javax.swing.JPanel {
             jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel14Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel41, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel40, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jPanel41, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel40, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(52, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Transacciones por doc.", jPanel14);
@@ -769,28 +817,61 @@ public class consultas extends javax.swing.JPanel {
         jPanel10.setBackground(new java.awt.Color(255, 255, 255));
         jPanel10.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
+        jLabel11.setFont(new java.awt.Font("Sylfaen", 0, 18)); // NOI18N
         jLabel11.setText("Tipo de documento");
+
+        Limpiar_tipo.setBackground(new java.awt.Color(204, 153, 255));
+        Limpiar_tipo.setFont(new java.awt.Font("Sylfaen", 1, 18)); // NOI18N
+        Limpiar_tipo.setText("Limpiar");
+
+        consultar_tipo_doc.setBackground(new java.awt.Color(255, 204, 204));
+        consultar_tipo_doc.setFont(new java.awt.Font("Sylfaen", 1, 18)); // NOI18N
+        consultar_tipo_doc.setText("Consultar");
+
+        txt_tipo_doc.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txt_tipo_docFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txt_tipo_docFocusLost(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
         jPanel10.setLayout(jPanel10Layout);
         jPanel10Layout.setHorizontalGroup(
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel10Layout.createSequentialGroup()
-                .addGap(16, 16, 16)
-                .addComponent(jLabel11)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(173, Short.MAX_VALUE))
+                .addGap(46, 46, 46)
+                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel10Layout.createSequentialGroup()
+                        .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txt_tipo_doc, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel10Layout.createSequentialGroup()
+                        .addComponent(Limpiar_tipo, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(39, 39, 39)
+                        .addComponent(consultar_tipo_doc, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(117, Short.MAX_VALUE))
         );
+
+        jPanel10Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {Limpiar_tipo, consultar_tipo_doc});
+
         jPanel10Layout.setVerticalGroup(
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel10Layout.createSequentialGroup()
-                .addGap(88, 88, 88)
+                .addGap(176, 176, 176)
                 .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel11)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(399, Short.MAX_VALUE))
+                    .addComponent(txt_tipo_doc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(82, 82, 82)
+                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Limpiar_tipo)
+                    .addComponent(consultar_tipo_doc))
+                .addContainerGap(198, Short.MAX_VALUE))
         );
+
+        jPanel10Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {Limpiar_tipo, consultar_tipo_doc});
 
         jPanel11.setBackground(new java.awt.Color(255, 255, 255));
         jPanel11.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -823,15 +904,15 @@ public class consultas extends javax.swing.JPanel {
             jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel11Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 517, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 524, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel11Layout.setVerticalGroup(
             jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel11Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 490, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(9, Short.MAX_VALUE))
+                .addComponent(jScrollPane1)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
@@ -850,9 +931,11 @@ public class consultas extends javax.swing.JPanel {
             .addGroup(jPanel9Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel9Layout.createSequentialGroup()
+                        .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(jPanel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -1294,7 +1377,7 @@ public class consultas extends javax.swing.JPanel {
     }//GEN-LAST:event_btnLimpiarCatalogoActionPerformed
 
     private void btnBuscarCatalogoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarCatalogoActionPerformed
-        // TODO add your handling code here:
+         // TODO add your handling code here:
         //if every field is empty, then do not apply search
         if (txtNroCuenta.getText().isEmpty() && txtDescripcionCuenta.getText().isEmpty() && txtNivelCuenta.getText().isEmpty() && cmbGrupoCuenta.getSelectedItem().equals("---Seleccione una opción---") && txtCuentaPadre.getText().isEmpty() && !(rdbGeneral.isSelected() || rdbDetalle.isSelected())) {
             JOptionPane.showMessageDialog(null, "Todos los campos están vacíos", "Información", JOptionPane.INFORMATION_MESSAGE);
@@ -1354,7 +1437,7 @@ public class consultas extends javax.swing.JPanel {
             };
 
             dt.addRow(rowData);
-        }
+        }      
     }//GEN-LAST:event_btnBuscarCatalogoActionPerformed
 
     private void cmbGrupoCuentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbGrupoCuentaActionPerformed
@@ -1400,35 +1483,75 @@ public class consultas extends javax.swing.JPanel {
     }//GEN-LAST:event_txtNroCuentaActionPerformed
 
     private void txtNroCuentaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtNroCuentaFocusLost
-        // TODO add your handling code here:
-        if (txtNroCuenta.getText().isEmpty()) {
-        txtNroCuenta.setText("Ingrese la cuenta");
-    }
+
     }//GEN-LAST:event_txtNroCuentaFocusLost
 
     private void txtNroCuentaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtNroCuentaFocusGained
-        // TODO add your handling code here:
-        if (txtNroCuenta.getText().equals("Ingrese numero de cuenta")) {
-        txtNroCuenta.setText("");
-    }
+
     }//GEN-LAST:event_txtNroCuentaFocusGained
 
     private void txtCuentaPadreFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtCuentaPadreFocusLost
         // TODO add your handling code here:
     }//GEN-LAST:event_txtCuentaPadreFocusLost
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btn_consulta_fechaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_consulta_fechaActionPerformed
+                // TODO add your handling code here:
+        //if every field is empty, then do not apply search
+        Date fechaSeleccionada = fecha_consulta.getDate();
+        if (fechaSeleccionada == null) {
+        JOptionPane.showMessageDialog(null, "El campo de fecha está vacío", "Información", JOptionPane.INFORMATION_MESSAGE);
+        return;
+        }
+        
+    }//GEN-LAST:event_btn_consulta_fechaActionPerformed
+
+    private void txt_doc_consultaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txt_doc_consultaFocusLost
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        if (txt_doc_consulta.getText().isEmpty()) {
+            txt_doc_consulta.setText("Ingrese la cuenta");
+        }
+    }//GEN-LAST:event_txt_doc_consultaFocusLost
+
+    private void txt_doc_consultaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txt_doc_consultaFocusGained
+        // TODO add your handling code here:
+        // TODO add your handling code here:
+        if (txt_doc_consulta.getText().equals("Ingrese numero de cuenta")) {
+            txt_doc_consulta.setText("");
+        }
+    }//GEN-LAST:event_txt_doc_consultaFocusGained
+
+    private void txt_tipo_docFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txt_tipo_docFocusLost
+        // TODO add your handling code here:
+         if (txt_tipo_doc.getText().isEmpty()) {
+            txt_tipo_doc.setText("Ingrese tipo de documento");
+        }
+    }//GEN-LAST:event_txt_tipo_docFocusLost
+
+    private void txt_tipo_docFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txt_tipo_docFocusGained
+        // TODO add your handling code here:
+        if (txt_tipo_doc.getText().equals("Ingrese tipo de documento")) {
+            txt_tipo_doc.setText("");
+        }
+    }//GEN-LAST:event_txt_tipo_docFocusGained
+
+    private void txtDescripcionCuentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDescripcionCuentaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtDescripcionCuentaActionPerformed
+
+    private void txtCuentaPadreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCuentaPadreActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtCuentaPadreActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Limpiar_tipo;
     private javax.swing.JButton btnBuscarCatalogo;
     private javax.swing.JButton btnLimpiarCatalogo;
     private javax.swing.ButtonGroup btnTipoCuentaGroup;
+    private javax.swing.JButton btn_consulta_fecha;
     private javax.swing.JButton btn_consultar;
     private javax.swing.JTable catalogo_table;
-    private javax.swing.JTable catalogo_table1;
     private javax.swing.JTable catalogo_table2;
     private javax.swing.JTable catalogo_table3;
     private javax.swing.JTable catalogo_table4;
@@ -1437,12 +1560,14 @@ public class consultas extends javax.swing.JPanel {
     private javax.swing.JTable catalogo_table7;
     private javax.swing.JTable catalogo_table8;
     private javax.swing.JComboBox<String> cmbGrupoCuenta;
+    private javax.swing.JButton consultar_tipo_doc;
     private com.toedter.calendar.JDateChooser fecha_consulta;
     private com.toedter.calendar.JDateChooser fecha_consulta1;
     private com.toedter.calendar.JDateChooser fecha_consulta2;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -1490,20 +1615,21 @@ public class consultas extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane10;
     private javax.swing.JScrollPane jScrollPane12;
-    private javax.swing.JScrollPane jScrollPane13;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JScrollPane jScrollPane8;
     private javax.swing.JScrollPane jScrollPane9;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JRadioButton rdbDetalle;
     private javax.swing.JRadioButton rdbGeneral;
+    private javax.swing.JTable table_fecha_consulta;
+    private javax.swing.JScrollPane table_trans_by_docs;
     private javax.swing.JTextField txtCuentaPadre;
     private javax.swing.JTextField txtDescripcionCuenta;
     private javax.swing.JTextField txtNivelCuenta;
     private javax.swing.JTextField txtNroCuenta;
     private javax.swing.JTextField txt_doc_consulta;
+    private javax.swing.JTextField txt_tipo_doc;
     // End of variables declaration//GEN-END:variables
 }
