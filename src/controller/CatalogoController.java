@@ -244,7 +244,7 @@ public class CatalogoController implements Controller {
                 cuenta.setDescripcion_cta(campos[1]);
                 cuenta.setTipo_cta(Boolean.parseBoolean(campos[2]));
                 cuenta.setNivel_cta(Integer.parseInt(campos[3]));
-                cuenta.setCta_padre(Integer.parseInt(campos[4]));
+                cuenta.setCta_padre(campos[4].equals("null") ? null : Integer.parseInt(campos[4]));
                 cuenta.setGrupo_cta(Integer.parseInt(campos[5]));
                 cuenta.setFecha_creacion_cta(LocalDate.parse(campos[6]));
                 cuenta.setHora_creacion_cta(LocalTime.parse(campos[7]));
