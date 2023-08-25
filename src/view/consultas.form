@@ -1492,7 +1492,7 @@
                         <Component class="javax.swing.JTable" name="tabla_balanza_general">
                           <Properties>
                             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                              <Table columnCount="3" rowCount="4">
+                              <Table columnCount="3" rowCount="0">
                                 <Column editable="false" title="Cuenta" type="java.lang.Object"/>
                                 <Column editable="false" title="Tipo Cuenta" type="java.lang.Object"/>
                                 <Column editable="false" title="Saldo" type="java.lang.Object"/>
@@ -1732,8 +1732,13 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jScrollPane10" pref="1072" max="32767" attributes="0"/>
+                              <Component id="jScrollPane7" max="32767" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="422" max="-2" attributes="0"/>
+                              <Component id="btnEstadoFinanciero" min="-2" pref="205" max="-2" attributes="0"/>
+                              <EmptySpace pref="465" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -1741,47 +1746,36 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jScrollPane10" pref="479" max="32767" attributes="0"/>
+                              <Component id="btnEstadoFinanciero" min="-2" pref="52" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="jScrollPane7" min="-2" pref="416" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
                   </Layout>
                   <SubComponents>
-                    <Container class="javax.swing.JScrollPane" name="jScrollPane10">
+                    <Component class="javax.swing.JButton" name="btnEstadoFinanciero">
                       <Properties>
-                        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                          <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                          <Font name="Sylfaen" size="18" style="1"/>
                         </Property>
-                        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                          <Border info="org.netbeans.modules.form.compat2.border.BevelBorderInfo">
-                            <BevelBorder/>
-                          </Border>
-                        </Property>
+                        <Property name="text" type="java.lang.String" value="Generar"/>
                       </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnEstadoFinancieroActionPerformed"/>
+                      </Events>
+                    </Component>
+                    <Container class="javax.swing.JScrollPane" name="jScrollPane7">
 
                       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
                       <SubComponents>
-                        <Component class="javax.swing.JTable" name="catalogo_table4">
+                        <Component class="javax.swing.JTable" name="tabla_estado_financiero">
                           <Properties>
-                            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                              <Border info="org.netbeans.modules.form.compat2.border.BevelBorderInfo">
-                                <BevelBorder/>
-                              </Border>
-                            </Property>
                             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                              <Table columnCount="11" rowCount="0">
-                                <Column editable="false" title="Nro" type="java.lang.Object"/>
-                                <Column editable="false" title="Descripcion" type="java.lang.Object"/>
-                                <Column editable="false" title="Tipo" type="java.lang.Object"/>
-                                <Column editable="false" title="Nivel" type="java.lang.Object"/>
-                                <Column editable="false" title="Cuenta Padre" type="java.lang.Object"/>
-                                <Column editable="false" title="Grupo" type="java.lang.Object"/>
-                                <Column editable="false" title="Fecha Creacion" type="java.lang.Object"/>
-                                <Column editable="false" title="Hora Creacion" type="java.lang.Object"/>
-                                <Column editable="false" title="Debito Acumulado" type="java.lang.Object"/>
-                                <Column editable="false" title="Credito Acumulado" type="java.lang.Object"/>
-                                <Column editable="false" title="Balance" type="java.lang.Object"/>
+                              <Table columnCount="2" rowCount="0">
+                                <Column editable="false" title="Concepto" type="java.lang.Object"/>
+                                <Column editable="false" title="Monto" type="java.lang.Object"/>
                               </Table>
                             </Property>
                           </Properties>

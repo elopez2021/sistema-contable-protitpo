@@ -184,4 +184,41 @@ public class BalanzaController {
         return transacciones;
     }
 
+    public Map<String, Double> calcularEstadoGananciasPerdidas(List<TransaccionContable> transacciones) {
+        Map<String, Double> estado = new HashMap<>();
+
+        double ingresos = 0.0;
+        double costos = 0.0;
+        double gastos = 0.0;
+
+        // Calcular ingresos, costos y gastos
+        for (TransaccionContable transaccion : transacciones) {
+            int cuenta = transaccion.getCuenta_contable();
+            double valorDebito = transaccion.getValor_debito();
+            double valorCredito = transaccion.getValor_credito();
+
+            if (cuenta == 4) { //ingresos
+                ingresos += valorCredito - valorDebito;
+            } else if (cuenta == 5) { //costos
+                costos += valorDebito - valorCredito;
+            } else if (cuenta == 6) { //gastos
+                gastos += valorDebito - valorCredito;
+            }
+        }
+
+        // Calcular utilidad bruta, utilidad neta y pérdida neta
+        double utilidadBruta = ingresos - costos;
+        double utilidadNeta = utilidadBruta - gastos;
+        double perdidaNeta = utilidadNeta < 0 ? utilidadNeta : 0.0;
+
+        estado.put("Ingresos", ingresos);
+        estado.put("Costos", costos);
+        estado.put("Gastos", gastos);
+        estado.put("Utilidad Bruta", utilidadBruta);
+        estado.put("Utilidad Neta", utilidadNeta);
+        estado.put("Pérdida Neta", perdidaNeta);
+
+        return estado;
+    }
+
 }
