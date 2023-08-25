@@ -120,14 +120,14 @@ public class consultas extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         fecha_consulta = new com.toedter.calendar.JDateChooser();
         btn_consulta_fecha = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        btnLimpiarTransFecha = new javax.swing.JButton();
         jPanel37 = new javax.swing.JPanel();
         jScrollPane6 = new javax.swing.JScrollPane();
         table_fecha_consulta = new javax.swing.JTable();
         jPanel12 = new javax.swing.JPanel();
         jPanel38 = new javax.swing.JPanel();
-        fecha_consulta1 = new com.toedter.calendar.JDateChooser();
-        fecha_consulta2 = new com.toedter.calendar.JDateChooser();
+        fecha_inicial_trans = new com.toedter.calendar.JDateChooser();
+        fecha_final_trans = new com.toedter.calendar.JDateChooser();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         btn_consultar_rango_fechas = new javax.swing.JButton();
@@ -464,12 +464,12 @@ public class consultas extends javax.swing.JPanel {
             }
         });
 
-        jButton2.setBackground(new java.awt.Color(255, 204, 204));
-        jButton2.setFont(new java.awt.Font("Sylfaen", 0, 18)); // NOI18N
-        jButton2.setText("Limpiar");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btnLimpiarTransFecha.setBackground(new java.awt.Color(255, 204, 204));
+        btnLimpiarTransFecha.setFont(new java.awt.Font("Sylfaen", 0, 18)); // NOI18N
+        btnLimpiarTransFecha.setText("Limpiar");
+        btnLimpiarTransFecha.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btnLimpiarTransFechaActionPerformed(evt);
             }
         });
 
@@ -482,8 +482,8 @@ public class consultas extends javax.swing.JPanel {
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(fecha_consulta, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(62, 62, 62)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(59, 59, 59)
+                .addComponent(btnLimpiarTransFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(70, 70, 70)
                 .addComponent(btn_consulta_fecha, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -491,17 +491,17 @@ public class consultas extends javax.swing.JPanel {
         jPanel36Layout.setVerticalGroup(
             jPanel36Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel36Layout.createSequentialGroup()
-                .addGap(9, 9, 9)
-                .addGroup(jPanel36Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel36Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jLabel1)
-                        .addComponent(fecha_consulta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel36Layout.createSequentialGroup()
-                        .addGroup(jPanel36Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btn_consulta_fecha)
-                            .addComponent(jButton2))
-                        .addGap(3, 3, 3)))
+                .addGap(21, 21, 21)
+                .addGroup(jPanel36Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1)
+                    .addComponent(fecha_consulta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(13, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel36Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel36Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btn_consulta_fecha)
+                    .addComponent(btnLimpiarTransFecha))
+                .addContainerGap())
         );
 
         jPanel37.setBackground(new java.awt.Color(255, 255, 255));
@@ -516,11 +516,11 @@ public class consultas extends javax.swing.JPanel {
 
             },
             new String [] {
-                "Nro", "Descripcion", "Tipo", "Nivel", "Cuenta Padre", "Grupo", "Fecha Creacion", "Hora Creacion", "Debito Acumulado", "Credito Acumulado", "Balance"
+                "Nro", "Fecha", "Hora", "Tipo", "Descripcion", "Hecho Por", "Monto", "Fecha Actualizacion", "Secuencia Doc", "Cuenta", "Valor Debito", "Valor Credito", "Comentario"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false, false, false, false
+                false, false, false, false, false, false, false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -536,14 +536,14 @@ public class consultas extends javax.swing.JPanel {
             .addGroup(jPanel37Layout.createSequentialGroup()
                 .addGap(15, 15, 15)
                 .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 1086, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(15, Short.MAX_VALUE))
         );
         jPanel37Layout.setVerticalGroup(
             jPanel37Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel37Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(21, Short.MAX_VALUE))
+                .addContainerGap(27, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel13Layout = new javax.swing.GroupLayout(jPanel13);
@@ -571,9 +571,9 @@ public class consultas extends javax.swing.JPanel {
         jPanel38.setBackground(new java.awt.Color(255, 255, 255));
         jPanel38.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
-        fecha_consulta1.addKeyListener(new java.awt.event.KeyAdapter() {
+        fecha_inicial_trans.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
-                fecha_consulta1KeyReleased(evt);
+                fecha_inicial_transKeyReleased(evt);
             }
         });
 
@@ -608,11 +608,11 @@ public class consultas extends javax.swing.JPanel {
             .addGroup(jPanel38Layout.createSequentialGroup()
                 .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(fecha_consulta1, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(fecha_inicial_trans, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(26, 26, 26)
                 .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, 103, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
-                .addComponent(fecha_consulta2, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(fecha_final_trans, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(54, 54, 54)
                 .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(79, 79, 79)
@@ -625,9 +625,9 @@ public class consultas extends javax.swing.JPanel {
                 .addGap(15, 15, 15)
                 .addGroup(jPanel38Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel38Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(fecha_consulta1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(fecha_inicial_trans, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel8)
-                        .addComponent(fecha_consulta2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(fecha_final_trans, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel9))
                     .addGroup(jPanel38Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(btn_consultar_rango_fechas, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -647,11 +647,11 @@ public class consultas extends javax.swing.JPanel {
 
             },
             new String [] {
-                "Nro", "Descripcion", "Tipo", "Nivel", "Cuenta Padre", "Grupo", "Fecha Creacion", "Hora Creacion", "Debito Acumulado", "Credito Acumulado", "Balance"
+                "Nro", "Fecha", "Hora", "Tipo", "Descripcion", "Hecho Por", "Monto", "Fecha Actualizaccion", "Secuencia Doc", "Cuenta", "Valor Debito", "Valor Credito", "Comentario"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false, false, false, false
+                false, false, false, false, false, false, false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -1411,14 +1411,16 @@ public class consultas extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_txtNroCuentaKeyPressed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void btnLimpiarTransFechaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarTransFechaActionPerformed
         // TODO add your handling code here:
         fecha_consulta.setDate(null);
-    }//GEN-LAST:event_jButton2ActionPerformed
+        DefaultTableModel dt = (DefaultTableModel) table_fecha_consulta.getModel();
+        dt.setRowCount(0);
+    }//GEN-LAST:event_btnLimpiarTransFechaActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        fecha_consulta1.setDate(null);
-        fecha_consulta2.setDate(null);
+        fecha_inicial_trans.setDate(null);
+        fecha_final_trans.setDate(null);
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void txtNroCuentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNroCuentaActionPerformed
@@ -1439,7 +1441,7 @@ public class consultas extends javax.swing.JPanel {
 
     private void btn_consulta_fechaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_consulta_fechaActionPerformed
         // TODO add your handling code here:
-        //if every field is empty, then do not apply search        
+        //if every field are empty, then do not apply search        
 
         Date fechaSeleccionada = fecha_consulta.getDate();
         if (fechaSeleccionada == null) {
@@ -1449,22 +1451,38 @@ public class consultas extends javax.swing.JPanel {
         LocalDate fechaini = fechaSeleccionada.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
         List<CabeceraTransaccion> cabeceras = procesocierreCtrl.obtenerCabecerasPorRangoDeFechas(fechaini, fechaini);
 
-        DefaultTableModel ti = (DefaultTableModel) table_fecha_consulta.getModel();
-        ti.setRowCount(0);
+        DefaultTableModel dt = (DefaultTableModel) table_fecha_consulta.getModel();
+        dt.setRowCount(0);
         if (cabeceras.isEmpty()) {
             JOptionPane.showMessageDialog(null, "No se encontró ninguna transaccion en la fecha especificada", "Información", JOptionPane.INFORMATION_MESSAGE);
         } else {
             for (CabeceraTransaccion cabecera : cabeceras) {
-                Object[] rowData = {
-                    cabecera.getTipoDocu(),
-                    cabecera.getDescripcionDocu(),
-                    cabecera.getFechaDocu(),
-                    cabecera.getHoraDocu(),
-                    cabecera.getFechaActualizacion(),
-                    cabecera.getMontoTransaccion()
-                };
-                ti.addRow(rowData);
+                String nro_doc = cabecera.getNroDocu();
+
+                List<TransaccionContable> transacciones = transaccionCtrl.obtenerTransaccionesPorNumeroDocumento(nro_doc);
+                if (!transacciones.isEmpty()) {
+                    for (TransaccionContable transaccion : transacciones) {
+                        Object[] rowData = {
+                            cabecera.getNroDocu(),
+                            cabecera.getFechaDocu(),
+                            cabecera.getHoraDocu(),
+                            cabecera.getTipoDocu(),
+                            cabecera.getDescripcionDocu(),
+                            cabecera.getHechoPor(),
+                            cabecera.getMontoTransaccion(),
+                            cabecera.getFechaActualizacion(),
+                            transaccion.getSecuencia_doc(),
+                            transaccion.getCuenta_contable(),
+                            transaccion.getValor_debito(),
+                            transaccion.getValor_credito(),
+                            transaccion.getComentario()
+                        };
+                        dt.addRow(rowData);
+                    }
+                }
+
             }
+
         }
 
     }//GEN-LAST:event_btn_consulta_fechaActionPerformed
@@ -1487,12 +1505,14 @@ public class consultas extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtCuentaPadreActionPerformed
 
-    private void fecha_consulta1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_fecha_consulta1KeyReleased
+    private void fecha_inicial_transKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_fecha_inicial_transKeyReleased
         // TODO add your handling code here:
-    }//GEN-LAST:event_fecha_consulta1KeyReleased
+    }//GEN-LAST:event_fecha_inicial_transKeyReleased
 
     private void clean_processActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clean_processActionPerformed
         cmb_descrip_doc.setSelectedIndex(-1);
+        DefaultTableModel dt = (DefaultTableModel) tabla_trans_docs.getModel();
+        dt.setRowCount(0);
     }//GEN-LAST:event_clean_processActionPerformed
 
     private void consultar_tipo_docActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultar_tipo_docActionPerformed
@@ -1500,12 +1520,17 @@ public class consultas extends javax.swing.JPanel {
     }//GEN-LAST:event_consultar_tipo_docActionPerformed
 
     private void btn_consultar_rango_fechasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_consultar_rango_fechasActionPerformed
-        Date fechaSeleccionada1 = fecha_consulta1.getDate();
-        Date fechaSeleccionada2 = fecha_consulta2.getDate();
+        Date fechaSeleccionada1 = fecha_inicial_trans.getDate();
+        Date fechaSeleccionada2 = fecha_final_trans.getDate();
 
         if (fechaSeleccionada1 == null || fechaSeleccionada2 == null) {
             JOptionPane.showMessageDialog(null, "Uno o ambos campos de fecha están vacíos", "Información", JOptionPane.INFORMATION_MESSAGE);
             return;
+        } else {
+            if (fechaSeleccionada2.compareTo(fechaSeleccionada1) <= 0) {
+                JOptionPane.showMessageDialog(this, "La fecha final debe ser mayor o igual que la fecha inicial.", "Error", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
         }
 
         LocalDate fechaini = fechaSeleccionada1.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
@@ -1513,22 +1538,38 @@ public class consultas extends javax.swing.JPanel {
 
         List<CabeceraTransaccion> cabeceras = procesocierreCtrl.obtenerCabecerasPorRangoDeFechas(fechaini, fechafin);
 
-        DefaultTableModel ti = (DefaultTableModel) table_rango_fechas.getModel();
-        ti.setRowCount(0);
+        DefaultTableModel dt = (DefaultTableModel) table_rango_fechas.getModel();
+        dt.setRowCount(0);
         if (cabeceras.isEmpty()) {
-            JOptionPane.showMessageDialog(null, "No se encontró ninguna transaccion en el rango de fechas especificado", "Información", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "No se encontró ninguna transaccion en la fecha especificada", "Información", JOptionPane.INFORMATION_MESSAGE);
         } else {
             for (CabeceraTransaccion cabecera : cabeceras) {
-                Object[] rowData = {
-                    cabecera.getTipoDocu(),
-                    cabecera.getDescripcionDocu(),
-                    cabecera.getFechaDocu(),
-                    cabecera.getHoraDocu(),
-                    cabecera.getFechaActualizacion(),
-                    cabecera.getMontoTransaccion()
-                };
-                ti.addRow(rowData);
+                String nro_doc = cabecera.getNroDocu();
+
+                List<TransaccionContable> transacciones = transaccionCtrl.obtenerTransaccionesPorNumeroDocumento(nro_doc);
+                if (!transacciones.isEmpty()) {
+                    for (TransaccionContable transaccion : transacciones) {
+                        Object[] rowData = {
+                            cabecera.getNroDocu(),
+                            cabecera.getFechaDocu(),
+                            cabecera.getHoraDocu(),
+                            cabecera.getTipoDocu(),
+                            cabecera.getDescripcionDocu(),
+                            cabecera.getHechoPor(),
+                            cabecera.getMontoTransaccion(),
+                            cabecera.getFechaActualizacion(),
+                            transaccion.getSecuencia_doc(),
+                            transaccion.getCuenta_contable(),
+                            transaccion.getValor_debito(),
+                            transaccion.getValor_credito(),
+                            transaccion.getComentario()
+                        };
+                        dt.addRow(rowData);
+                    }
+                }
+
             }
+
         }
     }//GEN-LAST:event_btn_consultar_rango_fechasActionPerformed
 
@@ -1587,6 +1628,7 @@ public class consultas extends javax.swing.JPanel {
     private javax.swing.JButton Limpiar_tipo;
     private javax.swing.JButton btnBuscarCatalogo;
     private javax.swing.JButton btnLimpiarCatalogo;
+    private javax.swing.JButton btnLimpiarTransFecha;
     private javax.swing.ButtonGroup btnTipoCuentaGroup;
     private javax.swing.JButton btn_consulta_doc;
     private javax.swing.JButton btn_consulta_fecha;
@@ -1602,9 +1644,8 @@ public class consultas extends javax.swing.JPanel {
     private javax.swing.JComboBox<String> cmb_descrip_doc;
     private javax.swing.JButton consultar_tipo_doc;
     private com.toedter.calendar.JDateChooser fecha_consulta;
-    private com.toedter.calendar.JDateChooser fecha_consulta1;
-    private com.toedter.calendar.JDateChooser fecha_consulta2;
-    private javax.swing.JButton jButton2;
+    private com.toedter.calendar.JDateChooser fecha_final_trans;
+    private com.toedter.calendar.JDateChooser fecha_inicial_trans;
     private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;

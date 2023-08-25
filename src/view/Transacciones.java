@@ -814,7 +814,12 @@ public class Transacciones extends javax.swing.JPanel {
         }
 
         //guardar o modificar
-        CabeceraTransaccion cabecera = new CabeceraTransaccion(txt_num_doc.getText(), tipoDocumento, txt_descripccion_doc.getText(), usuario.getNombreUsuario(), Double.parseDouble(txt_monto_transaccion.getText()), false);
+        CabeceraTransaccion cabecera = new CabeceraTransaccion(txt_num_doc.getText(), 
+                tipoDocumento, 
+                txt_descripccion_doc.getText(), 
+                usuario.getNombreUsuario(), 
+                Double.parseDouble(txt_monto_transaccion.getText()), 
+                false);
         if (!modificar) {
             cabecera.setFechaDocu(LocalDate.now());
             cabecera.setHoraDocu(LocalTime.now());

@@ -499,8 +499,8 @@
                           <Component id="jLabel1" min="-2" pref="185" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Component id="fecha_consulta" min="-2" pref="195" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="62" max="-2" attributes="0"/>
-                          <Component id="jButton2" min="-2" pref="124" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="59" max="-2" attributes="0"/>
+                          <Component id="btnLimpiarTransFecha" min="-2" pref="124" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="70" max="-2" attributes="0"/>
                           <Component id="btn_consulta_fecha" min="-2" pref="130" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
@@ -510,21 +510,20 @@
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="9" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="1" attributes="0">
-                              <Group type="103" alignment="1" groupAlignment="0" attributes="0">
-                                  <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                                  <Component id="fecha_consulta" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="1" attributes="0">
-                                  <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="btn_consulta_fecha" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jButton2" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace min="-2" pref="3" max="-2" attributes="0"/>
-                              </Group>
+                          <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                              <Component id="fecha_consulta" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace pref="13" max="32767" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="1" attributes="0">
+                          <EmptySpace max="32767" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="btn_consulta_fecha" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="btnLimpiarTransFecha" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -554,7 +553,7 @@
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_consulta_fechaActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="javax.swing.JButton" name="jButton2">
+                <Component class="javax.swing.JButton" name="btnLimpiarTransFecha">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="cc" green="cc" red="ff" type="rgb"/>
@@ -565,7 +564,7 @@
                     <Property name="text" type="java.lang.String" value="Limpiar"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton2ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnLimpiarTransFechaActionPerformed"/>
                   </Events>
                 </Component>
               </SubComponents>
@@ -588,7 +587,7 @@
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
                           <Component id="jScrollPane6" min="-2" pref="1086" max="-2" attributes="0"/>
-                          <EmptySpace max="32767" attributes="0"/>
+                          <EmptySpace pref="15" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -597,7 +596,7 @@
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="jScrollPane6" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace pref="21" max="32767" attributes="0"/>
+                          <EmptySpace pref="27" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -622,18 +621,20 @@
                           </Border>
                         </Property>
                         <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                          <Table columnCount="11" rowCount="0">
+                          <Table columnCount="13" rowCount="0">
                             <Column editable="false" title="Nro" type="java.lang.Object"/>
-                            <Column editable="false" title="Descripcion" type="java.lang.Object"/>
+                            <Column editable="false" title="Fecha" type="java.lang.Object"/>
+                            <Column editable="false" title="Hora" type="java.lang.Object"/>
                             <Column editable="false" title="Tipo" type="java.lang.Object"/>
-                            <Column editable="false" title="Nivel" type="java.lang.Object"/>
-                            <Column editable="false" title="Cuenta Padre" type="java.lang.Object"/>
-                            <Column editable="false" title="Grupo" type="java.lang.Object"/>
-                            <Column editable="false" title="Fecha Creacion" type="java.lang.Object"/>
-                            <Column editable="false" title="Hora Creacion" type="java.lang.Object"/>
-                            <Column editable="false" title="Debito Acumulado" type="java.lang.Object"/>
-                            <Column editable="false" title="Credito Acumulado" type="java.lang.Object"/>
-                            <Column editable="false" title="Balance" type="java.lang.Object"/>
+                            <Column editable="false" title="Descripcion" type="java.lang.Object"/>
+                            <Column editable="false" title="Hecho Por" type="java.lang.Object"/>
+                            <Column editable="false" title="Monto" type="java.lang.Object"/>
+                            <Column editable="false" title="Fecha Actualizacion" type="java.lang.Object"/>
+                            <Column editable="false" title="Secuencia Doc" type="java.lang.Object"/>
+                            <Column editable="false" title="Cuenta" type="java.lang.Object"/>
+                            <Column editable="false" title="Valor Debito" type="java.lang.Object"/>
+                            <Column editable="false" title="Valor Credito" type="java.lang.Object"/>
+                            <Column editable="false" title="Comentario" type="java.lang.Object"/>
                           </Table>
                         </Property>
                       </Properties>
@@ -700,11 +701,11 @@
                       <Group type="102" alignment="0" attributes="0">
                           <Component id="jLabel8" min="-2" pref="103" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="fecha_consulta1" min="-2" pref="171" max="-2" attributes="0"/>
+                          <Component id="fecha_inicial_trans" min="-2" pref="171" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                           <Component id="jLabel9" pref="103" max="32767" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="fecha_consulta2" min="-2" pref="168" max="-2" attributes="0"/>
+                          <Component id="fecha_final_trans" min="-2" pref="168" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
                           <Component id="jButton4" min="-2" pref="135" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="79" max="-2" attributes="0"/>
@@ -719,9 +720,9 @@
                           <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="103" alignment="1" groupAlignment="0" attributes="0">
-                                  <Component id="fecha_consulta1" min="-2" max="-2" attributes="0"/>
+                                  <Component id="fecha_inicial_trans" min="-2" max="-2" attributes="0"/>
                                   <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
-                                  <Component id="fecha_consulta2" min="-2" max="-2" attributes="0"/>
+                                  <Component id="fecha_final_trans" min="-2" max="-2" attributes="0"/>
                                   <Component id="jLabel9" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <Group type="103" groupAlignment="3" attributes="0">
@@ -735,12 +736,12 @@
                 </DimensionLayout>
               </Layout>
               <SubComponents>
-                <Component class="com.toedter.calendar.JDateChooser" name="fecha_consulta1">
+                <Component class="com.toedter.calendar.JDateChooser" name="fecha_inicial_trans">
                   <Events>
-                    <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="fecha_consulta1KeyReleased"/>
+                    <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="fecha_inicial_transKeyReleased"/>
                   </Events>
                 </Component>
-                <Component class="com.toedter.calendar.JDateChooser" name="fecha_consulta2">
+                <Component class="com.toedter.calendar.JDateChooser" name="fecha_final_trans">
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel8">
                   <Properties>
@@ -846,19 +847,83 @@
                           </Border>
                         </Property>
                         <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                          <Table columnCount="11" rowCount="0">
+                          <Table columnCount="13" rowCount="0">
                             <Column editable="false" title="Nro" type="java.lang.Object"/>
-                            <Column editable="false" title="Descripcion" type="java.lang.Object"/>
+                            <Column editable="false" title="Fecha" type="java.lang.Object"/>
+                            <Column editable="false" title="Hora" type="java.lang.Object"/>
                             <Column editable="false" title="Tipo" type="java.lang.Object"/>
-                            <Column editable="false" title="Nivel" type="java.lang.Object"/>
-                            <Column editable="false" title="Cuenta Padre" type="java.lang.Object"/>
-                            <Column editable="false" title="Grupo" type="java.lang.Object"/>
-                            <Column editable="false" title="Fecha Creacion" type="java.lang.Object"/>
-                            <Column editable="false" title="Hora Creacion" type="java.lang.Object"/>
-                            <Column editable="false" title="Debito Acumulado" type="java.lang.Object"/>
-                            <Column editable="false" title="Credito Acumulado" type="java.lang.Object"/>
-                            <Column editable="false" title="Balance" type="java.lang.Object"/>
+                            <Column editable="false" title="Descripcion" type="java.lang.Object"/>
+                            <Column editable="false" title="Hecho Por" type="java.lang.Object"/>
+                            <Column editable="false" title="Monto" type="java.lang.Object"/>
+                            <Column editable="false" title="Fecha Actualizaccion" type="java.lang.Object"/>
+                            <Column editable="false" title="Secuencia Doc" type="java.lang.Object"/>
+                            <Column editable="false" title="Cuenta" type="java.lang.Object"/>
+                            <Column editable="false" title="Valor Debito" type="java.lang.Object"/>
+                            <Column editable="false" title="Valor Credito" type="java.lang.Object"/>
+                            <Column editable="false" title="Comentario" type="java.lang.Object"/>
                           </Table>
+                        </Property>
+                        <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
+                          <TableColumnModel selectionModel="0">
+                            <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                              <Title/>
+                              <Editor/>
+                              <Renderer/>
+                            </Column>
+                            <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                              <Title/>
+                              <Editor/>
+                              <Renderer/>
+                            </Column>
+                            <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                              <Title/>
+                              <Editor/>
+                              <Renderer/>
+                            </Column>
+                            <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                              <Title/>
+                              <Editor/>
+                              <Renderer/>
+                            </Column>
+                            <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                              <Title/>
+                              <Editor/>
+                              <Renderer/>
+                            </Column>
+                            <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                              <Title/>
+                              <Editor/>
+                              <Renderer/>
+                            </Column>
+                            <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                              <Title/>
+                              <Editor/>
+                              <Renderer/>
+                            </Column>
+                            <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                              <Title/>
+                              <Editor/>
+                              <Renderer/>
+                            </Column>
+                            <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                              <Title/>
+                              <Editor/>
+                              <Renderer/>
+                            </Column>
+                            <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                              <Title/>
+                              <Editor/>
+                              <Renderer/>
+                            </Column>
+                            <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                              <Title/>
+                              <Editor/>
+                              <Renderer/>
+                            </Column>
+                          </TableColumnModel>
+                        </Property>
+                        <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
+                          <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
                         </Property>
                       </Properties>
                     </Component>

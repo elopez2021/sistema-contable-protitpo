@@ -73,7 +73,10 @@ public class ProcesoCierreDiarioController {
                     cabecera.setDescripcionDocu(campos[4]);
                     cabecera.setHechoPor(campos[5]);
                     cabecera.setMontoTransaccion(Double.parseDouble(campos[6]));
-                    //cabecera.setFechaActualizacion(LocalDate.parse(campos[7]));
+                    if (!campos[7].equals("null")) {
+                        cabecera.setFechaActualizacion(LocalDate.parse(campos[7]));
+                    }
+
                     cabecera.setStatusActualizacion(Boolean.parseBoolean(campos[8]));
                     cabecerasFiltradas.add(cabecera);
                 }
