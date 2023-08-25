@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
-<Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JPanelFormInfo">
+<Form version="1.5" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JPanelFormInfo">
   <NonVisualComponents>
     <Component class="javax.swing.ButtonGroup" name="btnTipoCuentaGroup">
     </Component>
@@ -587,7 +587,7 @@
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
                           <Component id="jScrollPane6" min="-2" pref="1086" max="-2" attributes="0"/>
-                          <EmptySpace pref="15" max="32767" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -1492,8 +1492,9 @@
                         <Component class="javax.swing.JTable" name="tabla_balanza_general">
                           <Properties>
                             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                              <Table columnCount="3" rowCount="0">
+                              <Table columnCount="4" rowCount="0">
                                 <Column editable="false" title="Cuenta" type="java.lang.Object"/>
+                                <Column editable="false" title="Descripcion Cuenta" type="java.lang.Object"/>
                                 <Column editable="false" title="Tipo Cuenta" type="java.lang.Object"/>
                                 <Column editable="false" title="Saldo" type="java.lang.Object"/>
                               </Table>
@@ -1740,7 +1741,7 @@
                               <Component id="btnEstadoFinanciero" min="-2" pref="205" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="178" max="-2" attributes="0"/>
                               <Component id="mensajeLabel" min="-2" pref="234" max="-2" attributes="0"/>
-                              <EmptySpace pref="53" max="32767" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>

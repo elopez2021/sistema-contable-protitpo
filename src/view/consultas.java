@@ -546,7 +546,7 @@ public class consultas extends javax.swing.JPanel {
             .addGroup(jPanel37Layout.createSequentialGroup()
                 .addGap(15, 15, 15)
                 .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 1086, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(15, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel37Layout.setVerticalGroup(
             jPanel37Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1004,11 +1004,11 @@ public class consultas extends javax.swing.JPanel {
 
             },
             new String [] {
-                "Cuenta", "Tipo Cuenta", "Saldo"
+                "Cuenta", "Descripcion Cuenta", "Tipo Cuenta", "Saldo"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false
+                false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -1219,7 +1219,7 @@ public class consultas extends javax.swing.JPanel {
                 .addComponent(btnEstadoFinanciero, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(178, 178, 178)
                 .addComponent(mensajeLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(53, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel35Layout.setVerticalGroup(
             jPanel35Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1525,11 +1525,12 @@ public class consultas extends javax.swing.JPanel {
                 List<TransaccionContable> transacciones = transaccionCtrl.obtenerTransaccionesPorNumeroDocumento(nro_doc);
                 if (!transacciones.isEmpty()) {
                     for (TransaccionContable transaccion : transacciones) {
+                        Documentos tipodocu = documentoCtrl.buscarDocumento(String.valueOf(cabecera.getTipoDocu()));
                         Object[] rowData = {
                             cabecera.getNroDocu(),
                             cabecera.getFechaDocu(),
                             cabecera.getHoraDocu(),
-                            cabecera.getTipoDocu(),
+                            tipodocu.getDescripcion(),
                             cabecera.getDescripcionDocu(),
                             cabecera.getHechoPor(),
                             cabecera.getMontoTransaccion(),
@@ -1658,11 +1659,12 @@ public class consultas extends javax.swing.JPanel {
                 List<TransaccionContable> transacciones = transaccionCtrl.obtenerTransaccionesPorNumeroDocumento(nro_doc);
                 if (!transacciones.isEmpty()) {
                     for (TransaccionContable transaccion : transacciones) {
+                        Documentos tipodocu = documentoCtrl.buscarDocumento(String.valueOf(cabecera.getTipoDocu()));
                         Object[] rowData = {
                             cabecera.getNroDocu(),
                             cabecera.getFechaDocu(),
                             cabecera.getHoraDocu(),
-                            cabecera.getTipoDocu(),
+                            tipodocu.getDescripcion(),
                             cabecera.getDescripcionDocu(),
                             cabecera.getHechoPor(),
                             cabecera.getMontoTransaccion(),
@@ -1707,11 +1709,12 @@ public class consultas extends javax.swing.JPanel {
             List<TransaccionContable> transacciones = transaccionCtrl.obtenerTransaccionesPorNumeroDocumento(nro_doc);
             if (!transacciones.isEmpty()) {
                 for (TransaccionContable transaccion : transacciones) {
+                    Documentos tipodocu = documentoCtrl.buscarDocumento(String.valueOf(cabecera.getTipoDocu()));
                     Object[] rowData = {
                         cabecera.getNroDocu(),
                         cabecera.getFechaDocu(),
                         cabecera.getHoraDocu(),
-                        cabecera.getTipoDocu(),
+                        tipodocu.getDescripcion(),
                         cabecera.getDescripcionDocu(),
                         cabecera.getHechoPor(),
                         cabecera.getMontoTransaccion(),
@@ -1747,10 +1750,11 @@ public class consultas extends javax.swing.JPanel {
         // Obtener los datos de la balanza general (supongamos que están en un mapa balanzaGeneral)
         for (Map.Entry<Integer, Double> entry : balanzaGeneral.entrySet()) {
             Integer cuenta = entry.getKey();
+            CatalogoCuenta cuentaInfo = catalogoCtrl.buscarCuenta(String.valueOf(cuenta));
             Double saldo = entry.getValue();
             String tipoCuenta = balanzaCtrl.determinarTipoCuenta(cuenta);
 
-            model.addRow(new Object[]{cuenta, tipoCuenta, saldo});
+            model.addRow(new Object[]{cuenta, cuentaInfo.getDescripcion_cta(), tipoCuenta, saldo});
         }
     }//GEN-LAST:event_btnBalanzaActionPerformed
 

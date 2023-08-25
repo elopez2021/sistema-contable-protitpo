@@ -423,6 +423,11 @@ public class mantenimientos extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
+        usuarios_table.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                usuarios_tableMouseClicked(evt);
+            }
+        });
         jScrollPane7.setViewportView(usuarios_table);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -849,6 +854,11 @@ public class mantenimientos extends javax.swing.JPanel {
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
+            }
+        });
+        catalogo_table.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                catalogo_tableMouseClicked(evt);
             }
         });
         jScrollPane5.setViewportView(catalogo_table);
@@ -1388,6 +1398,44 @@ public class mantenimientos extends javax.swing.JPanel {
     private void rdbGeneralActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdbGeneralActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_rdbGeneralActionPerformed
+
+    private void usuarios_tableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_usuarios_tableMouseClicked
+        // TODO add your handling code here:
+        
+        
+    }//GEN-LAST:event_usuarios_tableMouseClicked
+
+    private void catalogo_tableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_catalogo_tableMouseClicked
+        // TODO add your handling code here:
+        
+        int r = catalogo_table.getSelectedRow();
+        if (r == -1) {
+            return;
+        }
+        
+        lblMensajeCatalogo.setText("Modificando...");
+
+        String numero = catalogo_table.getValueAt(r, 0).toString();
+        String descripcion = catalogo_table.getValueAt(r, 1).toString();
+        String tipo_cuenta = catalogo_table.getValueAt(r, 2).toString();
+        String nivel_cuenta = catalogo_table.getValueAt(r, 3).toString();
+        String cuenta_padre = catalogo_table.getValueAt(r, 4).toString();
+        String grupo_cuenta = catalogo_table.getValueAt(r, 5).toString();
+        
+        txtNroCuenta.setText(numero);
+        txtDescripcionCuenta.setText(descripcion);
+        if(tipo_cuenta.equals("General")){
+            rdbGeneral.setSelected(true);
+        }else{
+            rdbDetalle.setSelected(true);
+        }
+        txtNivelCuenta.setText(nivel_cuenta);
+        if(!cuenta_padre.equals("null")){
+            txtCuentaPadre.setText(cuenta_padre);
+        }
+        
+        cmbGrupoCuenta.setSelectedItem(grupo_cuenta);
+    }//GEN-LAST:event_catalogo_tableMouseClicked
 
     public static boolean isEmpty(JTextField textField, JLabel errorLabel, String mensajeError) {
         String texto = textField.getText().trim();
