@@ -1002,6 +1002,7 @@ public class Transacciones extends javax.swing.JPanel {
         if (cabecera != null && cabecera.isStatusActualizacion()) {
             JOptionPane.showMessageDialog(null, "No se puede modificar esta transacción", "Éxito", JOptionPane.ERROR_MESSAGE);
             txt_num_doc.setText("");
+            return;
         }
 
         if (cabecera != null) {

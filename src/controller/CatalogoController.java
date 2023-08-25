@@ -100,7 +100,9 @@ public class CatalogoController implements Controller {
                 String codigo1 = campos[0];
                 if (codigo1.equals(codigo)) {
                     CatalogoCuenta cuenta = new CatalogoCuenta(Integer.parseInt(campos[0]), campos[1], Boolean.parseBoolean(campos[2]),
-                            Integer.parseInt(campos[3]), Integer.parseInt(campos[4]), Integer.parseInt(campos[5]),
+                            Integer.parseInt(campos[3]), 
+                            campos[4].equals("null") ? null : Integer.parseInt(campos[4]), 
+                            Integer.parseInt(campos[5]),
                             LocalDate.parse(campos[6]), LocalTime.parse(campos[7]), Double.parseDouble(campos[8]), Double.parseDouble(campos[9]),
                             Double.parseDouble(campos[10]));
                     return cuenta;

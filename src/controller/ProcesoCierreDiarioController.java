@@ -9,6 +9,7 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
@@ -32,7 +33,7 @@ public class ProcesoCierreDiarioController {
 
         // Obtener transacciones dentro del rango de fechas
         List<CabeceraTransaccion> cabeceras = obtenerCabecerasPorRangoDeFechas(fechaInicio, fechaFin);
-        if(cabeceras.isEmpty()){
+        if (cabeceras.isEmpty()) {
             JOptionPane.showMessageDialog(null, "No existe ninguna transaccion en ese rango de fecha", "Error", JOptionPane.INFORMATION_MESSAGE);
             return false;
         }
@@ -67,12 +68,13 @@ public class ProcesoCierreDiarioController {
                     CabeceraTransaccion cabecera = new CabeceraTransaccion();
                     cabecera.setNroDocu(campos[0]);
                     cabecera.setFechaDocu(LocalDate.parse(campos[1]));
-                    cabecera.setTipoDocu(Integer.parseInt(campos[2]));
-                    cabecera.setDescripcionDocu(campos[3]);
-                    cabecera.setHechoPor(campos[4]);
-                    cabecera.setMontoTransaccion(Double.parseDouble(campos[5]));
-                    cabecera.setFechaActualizacion(LocalDate.parse(campos[6]));
-                    cabecera.setStatusActualizacion(Boolean.parseBoolean(campos[7]));
+                    cabecera.setHoraDocu(LocalTime.parse(campos[2]));
+                    cabecera.setTipoDocu(Integer.parseInt(campos[3]));
+                    cabecera.setDescripcionDocu(campos[4]);
+                    cabecera.setHechoPor(campos[5]);
+                    cabecera.setMontoTransaccion(Double.parseDouble(campos[6]));
+                    //cabecera.setFechaActualizacion(LocalDate.parse(campos[7]));
+                    cabecera.setStatusActualizacion(Boolean.parseBoolean(campos[8]));
                     cabecerasFiltradas.add(cabecera);
                 }
             }
@@ -85,7 +87,11 @@ public class ProcesoCierreDiarioController {
     }
 
     private void actualizarCuentasPadres(CatalogoCuenta cuentaContable, double valorDebito, double valorCredito) {
-        int cuentaPadre = cuentaContable.getCta_padre();
+        Integer cuentaPadre = cuentaContable.getCta_padre();
+
+        if (cuentaPadre == null) {
+            return;
+        }
 
         while (cuentaPadre != 0) {
             CatalogoCuenta cuenta = catalogoCtrl.buscarCuenta(String.valueOf(cuentaPadre));
@@ -100,10 +106,13 @@ public class ProcesoCierreDiarioController {
                 cuenta.setBalance_cta(cuenta.getDebito_acum_cta() - cuenta.getCredito_acum_cta());
 
                 // Actualizar la cuenta padre en el archivo de catálogo de cuentas
-                catalogoCtrl.update(cuentaPadre);
+                catalogoCtrl.update(cuenta);
 
                 // Obtener el siguiente nivel de cuenta padre
                 cuentaPadre = cuenta.getCta_padre();
+                if (cuentaPadre == null) {
+                    break;
+                }
             } else {
                 break;
             }
