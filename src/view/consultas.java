@@ -12,6 +12,7 @@ import controller.CatalogoController;
 import controller.DocumentosController;
 import controller.ProcesoCierreDiarioController;
 import controller.TransaccionController;
+import java.awt.Color;
 import java.text.ParseException;
 import java.time.LocalDate;
 import java.time.ZoneId;
@@ -176,6 +177,7 @@ public class consultas extends javax.swing.JPanel {
         btnEstadoFinanciero = new javax.swing.JButton();
         jScrollPane7 = new javax.swing.JScrollPane();
         tabla_estado_financiero = new javax.swing.JTable();
+        mensajeLabel = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
         jPanel27 = new javax.swing.JPanel();
         jPanel29 = new javax.swing.JPanel();
@@ -1202,6 +1204,8 @@ public class consultas extends javax.swing.JPanel {
         });
         jScrollPane7.setViewportView(tabla_estado_financiero);
 
+        mensajeLabel.setFont(new java.awt.Font("Sylfaen", 1, 18)); // NOI18N
+
         javax.swing.GroupLayout jPanel35Layout = new javax.swing.GroupLayout(jPanel35);
         jPanel35.setLayout(jPanel35Layout);
         jPanel35Layout.setHorizontalGroup(
@@ -1213,13 +1217,17 @@ public class consultas extends javax.swing.JPanel {
             .addGroup(jPanel35Layout.createSequentialGroup()
                 .addGap(422, 422, 422)
                 .addComponent(btnEstadoFinanciero, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(465, Short.MAX_VALUE))
+                .addGap(178, 178, 178)
+                .addComponent(mensajeLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(53, Short.MAX_VALUE))
         );
         jPanel35Layout.setVerticalGroup(
             jPanel35Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel35Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(btnEstadoFinanciero, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel35Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnEstadoFinanciero, javax.swing.GroupLayout.DEFAULT_SIZE, 52, Short.MAX_VALUE)
+                    .addComponent(mensajeLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 416, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -1820,9 +1828,23 @@ public class consultas extends javax.swing.JPanel {
         // TODO add your handling code here:
         BalanzaController balanzaCtrl = new BalanzaController();
         Map<String, Double> estado = balanzaCtrl.calcularEstadoGananciasPerdidas(balanzaCtrl.obtenerTransacciones());
-        
-        if(estado.isEmpty()){
+
+        if (estado.isEmpty()) {
             JOptionPane.showMessageDialog(null, "No es posible realizar el estado financiero", "Información", JOptionPane.INFORMATION_MESSAGE);
+            return;
+        }
+
+        double resultadoNeto = estado.get("Ingresos") - estado.get("Costos") - estado.get("Gastos");
+
+        if (resultadoNeto > 0) {
+            mensajeLabel.setText("Estado: Ganancia");
+            mensajeLabel.setForeground(Color.GREEN);
+        } else if (resultadoNeto < 0) {
+            mensajeLabel.setText("Estado: Pérdida");
+            mensajeLabel.setForeground(Color.RED);
+        } else {
+            mensajeLabel.setText("Estado: Equilibrio");
+            mensajeLabel.setForeground(Color.BLACK);
         }
 
         DefaultTableModel model = (DefaultTableModel) tabla_estado_financiero.getModel();
@@ -1836,7 +1858,6 @@ public class consultas extends javax.swing.JPanel {
             model.addRow(new Object[]{concepto, monto});
         }
 
-   
 
     }//GEN-LAST:event_btnEstadoFinancieroActionPerformed
 
@@ -1913,6 +1934,7 @@ public class consultas extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JLabel mensajeLabel;
     private javax.swing.JRadioButton rdbDetalle;
     private javax.swing.JRadioButton rdbGeneral;
     private javax.swing.JTable tabla_balanza_comprobacion;
