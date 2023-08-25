@@ -55,7 +55,7 @@ public class ProcesoCierreDiarioController {
 
     }
 
-    private List<CabeceraTransaccion> obtenerCabecerasPorRangoDeFechas(LocalDate fechaInicio, LocalDate fechaFin) {
+    public List<CabeceraTransaccion> obtenerCabecerasPorRangoDeFechas(LocalDate fechaInicio, LocalDate fechaFin) {
         List<CabeceraTransaccion> cabecerasFiltradas = new ArrayList<>();
 
         try (BufferedReader reader = new BufferedReader(new FileReader(RUTA_ARCHIVO_CABECERAS))) {

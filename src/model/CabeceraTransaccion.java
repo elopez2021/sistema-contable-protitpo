@@ -47,8 +47,7 @@ public class CabeceraTransaccion {
         this.montoTransaccion = montoTransaccion;
         this.statusActualizacion = statusActualizacion;
     }
-    
-    
+       
     
     public CabeceraTransaccion() {
         

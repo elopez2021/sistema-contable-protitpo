@@ -6,11 +6,15 @@
 package view;
 
 import controller.CatalogoController;
+import controller.ProcesoCierreDiarioController;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.Date;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
+import model.CabeceraTransaccion;
 import model.CatalogoCuenta;
 
 /**
@@ -30,6 +34,7 @@ public class consultas extends javax.swing.JPanel {
     }
 
     CatalogoController catalogoCtrl = new CatalogoController();
+    ProcesoCierreDiarioController procesocierreCtrl = new ProcesoCierreDiarioController();
 
     public void tb_load_catalogo() {
         List<String[]> listaCatalogo = catalogoCtrl.list();
@@ -107,11 +112,11 @@ public class consultas extends javax.swing.JPanel {
         fecha_consulta2 = new com.toedter.calendar.JDateChooser();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
-        btn_consultar = new javax.swing.JButton();
+        btn_consultar_rango_fechas = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jPanel39 = new javax.swing.JPanel();
-        jScrollPane12 = new javax.swing.JScrollPane();
-        catalogo_table2 = new javax.swing.JTable();
+        jScrollPane11 = new javax.swing.JScrollPane();
+        table_rango_fechas = new javax.swing.JTable();
         jPanel14 = new javax.swing.JPanel();
         jPanel40 = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
@@ -568,9 +573,14 @@ public class consultas extends javax.swing.JPanel {
         jLabel9.setFont(new java.awt.Font("Sylfaen", 0, 18)); // NOI18N
         jLabel9.setText("Fecha final");
 
-        btn_consultar.setBackground(new java.awt.Color(204, 153, 255));
-        btn_consultar.setFont(new java.awt.Font("Sylfaen", 0, 18)); // NOI18N
-        btn_consultar.setText("Consultar");
+        btn_consultar_rango_fechas.setBackground(new java.awt.Color(204, 153, 255));
+        btn_consultar_rango_fechas.setFont(new java.awt.Font("Sylfaen", 0, 18)); // NOI18N
+        btn_consultar_rango_fechas.setText("Consultar");
+        btn_consultar_rango_fechas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_consultar_rango_fechasActionPerformed(evt);
+            }
+        });
 
         jButton4.setBackground(new java.awt.Color(255, 204, 204));
         jButton4.setFont(new java.awt.Font("Sylfaen", 0, 18)); // NOI18N
@@ -596,32 +606,33 @@ public class consultas extends javax.swing.JPanel {
                 .addGap(71, 71, 71)
                 .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btn_consultar, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btn_consultar_rango_fechas, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(175, 175, 175))
         );
         jPanel38Layout.setVerticalGroup(
             jPanel38Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel38Layout.createSequentialGroup()
                 .addGap(15, 15, 15)
-                .addGroup(jPanel38Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btn_consultar, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel38Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel38Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel38Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(fecha_consulta1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel8)
                         .addComponent(fecha_consulta2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel9)))
+                        .addComponent(jLabel9))
+                    .addGroup(jPanel38Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btn_consultar_rango_fechas, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(15, Short.MAX_VALUE))
         );
 
         jPanel39.setBackground(new java.awt.Color(255, 255, 255));
         jPanel39.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
-        jScrollPane12.setBackground(new java.awt.Color(255, 255, 255));
-        jScrollPane12.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jScrollPane11.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
+        jScrollPane11.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 
-        catalogo_table2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        catalogo_table2.setModel(new javax.swing.table.DefaultTableModel(
+        table_rango_fechas.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        table_rango_fechas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -637,20 +648,27 @@ public class consultas extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane12.setViewportView(catalogo_table2);
+        jScrollPane11.setViewportView(table_rango_fechas);
 
         javax.swing.GroupLayout jPanel39Layout = new javax.swing.GroupLayout(jPanel39);
         jPanel39.setLayout(jPanel39Layout);
         jPanel39Layout.setHorizontalGroup(
             jPanel39Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane12)
+            .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(jPanel39Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel39Layout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(jScrollPane11, javax.swing.GroupLayout.DEFAULT_SIZE, 1104, Short.MAX_VALUE)
+                    .addContainerGap()))
         );
         jPanel39Layout.setVerticalGroup(
             jPanel39Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel39Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane12, javax.swing.GroupLayout.DEFAULT_SIZE, 391, Short.MAX_VALUE)
-                .addContainerGap())
+            .addGap(0, 445, Short.MAX_VALUE)
+            .addGroup(jPanel39Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel39Layout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(jScrollPane11, javax.swing.GroupLayout.DEFAULT_SIZE, 433, Short.MAX_VALUE)
+                    .addContainerGap()))
         );
 
         javax.swing.GroupLayout jPanel12Layout = new javax.swing.GroupLayout(jPanel12);
@@ -673,7 +691,7 @@ public class consultas extends javax.swing.JPanel {
                 .addComponent(jPanel38, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel39, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(60, Short.MAX_VALUE))
+                .addContainerGap(18, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Transcciones por rango de fecha", jPanel12);
@@ -829,6 +847,11 @@ public class consultas extends javax.swing.JPanel {
         consultar_tipo_doc.setBackground(new java.awt.Color(255, 204, 204));
         consultar_tipo_doc.setFont(new java.awt.Font("Sylfaen", 1, 18)); // NOI18N
         consultar_tipo_doc.setText("Consultar");
+        consultar_tipo_doc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                consultar_tipo_docActionPerformed(evt);
+            }
+        });
 
         txt_tipo_doc.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -1497,15 +1520,34 @@ public class consultas extends javax.swing.JPanel {
     }//GEN-LAST:event_txtCuentaPadreFocusLost
 
     private void btn_consulta_fechaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_consulta_fechaActionPerformed
-                // TODO add your handling code here:
-        //if every field is empty, then do not apply search
+         // TODO add your handling code here:
+        //if every field is empty, then do not apply search        
+        
         Date fechaSeleccionada = fecha_consulta.getDate();
         if (fechaSeleccionada == null) {
         JOptionPane.showMessageDialog(null, "El campo de fecha está vacío", "Información", JOptionPane.INFORMATION_MESSAGE);
         return;
         }
+        LocalDate fechaini = fechaSeleccionada.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        List<CabeceraTransaccion> cabeceras = procesocierreCtrl.obtenerCabecerasPorRangoDeFechas(fechaini, fechaini);
+        ProcesoDiarioController procesocierreCtrl = new ProcesoDiarioController();
         
+        DefaultTableModel tb = (DefaultTableModel) table_fecha_consulta.getModel();
+        tb.setRowCount(0);
         
+        for(CabeceraTransaccion cabecera : cabeceras){
+            Object[] rowData = {
+            cabecera.getTipoDocu(),
+            cabecera.getDescripcionDocu(),
+            cabecera.getTipoDocu(),
+            cabecera.getFechaDocu(),
+            cabecera.getHoraDocu(),
+            cabecera.getFechaActualizacion(),
+            cabecera.getMontoTransaccion()
+        };
+        tb.addRow(rowData);
+        }
+                
     }//GEN-LAST:event_btn_consulta_fechaActionPerformed
 
     private void txt_doc_consultaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txt_doc_consultaFocusLost
@@ -1555,6 +1597,42 @@ public class consultas extends javax.swing.JPanel {
         txt_doc_consulta.setText(null);
     }//GEN-LAST:event_clean_processActionPerformed
 
+    private void consultar_tipo_docActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultar_tipo_docActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_consultar_tipo_docActionPerformed
+
+    private void btn_consultar_rango_fechasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_consultar_rango_fechasActionPerformed
+ 
+    Date fechaSeleccionada1 = fecha_consulta1.getDate();
+    Date fechaSeleccionada2 = fecha_consulta2.getDate();
+
+    if (fechaSeleccionada1 == null || fechaSeleccionada2 == null) {
+        JOptionPane.showMessageDialog(null, "Uno o ambos campos de fecha están vacíos", "Información", JOptionPane.INFORMATION_MESSAGE);
+        return;
+    }
+
+    LocalDate fechaini = fechaSeleccionada1.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+    LocalDate fechafin = fechaSeleccionada2.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+    ProcesoDiarioController procesocierreCtrl = new ProcesoDiarioController();
+    
+    List<CabeceraTransaccion> cabeceras = procesocierreCtrl.obtenerCabecerasPorRangoDeFechas(fechaini, fechafin);
+
+    DefaultTableModel ti = (DefaultTableModel) table_rango_fechas.getModel();
+    ti.setRowCount(0);   
+
+    for (CabeceraTransaccion cabecera : cabeceras) {
+        Object[] rowData = {
+            cabecera.getTipoDocu(),
+            cabecera.getDescripcionDocu(),
+            cabecera.getFechaDocu(),
+            cabecera.getHoraDocu(),
+            cabecera.getFechaActualizacion(),
+            cabecera.getMontoTransaccion()
+        };
+        ti.addRow(rowData);
+    }
+    }//GEN-LAST:event_btn_consultar_rango_fechasActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Limpiar_tipo;
@@ -1562,9 +1640,8 @@ public class consultas extends javax.swing.JPanel {
     private javax.swing.JButton btnLimpiarCatalogo;
     private javax.swing.ButtonGroup btnTipoCuentaGroup;
     private javax.swing.JButton btn_consulta_fecha;
-    private javax.swing.JButton btn_consultar;
+    private javax.swing.JButton btn_consultar_rango_fechas;
     private javax.swing.JTable catalogo_table;
-    private javax.swing.JTable catalogo_table2;
     private javax.swing.JTable catalogo_table3;
     private javax.swing.JTable catalogo_table4;
     private javax.swing.JTable catalogo_table5;
@@ -1626,7 +1703,7 @@ public class consultas extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane10;
-    private javax.swing.JScrollPane jScrollPane12;
+    private javax.swing.JScrollPane jScrollPane11;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JScrollPane jScrollPane7;
@@ -1636,6 +1713,7 @@ public class consultas extends javax.swing.JPanel {
     private javax.swing.JRadioButton rdbDetalle;
     private javax.swing.JRadioButton rdbGeneral;
     private javax.swing.JTable table_fecha_consulta;
+    private javax.swing.JTable table_rango_fechas;
     private javax.swing.JScrollPane table_trans_by_docs;
     private javax.swing.JTextField txtCuentaPadre;
     private javax.swing.JTextField txtDescripcionCuenta;
@@ -1644,4 +1722,14 @@ public class consultas extends javax.swing.JPanel {
     private javax.swing.JTextField txt_doc_consulta;
     private javax.swing.JTextField txt_tipo_doc;
     // End of variables declaration//GEN-END:variables
+
+    private static class ProcesoDiarioController {
+
+        public ProcesoDiarioController() {
+        }
+
+        private List<CabeceraTransaccion> obtenerCabecerasPorRangoDeFechas(LocalDate fechaInicio, LocalDate fechaFin) {
+            return null;
+        }
+    }
 }
