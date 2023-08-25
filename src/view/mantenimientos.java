@@ -1210,7 +1210,7 @@ public class mantenimientos extends javax.swing.JPanel {
 
             CatalogoCuenta cuenta = catalogoCtrl.buscarCuenta(nro_cuenta);
             if (cuenta != null) {
-                if (cuenta.getBalance_cta() > 0) {
+                if (cuenta.getBalance_cta() != 0.00) {
                     JOptionPane.showMessageDialog(null, "No se puede modificar esta cuenta porque ya cuenta con balance", "Error", JOptionPane.ERROR_MESSAGE);
                     txtNroCuenta.setText("");
                     txtNroCuenta.setEditable(true);
@@ -1225,7 +1225,7 @@ public class mantenimientos extends javax.swing.JPanel {
                     rdbDetalle.setSelected(true);
                 }
                 txtNivelCuenta.setText(String.valueOf(cuenta.getNivel_cta()));
-                txtCuentaPadre.setText(String.valueOf(cuenta.getCta_padre()));
+                txtCuentaPadre.setText(cuenta.getCta_padre() == null ? "" : String.valueOf(cuenta.getCta_padre()));
 
                 if (cuenta.getGrupo_cta() == 1) {
                     cmbGrupoCuenta.setSelectedItem("Débito");

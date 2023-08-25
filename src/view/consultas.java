@@ -5,6 +5,7 @@
  */
 package view;
 
+import controller.BalanzaGeneralController;
 import controller.Cabecera;
 import controller.CatalogoController;
 import controller.DocumentosController;
@@ -24,6 +25,10 @@ import model.CabeceraTransaccion;
 import model.CatalogoCuenta;
 import model.Documentos;
 import model.TransaccionContable;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Set;
 
 /**
  *
@@ -31,14 +36,15 @@ import model.TransaccionContable;
  */
 public class consultas extends javax.swing.JPanel {
 
-    private Iterable<CatalogoCuenta> TrasaccionContableFiltrado;
-
     /**
      * Creates new form consultas
      */
     DocumentosController documentoCtrl = new DocumentosController();
     Cabecera cabeceraCtrl = new Cabecera();
     TransaccionController transaccionCtrl = new TransaccionController();
+    CatalogoController catalogoCtrl = new CatalogoController();
+    ProcesoCierreDiarioController procesocierreCtrl = new ProcesoCierreDiarioController();
+
     List<String> descripcionesTiposDocumentos = documentoCtrl.obtenerDescripcionesTiposDocumentos();
 
     public consultas() {
@@ -50,9 +56,6 @@ public class consultas extends javax.swing.JPanel {
         }
 
     }
-
-    CatalogoController catalogoCtrl = new CatalogoController();
-    ProcesoCierreDiarioController procesocierreCtrl = new ProcesoCierreDiarioController();
 
     public void tb_load_catalogo() {
         List<String[]> listaCatalogo = catalogoCtrl.list();
@@ -150,15 +153,16 @@ public class consultas extends javax.swing.JPanel {
         jLabel11 = new javax.swing.JLabel();
         Limpiar_tipo = new javax.swing.JButton();
         consultar_tipo_doc = new javax.swing.JButton();
-        txt_tipo_doc = new javax.swing.JTextField();
+        txt_documento = new javax.swing.JTextField();
         jPanel11 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        catalogo_table7 = new javax.swing.JTable();
+        tabla_transaccion_documento = new javax.swing.JTable();
         jPanel3 = new javax.swing.JPanel();
         jPanel24 = new javax.swing.JPanel();
         jPanel26 = new javax.swing.JPanel();
-        jScrollPane7 = new javax.swing.JScrollPane();
-        catalogo_table6 = new javax.swing.JTable();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tabla_balanza_general = new javax.swing.JTable();
+        btnBalanza = new javax.swing.JButton();
         jPanel7 = new javax.swing.JPanel();
         jPanel30 = new javax.swing.JPanel();
         jPanel32 = new javax.swing.JPanel();
@@ -710,7 +714,7 @@ public class consultas extends javax.swing.JPanel {
         jPanel40.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         jLabel10.setFont(new java.awt.Font("Sylfaen", 0, 18)); // NOI18N
-        jLabel10.setText("Documento");
+        jLabel10.setText("Tipo de Documento:");
 
         clean_process.setBackground(new java.awt.Color(204, 153, 255));
         clean_process.setFont(new java.awt.Font("Sylfaen", 0, 18)); // NOI18N
@@ -828,7 +832,7 @@ public class consultas extends javax.swing.JPanel {
                 .addContainerGap(20, Short.MAX_VALUE))
         );
 
-        jTabbedPane1.addTab("Transacciones por doc.", jPanel14);
+        jTabbedPane1.addTab("Transacciones por tipo doc.", jPanel14);
 
         jPanel1.setPreferredSize(new java.awt.Dimension(4, 4));
 
@@ -838,7 +842,8 @@ public class consultas extends javax.swing.JPanel {
         jPanel10.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         jLabel11.setFont(new java.awt.Font("Sylfaen", 0, 18)); // NOI18N
-        jLabel11.setText("Tipo de documento");
+        jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel11.setText("Documento:");
 
         Limpiar_tipo.setBackground(new java.awt.Color(204, 153, 255));
         Limpiar_tipo.setFont(new java.awt.Font("Sylfaen", 0, 18)); // NOI18N
@@ -853,12 +858,12 @@ public class consultas extends javax.swing.JPanel {
             }
         });
 
-        txt_tipo_doc.addFocusListener(new java.awt.event.FocusAdapter() {
+        txt_documento.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
-                txt_tipo_docFocusGained(evt);
+                txt_documentoFocusGained(evt);
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
-                txt_tipo_docFocusLost(evt);
+                txt_documentoFocusLost(evt);
             }
         });
 
@@ -870,7 +875,7 @@ public class consultas extends javax.swing.JPanel {
                 .addGap(28, 28, 28)
                 .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txt_tipo_doc, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txt_documento, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(64, 64, 64)
                 .addComponent(Limpiar_tipo, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(33, 33, 33)
@@ -890,7 +895,7 @@ public class consultas extends javax.swing.JPanel {
                         .addComponent(consultar_tipo_doc))
                     .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel11)
-                        .addComponent(txt_tipo_doc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(txt_documento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(16, Short.MAX_VALUE))
         );
 
@@ -902,24 +907,24 @@ public class consultas extends javax.swing.JPanel {
         jScrollPane1.setBackground(new java.awt.Color(255, 255, 255));
         jScrollPane1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
-        catalogo_table7.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        catalogo_table7.setModel(new javax.swing.table.DefaultTableModel(
+        tabla_transaccion_documento.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        tabla_transaccion_documento.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Nro", "Descripcion", "Tipo", "Nivel", "Cuenta Padre", "Grupo", "Fecha Creacion", "Hora Creacion", "Debito Acumulado", "Credito Acumulado", "Balance"
+                "Nro", "Fecha", "Hora", "Tipo", "Descripcion", "Hecho Por", "Fecha Actualizacion", "Secuencia", "Cuenta", "Debito", "Credito"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false, false, false, false
+                false, false, false, true, true, false, true, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(catalogo_table7);
+        jScrollPane1.setViewportView(tabla_transaccion_documento);
 
         javax.swing.GroupLayout jPanel11Layout = new javax.swing.GroupLayout(jPanel11);
         jPanel11.setLayout(jPanel11Layout);
@@ -976,50 +981,62 @@ public class consultas extends javax.swing.JPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jTabbedPane1.addTab("Transacciones por tipo de doc.", jPanel1);
+        jTabbedPane1.addTab("Transacciones por doc.", jPanel1);
 
         jPanel24.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         jPanel26.setBackground(new java.awt.Color(255, 255, 255));
         jPanel26.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
-        jScrollPane7.setBackground(new java.awt.Color(255, 255, 255));
-        jScrollPane7.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-
-        catalogo_table6.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        catalogo_table6.setModel(new javax.swing.table.DefaultTableModel(
+        tabla_balanza_general.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
             },
             new String [] {
-                "Nro", "Descripcion", "Tipo", "Nivel", "Cuenta Padre", "Grupo", "Fecha Creacion", "Hora Creacion", "Debito Acumulado", "Credito Acumulado", "Balance"
+                "Cuenta", "Tipo Cuenta", "Saldo"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false, false, false, false
+                false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane7.setViewportView(catalogo_table6);
+        jScrollPane2.setViewportView(tabla_balanza_general);
+
+        btnBalanza.setFont(new java.awt.Font("Sylfaen", 1, 18)); // NOI18N
+        btnBalanza.setText("Generar");
+        btnBalanza.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBalanzaActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel26Layout = new javax.swing.GroupLayout(jPanel26);
         jPanel26.setLayout(jPanel26Layout);
         jPanel26Layout.setHorizontalGroup(
             jPanel26Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel26Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel26Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane7, javax.swing.GroupLayout.DEFAULT_SIZE, 1072, Short.MAX_VALUE)
+                .addComponent(jScrollPane2)
                 .addContainerGap())
+            .addGroup(jPanel26Layout.createSequentialGroup()
+                .addGap(390, 390, 390)
+                .addComponent(btnBalanza, javax.swing.GroupLayout.PREFERRED_SIZE, 273, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(429, Short.MAX_VALUE))
         );
         jPanel26Layout.setVerticalGroup(
             jPanel26Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel26Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 456, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel26Layout.createSequentialGroup()
+                .addComponent(btnBalanza, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 440, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout jPanel24Layout = new javax.swing.GroupLayout(jPanel24);
@@ -1035,8 +1052,8 @@ public class consultas extends javax.swing.JPanel {
             jPanel24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel24Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel26, javax.swing.GroupLayout.PREFERRED_SIZE, 403, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(113, Short.MAX_VALUE))
+                .addComponent(jPanel26, javax.swing.GroupLayout.PREFERRED_SIZE, 505, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
@@ -1487,15 +1504,15 @@ public class consultas extends javax.swing.JPanel {
 
     }//GEN-LAST:event_btn_consulta_fechaActionPerformed
 
-    private void txt_tipo_docFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txt_tipo_docFocusLost
+    private void txt_documentoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txt_documentoFocusLost
         // TODO add your handling code here:
 
-    }//GEN-LAST:event_txt_tipo_docFocusLost
+    }//GEN-LAST:event_txt_documentoFocusLost
 
-    private void txt_tipo_docFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txt_tipo_docFocusGained
+    private void txt_documentoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txt_documentoFocusGained
         // TODO add your handling code here:
 
-    }//GEN-LAST:event_txt_tipo_docFocusGained
+    }//GEN-LAST:event_txt_documentoFocusGained
 
     private void txtDescripcionCuentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDescripcionCuentaActionPerformed
         // TODO add your handling code here:
@@ -1517,6 +1534,52 @@ public class consultas extends javax.swing.JPanel {
 
     private void consultar_tipo_docActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultar_tipo_docActionPerformed
         // TODO add your handling code here:
+
+        if (txt_documento.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "El campo de documento está vacío", "Información", JOptionPane.INFORMATION_MESSAGE);
+            return;
+        }
+
+        CabeceraTransaccion cabecera = new CabeceraTransaccion();
+        try {
+            cabecera = cabeceraCtrl.obtenerCabeceraPorNumero(txt_documento.getText());
+        } catch (ParseException ex) {
+            Logger.getLogger(consultas.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        DefaultTableModel dt = (DefaultTableModel) tabla_transaccion_documento.getModel();
+        dt.setRowCount(0);
+        if (cabecera == null) {
+            JOptionPane.showMessageDialog(null, "No se encontró ninguna transaccion", "Información", JOptionPane.INFORMATION_MESSAGE);
+        } else {
+
+            String nro_doc = cabecera.getNroDocu();
+
+            List<TransaccionContable> transacciones = transaccionCtrl.obtenerTransaccionesPorNumeroDocumento(nro_doc);
+            if (!transacciones.isEmpty()) {
+                for (TransaccionContable transaccion : transacciones) {
+                    Object[] rowData = {
+                        cabecera.getNroDocu(),
+                        cabecera.getFechaDocu(),
+                        cabecera.getHoraDocu(),
+                        cabecera.getTipoDocu(),
+                        cabecera.getDescripcionDocu(),
+                        cabecera.getHechoPor(),
+                        cabecera.getFechaActualizacion(),
+                        transaccion.getSecuencia_doc(),
+                        transaccion.getCuenta_contable(),
+                        transaccion.getValor_debito(),
+                        transaccion.getValor_credito(),
+                        transaccion.getComentario()
+                    };
+                    dt.addRow(rowData);
+                }
+            }else{
+                JOptionPane.showMessageDialog(null, "No se encontró ninguna transaccion", "Información", JOptionPane.INFORMATION_MESSAGE);
+            }
+
+        }
+
     }//GEN-LAST:event_consultar_tipo_docActionPerformed
 
     private void btn_consultar_rango_fechasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_consultar_rango_fechasActionPerformed
@@ -1622,10 +1685,34 @@ public class consultas extends javax.swing.JPanel {
 
     }//GEN-LAST:event_btn_consulta_docActionPerformed
 
+    private void btnBalanzaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBalanzaActionPerformed
+        // TODO add your handling code here:
+
+        BalanzaGeneralController balanzaCtrl = new BalanzaGeneralController();
+        Map<Integer, Double> balanzaGeneral = balanzaCtrl.calcularBalanzaGeneral(balanzaCtrl.obtenerCuentasCatalogo(), balanzaCtrl.obtenerTransacciones());
+        if (balanzaGeneral.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "No es posible realizar la balanza general", "Información", JOptionPane.INFORMATION_MESSAGE);
+            return;
+        }
+
+        DefaultTableModel model = (DefaultTableModel) tabla_balanza_general.getModel();
+        model.setRowCount(0); // Limpiar la tabla antes de agregar los datos
+
+        // Obtener los datos de la balanza general (supongamos que están en un mapa balanzaGeneral)
+        for (Map.Entry<Integer, Double> entry : balanzaGeneral.entrySet()) {
+            Integer cuenta = entry.getKey();
+            Double saldo = entry.getValue();
+            String tipoCuenta = balanzaCtrl.determinarTipoCuenta(cuenta);
+
+            model.addRow(new Object[]{cuenta, tipoCuenta, saldo});
+        }
+    }//GEN-LAST:event_btnBalanzaActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane Jscrollpane_trans;
     private javax.swing.JButton Limpiar_tipo;
+    private javax.swing.JButton btnBalanza;
     private javax.swing.JButton btnBuscarCatalogo;
     private javax.swing.JButton btnLimpiarCatalogo;
     private javax.swing.JButton btnLimpiarTransFecha;
@@ -1636,8 +1723,6 @@ public class consultas extends javax.swing.JPanel {
     private javax.swing.JTable catalogo_table;
     private javax.swing.JTable catalogo_table4;
     private javax.swing.JTable catalogo_table5;
-    private javax.swing.JTable catalogo_table6;
-    private javax.swing.JTable catalogo_table7;
     private javax.swing.JTable catalogo_table8;
     private javax.swing.JButton clean_process;
     private javax.swing.JComboBox<String> cmbGrupoCuenta;
@@ -1690,22 +1775,24 @@ public class consultas extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane10;
     private javax.swing.JScrollPane jScrollPane11;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
-    private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JScrollPane jScrollPane8;
     private javax.swing.JScrollPane jScrollPane9;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JRadioButton rdbDetalle;
     private javax.swing.JRadioButton rdbGeneral;
+    private javax.swing.JTable tabla_balanza_general;
     private javax.swing.JTable tabla_trans_docs;
+    private javax.swing.JTable tabla_transaccion_documento;
     private javax.swing.JTable table_fecha_consulta;
     private javax.swing.JTable table_rango_fechas;
     private javax.swing.JTextField txtCuentaPadre;
     private javax.swing.JTextField txtDescripcionCuenta;
     private javax.swing.JTextField txtNivelCuenta;
     private javax.swing.JTextField txtNroCuenta;
-    private javax.swing.JTextField txt_tipo_doc;
+    private javax.swing.JTextField txt_documento;
     // End of variables declaration//GEN-END:variables
 
     private static class ProcesoDiarioController {
