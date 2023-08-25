@@ -188,5 +188,41 @@ public class Cabecera implements Controller {
 
     return cabecerasFiltradas;
 }
+    
+    private List<CabeceraTransaccion> obtenerCabecerasPorDescripcion(String descripcion) {
+    List<CabeceraTransaccion> cabecerasFiltradas = new ArrayList<>();
+
+    try (BufferedReader reader = new BufferedReader(new FileReader(RUTA_ARCHIVO))) {
+        String line;
+        while ((line = reader.readLine()) != null) {
+            String[] campos = line.split(";");
+            String descripcionDocu = campos[4]; 
+            
+            if (descripcionDocu.equalsIgnoreCase(descripcion)) {
+                CabeceraTransaccion cabecera = new CabeceraTransaccion();
+                cabecera.setNroDocu(campos[0]);
+                cabecera.setFechaDocu(LocalDate.parse(campos[1]));
+                cabecera.setHoraDocu(LocalTime.parse(campos[2]));
+                cabecera.setTipoDocu(Integer.parseInt(campos[3]));
+                cabecera.setDescripcionDocu(campos[4]);
+                cabecera.setHechoPor(campos[5]);
+                cabecera.setMontoTransaccion(Double.parseDouble(campos[6]));
+                
+                if (campos.length > 7 && !campos[7].equals("null")) {
+                    cabecera.setFechaActualizacion(LocalDate.parse(campos[7]));
+                }
+                cabecera.setStatusActualizacion(Boolean.parseBoolean(campos[8]));
+
+                cabecerasFiltradas.add(cabecera);
+            }
+        }
+    } catch (IOException e) {
+        e.printStackTrace();
+        JOptionPane.showMessageDialog(null, "Error al leer el archivo cabecera_transacciones.txt", "Error", JOptionPane.ERROR_MESSAGE);
+    }
+
+    return cabecerasFiltradas;
+}
+
 
 }

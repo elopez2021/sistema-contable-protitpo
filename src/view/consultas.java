@@ -16,6 +16,7 @@ import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 import model.CabeceraTransaccion;
 import model.CatalogoCuenta;
+import model.Documentos;
 
 /**
  *
@@ -120,9 +121,9 @@ public class consultas extends javax.swing.JPanel {
         jPanel14 = new javax.swing.JPanel();
         jPanel40 = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
-        txt_doc_consulta = new javax.swing.JTextField();
         clean_process = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
+        btn_consulta_doc = new javax.swing.JButton();
+        cmb_descrip_doc = new javax.swing.JComboBox<>();
         jPanel41 = new javax.swing.JPanel();
         table_trans_by_docs = new javax.swing.JScrollPane();
         catalogo_table3 = new javax.swing.JTable();
@@ -702,20 +703,6 @@ public class consultas extends javax.swing.JPanel {
         jLabel10.setFont(new java.awt.Font("Sylfaen", 0, 18)); // NOI18N
         jLabel10.setText("Documento");
 
-        txt_doc_consulta.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                txt_doc_consultaFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                txt_doc_consultaFocusLost(evt);
-            }
-        });
-        txt_doc_consulta.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_doc_consultaActionPerformed(evt);
-            }
-        });
-
         clean_process.setBackground(new java.awt.Color(204, 153, 255));
         clean_process.setFont(new java.awt.Font("Sylfaen", 0, 18)); // NOI18N
         clean_process.setText("Limpiar");
@@ -725,46 +712,49 @@ public class consultas extends javax.swing.JPanel {
             }
         });
 
-        jButton5.setBackground(new java.awt.Color(255, 204, 204));
-        jButton5.setFont(new java.awt.Font("Sylfaen", 0, 18)); // NOI18N
-        jButton5.setText("Consultar");
+        btn_consulta_doc.setBackground(new java.awt.Color(255, 204, 204));
+        btn_consulta_doc.setFont(new java.awt.Font("Sylfaen", 0, 18)); // NOI18N
+        btn_consulta_doc.setText("Consultar");
+        btn_consulta_doc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_consulta_docActionPerformed(evt);
+            }
+        });
+
+        cmb_descrip_doc.setFont(new java.awt.Font("Sylfaen", 0, 14)); // NOI18N
+        cmb_descrip_doc.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-Seleccione una opción-" }));
 
         javax.swing.GroupLayout jPanel40Layout = new javax.swing.GroupLayout(jPanel40);
         jPanel40.setLayout(jPanel40Layout);
         jPanel40Layout.setHorizontalGroup(
             jPanel40Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel40Layout.createSequentialGroup()
-                .addGap(18, 18, 18)
+                .addGap(115, 115, 115)
                 .addComponent(jLabel10)
-                .addGap(26, 26, 26)
-                .addComponent(txt_doc_consulta, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(51, 51, 51)
+                .addGap(18, 18, 18)
+                .addComponent(cmb_descrip_doc, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(93, 93, 93)
                 .addComponent(clean_process, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btn_consulta_doc, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanel40Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {clean_process, jButton5});
+        jPanel40Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btn_consulta_doc, clean_process});
 
         jPanel40Layout.setVerticalGroup(
             jPanel40Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel40Layout.createSequentialGroup()
-                .addGroup(jPanel40Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel40Layout.createSequentialGroup()
-                        .addGap(19, 19, 19)
-                        .addGroup(jPanel40Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel10)
-                            .addComponent(txt_doc_consulta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel40Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(jPanel40Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(clean_process)
-                            .addComponent(jButton5))))
-                .addContainerGap(14, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel40Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel10)
+                    .addComponent(clean_process)
+                    .addComponent(btn_consulta_doc)
+                    .addComponent(cmb_descrip_doc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(10, Short.MAX_VALUE))
         );
 
-        jPanel40Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {clean_process, jButton5});
+        jPanel40Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btn_consulta_doc, clean_process});
 
         jPanel41.setBackground(new java.awt.Color(255, 255, 255));
         jPanel41.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -1489,10 +1479,6 @@ public class consultas extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_txtNroCuentaKeyPressed
 
-    private void txt_doc_consultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_doc_consultaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txt_doc_consultaActionPerformed
-
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
         fecha_consulta.setDate(null);
@@ -1532,39 +1518,25 @@ public class consultas extends javax.swing.JPanel {
         List<CabeceraTransaccion> cabeceras = procesocierreCtrl.obtenerCabecerasPorRangoDeFechas(fechaini, fechaini);
         ProcesoDiarioController procesocierreCtrl = new ProcesoDiarioController();
         
-        DefaultTableModel tb = (DefaultTableModel) table_fecha_consulta.getModel();
-        tb.setRowCount(0);
-        
-        for(CabeceraTransaccion cabecera : cabeceras){
-            Object[] rowData = {
-            cabecera.getTipoDocu(),
-            cabecera.getDescripcionDocu(),
-            cabecera.getTipoDocu(),
-            cabecera.getFechaDocu(),
-            cabecera.getHoraDocu(),
-            cabecera.getFechaActualizacion(),
-            cabecera.getMontoTransaccion()
-        };
-        tb.addRow(rowData);
-        }
+        DefaultTableModel ti = (DefaultTableModel) table_fecha_consulta.getModel();
+        ti.setRowCount(0);
+        if (cabeceras.isEmpty()) {
+                JOptionPane.showMessageDialog(null, "No se encontró ninguna transaccion en la fecha especificada", "Información", JOptionPane.INFORMATION_MESSAGE);
+            } else {
+                for (CabeceraTransaccion cabecera : cabeceras) {
+                    Object[] rowData = {
+                        cabecera.getTipoDocu(),
+                        cabecera.getDescripcionDocu(),
+                        cabecera.getFechaDocu(),
+                        cabecera.getHoraDocu(),
+                        cabecera.getFechaActualizacion(),
+                        cabecera.getMontoTransaccion()
+                    };
+                    ti.addRow(rowData);
+                }
+            }
                 
     }//GEN-LAST:event_btn_consulta_fechaActionPerformed
-
-    private void txt_doc_consultaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txt_doc_consultaFocusLost
-        // TODO add your handling code here:
-        // TODO add your handling code here:
-        if (txt_doc_consulta.getText().isEmpty()) {
-            txt_doc_consulta.setText("Ingrese la cuenta");
-        }
-    }//GEN-LAST:event_txt_doc_consultaFocusLost
-
-    private void txt_doc_consultaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txt_doc_consultaFocusGained
-        // TODO add your handling code here:
-        // TODO add your handling code here:
-        if (txt_doc_consulta.getText().equals("Ingrese numero de cuenta")) {
-            txt_doc_consulta.setText("");
-        }
-    }//GEN-LAST:event_txt_doc_consultaFocusGained
 
     private void txt_tipo_docFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txt_tipo_docFocusLost
         // TODO add your handling code here:
@@ -1593,8 +1565,7 @@ public class consultas extends javax.swing.JPanel {
     }//GEN-LAST:event_fecha_consulta1KeyReleased
 
     private void clean_processActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clean_processActionPerformed
-        // TODO add your handling code here:
-        txt_doc_consulta.setText(null);
+        cmb_descrip_doc.setSelectedIndex(-1);
     }//GEN-LAST:event_clean_processActionPerformed
 
     private void consultar_tipo_docActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultar_tipo_docActionPerformed
@@ -1602,36 +1573,71 @@ public class consultas extends javax.swing.JPanel {
     }//GEN-LAST:event_consultar_tipo_docActionPerformed
 
     private void btn_consultar_rango_fechasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_consultar_rango_fechasActionPerformed
- 
-    Date fechaSeleccionada1 = fecha_consulta1.getDate();
-    Date fechaSeleccionada2 = fecha_consulta2.getDate();
+        Date fechaSeleccionada1 = fecha_consulta1.getDate();
+        Date fechaSeleccionada2 = fecha_consulta2.getDate();
 
-    if (fechaSeleccionada1 == null || fechaSeleccionada2 == null) {
-        JOptionPane.showMessageDialog(null, "Uno o ambos campos de fecha están vacíos", "Información", JOptionPane.INFORMATION_MESSAGE);
-        return;
-    }
+        if (fechaSeleccionada1 == null || fechaSeleccionada2 == null) {
+            JOptionPane.showMessageDialog(null, "Uno o ambos campos de fecha están vacíos", "Información", JOptionPane.INFORMATION_MESSAGE);
+            return;
+        }
 
-    LocalDate fechaini = fechaSeleccionada1.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-    LocalDate fechafin = fechaSeleccionada2.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-    ProcesoDiarioController procesocierreCtrl = new ProcesoDiarioController();
-    
-    List<CabeceraTransaccion> cabeceras = procesocierreCtrl.obtenerCabecerasPorRangoDeFechas(fechaini, fechafin);
+        LocalDate fechaini = fechaSeleccionada1.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        LocalDate fechafin = fechaSeleccionada2.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        ProcesoDiarioController procesocierreCtrl = new ProcesoDiarioController();
 
-    DefaultTableModel ti = (DefaultTableModel) table_rango_fechas.getModel();
-    ti.setRowCount(0);   
+        List<CabeceraTransaccion> cabeceras = procesocierreCtrl.obtenerCabecerasPorRangoDeFechas(fechaini, fechafin);
 
-    for (CabeceraTransaccion cabecera : cabeceras) {
-        Object[] rowData = {
-            cabecera.getTipoDocu(),
-            cabecera.getDescripcionDocu(),
-            cabecera.getFechaDocu(),
-            cabecera.getHoraDocu(),
-            cabecera.getFechaActualizacion(),
-            cabecera.getMontoTransaccion()
-        };
-        ti.addRow(rowData);
-    }
+        DefaultTableModel ti = (DefaultTableModel) table_rango_fechas.getModel();
+        ti.setRowCount(0);
+        if (cabeceras.isEmpty()) {
+                JOptionPane.showMessageDialog(null, "No se encontró ninguna transaccion en el rango de fechas especificado", "Información", JOptionPane.INFORMATION_MESSAGE);
+            } else {
+                for (CabeceraTransaccion cabecera : cabeceras) {
+                    Object[] rowData = {
+                        cabecera.getTipoDocu(),
+                        cabecera.getDescripcionDocu(),
+                        cabecera.getFechaDocu(),
+                        cabecera.getHoraDocu(),
+                        cabecera.getFechaActualizacion(),
+                        cabecera.getMontoTransaccion()
+                    };
+                    ti.addRow(rowData);
+                }
+            }
     }//GEN-LAST:event_btn_consultar_rango_fechasActionPerformed
+
+    private void btn_consulta_docActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_consulta_docActionPerformed
+        String descrip_Documento = cmb_descrip_doc.getItemAt(WIDTH); 
+
+        if (descrip_Documento.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "El campo de número de documento está vacío", "Información", JOptionPane.INFORMATION_MESSAGE);
+            return;
+        }
+
+        // Realizar la búsqueda de cabeceras por número de documento
+        /*CabeceraTransaccion cabecera = procesocierreCtrl.(descrip_Documento);
+
+        DefaultTableModel ti = (DefaultTableModel) table_rango_fechas.getModel();
+        ti.setRowCount(0); 
+
+        if (cabecera != null) {
+            
+            Object[] rowData = {
+                cabecera.getTipoDocu(),
+                cabecera.getDescripcionDocu(),
+                cabecera.getFechaDocu(),
+                cabecera.getHoraDocu(),
+                cabecera.getFechaActualizacion(),
+                cabecera.getMontoTransaccion()
+            };
+            ti.addRow(rowData);
+        } else {
+           
+            JOptionPane.showMessageDialog(null, "No se encontró ninguna cabecera con el número de documento especificado", "Información", JOptionPane.INFORMATION_MESSAGE);
+        }*/
+
+
+    }//GEN-LAST:event_btn_consulta_docActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -1639,6 +1645,7 @@ public class consultas extends javax.swing.JPanel {
     private javax.swing.JButton btnBuscarCatalogo;
     private javax.swing.JButton btnLimpiarCatalogo;
     private javax.swing.ButtonGroup btnTipoCuentaGroup;
+    private javax.swing.JButton btn_consulta_doc;
     private javax.swing.JButton btn_consulta_fecha;
     private javax.swing.JButton btn_consultar_rango_fechas;
     private javax.swing.JTable catalogo_table;
@@ -1650,13 +1657,13 @@ public class consultas extends javax.swing.JPanel {
     private javax.swing.JTable catalogo_table8;
     private javax.swing.JButton clean_process;
     private javax.swing.JComboBox<String> cmbGrupoCuenta;
+    private javax.swing.JComboBox<String> cmb_descrip_doc;
     private javax.swing.JButton consultar_tipo_doc;
     private com.toedter.calendar.JDateChooser fecha_consulta;
     private com.toedter.calendar.JDateChooser fecha_consulta1;
     private com.toedter.calendar.JDateChooser fecha_consulta2;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -1719,7 +1726,6 @@ public class consultas extends javax.swing.JPanel {
     private javax.swing.JTextField txtDescripcionCuenta;
     private javax.swing.JTextField txtNivelCuenta;
     private javax.swing.JTextField txtNroCuenta;
-    private javax.swing.JTextField txt_doc_consulta;
     private javax.swing.JTextField txt_tipo_doc;
     // End of variables declaration//GEN-END:variables
 
