@@ -5,7 +5,8 @@
  */
 package view;
 
-import controller.BalanzaGeneralController;
+import controller.BalanzaController;
+import controller.BalanzaController.Pair;
 import controller.Cabecera;
 import controller.CatalogoController;
 import controller.DocumentosController;
@@ -176,8 +177,9 @@ public class consultas extends javax.swing.JPanel {
         jPanel6 = new javax.swing.JPanel();
         jPanel27 = new javax.swing.JPanel();
         jPanel29 = new javax.swing.JPanel();
-        jScrollPane8 = new javax.swing.JScrollPane();
-        catalogo_table5 = new javax.swing.JTable();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        tabla_balanza_comprobacion = new javax.swing.JTable();
+        btnBalanzaComprobacion = new javax.swing.JButton();
 
         jLabel6.setText("jLabel6");
 
@@ -848,6 +850,11 @@ public class consultas extends javax.swing.JPanel {
         Limpiar_tipo.setBackground(new java.awt.Color(204, 153, 255));
         Limpiar_tipo.setFont(new java.awt.Font("Sylfaen", 0, 18)); // NOI18N
         Limpiar_tipo.setText("Limpiar");
+        Limpiar_tipo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Limpiar_tipoActionPerformed(evt);
+            }
+        });
 
         consultar_tipo_doc.setBackground(new java.awt.Color(255, 204, 204));
         consultar_tipo_doc.setFont(new java.awt.Font("Sylfaen", 0, 18)); // NOI18N
@@ -1233,48 +1240,59 @@ public class consultas extends javax.swing.JPanel {
                 .addContainerGap())
         );
 
-        jTabbedPane1.addTab("Estado de Ganancias y perdidas", jPanel8);
+        jTabbedPane1.addTab("Estado de Ganancias y Perdidas", jPanel8);
 
         jPanel27.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         jPanel29.setBackground(new java.awt.Color(255, 255, 255));
         jPanel29.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
-        jScrollPane8.setBackground(new java.awt.Color(255, 255, 255));
-        jScrollPane8.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-
-        catalogo_table5.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        catalogo_table5.setModel(new javax.swing.table.DefaultTableModel(
+        tabla_balanza_comprobacion.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Nro", "Descripcion", "Tipo", "Nivel", "Cuenta Padre", "Grupo", "Fecha Creacion", "Hora Creacion", "Debito Acumulado", "Credito Acumulado", "Balance"
+                "Cuenta", "Descripcion", "Debito", "Credito"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false, false, false, false
+                false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane8.setViewportView(catalogo_table5);
+        jScrollPane3.setViewportView(tabla_balanza_comprobacion);
+
+        btnBalanzaComprobacion.setFont(new java.awt.Font("Sylfaen", 1, 18)); // NOI18N
+        btnBalanzaComprobacion.setText("Generar");
+        btnBalanzaComprobacion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBalanzaComprobacionActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel29Layout = new javax.swing.GroupLayout(jPanel29);
         jPanel29.setLayout(jPanel29Layout);
         jPanel29Layout.setHorizontalGroup(
             jPanel29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel29Layout.createSequentialGroup()
-                .addComponent(jScrollPane8, javax.swing.GroupLayout.DEFAULT_SIZE, 1092, Short.MAX_VALUE)
+            .addGroup(jPanel29Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane3)
                 .addContainerGap())
+            .addGroup(jPanel29Layout.createSequentialGroup()
+                .addGap(417, 417, 417)
+                .addComponent(btnBalanzaComprobacion, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(470, Short.MAX_VALUE))
         );
         jPanel29Layout.setVerticalGroup(
             jPanel29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel29Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel29Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane8, javax.swing.GroupLayout.DEFAULT_SIZE, 460, Short.MAX_VALUE)
+                .addComponent(btnBalanzaComprobacion, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 397, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -1283,6 +1301,7 @@ public class consultas extends javax.swing.JPanel {
         jPanel27Layout.setHorizontalGroup(
             jPanel27Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel27Layout.createSequentialGroup()
+                .addContainerGap()
                 .addComponent(jPanel29, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
@@ -1311,7 +1330,7 @@ public class consultas extends javax.swing.JPanel {
                 .addContainerGap(43, Short.MAX_VALUE))
         );
 
-        jTabbedPane1.addTab("Balanza de comprobacion", jPanel6);
+        jTabbedPane1.addTab("Balanza de Comprobación", jPanel6);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -1574,7 +1593,7 @@ public class consultas extends javax.swing.JPanel {
                     };
                     dt.addRow(rowData);
                 }
-            }else{
+            } else {
                 JOptionPane.showMessageDialog(null, "No se encontró ninguna transaccion", "Información", JOptionPane.INFORMATION_MESSAGE);
             }
 
@@ -1688,7 +1707,7 @@ public class consultas extends javax.swing.JPanel {
     private void btnBalanzaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBalanzaActionPerformed
         // TODO add your handling code here:
 
-        BalanzaGeneralController balanzaCtrl = new BalanzaGeneralController();
+        BalanzaController balanzaCtrl = new BalanzaController();
         Map<Integer, Double> balanzaGeneral = balanzaCtrl.calcularBalanzaGeneral(balanzaCtrl.obtenerCuentasCatalogo(), balanzaCtrl.obtenerTransacciones());
         if (balanzaGeneral.isEmpty()) {
             JOptionPane.showMessageDialog(null, "No es posible realizar la balanza general", "Información", JOptionPane.INFORMATION_MESSAGE);
@@ -1708,11 +1727,46 @@ public class consultas extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_btnBalanzaActionPerformed
 
+    private void Limpiar_tipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Limpiar_tipoActionPerformed
+        // TODO add your handling code here:
+        DefaultTableModel dt = (DefaultTableModel) tabla_transaccion_documento.getModel();
+        dt.setRowCount(0);
+        txt_documento.setText("");
+    }//GEN-LAST:event_Limpiar_tipoActionPerformed
+
+    private void btnBalanzaComprobacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBalanzaComprobacionActionPerformed
+        // TODO add your handling code here:
+        BalanzaController balanzaCtrl = new BalanzaController();
+        Map<Integer, Pair<Double, Double>> saldosCuentas = balanzaCtrl.calcularBalanzaDeComprobacion(balanzaCtrl.obtenerCuentasCatalogo(), balanzaCtrl.obtenerTransacciones());
+        if (saldosCuentas.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "No es posible realizar la balanza general", "Información", JOptionPane.INFORMATION_MESSAGE);
+            return;
+        }
+
+        DefaultTableModel model = (DefaultTableModel) tabla_balanza_comprobacion.getModel();
+        model.setRowCount(0); // Limpiar la tabla antes de agregar los datos
+        
+        
+        // Obtener los datos de la balanza comprobacion
+        for (Map.Entry<Integer, Pair<Double, Double>> entry : saldosCuentas.entrySet()) {
+            Integer cuenta = entry.getKey();
+            CatalogoCuenta cuentaInfo = catalogoCtrl.buscarCuenta(String.valueOf(cuenta));
+            String descripcionCuenta = cuentaInfo.getDescripcion_cta();
+            Pair<Double, Double> saldos = entry.getValue();
+            double saldoDebito = saldos.getKey();
+            double saldoCredito = saldos.getValue();
+
+            model.addRow(new Object[]{cuenta, descripcionCuenta, saldoDebito, saldoCredito});
+        }
+
+    }//GEN-LAST:event_btnBalanzaComprobacionActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane Jscrollpane_trans;
     private javax.swing.JButton Limpiar_tipo;
     private javax.swing.JButton btnBalanza;
+    private javax.swing.JButton btnBalanzaComprobacion;
     private javax.swing.JButton btnBuscarCatalogo;
     private javax.swing.JButton btnLimpiarCatalogo;
     private javax.swing.JButton btnLimpiarTransFecha;
@@ -1722,7 +1776,6 @@ public class consultas extends javax.swing.JPanel {
     private javax.swing.JButton btn_consultar_rango_fechas;
     private javax.swing.JTable catalogo_table;
     private javax.swing.JTable catalogo_table4;
-    private javax.swing.JTable catalogo_table5;
     private javax.swing.JTable catalogo_table8;
     private javax.swing.JButton clean_process;
     private javax.swing.JComboBox<String> cmbGrupoCuenta;
@@ -1776,13 +1829,14 @@ public class consultas extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane10;
     private javax.swing.JScrollPane jScrollPane11;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
-    private javax.swing.JScrollPane jScrollPane8;
     private javax.swing.JScrollPane jScrollPane9;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JRadioButton rdbDetalle;
     private javax.swing.JRadioButton rdbGeneral;
+    private javax.swing.JTable tabla_balanza_comprobacion;
     private javax.swing.JTable tabla_balanza_general;
     private javax.swing.JTable tabla_trans_docs;
     private javax.swing.JTable tabla_transaccion_documento;

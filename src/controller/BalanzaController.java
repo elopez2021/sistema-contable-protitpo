@@ -22,7 +22,7 @@ import model.TransaccionContable;
  *
  * @author Zoila López
  */
-public class BalanzaGeneralController {
+public class BalanzaController {
 
     private static final String RUTA_ARCHIVO_CATALOGO = "src/database/catalogo.txt";
     private static final String RUTA_ARCHIVO_TRANSACCIONES = "src/database/transacciones.txt";
@@ -78,6 +78,47 @@ public class BalanzaGeneralController {
         }
 
         return balanzaGeneral;
+    }
+
+    public class Pair<K, V> {
+
+        private final K key;
+        private final V value;
+
+        public Pair(K key, V value) {
+            this.key = key;
+            this.value = value;
+        }
+
+        public K getKey() {
+            return key;
+        }
+
+        public V getValue() {
+            return value;
+        }
+    }
+
+    public Map<Integer, Pair<Double, Double>> calcularBalanzaDeComprobacion(List<CatalogoCuenta> catalogo, List<TransaccionContable> transacciones) {
+        Map<Integer, Pair<Double, Double>> saldosCuentas = new HashMap<>();
+
+        // Inicializar saldos de cuentas a partir del catálogo
+        for (CatalogoCuenta cuenta : catalogo) {
+            saldosCuentas.put(cuenta.getNro_cta(), new Pair<>(0.0, 0.0));
+        }
+
+        // Calcular saldos de cuentas a partir de transacciones
+        for (TransaccionContable transaccion : transacciones) {
+            Integer cuenta = transaccion.getCuenta_contable();
+            Pair<Double, Double> saldoPair = saldosCuentas.get(cuenta);
+            double saldoActualDebito = saldoPair.getKey();
+            double saldoActualCredito = saldoPair.getValue();
+            double nuevoSaldoDebito = saldoActualDebito + transaccion.getValor_debito();
+            double nuevoSaldoCredito = saldoActualCredito + transaccion.getValor_credito();
+            saldosCuentas.put(cuenta, new Pair<>(nuevoSaldoDebito, nuevoSaldoCredito));
+        }
+
+        return saldosCuentas;
     }
 
     public List<CatalogoCuenta> obtenerCuentasCatalogo() {
