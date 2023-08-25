@@ -116,7 +116,7 @@ public class consultas extends javax.swing.JPanel {
         jPanel40 = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
         txt_doc_consulta = new javax.swing.JTextField();
-        jButton3 = new javax.swing.JButton();
+        clean_process = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
         jPanel41 = new javax.swing.JPanel();
         table_trans_by_docs = new javax.swing.JScrollPane();
@@ -569,11 +569,11 @@ public class consultas extends javax.swing.JPanel {
         jLabel9.setText("Fecha final");
 
         btn_consultar.setBackground(new java.awt.Color(204, 153, 255));
-        btn_consultar.setFont(new java.awt.Font("Sylfaen", 1, 18)); // NOI18N
+        btn_consultar.setFont(new java.awt.Font("Sylfaen", 0, 18)); // NOI18N
         btn_consultar.setText("Consultar");
 
         jButton4.setBackground(new java.awt.Color(255, 204, 204));
-        jButton4.setFont(new java.awt.Font("Sylfaen", 1, 18)); // NOI18N
+        jButton4.setFont(new java.awt.Font("Sylfaen", 0, 18)); // NOI18N
         jButton4.setText("Limpiar");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -593,11 +593,11 @@ public class consultas extends javax.swing.JPanel {
                 .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, 103, Short.MAX_VALUE)
                 .addGap(32, 32, 32)
                 .addComponent(fecha_consulta2, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(45, 45, 45)
-                .addComponent(btn_consultar, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(48, 48, 48)
+                .addGap(71, 71, 71)
                 .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(159, 159, 159))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btn_consultar, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(175, 175, 175))
         );
         jPanel38Layout.setVerticalGroup(
             jPanel38Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -698,12 +698,17 @@ public class consultas extends javax.swing.JPanel {
             }
         });
 
-        jButton3.setBackground(new java.awt.Color(204, 153, 255));
-        jButton3.setFont(new java.awt.Font("Sylfaen", 1, 18)); // NOI18N
-        jButton3.setText("Limpiar");
+        clean_process.setBackground(new java.awt.Color(204, 153, 255));
+        clean_process.setFont(new java.awt.Font("Sylfaen", 0, 18)); // NOI18N
+        clean_process.setText("Limpiar");
+        clean_process.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                clean_processActionPerformed(evt);
+            }
+        });
 
         jButton5.setBackground(new java.awt.Color(255, 204, 204));
-        jButton5.setFont(new java.awt.Font("Sylfaen", 1, 18)); // NOI18N
+        jButton5.setFont(new java.awt.Font("Sylfaen", 0, 18)); // NOI18N
         jButton5.setText("Consultar");
 
         javax.swing.GroupLayout jPanel40Layout = new javax.swing.GroupLayout(jPanel40);
@@ -716,13 +721,13 @@ public class consultas extends javax.swing.JPanel {
                 .addGap(26, 26, 26)
                 .addComponent(txt_doc_consulta, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(51, 51, 51)
-                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(clean_process, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanel40Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jButton3, jButton5});
+        jPanel40Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {clean_process, jButton5});
 
         jPanel40Layout.setVerticalGroup(
             jPanel40Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -736,12 +741,12 @@ public class consultas extends javax.swing.JPanel {
                     .addGroup(jPanel40Layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(jPanel40Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButton3)
+                            .addComponent(clean_process)
                             .addComponent(jButton5))))
                 .addContainerGap(14, Short.MAX_VALUE))
         );
 
-        jPanel40Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jButton3, jButton5});
+        jPanel40Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {clean_process, jButton5});
 
         jPanel41.setBackground(new java.awt.Color(255, 255, 255));
         jPanel41.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -1545,6 +1550,11 @@ public class consultas extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_fecha_consulta1KeyReleased
 
+    private void clean_processActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clean_processActionPerformed
+        // TODO add your handling code here:
+        txt_doc_consulta.setText(null);
+    }//GEN-LAST:event_clean_processActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Limpiar_tipo;
@@ -1561,13 +1571,13 @@ public class consultas extends javax.swing.JPanel {
     private javax.swing.JTable catalogo_table6;
     private javax.swing.JTable catalogo_table7;
     private javax.swing.JTable catalogo_table8;
+    private javax.swing.JButton clean_process;
     private javax.swing.JComboBox<String> cmbGrupoCuenta;
     private javax.swing.JButton consultar_tipo_doc;
     private com.toedter.calendar.JDateChooser fecha_consulta;
     private com.toedter.calendar.JDateChooser fecha_consulta1;
     private com.toedter.calendar.JDateChooser fecha_consulta2;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;

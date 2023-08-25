@@ -60,6 +60,7 @@ public class Transacciones extends javax.swing.JPanel {
     public Transacciones(String user) {
         initComponents();
         this.user = user;
+        txt_hecho_por.setText( user + " :)");
         tabla_trans.setModel(new DefaultTableModel(
                 new Object[][]{},
                 new String[]{"Secuencia", "Cuenta", "Descripción de la cuenta", "Débito", "Crédito", "Comentario"}
@@ -144,6 +145,8 @@ public class Transacciones extends javax.swing.JPanel {
         txtFecha = new javax.swing.JTextField();
         jSeparator3 = new javax.swing.JSeparator();
         lblMensajeCrear = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        txt_hecho_por = new javax.swing.JTextField();
 
         jLabel4.setText("Descrip. del documento");
 
@@ -410,6 +413,18 @@ public class Transacciones extends javax.swing.JPanel {
 
         lblMensajeCrear.setFont(new java.awt.Font("Sylfaen", 1, 18)); // NOI18N
 
+        jLabel10.setFont(new java.awt.Font("Sylfaen", 1, 18)); // NOI18N
+        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/usuario1.png"))); // NOI18N
+        jLabel10.setText("Hecho por:");
+
+        txt_hecho_por.setEditable(false);
+        txt_hecho_por.setFont(new java.awt.Font("Sylfaen", 2, 14)); // NOI18N
+        txt_hecho_por.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_hecho_porActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout panel_transaccionesLayout = new javax.swing.GroupLayout(panel_transacciones);
         panel_transacciones.setLayout(panel_transaccionesLayout);
         panel_transaccionesLayout.setHorizontalGroup(
@@ -417,19 +432,35 @@ public class Transacciones extends javax.swing.JPanel {
             .addGroup(panel_transaccionesLayout.createSequentialGroup()
                 .addGroup(panel_transaccionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panel_transaccionesLayout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(jSeparator6, javax.swing.GroupLayout.PREFERRED_SIZE, 1166, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panel_transaccionesLayout.createSequentialGroup()
+                        .addGap(101, 101, 101)
+                        .addGroup(panel_transaccionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(errTipoDocumento, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(panel_transaccionesLayout.createSequentialGroup()
+                                .addComponent(jLabel8)
+                                .addGap(30, 30, 30)
+                                .addComponent(cmbDocumento, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 900, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(panel_transaccionesLayout.createSequentialGroup()
                         .addGap(242, 242, 242)
                         .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(172, 172, 172)
                         .addComponent(Botton_limpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(panel_transaccionesLayout.createSequentialGroup()
-                        .addGap(59, 59, 59)
+                        .addGap(97, 97, 97)
                         .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(66, 66, 66)
+                        .addGap(28, 28, 28)
                         .addComponent(lblMensajeCrear, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(107, 107, 107)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(lblFecha)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txtFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txtFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel10)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(txt_hecho_por, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(panel_transaccionesLayout.createSequentialGroup()
                         .addGap(105, 105, 105)
                         .addGroup(panel_transaccionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -460,6 +491,9 @@ public class Transacciones extends javax.swing.JPanel {
                                 .addComponent(txt_descripcion_cuenta, javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(txt_credito, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 176, Short.MAX_VALUE))))
                     .addGroup(panel_transaccionesLayout.createSequentialGroup()
+                        .addGap(74, 74, 74)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 827, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panel_transaccionesLayout.createSequentialGroup()
                         .addGap(101, 101, 101)
                         .addComponent(jLabel9)
                         .addGap(47, 47, 47)
@@ -478,25 +512,7 @@ public class Transacciones extends javax.swing.JPanel {
                                     .addGap(26, 26, 26)
                                     .addComponent(txt_descripccion_doc, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addComponent(errDescripcionDocumento, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(panel_transaccionesLayout.createSequentialGroup()
-                        .addGap(74, 74, 74)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 827, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(panel_transaccionesLayout.createSequentialGroup()
-                .addGroup(panel_transaccionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panel_transaccionesLayout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(jSeparator6, javax.swing.GroupLayout.PREFERRED_SIZE, 1166, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(panel_transaccionesLayout.createSequentialGroup()
-                        .addGap(101, 101, 101)
-                        .addGroup(panel_transaccionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(errTipoDocumento, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(panel_transaccionesLayout.createSequentialGroup()
-                                .addComponent(jLabel8)
-                                .addGap(30, 30, 30)
-                                .addComponent(cmbDocumento, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 900, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 900, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 969, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
@@ -506,12 +522,14 @@ public class Transacciones extends javax.swing.JPanel {
             panel_transaccionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panel_transaccionesLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(panel_transaccionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(panel_transaccionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(lblMensajeCrear, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(panel_transaccionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(lblFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(txtFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(lblMensajeCrear, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(txtFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel10)
+                        .addComponent(txt_hecho_por, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -535,7 +553,7 @@ public class Transacciones extends javax.swing.JPanel {
                             .addGroup(panel_transaccionesLayout.createSequentialGroup()
                                 .addGap(2, 2, 2)
                                 .addComponent(txt_descripccion_doc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(3, 3, 3)
+                        .addGap(7, 7, 7)
                         .addComponent(errDescripcionDocumento, javax.swing.GroupLayout.PREFERRED_SIZE, 13, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(panel_transaccionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -584,7 +602,7 @@ public class Transacciones extends javax.swing.JPanel {
                 .addGroup(panel_transaccionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnGuardar)
                     .addComponent(Botton_limpiar))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jSeparator6, javax.swing.GroupLayout.PREFERRED_SIZE, 3, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
@@ -595,14 +613,14 @@ public class Transacciones extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(panel_transacciones, javax.swing.GroupLayout.PREFERRED_SIZE, 979, Short.MAX_VALUE)
+                .addComponent(panel_transacciones, javax.swing.GroupLayout.PREFERRED_SIZE, 1039, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(panel_transacciones, javax.swing.GroupLayout.DEFAULT_SIZE, 533, Short.MAX_VALUE)
+                .addComponent(panel_transacciones, javax.swing.GroupLayout.DEFAULT_SIZE, 535, Short.MAX_VALUE)
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -1026,6 +1044,12 @@ public class Transacciones extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_txt_num_docFocusLost
 
+    private void txt_hecho_porActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_hecho_porActionPerformed
+        // TODO add your handling code here:
+        
+        
+    }//GEN-LAST:event_txt_hecho_porActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Botton_limpiar;
     private javax.swing.JButton btnGuardar;
@@ -1039,6 +1063,7 @@ public class Transacciones extends javax.swing.JPanel {
     private javax.swing.JLabel errTipoDocumento;
     private com.toedter.calendar.JDateChooser jDateChooser1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
@@ -1076,6 +1101,7 @@ public class Transacciones extends javax.swing.JPanel {
     private javax.swing.JTextField txt_debito;
     private javax.swing.JTextField txt_descripccion_doc;
     private javax.swing.JTextField txt_descripcion_cuenta;
+    private javax.swing.JTextField txt_hecho_por;
     private javax.swing.JTextField txt_monto_transaccion;
     private javax.swing.JTextField txt_num_doc;
     private javax.swing.JTextField txtdescripciondoc;

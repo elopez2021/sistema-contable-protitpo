@@ -39,7 +39,6 @@ public class loginn extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         btniniciarsesion = new javax.swing.JButton();
         jlabelfondo = new javax.swing.JLabel();
-        sjsesion = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -107,17 +106,6 @@ public class loginn extends javax.swing.JFrame {
         jlabelfondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/lol.png"))); // NOI18N
         getContentPane().add(jlabelfondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -90, 480, 670));
 
-        sjsesion.setBackground(new java.awt.Color(255, 204, 204));
-        sjsesion.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        sjsesion.setForeground(new java.awt.Color(255, 0, 51));
-        sjsesion.setText("Iniciar sesion");
-        sjsesion.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                sjsesionActionPerformed(evt);
-            }
-        });
-        getContentPane().add(sjsesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 490, 150, 50));
-
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -128,10 +116,6 @@ public class loginn extends javax.swing.JFrame {
     private void txtpasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtpasswordActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtpasswordActionPerformed
-
-    private void sjsesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sjsesionActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_sjsesionActionPerformed
 
     private void btniniciarsesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btniniciarsesionActionPerformed
         // TODO add your handling code here:
@@ -223,7 +207,6 @@ public class loginn extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jlabelfondo;
     private javax.swing.JButton salir;
-    private javax.swing.JButton sjsesion;
     private javax.swing.JPasswordField txtpassword;
     private javax.swing.JTextField txtusuario;
     // End of variables declaration//GEN-END:variables
