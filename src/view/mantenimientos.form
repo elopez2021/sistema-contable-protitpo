@@ -514,9 +514,9 @@
                               <Group type="102" alignment="1" attributes="0">
                                   <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="errCodigo" alignment="1" max="32767" attributes="0"/>
-                                      <Component id="txtCodigo" alignment="1" pref="289" max="32767" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="errCodigo" min="-2" pref="289" max="-2" attributes="0"/>
+                                      <Component id="txtCodigo" min="-2" pref="108" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                               <Group type="102" alignment="1" attributes="0">
@@ -657,6 +657,9 @@
                     </Property>
                     <Property name="toolTipText" type="java.lang.String" value=""/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="documento_tableMouseClicked"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>

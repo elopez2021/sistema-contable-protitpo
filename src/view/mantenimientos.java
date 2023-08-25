@@ -519,9 +519,9 @@ public class mantenimientos extends javax.swing.JPanel {
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addComponent(jLabel7)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(errCodigo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(txtCodigo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 289, Short.MAX_VALUE)))
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(errCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 289, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addComponent(jLabel8)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -571,6 +571,11 @@ public class mantenimientos extends javax.swing.JPanel {
             }
         });
         documento_table.setToolTipText("");
+        documento_table.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                documento_tableMouseClicked(evt);
+            }
+        });
         jScrollPane4.setViewportView(documento_table);
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
@@ -1436,6 +1441,22 @@ public class mantenimientos extends javax.swing.JPanel {
         
         cmbGrupoCuenta.setSelectedItem(grupo_cuenta);
     }//GEN-LAST:event_catalogo_tableMouseClicked
+
+    private void documento_tableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_documento_tableMouseClicked
+        // TODO add your handling code here:
+        int r = documento_table.getSelectedRow();
+        if (r == -1) {
+            return;
+        }
+        
+        lblMensajeDocumento.setText("Modificando...");
+
+        String codigo = documento_table.getValueAt(r, 0).toString();
+        String descripcion = documento_table.getValueAt(r, 1).toString();
+        
+        txtCodigo.setText(codigo);
+        txtDescripcion.setText(descripcion);
+    }//GEN-LAST:event_documento_tableMouseClicked
 
     public static boolean isEmpty(JTextField textField, JLabel errorLabel, String mensajeError) {
         String texto = textField.getText().trim();
