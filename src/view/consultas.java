@@ -278,7 +278,7 @@ public class consultas extends javax.swing.JPanel {
             }
         });
 
-        btnBuscarCatalogo.setBackground(new java.awt.Color(153, 153, 255));
+        btnBuscarCatalogo.setBackground(new java.awt.Color(255, 204, 204));
         btnBuscarCatalogo.setFont(new java.awt.Font("Sylfaen", 1, 18)); // NOI18N
         btnBuscarCatalogo.setText("Buscar");
         btnBuscarCatalogo.addActionListener(new java.awt.event.ActionListener() {
@@ -287,7 +287,7 @@ public class consultas extends javax.swing.JPanel {
             }
         });
 
-        btnLimpiarCatalogo.setBackground(new java.awt.Color(0, 204, 204));
+        btnLimpiarCatalogo.setBackground(new java.awt.Color(204, 153, 255));
         btnLimpiarCatalogo.setFont(new java.awt.Font("Sylfaen", 1, 18)); // NOI18N
         btnLimpiarCatalogo.setText("Limpiar");
         btnLimpiarCatalogo.addActionListener(new java.awt.event.ActionListener() {
@@ -427,7 +427,7 @@ public class consultas extends javax.swing.JPanel {
                 .addContainerGap()
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 609, Short.MAX_VALUE)
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 621, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
@@ -488,31 +488,36 @@ public class consultas extends javax.swing.JPanel {
         jPanel36Layout.setHorizontalGroup(
             jPanel36Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel36Layout.createSequentialGroup()
-                .addGap(27, 27, 27)
+                .addGap(42, 42, 42)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(fecha_consulta, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(59, 59, 59)
+                .addGap(68, 68, 68)
                 .addComponent(btnLimpiarTransFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(70, 70, 70)
                 .addComponent(btn_consulta_fecha, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
+
+        jPanel36Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnLimpiarTransFecha, btn_consulta_fecha, fecha_consulta, jLabel1});
+
         jPanel36Layout.setVerticalGroup(
             jPanel36Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel36Layout.createSequentialGroup()
-                .addGap(21, 21, 21)
-                .addGroup(jPanel36Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addComponent(fecha_consulta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(11, 11, 11)
+                .addGroup(jPanel36Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel36Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jLabel1)
+                        .addComponent(fecha_consulta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel36Layout.createSequentialGroup()
+                        .addGroup(jPanel36Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btn_consulta_fecha)
+                            .addComponent(btnLimpiarTransFecha))
+                        .addGap(3, 3, 3)))
                 .addContainerGap(13, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel36Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel36Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btn_consulta_fecha)
-                    .addComponent(btnLimpiarTransFecha))
-                .addContainerGap())
         );
+
+        jPanel36Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btnLimpiarTransFecha, btn_consulta_fecha, fecha_consulta, jLabel1});
 
         jPanel37.setBackground(new java.awt.Color(255, 255, 255));
         jPanel37.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -546,7 +551,7 @@ public class consultas extends javax.swing.JPanel {
             .addGroup(jPanel37Layout.createSequentialGroup()
                 .addGap(15, 15, 15)
                 .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 1086, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(15, Short.MAX_VALUE))
         );
         jPanel37Layout.setVerticalGroup(
             jPanel37Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -618,9 +623,9 @@ public class consultas extends javax.swing.JPanel {
             .addGroup(jPanel38Layout.createSequentialGroup()
                 .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(fecha_inicial_trans, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26)
-                .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, 103, Short.MAX_VALUE)
+                .addComponent(fecha_inicial_trans, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(57, 57, 57)
+                .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
                 .addComponent(fecha_final_trans, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(54, 54, 54)
@@ -629,6 +634,11 @@ public class consultas extends javax.swing.JPanel {
                 .addComponent(btn_consultar_rango_fechas, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(102, 102, 102))
         );
+
+        jPanel38Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {fecha_final_trans, fecha_inicial_trans});
+
+        jPanel38Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btn_consultar_rango_fechas, jButton4});
+
         jPanel38Layout.setVerticalGroup(
             jPanel38Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel38Layout.createSequentialGroup()
@@ -644,6 +654,10 @@ public class consultas extends javax.swing.JPanel {
                         .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(15, Short.MAX_VALUE))
         );
+
+        jPanel38Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {fecha_final_trans, fecha_inicial_trans});
+
+        jPanel38Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btn_consultar_rango_fechas, jButton4});
 
         jPanel39.setBackground(new java.awt.Color(255, 255, 255));
         jPanel39.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -699,7 +713,7 @@ public class consultas extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel12Layout.createSequentialGroup()
-                        .addComponent(jPanel38, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jPanel38, javax.swing.GroupLayout.PREFERRED_SIZE, 1120, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addComponent(jPanel39, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
@@ -711,7 +725,7 @@ public class consultas extends javax.swing.JPanel {
                 .addComponent(jPanel38, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel39, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(12, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Transcciones por rango de fecha", jPanel12);
@@ -759,7 +773,7 @@ public class consultas extends javax.swing.JPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanel40Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btn_consulta_doc, clean_process});
+        jPanel40Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btn_consulta_doc, clean_process, cmb_descrip_doc});
 
         jPanel40Layout.setVerticalGroup(
             jPanel40Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -773,7 +787,7 @@ public class consultas extends javax.swing.JPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanel40Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btn_consulta_doc, clean_process});
+        jPanel40Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btn_consulta_doc, clean_process, cmb_descrip_doc});
 
         jPanel41.setBackground(new java.awt.Color(255, 255, 255));
         jPanel41.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -806,7 +820,7 @@ public class consultas extends javax.swing.JPanel {
             jPanel41Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel41Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(Jscrollpane_trans, javax.swing.GroupLayout.DEFAULT_SIZE, 1096, Short.MAX_VALUE)
+                .addComponent(Jscrollpane_trans, javax.swing.GroupLayout.DEFAULT_SIZE, 1104, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel41Layout.setVerticalGroup(
@@ -883,15 +897,15 @@ public class consultas extends javax.swing.JPanel {
         jPanel10Layout.setHorizontalGroup(
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel10Layout.createSequentialGroup()
-                .addGap(28, 28, 28)
+                .addContainerGap()
                 .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(38, 38, 38)
                 .addComponent(txt_documento, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(64, 64, 64)
+                .addGap(54, 54, 54)
                 .addComponent(Limpiar_tipo, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(33, 33, 33)
                 .addComponent(consultar_tipo_doc, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(329, Short.MAX_VALUE))
+                .addContainerGap(335, Short.MAX_VALUE))
         );
 
         jPanel10Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {Limpiar_tipo, consultar_tipo_doc});
@@ -900,14 +914,14 @@ public class consultas extends javax.swing.JPanel {
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel10Layout.createSequentialGroup()
                 .addGap(16, 16, 16)
-                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(Limpiar_tipo)
-                        .addComponent(consultar_tipo_doc))
-                    .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel11)
-                        .addComponent(txt_documento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(16, Short.MAX_VALUE))
+                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Limpiar_tipo)
+                    .addComponent(consultar_tipo_doc)
+                    .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel10Layout.createSequentialGroup()
+                        .addComponent(txt_documento)
+                        .addGap(1, 1, 1)))
+                .addGap(16, 16, 16))
         );
 
         jPanel10Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {Limpiar_tipo, consultar_tipo_doc});
@@ -969,7 +983,7 @@ public class consultas extends javax.swing.JPanel {
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel9Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -1017,6 +1031,7 @@ public class consultas extends javax.swing.JPanel {
         });
         jScrollPane2.setViewportView(tabla_balanza_general);
 
+        btnBalanza.setBackground(new java.awt.Color(255, 204, 204));
         btnBalanza.setFont(new java.awt.Font("Sylfaen", 1, 18)); // NOI18N
         btnBalanza.setText("Generar");
         btnBalanza.addActionListener(new java.awt.event.ActionListener() {
@@ -1031,12 +1046,12 @@ public class consultas extends javax.swing.JPanel {
             jPanel26Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel26Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane2)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 1088, Short.MAX_VALUE)
                 .addContainerGap())
-            .addGroup(jPanel26Layout.createSequentialGroup()
-                .addGap(390, 390, 390)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel26Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnBalanza, javax.swing.GroupLayout.PREFERRED_SIZE, 273, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(429, Short.MAX_VALUE))
+                .addGap(397, 397, 397))
         );
         jPanel26Layout.setVerticalGroup(
             jPanel26Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1088,6 +1103,7 @@ public class consultas extends javax.swing.JPanel {
         jPanel32.setBackground(new java.awt.Color(255, 255, 255));
         jPanel32.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
+        btnResumenGastosGenerales.setBackground(new java.awt.Color(255, 204, 204));
         btnResumenGastosGenerales.setFont(new java.awt.Font("Sylfaen", 1, 18)); // NOI18N
         btnResumenGastosGenerales.setText("Generar");
         btnResumenGastosGenerales.addActionListener(new java.awt.event.ActionListener() {
@@ -1121,7 +1137,7 @@ public class consultas extends javax.swing.JPanel {
             .addGroup(jPanel32Layout.createSequentialGroup()
                 .addGap(416, 416, 416)
                 .addComponent(btnResumenGastosGenerales, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(471, Short.MAX_VALUE))
+                .addContainerGap(479, Short.MAX_VALUE))
             .addGroup(jPanel32Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane4)
@@ -1178,6 +1194,7 @@ public class consultas extends javax.swing.JPanel {
         jPanel35.setBackground(new java.awt.Color(255, 255, 255));
         jPanel35.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
+        btnEstadoFinanciero.setBackground(new java.awt.Color(255, 204, 204));
         btnEstadoFinanciero.setFont(new java.awt.Font("Sylfaen", 1, 18)); // NOI18N
         btnEstadoFinanciero.setText("Generar");
         btnEstadoFinanciero.addActionListener(new java.awt.event.ActionListener() {
@@ -1292,6 +1309,7 @@ public class consultas extends javax.swing.JPanel {
         });
         jScrollPane3.setViewportView(tabla_balanza_comprobacion);
 
+        btnBalanzaComprobacion.setBackground(new java.awt.Color(255, 204, 204));
         btnBalanzaComprobacion.setFont(new java.awt.Font("Sylfaen", 1, 18)); // NOI18N
         btnBalanzaComprobacion.setText("Generar");
         btnBalanzaComprobacion.addActionListener(new java.awt.event.ActionListener() {
@@ -1306,12 +1324,12 @@ public class consultas extends javax.swing.JPanel {
             jPanel29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel29Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane3)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 1088, Short.MAX_VALUE)
                 .addContainerGap())
             .addGroup(jPanel29Layout.createSequentialGroup()
-                .addGap(417, 417, 417)
+                .addGap(443, 443, 443)
                 .addComponent(btnBalanzaComprobacion, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(470, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel29Layout.setVerticalGroup(
             jPanel29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

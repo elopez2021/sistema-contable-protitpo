@@ -363,7 +363,7 @@
                     <Component class="javax.swing.JButton" name="btnBuscarCatalogo">
                       <Properties>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                          <Color blue="ff" green="99" red="99" type="rgb"/>
+                          <Color blue="cc" green="cc" red="ff" type="rgb"/>
                         </Property>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Sylfaen" size="18" style="1"/>
@@ -377,7 +377,7 @@
                     <Component class="javax.swing.JButton" name="btnLimpiarCatalogo">
                       <Properties>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                          <Color blue="cc" green="cc" red="0" type="rgb"/>
+                          <Color blue="ff" green="99" red="cc" type="rgb"/>
                         </Property>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Sylfaen" size="18" style="1"/>
@@ -495,14 +495,14 @@
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
-                          <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
-                          <Component id="jLabel1" min="-2" pref="185" max="-2" attributes="0"/>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="fecha_consulta" min="-2" pref="195" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="59" max="-2" attributes="0"/>
-                          <Component id="btnLimpiarTransFecha" min="-2" pref="124" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
+                          <Component id="jLabel1" linkSize="9" min="-2" pref="185" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="fecha_consulta" linkSize="9" min="-2" pref="195" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="68" max="-2" attributes="0"/>
+                          <Component id="btnLimpiarTransFecha" linkSize="9" min="-2" pref="124" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="70" max="-2" attributes="0"/>
-                          <Component id="btn_consulta_fecha" min="-2" pref="130" max="-2" attributes="0"/>
+                          <Component id="btn_consulta_fecha" linkSize="9" min="-2" pref="130" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
                       </Group>
                   </Group>
@@ -510,20 +510,21 @@
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                              <Component id="fecha_consulta" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="1" attributes="0">
+                              <Group type="103" alignment="1" groupAlignment="0" attributes="0">
+                                  <Component id="jLabel1" linkSize="10" min="-2" max="-2" attributes="0"/>
+                                  <Component id="fecha_consulta" linkSize="10" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="1" attributes="0">
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="btn_consulta_fecha" linkSize="10" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="btnLimpiarTransFecha" linkSize="10" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace min="-2" pref="3" max="-2" attributes="0"/>
+                              </Group>
                           </Group>
                           <EmptySpace pref="13" max="32767" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="1" attributes="0">
-                          <EmptySpace max="32767" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="btn_consulta_fecha" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="btnLimpiarTransFecha" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -587,7 +588,7 @@
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
                           <Component id="jScrollPane6" min="-2" pref="1086" max="-2" attributes="0"/>
-                          <EmptySpace max="32767" attributes="0"/>
+                          <EmptySpace pref="15" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -661,7 +662,7 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
-                              <Component id="jPanel38" min="-2" max="-2" attributes="0"/>
+                              <Component id="jPanel38" min="-2" pref="1120" max="-2" attributes="0"/>
                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                           </Group>
                           <Component id="jPanel39" alignment="0" max="32767" attributes="0"/>
@@ -701,15 +702,15 @@
                       <Group type="102" alignment="0" attributes="0">
                           <Component id="jLabel8" min="-2" pref="103" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="fecha_inicial_trans" min="-2" pref="171" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
-                          <Component id="jLabel9" pref="103" max="32767" attributes="0"/>
+                          <Component id="fecha_inicial_trans" linkSize="13" min="-2" pref="140" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="57" max="-2" attributes="0"/>
+                          <Component id="jLabel9" max="32767" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="fecha_final_trans" min="-2" pref="168" max="-2" attributes="0"/>
+                          <Component id="fecha_final_trans" linkSize="13" min="-2" pref="168" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
-                          <Component id="jButton4" min="-2" pref="135" max="-2" attributes="0"/>
+                          <Component id="jButton4" linkSize="15" min="-2" pref="135" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="79" max="-2" attributes="0"/>
-                          <Component id="btn_consultar_rango_fechas" min="-2" pref="139" max="-2" attributes="0"/>
+                          <Component id="btn_consultar_rango_fechas" linkSize="15" min="-2" pref="139" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="102" max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -720,14 +721,14 @@
                           <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="103" alignment="1" groupAlignment="0" attributes="0">
-                                  <Component id="fecha_inicial_trans" min="-2" max="-2" attributes="0"/>
+                                  <Component id="fecha_inicial_trans" linkSize="14" min="-2" max="-2" attributes="0"/>
                                   <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
-                                  <Component id="fecha_final_trans" min="-2" max="-2" attributes="0"/>
+                                  <Component id="fecha_final_trans" linkSize="14" min="-2" max="-2" attributes="0"/>
                                   <Component id="jLabel9" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="btn_consultar_rango_fechas" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
-                                  <Component id="jButton4" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+                                  <Component id="btn_consultar_rango_fechas" linkSize="16" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+                                  <Component id="jButton4" linkSize="16" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <EmptySpace pref="15" max="32767" attributes="0"/>
@@ -987,7 +988,7 @@
                           <EmptySpace min="-2" pref="115" max="-2" attributes="0"/>
                           <Component id="jLabel10" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="cmb_descrip_doc" min="-2" pref="211" max="-2" attributes="0"/>
+                          <Component id="cmb_descrip_doc" linkSize="5" min="-2" pref="211" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="93" max="-2" attributes="0"/>
                           <Component id="clean_process" linkSize="5" min="-2" pref="165" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -1004,7 +1005,7 @@
                               <Component id="jLabel10" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="clean_process" linkSize="6" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="btn_consulta_doc" linkSize="6" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="cmb_descrip_doc" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="cmb_descrip_doc" linkSize="6" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="32767" attributes="0"/>
                       </Group>
@@ -1205,7 +1206,7 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jPanel10" min="-2" max="-2" attributes="0"/>
+                          <Component id="jPanel10" min="-2" pref="68" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="jPanel11" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
@@ -1230,11 +1231,11 @@
                     <DimensionLayout dim="0">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
-                              <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
-                              <Component id="jLabel11" min="-2" pref="156" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
+                              <Component id="jLabel11" min="-2" pref="156" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
                               <Component id="txt_documento" min="-2" pref="196" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="64" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
                               <Component id="Limpiar_tipo" linkSize="7" min="-2" pref="141" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
                               <Component id="consultar_tipo_doc" linkSize="7" min="-2" pref="134" max="-2" attributes="0"/>
@@ -1246,17 +1247,16 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="103" alignment="0" groupAlignment="3" attributes="0">
-                                      <Component id="Limpiar_tipo" linkSize="8" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="consultar_tipo_doc" linkSize="8" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="jLabel11" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="txt_documento" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="Limpiar_tipo" linkSize="8" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="consultar_tipo_doc" linkSize="8" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabel11" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
+                                  <Group type="102" alignment="1" attributes="0">
+                                      <Component id="txt_documento" max="32767" attributes="0"/>
+                                      <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
-                              <EmptySpace pref="16" max="32767" attributes="0"/>
+                              <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -1463,13 +1463,13 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="1" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jScrollPane2" max="32767" attributes="0"/>
+                              <Component id="jScrollPane2" pref="1088" max="32767" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                           </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="390" max="-2" attributes="0"/>
+                          <Group type="102" alignment="1" attributes="0">
+                              <EmptySpace max="32767" attributes="0"/>
                               <Component id="btnBalanza" min="-2" pref="273" max="-2" attributes="0"/>
-                              <EmptySpace pref="437" max="32767" attributes="0"/>
+                              <EmptySpace min="-2" pref="397" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -1505,6 +1505,9 @@
                     </Container>
                     <Component class="javax.swing.JButton" name="btnBalanza">
                       <Properties>
+                        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                          <Color blue="cc" green="cc" red="ff" type="rgb"/>
+                        </Property>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Sylfaen" size="18" style="1"/>
                         </Property>
@@ -1622,6 +1625,9 @@
                   <SubComponents>
                     <Component class="javax.swing.JButton" name="btnResumenGastosGenerales">
                       <Properties>
+                        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                          <Color blue="cc" green="cc" red="ff" type="rgb"/>
+                        </Property>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Sylfaen" size="18" style="1"/>
                         </Property>
@@ -1763,6 +1769,9 @@
                   <SubComponents>
                     <Component class="javax.swing.JButton" name="btnEstadoFinanciero">
                       <Properties>
+                        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                          <Color blue="cc" green="cc" red="ff" type="rgb"/>
+                        </Property>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Sylfaen" size="18" style="1"/>
                         </Property>
@@ -1878,13 +1887,13 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jScrollPane3" max="32767" attributes="0"/>
+                              <Component id="jScrollPane3" pref="1088" max="32767" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="417" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="443" max="-2" attributes="0"/>
                               <Component id="btnBalanzaComprobacion" min="-2" pref="205" max="-2" attributes="0"/>
-                              <EmptySpace pref="478" max="32767" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -1921,6 +1930,9 @@
                     </Container>
                     <Component class="javax.swing.JButton" name="btnBalanzaComprobacion">
                       <Properties>
+                        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                          <Color blue="cc" green="cc" red="ff" type="rgb"/>
+                        </Property>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Sylfaen" size="18" style="1"/>
                         </Property>

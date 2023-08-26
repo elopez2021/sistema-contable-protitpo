@@ -271,7 +271,7 @@ public class mantenimientos extends javax.swing.JPanel {
         errEmail.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         errEmail.setForeground(java.awt.Color.red);
 
-        btnGuardarUsuario.setBackground(new java.awt.Color(204, 204, 255));
+        btnGuardarUsuario.setBackground(new java.awt.Color(255, 204, 204));
         btnGuardarUsuario.setFont(new java.awt.Font("Sylfaen", 1, 18)); // NOI18N
         btnGuardarUsuario.setText("Guardar");
         btnGuardarUsuario.addActionListener(new java.awt.event.ActionListener() {
@@ -305,7 +305,7 @@ public class mantenimientos extends javax.swing.JPanel {
             }
         });
 
-        btnLimpiarUsuario.setBackground(new java.awt.Color(0, 204, 204));
+        btnLimpiarUsuario.setBackground(new java.awt.Color(204, 153, 255));
         btnLimpiarUsuario.setFont(new java.awt.Font("Sylfaen", 1, 18)); // NOI18N
         btnLimpiarUsuario.setText("Limpiar");
         btnLimpiarUsuario.addActionListener(new java.awt.event.ActionListener() {
@@ -438,17 +438,17 @@ public class mantenimientos extends javax.swing.JPanel {
                 .addContainerGap()
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 508, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(12, Short.MAX_VALUE))
+                .addComponent(jScrollPane7, javax.swing.GroupLayout.DEFAULT_SIZE, 532, Short.MAX_VALUE)
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jScrollPane7))
-                .addContainerGap(45, Short.MAX_VALUE))
+                    .addComponent(jScrollPane7)
+                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(12, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Usuarios", jPanel1);
@@ -475,7 +475,7 @@ public class mantenimientos extends javax.swing.JPanel {
         jLabel8.setFont(new java.awt.Font("Sylfaen", 1, 18)); // NOI18N
         jLabel8.setText("Descripción:");
 
-        btnGuardarDocumento.setBackground(new java.awt.Color(204, 204, 255));
+        btnGuardarDocumento.setBackground(new java.awt.Color(255, 204, 204));
         btnGuardarDocumento.setFont(new java.awt.Font("Sylfaen", 1, 18)); // NOI18N
         btnGuardarDocumento.setText("Guardar");
         btnGuardarDocumento.addActionListener(new java.awt.event.ActionListener() {
@@ -490,7 +490,7 @@ public class mantenimientos extends javax.swing.JPanel {
         errDescripcion.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         errDescripcion.setForeground(java.awt.Color.red);
 
-        btnLimpiarDocumento.setBackground(new java.awt.Color(0, 204, 204));
+        btnLimpiarDocumento.setBackground(new java.awt.Color(204, 153, 255));
         btnLimpiarDocumento.setFont(new java.awt.Font("Sylfaen", 1, 18)); // NOI18N
         btnLimpiarDocumento.setText("Limpiar");
         btnLimpiarDocumento.addActionListener(new java.awt.event.ActionListener() {
@@ -510,12 +510,17 @@ public class mantenimientos extends javax.swing.JPanel {
                 .addComponent(lblMensajeDocumento, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(52, 52, 52))
             .addGroup(jPanel5Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(109, Short.MAX_VALUE)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addComponent(btnGuardarDocumento, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnLimpiarDocumento, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(errDescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, 289, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(81, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addComponent(jLabel7)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -525,10 +530,8 @@ public class mantenimientos extends javax.swing.JPanel {
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addComponent(jLabel8)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(errDescripcion, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(txtDescripcion, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 289, Short.MAX_VALUE))))
-                .addContainerGap(79, Short.MAX_VALUE))
+                        .addComponent(txtDescripcion, javax.swing.GroupLayout.DEFAULT_SIZE, 330, Short.MAX_VALUE)))
+                .addGap(44, 44, 44))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -705,7 +708,7 @@ public class mantenimientos extends javax.swing.JPanel {
         errNroCuenta6.setForeground(java.awt.Color.red);
 
         btnCuentaGroup.add(rdbGeneral);
-        rdbGeneral.setFont(new java.awt.Font("Sylfaen", 0, 14)); // NOI18N
+        rdbGeneral.setFont(new java.awt.Font("Sylfaen", 0, 18)); // NOI18N
         rdbGeneral.setText("General");
         rdbGeneral.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -714,7 +717,7 @@ public class mantenimientos extends javax.swing.JPanel {
         });
 
         btnCuentaGroup.add(rdbDetalle);
-        rdbDetalle.setFont(new java.awt.Font("Sylfaen", 0, 14)); // NOI18N
+        rdbDetalle.setFont(new java.awt.Font("Sylfaen", 0, 18)); // NOI18N
         rdbDetalle.setText("Detalle");
 
         cmbGrupoCuenta.setFont(new java.awt.Font("Sylfaen", 0, 14)); // NOI18N
@@ -725,7 +728,7 @@ public class mantenimientos extends javax.swing.JPanel {
             }
         });
 
-        btnGuardarCatalogo.setBackground(new java.awt.Color(204, 204, 255));
+        btnGuardarCatalogo.setBackground(new java.awt.Color(255, 204, 204));
         btnGuardarCatalogo.setFont(new java.awt.Font("Sylfaen", 1, 18)); // NOI18N
         btnGuardarCatalogo.setText("Guardar");
         btnGuardarCatalogo.addActionListener(new java.awt.event.ActionListener() {
@@ -734,7 +737,7 @@ public class mantenimientos extends javax.swing.JPanel {
             }
         });
 
-        btnLimpiarCatalogo.setBackground(new java.awt.Color(0, 204, 204));
+        btnLimpiarCatalogo.setBackground(new java.awt.Color(204, 153, 255));
         btnLimpiarCatalogo.setFont(new java.awt.Font("Sylfaen", 1, 18)); // NOI18N
         btnLimpiarCatalogo.setText("Limpiar");
         btnLimpiarCatalogo.addActionListener(new java.awt.event.ActionListener() {
@@ -766,20 +769,20 @@ public class mantenimientos extends javax.swing.JPanel {
                         .addGap(10, 10, 10)
                         .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(errNroCuenta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(txtNroCuenta)
                             .addComponent(txtDescripcionCuenta)
                             .addComponent(errDescripcionCuenta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(errTipoCuenta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(txtNivelCuenta)
                             .addComponent(errNivelCuenta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(txtCuentaPadre)
                             .addComponent(errCuentaPadre, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(errGrupoCuenta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(jPanel6Layout.createSequentialGroup()
                                 .addComponent(rdbGeneral, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(rdbDetalle))
-                            .addComponent(cmbGrupoCuenta, 0, 288, Short.MAX_VALUE))
+                                .addComponent(rdbDetalle, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(cmbGrupoCuenta, 0, 288, Short.MAX_VALUE)
+                            .addComponent(txtNivelCuenta, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtCuentaPadre, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtNroCuenta, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(0, 11, Short.MAX_VALUE))
                     .addGroup(jPanel6Layout.createSequentialGroup()
                         .addGap(120, 120, 120)
@@ -790,6 +793,9 @@ public class mantenimientos extends javax.swing.JPanel {
                         .addComponent(errNroCuenta6, javax.swing.GroupLayout.DEFAULT_SIZE, 5, Short.MAX_VALUE)))
                 .addContainerGap())
         );
+
+        jPanel6Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {txtCuentaPadre, txtNivelCuenta, txtNroCuenta});
+
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
@@ -840,8 +846,10 @@ public class mantenimientos extends javax.swing.JPanel {
                         .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btnGuardarCatalogo, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnLimpiarCatalogo, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(23, Short.MAX_VALUE))
+                .addContainerGap(19, Short.MAX_VALUE))
         );
+
+        jPanel6Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {txtCuentaPadre, txtNivelCuenta, txtNroCuenta});
 
         jScrollPane5.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
 
@@ -888,7 +896,7 @@ public class mantenimientos extends javax.swing.JPanel {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(jScrollPane6)
                     .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(29, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Catalogo de Cuentas", jPanel2);
@@ -901,9 +909,7 @@ public class mantenimientos extends javax.swing.JPanel {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 586, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 553, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
