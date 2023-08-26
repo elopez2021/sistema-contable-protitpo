@@ -1251,6 +1251,7 @@ public class mantenimientos extends javax.swing.JPanel {
             }
         } else {
             lblMensajeCatalogo.setText("Creando...");
+            txtNroCuenta.setEditable(true);
         }
     }//GEN-LAST:event_txtNroCuentaFocusLost
 

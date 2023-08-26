@@ -1,2 +1,3 @@
-2;batata
-3;ghsghsh
+2;Factura
+3;Recibo
+1;Cheque

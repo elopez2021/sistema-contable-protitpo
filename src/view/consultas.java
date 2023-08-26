@@ -1605,11 +1605,12 @@ public class consultas extends javax.swing.JPanel {
             List<TransaccionContable> transacciones = transaccionCtrl.obtenerTransaccionesPorNumeroDocumento(nro_doc);
             if (!transacciones.isEmpty()) {
                 for (TransaccionContable transaccion : transacciones) {
+                    Documentos tipodocu = documentoCtrl.buscarDocumento(String.valueOf(cabecera.getTipoDocu()));
                     Object[] rowData = {
                         cabecera.getNroDocu(),
                         cabecera.getFechaDocu(),
                         cabecera.getHoraDocu(),
-                        cabecera.getTipoDocu(),
+                        tipodocu.getDescripcion(),
                         cabecera.getDescripcionDocu(),
                         cabecera.getHechoPor(),
                         cabecera.getFechaActualizacion(),

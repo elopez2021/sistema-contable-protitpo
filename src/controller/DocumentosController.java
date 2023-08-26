@@ -177,7 +177,7 @@ public class DocumentosController implements Controller {
             while ((line = reader.readLine()) != null) {
                 String[] campos = line.split(";");
                 String codigo1 = campos[0];
-                if (codigo1.equals(codigo)) {
+                if (codigo1.equalsIgnoreCase(codigo)) {
                     Documentos documento = new Documentos(campos[0], campos[1]);
                     return documento;
                 }

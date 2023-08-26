@@ -110,7 +110,7 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="jPanel5" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jScrollPane5" pref="609" max="32767" attributes="0"/>
+                          <Component id="jScrollPane5" pref="621" max="32767" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -677,7 +677,7 @@
                       <Component id="jPanel38" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jPanel39" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="12" max="32767" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -1082,7 +1082,7 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="Jscrollpane_trans" pref="1096" max="32767" attributes="0"/>
+                          <Component id="Jscrollpane_trans" pref="1104" max="32767" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -1238,7 +1238,7 @@
                               <Component id="Limpiar_tipo" linkSize="7" min="-2" pref="141" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
                               <Component id="consultar_tipo_doc" linkSize="7" min="-2" pref="134" max="-2" attributes="0"/>
-                              <EmptySpace pref="329" max="32767" attributes="0"/>
+                              <EmptySpace pref="335" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -1469,7 +1469,7 @@
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="390" max="-2" attributes="0"/>
                               <Component id="btnBalanza" min="-2" pref="273" max="-2" attributes="0"/>
-                              <EmptySpace pref="429" max="32767" attributes="0"/>
+                              <EmptySpace pref="437" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -1598,7 +1598,7 @@
                           <Group type="102" attributes="0">
                               <EmptySpace min="-2" pref="416" max="-2" attributes="0"/>
                               <Component id="btnResumenGastosGenerales" min="-2" pref="205" max="-2" attributes="0"/>
-                              <EmptySpace pref="471" max="32767" attributes="0"/>
+                              <EmptySpace pref="479" max="32767" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
@@ -1884,7 +1884,7 @@
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="417" max="-2" attributes="0"/>
                               <Component id="btnBalanzaComprobacion" min="-2" pref="205" max="-2" attributes="0"/>
-                              <EmptySpace pref="470" max="32767" attributes="0"/>
+                              <EmptySpace pref="478" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
