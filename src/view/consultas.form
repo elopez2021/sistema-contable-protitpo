@@ -147,52 +147,28 @@
                           <Group type="102" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" alignment="0" attributes="0">
-                                      <EmptySpace max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                          <Group type="102" alignment="0" attributes="0">
-                                              <Component id="jLabel5" min="-2" pref="163" max="-2" attributes="0"/>
-                                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                                              <Component id="txtCuentaPadre" max="32767" attributes="0"/>
-                                          </Group>
-                                          <Group type="102" attributes="0">
-                                              <Group type="103" groupAlignment="0" attributes="0">
-                                                  <Group type="102" alignment="0" attributes="0">
-                                                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                                          <Component id="jLabel14" alignment="0" max="32767" attributes="0"/>
-                                                          <Component id="jLabel7" alignment="0" min="-2" pref="163" max="-2" attributes="0"/>
-                                                      </Group>
-                                                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                                                  </Group>
-                                                  <Group type="102" alignment="1" attributes="0">
-                                                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                                                      <Group type="103" groupAlignment="0" attributes="0">
-                                                          <Component id="jLabel2" alignment="1" min="-2" max="-2" attributes="0"/>
-                                                          <Component id="jLabel3" alignment="1" min="-2" pref="148" max="-2" attributes="0"/>
-                                                          <Component id="jLabel4" alignment="1" min="-2" pref="163" max="-2" attributes="0"/>
-                                                      </Group>
-                                                  </Group>
-                                              </Group>
-                                              <Group type="103" groupAlignment="0" attributes="0">
-                                                  <Group type="102" attributes="0">
-                                                      <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
-                                                      <Component id="txtNroCuenta" min="-2" pref="220" max="-2" attributes="0"/>
-                                                  </Group>
-                                                  <Group type="102" alignment="0" attributes="0">
-                                                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                                                      <Group type="103" groupAlignment="0" attributes="0">
-                                                          <Component id="txtDescripcionCuenta" min="-2" pref="220" max="-2" attributes="0"/>
-                                                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                                              <Component id="cmbGrupoCuenta" pref="220" max="32767" attributes="0"/>
-                                                              <Component id="txtNivelCuenta" max="32767" attributes="0"/>
-                                                              <Group type="102" attributes="0">
-                                                                  <Component id="rdbGeneral" min="-2" pref="97" max="-2" attributes="0"/>
-                                                                  <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
-                                                                  <Component id="rdbDetalle" pref="87" max="32767" attributes="0"/>
-                                                                  <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
-                                                              </Group>
-                                                          </Group>
-                                                      </Group>
-                                                  </Group>
+                                          <Component id="jLabel5" alignment="0" min="-2" pref="163" max="-2" attributes="0"/>
+                                          <Component id="jLabel14" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="jLabel7" alignment="0" min="-2" pref="163" max="-2" attributes="0"/>
+                                          <Component id="jLabel4" alignment="1" min="-2" pref="163" max="-2" attributes="0"/>
+                                          <Component id="jLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jLabel3" alignment="0" min="-2" pref="148" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="txtCuentaPadre" alignment="0" min="-2" pref="220" max="-2" attributes="0"/>
+                                          <Component id="txtNroCuenta" alignment="0" min="-2" pref="220" max="-2" attributes="0"/>
+                                          <Component id="txtDescripcionCuenta" min="-2" pref="220" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                              <Component id="cmbGrupoCuenta" pref="220" max="32767" attributes="0"/>
+                                              <Component id="txtNivelCuenta" max="32767" attributes="0"/>
+                                              <Group type="102" attributes="0">
+                                                  <Component id="rdbGeneral" min="-2" pref="97" max="-2" attributes="0"/>
+                                                  <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
+                                                  <Component id="rdbDetalle" pref="87" max="32767" attributes="0"/>
+                                                  <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
                                               </Group>
                                           </Group>
                                       </Group>
@@ -204,7 +180,7 @@
                                       <Component id="btnLimpiarCatalogo" linkSize="3" min="-2" pref="141" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
-                              <EmptySpace pref="66" max="32767" attributes="0"/>
+                              <EmptySpace pref="68" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -266,7 +242,7 @@
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Sylfaen" size="18" style="1"/>
                         </Property>
-                        <Property name="horizontalAlignment" type="int" value="4"/>
+                        <Property name="horizontalAlignment" type="int" value="2"/>
                         <Property name="text" type="java.lang.String" value="N&#xfa;mero de cuenta:"/>
                       </Properties>
                     </Component>
@@ -275,7 +251,7 @@
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Sylfaen" size="18" style="1"/>
                         </Property>
-                        <Property name="horizontalAlignment" type="int" value="4"/>
+                        <Property name="horizontalAlignment" type="int" value="2"/>
                         <Property name="text" type="java.lang.String" value="Descripci&#xf3;n:"/>
                       </Properties>
                     </Component>
@@ -289,7 +265,7 @@
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Sylfaen" size="18" style="1"/>
                         </Property>
-                        <Property name="horizontalAlignment" type="int" value="4"/>
+                        <Property name="horizontalAlignment" type="int" value="2"/>
                         <Property name="text" type="java.lang.String" value="Tipo de cuenta:"/>
                       </Properties>
                     </Component>
@@ -320,7 +296,7 @@
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Sylfaen" size="18" style="1"/>
                         </Property>
-                        <Property name="horizontalAlignment" type="int" value="4"/>
+                        <Property name="horizontalAlignment" type="int" value="2"/>
                         <Property name="text" type="java.lang.String" value="Cuenta Padre:"/>
                       </Properties>
                     </Component>
@@ -336,7 +312,7 @@
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Sylfaen" size="18" style="1"/>
                         </Property>
-                        <Property name="horizontalAlignment" type="int" value="4"/>
+                        <Property name="horizontalAlignment" type="int" value="2"/>
                         <Property name="text" type="java.lang.String" value="Grupo de Cuenta:"/>
                       </Properties>
                     </Component>
@@ -393,7 +369,7 @@
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Sylfaen" size="18" style="1"/>
                         </Property>
-                        <Property name="horizontalAlignment" type="int" value="4"/>
+                        <Property name="horizontalAlignment" type="int" value="2"/>
                         <Property name="text" type="java.lang.String" value="Nivel Cuenta:"/>
                       </Properties>
                     </Component>
@@ -588,7 +564,7 @@
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
                           <Component id="jScrollPane6" min="-2" pref="1086" max="-2" attributes="0"/>
-                          <EmptySpace pref="15" max="32767" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -1247,13 +1223,15 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="Limpiar_tipo" linkSize="8" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="consultar_tipo_doc" linkSize="8" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jLabel11" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" alignment="1" attributes="0">
                                       <Component id="txt_documento" max="32767" attributes="0"/>
                                       <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="Limpiar_tipo" linkSize="8" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="consultar_tipo_doc" linkSize="8" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jLabel11" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                               <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>

@@ -63,7 +63,7 @@ public class loginn extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Calisto MT", 1, 24)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Usuario :");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 380, 200, 40));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 370, 200, 40));
 
         txtpassword.setBackground(new java.awt.Color(204, 255, 255));
         txtpassword.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -92,7 +92,7 @@ public class loginn extends javax.swing.JFrame {
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 110, -1, -1));
 
         btniniciarsesion.setBackground(new java.awt.Color(0, 51, 255));
-        btniniciarsesion.setFont(new java.awt.Font("Calisto MT", 1, 24)); // NOI18N
+        btniniciarsesion.setFont(new java.awt.Font("Sylfaen", 1, 24)); // NOI18N
         btniniciarsesion.setForeground(new java.awt.Color(255, 255, 255));
         btniniciarsesion.setText("Iniciar sesión");
         btniniciarsesion.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
