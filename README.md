@@ -1,5 +1,5 @@
 # Prototipo Sistema Contable
-
+Prototipo Sistema Contable is a simple accounting system prototype that provides various functionalities for managing financial transactions and generating reports. It aims to demonstrate the basic features and structure of a typical accounting system.
 ## Menu Options
 - Mantenimientos
   - Usuarios
